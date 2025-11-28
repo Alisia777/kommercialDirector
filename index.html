@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Sergey Artyukhin — экономика и управление маркетплейсами</title>
+  <title>Kommdir — консалтинг по маркетплейсам Wildberries и Ozon — Сергей Артюхин</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Консалтинг по маркетплейсам: экономика, P&L, автоматизация отчетности, BI, ассортимент и реклама для Wildberries и Ozon.">
+  <meta name="description" content="Сергей Артюхин · Kommdir. Консалтинг по маркетплейсам Wildberries и Ozon: экономика и P&L, автоматизация отчетности и BI, оптимизация ассортимента и рекламы для роста прибыли бизнеса.">
   <style>
     :root {
       --bg-main: #050608;
@@ -49,8 +49,8 @@
     }
 
     .logo-circle {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: radial-gradient(circle at 30% 20%, #fff 0, #f7e1b0 10%, #d8a657 45%, #815217 100%);
       display: flex;
@@ -80,17 +80,52 @@
       border-radius: 999px;
       padding: 6px 14px;
       border: 1px solid var(--accent);
+      transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    }
+
+    .top-cta:hover {
+      background: var(--accent);
+      color: #1b1308;
+      transform: translateY(-1px);
     }
 
     .hero {
       background: linear-gradient(135deg, rgba(8,9,16,0.96), rgba(20,15,8,0.98));
       border-radius: 18px;
-      padding: 26px 24px 26px;
+      padding: 26px 24px 22px;
       border: 1px solid rgba(255,255,255,0.04);
       box-shadow:
         0 16px 40px rgba(0,0,0,0.6),
         0 0 60px rgba(216,166,87,0.18);
       margin-bottom: 20px;
+      transition: box-shadow 0.25s ease, transform 0.2s ease;
+    }
+
+    .hero:hover {
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.7),
+        0 0 80px rgba(216,166,87,0.24);
+      transform: translateY(-1px);
+    }
+
+    .hero-layout {
+      display: flex;
+      gap: 24px;
+      align-items: stretch;
+      flex-wrap: wrap;
+    }
+
+    .hero-main {
+      flex: 1.8;
+      min-width: 260px;
+    }
+
+    .hero-side {
+      flex: 1;
+      min-width: 230px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     .hero-title {
@@ -129,6 +164,15 @@
       font-size: 14px;
       font-weight: 600;
       box-shadow: 0 10px 24px rgba(0,0,0,0.6);
+      border: none;
+      cursor: pointer;
+      transition: box-shadow 0.2s ease, transform 0.15s ease, background 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 14px 32px rgba(0,0,0,0.75);
+      transform: translateY(-1px);
+      background: #e3b869;
     }
 
     .btn-secondary {
@@ -139,11 +183,19 @@
       border: 1px solid var(--border-soft);
       color: var(--text-muted);
       font-size: 13px;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-soft);
+      border-color: var(--accent-soft);
+      transform: translateY(-1px);
     }
 
     .hero-meta {
       font-size: 12px;
       color: var(--text-muted);
+      margin-top: 10px;
     }
 
     .tag-pill {
@@ -156,6 +208,69 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-bottom: 10px;
+    }
+
+    .hero-photo {
+      border-radius: 18px;
+      background: radial-gradient(circle at 20% 20%, #f7e1b0 0, #d8a657 30%, #151729 90%);
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-photo-inner {
+      width: 120px;
+      height: 120px;
+      border-radius: 999px;
+      background: #050608;
+      border: 2px solid rgba(255,255,255,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 600;
+      color: #f5f5f5;
+    }
+
+    .hero-photo-caption {
+      position: absolute;
+      bottom: 10px;
+      right: 12px;
+      font-size: 11px;
+      color: #f5f5f5;
+      background: rgba(0,0,0,0.45);
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
+    .hero-side-card {
+      background: rgba(10,11,20,0.92);
+      border-radius: 14px;
+      padding: 10px 12px 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+      font-size: 12px;
+    }
+
+    .hero-side-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .hero-side-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .hero-side-list li {
+      margin-bottom: 4px;
+      font-size: 13px;
     }
 
     main {
@@ -171,6 +286,12 @@
       border: 1px solid var(--border-soft);
       box-shadow: 0 10px 28px rgba(0,0,0,0.55);
       margin-top: 10px;
+      transition: box-shadow 0.2s ease, transform 0.15s ease;
+    }
+
+    .section:hover {
+      box-shadow: 0 14px 32px rgba(0,0,0,0.65);
+      transform: translateY(-1px);
     }
 
     .section h2 {
@@ -236,6 +357,76 @@
       font-size: 13px;
     }
 
+    .contact-form {
+      margin: 8px 0 10px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .form-row label {
+      display: block;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .form-row input,
+    .form-row textarea {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-soft);
+      color: var(--text-main);
+      padding: 8px 10px;
+      font-size: 13px;
+    }
+
+    .form-row input:focus,
+    .form-row textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(216,166,87,0.5);
+    }
+
+    .form-row textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .contact-form .btn-primary {
+      width: fit-content;
+      margin-top: 2px;
+    }
+
+    .case-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .case-card {
+      flex: 1 1 230px;
+      background: var(--bg-soft);
+      border-radius: 14px;
+      padding: 10px 12px 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+      font-size: 13px;
+    }
+
+    .case-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .case-title {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
     footer {
       text-align: center;
       margin-top: 22px;
@@ -261,6 +452,9 @@
         align-items: flex-start;
         gap: 8px;
       }
+      .hero-layout {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -271,33 +465,56 @@
       <div class="brand">
         <div class="logo-circle">🦊</div>
         <div>
-          <div class="brand-text-main">Sergey Artyukhin</div>
+          <div class="brand-text-main">Kommdir · Sergey Artyukhin</div>
           <div class="brand-text-sub">Экономика и управление маркетплейсами</div>
         </div>
       </div>
-      <a href="#contact" class="top-cta">Запросить разбор</a>
+      <a href="https://t.me/Hardlivers" target="_blank" rel="noopener noreferrer" class="top-cta">Написать в Telegram</a>
     </header>
 
     <section class="hero">
-      <div class="tag-pill">Wildberries · Ozon · Экономика · BI</div>
-      <h1 class="hero-title">Навожу порядок в экономике маркетплейсов</h1>
-      <p class="hero-subtitle">
-        Помогаю собственникам и коммерческим директорам понять,
-        сколько на самом деле зарабатывает бизнес на маркетплейсах,
-        и выстроить систему, при которой оборот превращается в прибыль.
-      </p>
-      <p class="hero-note">
-        P&amp;L по каналам и брендам, unit-экономика по SKU, отчётность в Power BI / Google Sheets,
-        автоматизация на скриптах и API, решения по ассортименту и рекламе, регламенты для команды.
-      </p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Записаться на первичную консультацию</a>
-        <a href="#formats" class="btn-secondary">Посмотреть форматы и подход</a>
-      </div>
-      <div class="hero-actions" style="margin-top:10px;">
-        <span class="hero-meta">
-          10+ лет в коммерции и e-com · оборот до ~3 млрд ₽/год · команды до 70 человек
-        </span>
+      <div class="hero-layout">
+        <div class="hero-main">
+          <div class="tag-pill">Wildberries · Ozon · Экономика · BI</div>
+          <h1 class="hero-title">Навожу порядок в экономике маркетплейсов</h1>
+          <p class="hero-subtitle">
+            Помогаю собственникам и коммерческим директорам понять,
+            сколько на самом деле зарабатывает бизнес на маркетплейсах,
+            и выстроить систему, при которой оборот превращается в прибыль.
+          </p>
+          <p class="hero-note">
+            P&amp;L по каналам и брендам, unit-экономика по SKU, отчётность в Power BI / Google Sheets,
+            автоматизация на скриптах и API, решения по ассортименту и рекламе, регламенты для команды.
+          </p>
+          <div class="hero-actions">
+            <a href="https://t.me/Hardlivers" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              Записаться на первичную консультацию
+            </a>
+            <a href="#formats" class="btn-secondary">Посмотреть форматы и подход</a>
+            <a href="#contact-form" class="btn-secondary">Оставить контакты на сайте</a>
+          </div>
+          <div class="hero-meta">
+            10+ лет в коммерции и e-com · оборот до ~3 млрд ₽/год · команды до 70 человек
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <div class="hero-photo">
+            <!-- Вместо инициалов можно использовать своё фото:
+                 просто положи файл sergey.jpg в репозиторий
+                 и замени div.hero-photo-inner на <img src="sergey.jpg" ...> -->
+            <div class="hero-photo-inner">SA</div>
+            <div class="hero-photo-caption">точка входа в P&amp;L</div>
+          </div>
+          <div class="hero-side-card">
+            <div class="hero-side-title">Цифры, с которыми я работаю</div>
+            <ul class="hero-side-list">
+              <li><span class="highlight">~3 млрд ₽/год</span> оборота на маркетплейсах.</li>
+              <li>Рост чистой маржи до <span class="highlight">~10%</span> при контроле DRR/ACOS.</li>
+              <li>Команды до <span class="highlight">70 человек</span> и несколько юрлиц/брендов.</li>
+            </ul>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -312,7 +529,7 @@
           <ul>
             <li>Владельцы брендов и производств, продающие на Wildberries и Ozon.</li>
             <li>Оптовики и дистрибьюторы, выходящие в e-commerce.</li>
-            <li>Бизнесы с оборотом от <span class="highlight">N</span> ₽/мес по маркетплейсам, у которых:
+            <li>Бизнесы с оборотом от <span class="highlight">4 млн ₽</span>/мес по маркетплейсам, у которых:
               <ul>
                 <li>нет прозрачного P&amp;L по каналам, брендам и товарам;</li>
                 <li>отчёты живут в десятке Excel-файлов, и им никто не верит;</li>
@@ -433,44 +650,82 @@
 
         <section class="section" id="cases">
           <h2>Примеры задач</h2>
-          <h3>Автоматизация отчётности</h3>
           <p class="muted">
-            Обезличенный пример типового проекта.
+            Формат кейсов: «было / сделали / стало». Цифры можно адаптировать под ваши реальные проекты.
           </p>
-          <ul>
-            <li>Было: 2–3 сотрудника тратят по 2–3 часа в день на ручные выгрузки и сведение отчётов по маркетплейсам.</li>
-            <li>Сделали: связка API маркетплейсов + Google Sheets + Power BI, единая модель данных и дашборд.</li>
-            <li>Стало: обновление отчётов в автоматическом режиме, доступ к цифрам у руководства и ключевых менеджеров, экономия 80–100 часов человека в месяц.</li>
-          </ul>
 
-          <h3>Экономика и ассортимент</h3>
-          <ul>
-            <li>Было: фокус на обороте, решения по товарам принимаются «на глаз», нет картины по прибыли по SKU.</li>
-            <li>Сделали: unit-экономика по каждому артикулу, матрица “масштабировать / дораспродать / вывести”.</li>
-            <li>Стало: рост доли прибыльных SKU в обороте, снижение замороженных остатков, понятные решения по запуску новых позиций.</li>
-          </ul>
+          <div class="case-grid">
+            <article class="case-card">
+              <div class="case-label">Кейс 1 · одежда</div>
+              <div class="case-title">Wildberries / Ozon, сетевой бренд</div>
+              <ul>
+                <li><strong>Было:</strong> фокус на обороте, DRR ~18%, нет unit-экономики по SKU.</li>
+                <li><strong>Сделали:</strong> P&amp;L по брендам, unit-экономика, матрица «масштабировать / добить / вывести», рамки DRR.</li>
+                <li><strong>Стало:</strong> рост доли прибыльных SKU в обороте, DRR ~9–11%, снижение зависших остатков.</li>
+              </ul>
+            </article>
+
+            <article class="case-card">
+              <div class="case-label">Кейс 2 · электроника</div>
+              <div class="case-title">Автоэлектроника, запуск линейки</div>
+              <ul>
+                <li><strong>Было:</strong> пилотная линейка без понятной экономики и отчётности.</li>
+                <li><strong>Сделали:</strong> модель unit-экономики, ценовая стратегия, отчётность по заказам и возвратам, связка с рекламой.</li>
+                <li><strong>Стало:</strong> выведены в плюс маржи ключевые модели, понятный план расширения линейки.</li>
+              </ul>
+            </article>
+
+            <article class="case-card">
+              <div class="case-label">Кейс 3 · автоматизация</div>
+              <div class="case-title">Отчёты и BI</div>
+              <ul>
+                <li><strong>Было:</strong> 2–3 человека по 2–3 часа в день собирают отчёты вручную.</li>
+                <li><strong>Сделали:</strong> связка API маркетплейсов + Google Sheets + Power BI, единая модель данных.</li>
+                <li><strong>Стало:</strong> обновление отчётов автоматически, доступ к цифрам у руководства, экономия 80+ часов в месяц.</li>
+              </ul>
+            </article>
+          </div>
         </section>
 
         <section class="section contact-block" id="contact">
           <h2>Связаться</h2>
           <p>Напишите пару строк о бизнесе, обороте и основных болях — я отвечу и предложу формат первичного разбора.</p>
-          <p>
-            <strong>Telegram:</strong> @ваш_ник<br>
-            <strong>Email:</strong> yourmail@example.com<br>
-            <!-- при желании можно добавить WhatsApp / форму обратной связи -->
-          </p>
+
+          <form id="contact-form" class="contact-form">
+            <!-- Если захочешь, можно будет добавить action на Formspree/другой сервис -->
+            <div class="form-row">
+              <label for="name">Имя</label>
+              <input type="text" id="name" name="name" placeholder="Как к вам обращаться">
+            </div>
+            <div class="form-row">
+              <label for="phone">Телефон</label>
+              <input type="tel" id="phone" name="phone" placeholder="+7...">
+            </div>
+            <div class="form-row">
+              <label for="tg">Telegram</label>
+              <input type="text" id="tg" name="telegram" placeholder="@username">
+            </div>
+            <div class="form-row">
+              <label for="message">Кратко о запросе</label>
+              <textarea id="message" name="message" placeholder="Оборот, маркетплейсы, что болит, чего хотите добиться"></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Сохранить данные (черновик)</button>
+          </form>
+
           <p class="muted">
-            Первичный созвон 30–40 минут — бесплатно, чтобы понять, смогу ли я быть полезен именно вам.
+            Для быстрых вопросов проще всего написать напрямую в Telegram:
+            <strong>@Hardlivers</strong>.
           </p>
-          <a href="https://t.me/ваш_ник" class="btn-primary">Написать в Telegram</a>
+          <a href="https://t.me/Hardlivers" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+            Написать в Telegram
+          </a>
         </section>
 
       </div>
     </main>
 
     <footer>
-      © Sergey Artyukhin · консалтинг по маркетплейсам ·
-      тёмный режим, без волшебных кнопок.
+      © Sergey Artyukhin · Kommdir · консалтинг по маркетплейсам · тёмный режим, без волшебных кнопок.
     </footer>
 
   </div>
