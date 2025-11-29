@@ -2,26 +2,66 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Commercial Director · Marketplaces &amp; P&amp;L</title>
+  <title>Системный коммерческий директор · Маркетплейсы &amp; P&amp;L</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #05060a;
-      color: #f5f5f5;
+      background: #020617;
+      color: #e5e7eb;
       line-height: 1.5;
     }
     a { color: #7dd3fc; }
-    header, section {
-      max-width: 1100px;
+
+    .page {
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 32px 16px;
+      padding: 24px 16px 40px;
     }
+
+    /* Top brand bar */
+    .brand-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 0 0, #f97316 0, #0f172a 48%, #22c55e 100%);
+      margin-bottom: 24px;
+      color: #f9fafb;
+    }
+    .brand-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .logo-pill {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid rgba(15,23,42,0.6);
+      background: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-pill img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .brand-right {
+      font-size: 11px;
+      opacity: .9;
+    }
+
     header {
-      padding-top: 48px;
-      padding-bottom: 24px;
+      padding: 8px 0 24px;
     }
     .hero {
       display: flex;
@@ -30,8 +70,8 @@
       align-items: center;
       justify-content: space-between;
     }
-    .hero-text {
-      flex: 1 1 260px;
+    .hero-main {
+      flex: 1 1 280px;
       min-width: 0;
     }
     .tagline {
@@ -44,34 +84,57 @@
     h1 {
       font-size: 28px;
       margin: 0 0 8px;
+      color: #f9fafb;
     }
-    h2 {
-      font-size: 22px;
-      margin: 0 0 8px;
+    .hero-sub {
+      margin: 0 0 16px;
+      color: #d1d5db;
+      font-size: 14px;
     }
-    h3 {
-      font-size: 16px;
-      margin: 16px 0 4px;
+
+    .hero-bullets {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 10px;
+      margin-bottom: 16px;
     }
-    p { margin: 4px 0 10px; color: #d1d5db; }
+    .hero-bullets div {
+      background: #020617;
+      border-radius: 12px;
+      border: 1px solid #111827;
+      padding: 10px 12px;
+      font-size: 12px;
+      color: #e5e7eb;
+    }
+    .hero-bullets strong {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 12px;
+      color: #facc15;
+    }
 
     .hero-kpi {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 16px;
+      gap: 10px;
     }
-    .hero-kpi div {
-      background: #111827;
-      padding: 12px 16px;
-      border-radius: 10px;
+    .hero-kpi span {
+      border-radius: 999px;
       border: 1px solid #1f2937;
-      min-width: 140px;
+      padding: 4px 10px;
+      font-size: 11px;
+      color: #9ca3af;
+      background: #020617;
     }
 
-    .hero-photo {
+    .hero-side {
       flex: 0 0 260px;
       max-width: 280px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .hero-photo {
       border-radius: 18px;
       overflow: hidden;
       border: 1px solid #1f2937;
@@ -82,16 +145,49 @@
       width: 100%;
       height: auto;
     }
+    .hero-note {
+      font-size: 11px;
+      color: #9ca3af;
+      background: #020617;
+      border-radius: 12px;
+      border: 1px dashed #1f2937;
+      padding: 8px 10px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin: 0 0 8px;
+      color: #f9fafb;
+    }
+    h3 {
+      font-size: 16px;
+      margin: 16px 0 4px;
+      color: #e5e7eb;
+    }
+    p { margin: 4px 0 10px; }
 
     .section {
+      margin-top: 32px;
+      padding: 20px 16px;
+      border-radius: 18px;
       background: #020617;
-      border-top: 1px solid #111827;
-      border-bottom: 1px solid #111827;
+      border: 1px solid #111827;
     }
+    .section-header {
+      margin-bottom: 12px;
+    }
+    .section-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+
     .section-inner {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-      gap: 24px;
+      gap: 20px;
       align-items: flex-start;
     }
     .section-inner img {
@@ -102,11 +198,21 @@
       background: #000;
     }
 
+    .bullet-list {
+      font-size: 14px;
+      color: #d1d5db;
+      padding-left: 18px;
+      margin: 6px 0 10px;
+    }
+    .bullet-list li {
+      margin-bottom: 4px;
+    }
+
     .chips {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 8px 0 4px;
+      margin: 6px 0 4px;
     }
     .chip {
       border-radius: 999px;
@@ -120,235 +226,389 @@
     .case-metrics {
       font-size: 13px;
       color: #9ca3af;
-      margin-top: 8px;
+      margin-top: 4px;
     }
 
     footer {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 32px 16px 40px;
+      margin-top: 32px;
       font-size: 13px;
       color: #9ca3af;
+      border-top: 1px solid #111827;
+      padding-top: 16px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
+      .hero-bullets {
+        grid-template-columns: minmax(0, 1fr);
+      }
       .section-inner {
         grid-template-columns: minmax(0, 1fr);
       }
-      header {
-        padding-top: 32px;
-      }
+    }
+
+    @media (max-width: 720px) {
       .hero {
         flex-direction: column-reverse;
         align-items: stretch;
       }
       h1 { font-size: 24px; }
       h2 { font-size: 20px; }
+      .page {
+        padding-inline: 12px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="page">
 
-<header>
-  <div class="hero">
-    <div class="hero-text">
-      <div class="tagline">Marketplace Operations · P&amp;L · Data</div>
-      <h1>Commercial Director for marketplaces</h1>
-      <p>
-        Управляю P&amp;L и операционкой проектов на Wildberries и Ozon.
-        Собираю систему: от ассортимента и логистики из Китая
-        до BI-дашбордов, SQL-витрин и управленческой отчётности.
-      </p>
+    <!-- Brand bar with fox -->
+    <div class="brand-bar">
+      <div class="brand-left">
+        <div class="logo-pill">
+          <!-- Лисица / логотип: image.png -->
+          <img src="image.png" alt="Fox logo">
+        </div>
+        <span>Системный коммерческий директор · «лисица, которая наводит порядок в хаосе продаж»</span>
+      </div>
+      <div class="brand-right">
+        От входной диагностики до регламентов, BI и запуска новых категорий
+      </div>
+    </div>
 
-      <div class="hero-kpi">
+    <header>
+      <div class="hero">
+        <div class="hero-main">
+          <div class="tagline">антикризисный подход</div>
+          <h1>Системный коммерческий директор для маркетплейсов</h1>
+          <p class="hero-sub">
+            Захожу в бизнес как архитектор системы: собираю данные из бухгалтерии,
+            складов и маркетплейсов, строю P&amp;L и коридоры по марже/DRR,
+            запускаю регламенты и BI, а уже потом — решения по ассортименту,
+            рекламе и логистике.
+          </p>
+
+          <div class="hero-bullets">
+            <div>
+              <strong>Что делаю для собственника</strong>
+              1) Диагностика бизнеса по данным.<br>
+              2) Управленческий P&amp;L и финансовая модель.<br>
+              3) Коридоры по марже, DRR, ФОТ и запасам.<br>
+              4) Система решений по кабинетам, а не «ручное тушение пожара».
+            </div>
+            <div>
+              <strong>Что получает команда</strong>
+              Навигатор по кабинетам, чек-листы менеджеров, понятные статусы SKU,
+              BI-дашборды и регламенты, по которым можно обучать новых людей и не
+              терять управляемость, когда проект растёт.
+            </div>
+          </div>
+
+          <div class="hero-kpi">
+            <span>WB / Ozon · B2C-товары</span>
+            <span>P&amp;L, BI, SQL, регламенты</span>
+            <span>Антикризис и рост после «завалов»</span>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="hero-photo">
+            <!-- Портрет без имени -->
+            <img src="portrait_spb_bw_v01.jpg" alt="Commercial director by the river">
+          </div>
+          <div class="hero-note">
+            Вариант «зайти в бизнес, когда всё горит»: сначала собрать цифры,
+            разложить кабинеты и роли, затем — предложения по ассортименту, рекламе
+            и логистике уже на основе аналитики, а не ощущений.
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 1. Архитектура управления и регламенты -->
+    <section class="section" id="mgmt">
+      <div class="section-header">
+        <div class="section-tag">архитектура управления</div>
+        <h2>Структура кабинетов, регламенты и обучение команды</h2>
+        <p>
+          Не просто «ведём маркетплейс», а строим карту кабинетов, ролей и коридоров:
+          где зарабатываем, где сливаем маржу, какие решения принимать в первую очередь.
+          Под это собираются регламенты, чек-листы и схемы, на которых обучается команда.
+        </p>
+      </div>
+      <div class="section-inner">
         <div>
-          <strong>Маркетплейсы</strong><br>
-          WB · Ozon
+          <h3>Карта управления кабинетами</h3>
+          <p>
+            Для ИП и ООО формирую карту: роли кабинетов, целевые коридоры по марже и DRR,
+            сценарии «масштабировать / чинить / ликвидировать», ключевые риски.
+          </p>
+          <ul class="bullet-list">
+            <li>Разделение «локомотивов» и кабинетов-ликвидаций.</li>
+            <li>Цели по чистой марже и допустимому DRR по каждому блоку.</li>
+            <li>Пакет решений: что делаем с топ-SKU, хвостами, акциями и тестами.</li>
+          </ul>
+
+          <h3>Чек-листы и навигаторы для менеджеров</h3>
+          <p>
+            Менеджер работает не «по настроению», а по чек-листу: утренний разбор кабинета,
+            действия по SKU в статусе «МАСШТАБИРОВАТЬ / ЧИНИТЬ / ЛИКВИДАЦИЯ»,
+            контроль рекламы и остатков в конце дня.
+          </p>
+          <div class="chips">
+            <span class="chip">ежедневный чек-лист</span>
+            <span class="chip">статусы SKU</span>
+            <span class="chip">система обучения</span>
+          </div>
         </div>
         <div>
-          <strong>Фокус</strong><br>
-          P&amp;L · реклама · логистика · аналитика
+          <!-- СЮДА ты загрузишь новые скрины: назови их так же перед сохранением -->
+          <img src="mgmt_map_cabinets_v01.png"
+               alt="Карта управления кабинетами: роли ИП и ООО">
+          <img src="mgmt_daily_checklist_v01.png"
+               alt="Ежедневный чек-лист менеджера маркетплейсов"
+               style="margin-top:14px;">
+          <img src="mgmt_bi_guide_v01.png"
+               alt="Памятка по показателям в BI и проверке SKU"
+               style="margin-top:14px;">
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. P&L и коридоры -->
+    <section class="section" id="pnl">
+      <div class="section-header">
+        <div class="section-tag">финмодель и учет</div>
+        <h2>Управленческий P&amp;L: от бухгалтерии до коридоров по марже</h2>
+        <p>
+          Собираю данные из бухгалтерии, маркетплейсов и логистики в единый
+          управленческий отчёт. На его основе задаём коридоры по чистой марже, DRR,
+          ФОТ и лимитам на тесты — и уже от этого пляшут все решения.
+        </p>
+      </div>
+      <div class="section-inner">
+        <div>
+          <h3>P&amp;L по проектам и юридическим лицам</h3>
+          <p>
+            Развожу выручку, комиссии, возвраты, расходы на рекламу, логистику и операционные
+            траты по ИП и ООО. Видно, где «чёрная дыра», а где реальный драйвер прибыли.
+          </p>
+          <ul class="bullet-list">
+            <li>P&amp;L по месяцам с разрезом на проекты и кабинеты.</li>
+            <li>Коридоры по чистой марже (например, 14–15% по группе).</li>
+            <li>Нормы DRR и лимиты на эксперименты по кабинетам.</li>
+          </ul>
         </div>
         <div>
-          <strong>Формат</strong><br>
-          Project / part-time / advisory
+          <!-- bi_wb_ozon_monthly_planfact_v01.png -->
+          <img src="bi_wb_ozon_monthly_planfact_v01.png"
+               alt="WB/Ozon monthly plan-fact table">
+          <!-- pnl_wb_project_2023_v01.png -->
+          <img src="pnl_wb_project_2023_v01.png"
+               alt="Management P&amp;L report for marketplace project"
+               style="margin-top:16px;">
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="hero-photo">
-      <!-- Портрет: portrait_spb_bw_v01.jpg -->
-      <img src="portrait_spb_bw_v01.jpg" alt="Alicia by the river in Saint Petersburg">
-    </div>
-  </div>
-</header>
-
-<section class="section" id="pnl">
-  <div class="section-inner">
-    <div>
-      <h2>P&amp;L и управленческая отчётность</h2>
-      <p>
-        Строю управленческий P&amp;L по проектам: выручка, комиссии, возвраты,
-        реклама, логистика, операционные расходы и чистая прибыль по месяцам.
-      </p>
-      <div class="chips">
-        <span class="chip">WB / Ozon P&amp;L</span>
-        <span class="chip">управленческий учёт</span>
-        <span class="chip">unit-экономика</span>
+    <!-- 3. BI, SQL и автоматизация -->
+    <section class="section" id="bi">
+      <div class="section-header">
+        <div class="section-tag">bi &amp; автоматизация</div>
+        <h2>Дашборды и SQL-витрины, на которых держится управление</h2>
+        <p>
+          Витрины данных и BI-отчёты под задачи собственника: воронка рекламы,
+          динамика выручки, DRR, выкуп, статусы SKU. На их основе строятся
+          регламенты и чек-листы, а не наоборот.
+        </p>
       </div>
-      <p>
-        Рабочие инструменты — Google Sheets и BI: автоматические таблицы,
-        план/факт по марже, отчётность для собственника.
-      </p>
-    </div>
-    <div>
-      <!-- bi_wb_ozon_monthly_planfact_v01.png -->
-      <img src="bi_wb_ozon_monthly_planfact_v01.png"
-           alt="WB/Ozon monthly plan-fact table">
-      <!-- pnl_wb_project_2023_v01.png -->
-      <img src="pnl_wb_project_2023_v01.png"
-           alt="Management P&amp;L report for marketplace project"
-           style="margin-top:16px;">
-    </div>
-  </div>
-</section>
+      <div class="section-inner">
+        <div>
+          <h3>Воронка рекламы и DRR</h3>
+          <p>
+            BI-дашборд, который показывает связь между показами, кликами, корзинами,
+            заказами, выкупом и DRR по РК и SKU.
+          </p>
 
-<section class="section" id="cases">
-  <div class="section-inner">
-    <div>
-      <h2>Кейсы по маркетплейсам</h2>
+          <h3>SQL-витрины под бизнес-метрики</h3>
+          <p>
+            Витрина <code>v_daily_funnel</code> агрегирует данные по рекламе и продажам:
+            показы, клики, заказы, выручка, CTR, конверсии, CPC/CPO и ROAS —
+            всё в одном месте для BI и аналитики.
+          </p>
 
-      <h3>Ботинки с 0 до ~7,9 млн ₽ за 28 дней</h3>
-      <p>
-        Запуск новой категории обуви на Wildberries «с нуля».
-        Работа с карточкой, ценой, рекламой и воронкой продаж.
-      </p>
-      <p class="case-metrics">
-        7,99 млн ₽ заказано за 28 дней, рост заказов и выкупа при контроле
-        конверсий и DRR.
-      </p>
-
-      <h3>Худи и трикотаж</h3>
-      <p>
-        Масштабирование продаж по отдельным SKU через аналитику MPStats:
-        работа с фото, ценой, выкупом и рекламными ставками.
-      </p>
-    </div>
-    <div>
-      <!-- case_wb_boots_sales_funnel_v01.png -->
-      <img src="case_wb_boots_sales_funnel_v01.png"
-           alt="Sales funnel for boots on Wildberries">
-      <!-- case_wb_hoodie_black_mpstats_v01.png -->
-      <img src="case_wb_hoodie_black_mpstats_v01.png"
-           alt="MPStats case for hoodie SKU"
-           style="margin-top:16px;">
-    </div>
-  </div>
-</section>
-
-<section class="section" id="bi">
-  <div class="section-inner">
-    <div>
-      <h2>BI, аналитика и SQL</h2>
-      <p>
-        Собираю витрины данных под задачи бизнеса: воронки по рекламе,
-        P&amp;L, метрики по заказам и эффективность кампаний.
-      </p>
-      <p>
-        Работаю с Power BI и SQL, могу формулировать ТЗ для аналитиков
-        и разработчиков или закрывать часть задач сама.
-      </p>
-      <div class="chips">
-        <span class="chip">Power BI</span>
-        <span class="chip">SQL views</span>
-        <span class="chip">Ad funnel</span>
+          <h3>Прогноз/факт по динамике</h3>
+          <p>
+            30-дневные окна и недельные срезы, чтобы видеть, где отстаём от плана
+            и что именно просело: спрос, цена, реклама или выкуп.
+          </p>
+        </div>
+        <div>
+          <!-- bi_ads_funnel_wb_v01.png -->
+          <img src="bi_ads_funnel_wb_v01.png"
+               alt="Advertising funnel dashboard in BI">
+          <!-- sql_v_daily_funnel_v02.png -->
+          <img src="sql_v_daily_funnel_v02.png"
+               alt="SQL view definition: v_daily_funnel"
+               style="margin-top:14px;">
+          <!-- 2025-09_forecast_vs_actual_30d_sparklines_v01.png -->
+          <img src="2025-09_forecast_vs_actual_30d_sparklines_v01.png"
+               alt="Forecast vs actual with 30-day sparklines"
+               style="margin-top:14px;">
+        </div>
       </div>
-    </div>
-    <div>
-      <!-- bi_ads_funnel_wb_v01.png -->
-      <img src="bi_ads_funnel_wb_v01.png"
-           alt="Advertising funnel dashboard in BI">
-      <!-- sql_v_daily_funnel_v02.png -->
-      <img src="sql_v_daily_funnel_v02.png"
-           alt="SQL view definition: v_daily_funnel"
-           style="margin-top:16px;">
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="section" id="logistics">
-  <div class="section-inner">
-    <div>
-      <h2>Логистика из Китая и расчёты</h2>
-      <p>
-        Практический опыт работы с китайскими поставщиками и перевозчиками:
-        инвойсы, ставки за кг/м³, страховка, упаковка, условия по партиям.
-      </p>
-      <p>
-        Считаю полную стоимость «от фабрики до склада клиента»:
-        товар, внутренняя логистика, международная доставка, услуги рынка,
-        комиссии маркетплейса и налоги.
-      </p>
-      <div class="chips">
-        <span class="chip">China → РФ</span>
-        <span class="chip">стоимость под ключ</span>
-        <span class="chip">2 этапа оплаты</span>
+    <!-- 4. Кейс: обувь -->
+    <section class="section" id="case-boots">
+      <div class="section-header">
+        <div class="section-tag">кейс</div>
+        <h2>Запуск категории обуви: с нуля до работающей системы за 3 месяца</h2>
+        <p>
+          Категория «ботинки» стартовала с нуля. За первые три месяца проделана
+          работа по аналитике, карточкам, цене, рекламе и выкупу — и категория
+          вышла на оборот порядка 7,9 млн ₽ в месяц (по данным воронки за 28 дней).
+        </p>
       </div>
-    </div>
-    <div>
-      <!-- china_freight_invoice_goodchina_v01.png -->
-      <img src="china_freight_invoice_goodchina_v01.png"
-           alt="China freight invoice example">
-      <!-- freight_cost_calc_rub_two_steps_v01.png -->
-      <img src="freight_cost_calc_rub_two_steps_v01.png"
-           alt="Freight cost calculation in RUB"
-           style="margin-top:16px;">
-    </div>
-  </div>
-</section>
-
-<section class="section" id="forecast">
-  <div class="section-inner">
-    <div>
-      <h2>Прогнозирование и контроль</h2>
-      <p>
-        Веду прогноз/факт и динамику по ключевым метрикам: выручка, заказы,
-        DRR, конверсии. Использую 30-дневные окна и недельные срезы,
-        чтобы управлять планом, а не смотреть только на прошлое.
-      </p>
-      <div class="chips">
-        <span class="chip">forecast vs actual</span>
-        <span class="chip">30D windows</span>
+      <div class="section-inner">
+        <div>
+          <h3>Что было сделано</h3>
+          <ul class="bullet-list">
+            <li>Подбор линейки моделей и ценовых коридоров.</li>
+            <li>Тестирование фото и карточек под целевую аудиторию.</li>
+            <li>Настройка и оптимизация РК под DRR-коридор.</li>
+            <li>Контроль выкупа и работа с отзывами.</li>
+          </ul>
+          <p class="case-metrics">
+            На скрине — воронка кабинета за 28 дней: динамика заказов, выкупа,
+            конверсий и DRR. Это уже не «эксперимент», а работающая категория.
+          </p>
+        </div>
+        <div>
+          <!-- case_wb_boots_sales_funnel_v01.png -->
+          <img src="case_wb_boots_sales_funnel_v01.png"
+               alt="Sales funnel for boots on Wildberries">
+        </div>
       </div>
-    </div>
-    <div>
-      <!-- 2025-09_forecast_vs_actual_30d_sparklines_v01.png -->
-      <img src="2025-09_forecast_vs_actual_30d_sparklines_v01.png"
-           alt="Forecast vs actual with 30-day sparklines">
-      <!-- forecast_vs_actual_30d_v01.png -->
-      <img src="forecast_vs_actual_30d_v01.png"
-           alt="Forecast vs actual table"
-           style="margin-top:16px;">
-    </div>
+    </section>
+
+    <!-- 5. Логистика и себестоимость -->
+    <section class="section" id="logistics">
+      <div class="section-header">
+        <div class="section-tag">логистика &amp; себестоимость</div>
+        <h2>Полная стоимость «от фабрики до полки»: Китай, доставка, рынок</h2>
+        <p>
+          Считаю полную себестоимость: товар, логистика по Китаю, международная
+          доставка, услуги рынка, хранение, комиссии маркетплейса и налоги.
+          На выходе — реальные цифры для P&amp;L и коридоров по марже.
+        </p>
+      </div>
+      <div class="section-inner">
+        <div>
+          <h3>Документы перевозчиков и промежуточные этапы</h3>
+          <p>
+            Разбор инвойсов, ставок за кг/м³, условий страховки и упаковки.
+            Прозрачная схема, сколько стоит каждая часть пути.
+          </p>
+
+          <h3>Калькуляторы в рублях</h3>
+          <p>
+            Таблицы, где владелец видит: оплату за товар, комиссию,
+            доставку, страховку, упаковку и итоговую сумму в рублях
+            с разложением на этапы оплаты.
+          </p>
+        </div>
+        <div>
+          <!-- china_freight_invoice_goodchina_v01.png -->
+          <img src="china_freight_invoice_goodchina_v01.png"
+               alt="China freight invoice example">
+          <!-- freight_cost_calc_rub_two_steps_v01.png -->
+          <img src="freight_cost_calc_rub_two_steps_v01.png"
+               alt="Freight cost calculation in RUB"
+               style="margin-top:14px;">
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Ассортимент и динамика -->
+    <section class="section" id="assortment">
+      <div class="section-header">
+        <div class="section-tag">ассортимент &amp; динамика</div>
+        <h2>Планы, прогноз/факт и расстановка акцентов по SKU</h2>
+        <p>
+          Ассортимент и планы не живут отдельно от цифр. Строю планы по выручке
+          и марже, отслеживаю прогноз/факт и под это принимаю решения:
+          что масштабировать, что чинить, что выводить в ликвидацию.
+        </p>
+      </div>
+      <div class="section-inner">
+        <div>
+          <h3>Прогноз/факт и недельная динамика</h3>
+          <p>
+            Таблицы с прогнозом и фактом по выручке, марже и DRR,
+            30-дневные спарклайны и недельные срезы по ключевым проектам.
+          </p>
+          <p>
+            Это база для решений по статусам SKU («МАСШТАБИРОВАТЬ / ЧИНИТЬ /
+            ЛИКВИДАЦИЯ») и постановки задач менеджерам.
+          </p>
+        </div>
+        <div>
+          <!-- forecast_vs_actual_30d_v01.png -->
+          <img src="forecast_vs_actual_30d_v01.png"
+               alt="Forecast vs actual table for key metrics">
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Кейс по одежде (MPStats) -->
+    <section class="section" id="case-apparel">
+      <div class="section-header">
+        <div class="section-tag">кейс</div>
+        <h2>Одежда и трикотаж: рост SKU через аналитику MPStats</h2>
+        <p>
+          Работа с худи и лонгсливами: анализ спроса, ценовых ниш, фото и отзывов
+          через MPStats. Дальше — связка с P&amp;L и коридорами по кабинету.
+        </p>
+      </div>
+      <div class="section-inner">
+        <div>
+          <h3>Логика работы</h3>
+          <ul class="bullet-list">
+            <li>Выделяем SKU-локомотивы и хвосты по марже и оборачиваемости.</li>
+            <li>Смотрим влияние смены фото, цен и промо на динамику продаж.</li>
+            <li>Привязываем решения к DRR и чистой марже по кабинету.</li>
+          </ul>
+        </div>
+        <div>
+          <!-- case_wb_hoodie_black_mpstats_v01.png -->
+          <img src="case_wb_hoodie_black_mpstats_v01.png"
+               alt="MPStats case for hoodie SKU">
+        </div>
+      </div>
+    </section>
+
+    <footer id="contacts">
+      <h2>Формат работы и контакты</h2>
+      <p>
+        Вхожу в проект как антикризисный коммерческий директор и архитектор системы.
+        Задача — не «ещё один менеджер кабинета», а человек, который соберёт цифры,
+        построит P&amp;L, задаст коридоры, запустит регламенты и BI, а дальше
+        поможет команде работать по понятной системе.
+      </p>
+      <p>Форматы: консалтинг, проектное управление, частичная занятость.</p>
+      <p>Связаться:</p>
+      <ul>
+        <li>Email: <a href="mailto:S@artyuhin.ru">S@artyuhin.ru</a></li>
+        <li>Telegram: <a href="https://t.me/Hardlivers" target="_blank">@Hardlivers</a></li>
+      </ul>
+      <p style="margin-top:12px; font-size:12px;">
+        Страница — живое портфолио: реальные отчёты, кейсы и рабочие инструменты
+        для выхода из кризиса и роста на маркетплейсах.
+      </p>
+    </footer>
+
   </div>
-</section>
-
-<footer id="contacts">
-  <h2>Контакты</h2>
-  <p>
-    Формат работы: консалтинг, проектное управление или частичная занятость
-    для проектов на маркетплейсах, где нужен коммерческий директор,
-    который опирается на цифры.
-  </p>
-  <p>Связаться со мной:</p>
-  <ul>
-    <li>Email: <a href="mailto:yourmail@example.com">yourmail@example.com</a></li>
-    <li>GitHub: <a href="https://github.com/Alisia777" target="_blank">Alisia777</a></li>
-  </ul>
-  <p style="margin-top:16px; font-size:12px;">
-    Страница — живое портфолио: реальные отчёты, кейсы и рабочие инструменты.
-  </p>
-</footer>
-
 </body>
 </html>
+
