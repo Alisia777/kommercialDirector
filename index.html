@@ -1,71 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <title>KOMMDIR — экономика и построение систем для бизнеса</title>
+  <meta charset="UTF-8" />
+  <title>KOMMDIR — системный коммерческий директор</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Системный коммерческий директор: экономика, P&L, unit-экономика, DRR/TACOS, BI и управленческий учёт. Оцифровка бизнеса, программы и дашборды под задачи компании."
-  />
+  <meta name="description" content="Системный коммерческий директор: экономика, P&L, unit-экономика, DRR/TACOS, управленческий учёт, SQL-отчётность и системы учёта для бизнеса и маркетплейсов." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg-main: #020617;
-      --bg-deep: #020617;
-      --bg-card: #050814;
-      --bg-chip: #060816;
-      --border-subtle: rgba(148, 163, 184, 0.28);
-
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --text-soft: #6b7280;
-
-      --accent: #fbbf24;
-      --accent-strong: #f59e0b;
-      --accent-soft: rgba(251, 191, 36, 0.16);
-
-      --good: #4ade80;
-      --bad: #fb7185;
-
-      --radius-lg: 30px;
-      --radius-md: 22px;
-      --radius-sm: 999px;
-
-      --shadow-soft: 0 26px 70px rgba(0, 0, 0, 0.85);
-      --shadow-chip: 0 16px 45px rgba(0, 0, 0, 0.9);
-      --shadow-img: 0 20px 55px rgba(0, 0, 0, 0.9);
+      --bg-body: #020617;
+      --bg-card: #050816;
+      --bg-card-soft: #070b1c;
+      --stroke-card: rgba(248, 189, 80, 0.18);
+      --accent: #f5b54c;
+      --accent-soft: #ffe7a3;
+      --accent-strong: #f0a832;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3c9;
+      --chip-bg: rgba(7, 12, 32, 0.9);
+      --chip-border: rgba(255, 255, 255, 0.06);
+      --shadow-strong: 0 24px 70px rgba(0, 0, 0, 0.85);
+      --radius-card: 28px;
+      --transition-fast: 0.18s ease;
+      --transition-card: 0.25s ease;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html,
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top, rgba(15, 23, 42, 0.8), transparent 55%),
-        linear-gradient(180deg, #020617, #020617);
+        radial-gradient(circle at 10% 0, rgba(245, 158, 11, 0.08), transparent 55%),
+        radial-gradient(circle at 90% 0, rgba(59, 130, 246, 0.18), transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(15, 23, 42, 0.9), #020617);
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
     }
 
-    body {
-      min-height: 100vh;
-    }
-
-    .page {
-      max-width: 1180px;
-      margin: 32px auto 80px;
-      padding: 0 20px 40px;
-    }
-
-    @media (min-width: 1280px) {
-      .page {
-        max-width: 1240px;
-      }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 0, rgba(248, 189, 80, 0.11), transparent 55%),
+        radial-gradient(circle at 85% 0, rgba(56, 189, 248, 0.12), transparent 55%);
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: -1;
     }
 
     a {
@@ -73,496 +65,541 @@
       text-decoration: none;
     }
 
-    /* HEADER */
-
-    .header {
-      margin-bottom: 28px;
+    .page {
+      max-width: 1200px;
+      margin: 40px auto 80px;
+      padding: 0 16px 40px;
     }
 
-    .header-band {
+    /* ===== Top gradient bar ===== */
+
+    .top-bar {
+      position: sticky;
+      top: 12px;
+      z-index: 20;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      padding: 10px 18px;
+      gap: 16px;
+      padding: 10px 20px;
       border-radius: 999px;
-      background: linear-gradient(90deg, #111827 0, #78350f 18%, #fbbf24 45%, #f97316 70%, #020617 100%);
-      box-shadow: var(--shadow-chip);
-      border: 1px solid rgba(251, 191, 36, 0.85);
-      position: relative;
-      overflow: hidden;
+      background: linear-gradient(90deg, #231815 0%, #f1a936 35%, #f7d462 55%, #f1a936 75%, #1f2937 100%);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(22px);
     }
 
-    .header-band::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        120deg,
-        rgba(255, 255, 255, 0.24),
-        transparent 40%,
-        transparent 70%,
-        rgba(255, 255, 255, 0.14)
-      );
-      opacity: 0.18;
-      pointer-events: none;
-    }
-
-    .header-left {
+    .top-left {
       display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+
+    .brand-pill {
+      display: inline-flex;
       align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
+      gap: 10px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.35);
+      box-shadow: inset 0 0 0 1px rgba(249, 250, 251, 0.08);
     }
 
     .brand-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #fef9c3, #f97316 55%, #7c2d12 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      border: 1px solid rgba(15, 23, 42, 0.85);
-      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.9);
-      overflow: hidden;
-    }
-
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .brand-text-main {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .brand-name {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #fefce8;
-    }
-
-    .brand-subtitle {
-      font-size: 12px;
-      color: #fef9c3;
-      opacity: 0.92;
-    }
-
-    .header-tags-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .pill-tag {
-      padding: 6px 13px;
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(15, 23, 42, 0.55);
-      background: rgba(15, 23, 42, 0.85);
-      font-size: 11px;
-      color: #f9fafb;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .btn-telegram {
-      position: relative;
-      z-index: 1;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 9px 18px;
-      border-radius: var(--radius-sm);
-      border: 1px solid rgba(15, 23, 42, 0.7);
-      background: radial-gradient(circle at top, #fef3c7, #facc15 45%, #f97316 100%);
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #fff7ed, #f97316);
       color: #111827;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
+    }
+
+    .brand-text-main {
       font-size: 13px;
       font-weight: 600;
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.9);
-      cursor: pointer;
-      overflow: hidden;
-    }
-
-    .btn-telegram::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        120deg,
-        rgba(255, 255, 255, 0.3),
-        transparent 40%,
-        transparent 70%,
-        rgba(255, 255, 255, 0.22)
-      );
-      opacity: 0;
-      transition: opacity 0.18s ease;
-    }
-
-    .btn-telegram:hover::after {
-      opacity: 1;
-    }
-
-    .btn-telegram-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
-    }
-
-    .btn-telegram-label {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* HERO */
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
-      gap: 32px;
-      margin-top: 26px;
-      padding: 30px 26px 26px;
-      background:
-        radial-gradient(circle at top left, rgba(251, 191, 36, 0.14), transparent 55%),
-        linear-gradient(145deg, #020617, #020617 45%, #020617 100%);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(148, 163, 184, 0.38);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: -140px;
-      background: radial-gradient(circle at 0 0, rgba(248, 250, 252, 0.16), transparent 60%);
-      opacity: 0.28;
-      pointer-events: none;
-    }
-
-    .hero-main {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .hero-kicker {
-      font-size: 11px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: #a5b4fc;
-    }
-
-    .hero-title {
-      font-size: 30px;
-      line-height: 1.16;
-      letter-spacing: -0.03em;
-      font-weight: 700;
       color: #f9fafb;
-      margin: 0;
     }
 
-    .hero-lead {
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--text-muted);
-      max-width: 640px;
+    .brand-text-sub {
+      font-size: 11px;
+      color: rgba(249, 250, 251, 0.8);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
-    .hero-list {
-      margin: 12px 0 0;
-      padding-left: 18px;
-      display: grid;
-      gap: 3px;
-      font-size: 13px;
-      color: var(--text-soft);
-    }
-
-    .hero-list li span {
-      color: #e5e7eb;
-    }
-
-    .hero-tags-row {
-      margin-top: 18px;
+    .top-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
     }
 
     .chip {
-      padding: 5px 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px 5px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(15, 23, 42, 0.15);
+      background: rgba(0, 0, 0, 0.48);
       font-size: 11px;
-      color: #e5e7eb;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(249, 250, 251, 0.86);
+      white-space: nowrap;
+      transition: transform var(--transition-fast),
+                  box-shadow var(--transition-fast),
+                  border-color var(--transition-fast),
+                  background var(--transition-fast);
+    }
+
+    .chip:hover {
+      transform: translateY(-1px) scale(1.02);
+      background: radial-gradient(circle at 10% 0, rgba(248, 189, 80, 0.26), rgba(0, 0, 0, 0.7));
+      border-color: rgba(248, 189, 80, 0.6);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65);
+    }
+
+    .tg-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 42, 0.45);
+      background: radial-gradient(circle at 30% 0, #ffffff, #fde68a, #f59e0b);
+      color: #111827;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.75);
+      transition: transform var(--transition-fast),
+                  box-shadow var(--transition-fast),
+                  filter var(--transition-fast);
       white-space: nowrap;
     }
 
-    .chip--ghost {
-      border-style: dashed;
-      border-color: rgba(148, 163, 184, 0.7);
-      color: #c7d2fe;
+    .tg-button:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.9);
+    }
+
+    /* ===== Generic cards ===== */
+
+    main {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .card {
+      position: relative;
+      padding: 28px 30px 26px;
+      border-radius: var(--radius-card);
+      background:
+        radial-gradient(circle at 0 0, rgba(248, 189, 80, 0.08), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.1), transparent 60%),
+        linear-gradient(145deg, #020617, #020617 40%, #050816 100%);
+      box-shadow: var(--shadow-strong);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      overflow: hidden;
+      transform: translateY(0);
+      transition: transform var(--transition-card),
+                  box-shadow var(--transition-card),
+                  border-color var(--transition-card),
+                  background-position var(--transition-card);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: radial-gradient(circle at 10% 0, rgba(248, 189, 80, 0.18), transparent 55%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-card);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.92);
+      border-color: rgba(248, 189, 80, 0.45);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-header-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(148, 163, 184, 0.9);
+      margin-bottom: 10px;
+    }
+
+    h1, h2 {
+      margin: 0;
+    }
+
+    .hero-title {
+      font-size: 26px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+      background: linear-gradient(90deg, #fefce8 0%, #fbbf24 40%, #fef3c7 80%);
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .section-title {
+      font-size: 20px;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      color: #e5e7eb;
+    }
+
+    .section-title span {
+      background: linear-gradient(90deg, rgba(248, 189, 80, 0.28), transparent 80%);
+      border-radius: 999px;
+      padding: 3px 14px 4px 10px;
+      box-shadow: 0 0 0 1px rgba(248, 189, 80, 0.18);
+    }
+
+    p {
+      margin: 0 0 10px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    ul {
+      margin: 10px 0 6px 0;
+      padding-left: 18px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    li + li {
+      margin-top: 4px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--chip-border);
+      background: var(--chip-bg);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: transform var(--transition-fast),
+                  box-shadow var(--transition-fast),
+                  border-color var(--transition-fast),
+                  background var(--transition-fast),
+                  color var(--transition-fast);
+    }
+
+    .pill--accent {
+      border-color: rgba(248, 189, 80, 0.6);
+      color: #fefce8;
+    }
+
+    .pill:hover {
+      transform: translateY(-1px) scale(1.02);
+      border-color: rgba(248, 189, 80, 0.55);
+      background: radial-gradient(circle at 0 0, rgba(248, 189, 80, 0.24), rgba(7, 11, 32, 0.95));
+      color: #fefce8;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-layout {
+      display: flex;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .hero-main {
+      flex: 1.65;
+      min-width: 0;
     }
 
     .hero-side {
-      position: relative;
-      z-index: 1;
+      flex: 1.1;
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      gap: 16px;
+      gap: 10px;
+      align-items: stretch;
+      min-width: 0;
     }
 
     .hero-photo {
-      width: 260px;
-      max-width: 100%;
-      border-radius: 30px;
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: var(--shadow-img);
-      border: 1px solid rgba(15, 23, 42, 0.9);
-      background: radial-gradient(circle at top, #111827, #020617);
+      border: 1px solid rgba(15, 23, 42, 0.7);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.9);
+      background: radial-gradient(circle at 10% 0, rgba(248, 189, 80, 0.3), #020617);
     }
 
     .hero-photo img {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
       object-fit: cover;
     }
 
-    .hero-stats {
+    .hero-metrics {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 8px;
-      width: 100%;
+      margin-top: 6px;
     }
 
-    .hero-stat-card {
-      padding: 8px 10px;
+    .metric-card {
       border-radius: 18px;
-      background: radial-gradient(circle at top, #020617, #020617 60%);
+      padding: 9px 10px 9px;
+      background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.96));
       border: 1px solid rgba(148, 163, 184, 0.4);
       font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .hero-stat-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: #9ca3af;
-      margin-bottom: 2px;
-    }
-
-    .hero-stat-value {
-      font-size: 13px;
-      font-weight: 600;
-      color: #f9fafb;
-    }
-
-    .hero-stat-footnote {
-      font-size: 10px;
-      color: var(--text-soft);
-      margin-top: 2px;
-    }
-
-    /* SECTIONS */
-
-    .section {
-      margin-bottom: 30px;
-      border-radius: var(--radius-lg);
-      background:
-        radial-gradient(circle at top, rgba(15, 23, 42, 0.98), transparent 60%),
-        linear-gradient(145deg, #020617, #020617 50%, #020617 100%);
-      border: 1px solid rgba(30, 64, 175, 0.15);
-      box-shadow: var(--shadow-soft);
-      padding: 26px 26px 22px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .section::before {
-      content: "";
-      position: absolute;
-      inset: -120px;
-      background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.24), transparent 60%);
-      opacity: 0.28;
-      pointer-events: none;
-    }
-
-    .section-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .section-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: #a5b4fc;
-      margin-bottom: 6px;
-    }
-
-    .section-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-      gap: 26px;
-      align-items: flex-start;
-    }
-
-    .section-text {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .section-title {
-      font-size: 20px;
-      margin: 0 0 10px;
-      letter-spacing: -0.02em;
-      background: linear-gradient(90deg, #facc15, #f97316);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .section-sub {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin: 0 0 12px;
-      max-width: 640px;
-    }
-
-    .section-text p {
-      margin: 0 0 8px;
-    }
-
-    .section-text ul {
-      margin: 6px 0 0 18px;
-      padding: 0;
-      display: grid;
-      gap: 4px;
-    }
-
-    .section-text li span {
-      color: #e5e7eb;
-    }
-
-    .section-meta-row {
-      margin-top: 12px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .section-meta-chip {
-      padding: 5px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.96);
-      font-size: 11px;
-      color: #e5e7eb;
-    }
-
-    .section-meta-chip--ghost {
-      border-style: dashed;
-      color: #c4b5fd;
-    }
-
-    .section-media {
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    /* ГАЛЕРЕИ */
-
-    .case-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: flex-end;
-    }
-
-    .case-gallery img {
-      max-width: 230px;
-      width: 100%;
-      height: auto;
-      border-radius: 24px;
-      box-shadow: var(--shadow-img);
-      cursor: pointer;
-      object-fit: contain;
-      background: radial-gradient(circle at top, rgba(248, 250, 252, 0.16), transparent 60%);
-      border: 1px solid rgba(15, 23, 42, 0.95);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-    }
-
-    .case-gallery img:hover {
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95);
-      opacity: 0.98;
-    }
-
-    /* FOOTER */
-
-    .footer {
-      margin-top: 10px;
-      padding: 14px 8px 0;
-      font-size: 11px;
-      color: var(--text-soft);
-      border-top: 1px solid rgba(30, 64, 175, 0.5);
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer-brand {
+      color: rgba(209, 213, 219, 0.92);
+      line-height: 1.35;
       display: flex;
       flex-direction: column;
       gap: 2px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.85);
+      transition: transform var(--transition-fast),
+                  box-shadow var(--transition-fast),
+                  border-color var(--transition-fast),
+                  background var(--transition-fast);
     }
 
-    .footer-brand strong {
+    .metric-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .metric-value {
+      font-weight: 600;
+      font-size: 13px;
       color: #e5e7eb;
     }
 
-    .footer-links {
+    .metric-note {
+      font-size: 11px;
+      color: rgba(156, 163, 175, 0.9);
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(248, 189, 80, 0.6);
+      background: radial-gradient(circle at 0 0, rgba(248, 189, 80, 0.24), rgba(15, 23, 42, 0.96));
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.92);
+    }
+
+    /* ===== Section layouts ===== */
+
+    .section-layout {
       display: flex;
-      flex-wrap: wrap;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .section-text {
+      flex: 1.45;
+      min-width: 0;
+    }
+
+    .section-media {
+      flex: 1.2;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
+      width: 100%;
+    }
+
+    .thumb-large {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .thumb-btn {
+      border: none;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9);
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      transition: transform var(--transition-fast),
+                  box-shadow var(--transition-fast),
+                  border-color var(--transition-fast),
+                  opacity var(--transition-fast);
+    }
+
+    .thumb-btn img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .thumb-btn::after {
+      content: "Нажмите, чтобы увеличить";
+      position: absolute;
+      inset: auto 8px 8px 8px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(15, 23, 42, 0.92), rgba(30, 64, 175, 0.92));
+      color: rgba(249, 250, 251, 0.85);
+      font-size: 10px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity var(--transition-fast), transform var(--transition-fast);
+      pointer-events: none;
+    }
+
+    .thumb-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(248, 189, 80, 0.6);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95);
+    }
+
+    .thumb-btn:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .thumb-tall {
+      grid-row: span 2;
+    }
+
+    .thumb-wide {
+      grid-column: span 2;
+    }
+
+    .section-note {
+      font-size: 12px;
+      color: rgba(148, 163, 184, 0.9);
+      margin-top: 6px;
+    }
+
+    /* ===== Zoom modal ===== */
+
+    .zoom-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: none;
       align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 0, rgba(248, 189, 80, 0.2), rgba(0, 0, 0, 0.9));
+      backdrop-filter: blur(6px);
+      padding: 20px;
     }
 
-    .footer-link span {
-      border-bottom: 1px dashed rgba(148, 163, 184, 0.6);
+    .zoom-modal.open {
+      display: flex;
     }
 
-    /* REVEAL */
+    .zoom-modal-inner {
+      position: relative;
+      max-width: 1000px;
+      width: 100%;
+      max-height: 90vh;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #020617;
+      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.95);
+      border: 1px solid rgba(248, 189, 80, 0.5);
+      animation: zoomIn 0.22s ease-out;
+    }
+
+    .zoom-modal-inner img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #020617;
+    }
+
+    .zoom-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: none;
+      border-radius: 999px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.9);
+      color: #e5e7eb;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      transition: background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .zoom-close:hover {
+      background: rgba(248, 189, 80, 0.95);
+      color: #111827;
+      transform: translateY(-1px);
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.95);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* ===== Reveal on scroll ===== */
 
     .reveal {
       opacity: 0;
       transform: translateY(18px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transition: opacity 0.45s ease-out, transform 0.45s ease-out;
     }
 
     .reveal-visible {
@@ -570,538 +607,459 @@
       transform: translateY(0);
     }
 
-    /* LIGHTBOX */
+    /* ===== Footer ===== */
 
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
-
-    .lightbox--visible {
+    footer {
+      margin-top: 26px;
+      font-size: 12px;
+      color: rgba(148, 163, 184, 0.9);
       display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .lightbox__image {
-      max-width: min(90vw, 1200px);
-      max-height: 90vh;
-      border-radius: 26px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
-      border: 1px solid rgba(15, 23, 42, 0.9);
-      background: #020617;
+    .footer-left {
+      opacity: 0.9;
     }
 
-    /* RESPONSIVE */
+    .footer-contact a {
+      color: var(--accent-soft);
+    }
 
-    @media (max-width: 1024px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
+    .footer-contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Responsive ===== */
+
+    @media (max-width: 1100px) {
+      .hero-metrics {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .thumb-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 960px) {
+      .page {
+        margin-top: 26px;
+      }
+
+      .top-bar {
+        position: static;
+        flex-direction: column;
+        align-items: flex-start;
+        border-radius: 22px;
+        padding: 10px 14px 12px;
+        gap: 10px;
+      }
+
+      .top-tags {
+        row-gap: 6px;
+      }
+
+      .hero-layout,
+      .section-layout {
+        flex-direction: column;
+      }
+
+      .hero-side,
+      .section-media {
+        align-items: stretch;
       }
 
       .hero-side {
-        align-items: flex-start;
-      }
-
-      .hero-stats {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .section-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .section-media {
-        justify-content: flex-start;
-      }
-
-      .case-gallery {
-        justify-content: flex-start;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .page {
-        margin-top: 20px;
-        padding-inline: 14px;
-      }
-
-      .header-band {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero {
-        padding: 22px 18px 18px;
-        margin-bottom: 22px;
+        order: -1;
       }
 
       .hero-title {
-        font-size: 24px;
+        font-size: 22px;
       }
 
-      .hero-stats {
+      .card {
+        padding: 22px 18px 20px;
+      }
+
+      .hero-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-media {
+        margin-top: 10px;
+      }
+
+      .thumb-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      main {
+        gap: 22px;
+      }
+
+      .top-bar {
+        margin-bottom: 10px;
+      }
+
+      .brand-text-main {
+        font-size: 12px;
+      }
+
+      .brand-text-sub {
+        font-size: 10px;
+      }
+
+      .hero-title {
+        font-size: 20px;
+      }
+
+      p, ul {
+        font-size: 13px;
+      }
+
+      .hero-metrics {
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .section {
-        padding: 20px 16px 18px;
-        margin-bottom: 20px;
-      }
-
-      .section-title {
-        font-size: 18px;
-      }
-
-      .case-gallery img {
-        max-width: 100%;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
+      .thumb-grid {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <header class="header reveal">
-      <div class="header-band">
-        <div class="header-left">
-          <div class="brand-logo">
-            <img src="image.png" alt="KOMMDIR" />
-          </div>
-          <div class="brand-text-main">
-            <div class="brand-name">KOMMDIR</div>
-            <div class="brand-subtitle">Экономика и построение систем для бизнеса</div>
-          </div>
-
-          <div class="header-tags-row">
-            <div class="pill-tag">Маркетплейсы · опт · розница</div>
-            <div class="pill-tag">P&amp;L · unit-экономика · DRR/TACOS</div>
-            <div class="pill-tag">BI-отчётность · SQL · системы учёта</div>
+    <!-- === TOP BAR === -->
+    <header class="top-bar">
+      <div class="top-left">
+        <div class="brand-pill">
+          <div class="brand-logo">K</div>
+          <div>
+            <div class="brand-text-main">KOMMDIR</div>
+            <div class="brand-text-sub">Экономика и построение систем для бизнеса</div>
           </div>
         </div>
-
-        <a href="https://t.me/Hardlivers" class="btn-telegram" target="_blank" rel="noopener">
-          <span class="btn-telegram-dot"></span>
-          <span class="btn-telegram-label">Написать в Telegram</span>
-        </a>
+        <div class="top-tags">
+          <div class="chip">маркетплейсы · опт · розница</div>
+          <div class="chip">P&amp;L · unit-экономика · DRR/TACOS</div>
+          <div class="chip">BI-отчётность · SQL · системы учёта</div>
+        </div>
       </div>
+
+      <a class="tg-button" href="https://t.me/Hardlivers" target="_blank" rel="noopener noreferrer">
+        Написать в Telegram
+      </a>
     </header>
 
     <main>
-      <!-- HERO -->
-      <section class="hero reveal">
+      <!-- === HERO === -->
+      <section class="card hero-layout reveal">
         <div class="hero-main">
-          <div class="hero-kicker">Антикризисный подход</div>
+          <div class="card-header-label">антикризисный подход</div>
           <h1 class="hero-title">Навожу порядок в экономике и системах учёта бизнеса</h1>
-          <p class="hero-lead">
-            Помогаю собственникам и коммерческим директорам понять, сколько на самом деле зарабатывает бизнес:
-            на маркетплейсах, в онлайн-рознице, опте и офлайне. Захожу как архитектор системы: объединяю бухгалтерию,
-            склады, маркетплейсы и CRM, строю P&amp;L и unit-экономику, DRR/TACOS, логику логистики и налогов. Пишу
-            программы и дашборды под вашу модель, оцифровываю ключевые процессы — и только потом принимаю решения по
-            ассортименту, запуску новых категорий и рекламе.
+          <p>
+            Помогаю собственникам и коммерческим директорам понять, сколько на самом деле
+            зарабатывает бизнес: на маркетплейсах, в онлайн-рознице, опте и офлайне.
+            Захожу как архитектор системы: объединяю бухгалтерию, склады, маркетплейсы и CRM,
+            строю P&amp;L и unit-экономику, DRR/TACOS, логику логистики и налогов. Пишу программы и
+            дашборды под вашу модель, оцифровываю ключевые процессы — и только потом принимаю
+            решения по ассортименту, запуску новых категорий и рекламе.
           </p>
-          <ul class="hero-list">
-            <li><span>1–2 недели диагностики:</span> собираем данные из БД, отчётов, складов и маркетплейсов.</li>
-            <li>
-              <span>Настраиваем управленческий P&amp;L и лимиты:</span> маржа, DRR/TACOS, логистика, операционные
-              затраты.
-            </li>
-            <li>
-              <span>Пишем программы и дашборды:</span> SQL-выборки, Google Apps Script, BI-панели под задачи вашей
-              команды.
-            </li>
-            <li>
-              <span>Формируем стратегию:</span> где зарабатывать, что резать, какие товары и каналы масштабировать.
-            </li>
+          <ul>
+            <li><strong>1–2 недели диагностики:</strong> собираем данные из БД, отчётов, складов и маркетплейсов.</li>
+            <li><strong>Настраиваем управленческий P&amp;L и лимиты:</strong> маржа, DRR/TACOS, логистика, операционные затраты.</li>
+            <li><strong>Пишем программы и дашборды:</strong> SQL-выборки, Google Apps Script, BI-дашборды под задачи вашей команды.</li>
+            <li><strong>Формируем стратегию:</strong> где зарабатываем, что держим в тестах, какие товары и каналы масштабировать.</li>
           </ul>
-          <div class="hero-tags-row">
-            <div class="chip">WB · Ozon · маркетплейс-проекты</div>
-            <div class="chip">опт/розница · e-com · офлайн-сети</div>
-            <div class="chip chip--ghost">оцифровка бизнеса и систем учёта</div>
+          <div class="pill-row">
+            <div class="pill pill--accent">WB · Ozon · маркетплейс-проекты</div>
+            <div class="pill">опт/розница и e-com-сети</div>
+            <div class="pill">вывод бизнеса в плюс и систему учёта</div>
           </div>
         </div>
 
         <aside class="hero-side">
           <div class="hero-photo">
-            <img src="portrait_spb_bw_v01.jpg" alt="Портрет: системный коммерческий директор" />
+            <img src="portrait_spb_bw_v01.jpg" alt="Портрет, набережная Санкт-Петербурга">
           </div>
-          <div class="hero-stats">
-            <div class="hero-stat-card">
-              <div class="hero-stat-label">Оборот проектов</div>
-              <div class="hero-stat-value">до ~3 млрд ₽/год</div>
-              <div class="hero-stat-footnote">маркетплейсы, опт, e-com-проекты</div>
+          <div class="hero-metrics">
+            <div class="metric-card">
+              <div class="metric-label">оборот проектов</div>
+              <div class="metric-value">до ~3 млрд ₽/год</div>
+              <div class="metric-note">маркетплейсы, опт, сети, e-com</div>
             </div>
-            <div class="hero-stat-card">
-              <div class="hero-stat-label">Цель по чистой</div>
-              <div class="hero-stat-value">10–14% маржи</div>
-              <div class="hero-stat-footnote">при контроле DRR/TACOS и логистики</div>
+            <div class="metric-card">
+              <div class="metric-label">цели по чистой марже</div>
+              <div class="metric-value">10–14% и выше</div>
+              <div class="metric-note">при контроле DRR/TACOS и логистики</div>
             </div>
-            <div class="hero-stat-card">
-              <div class="hero-stat-label">Команды</div>
-              <div class="hero-stat-value">до 70+ человек</div>
-              <div class="hero-stat-footnote">строю структуру, регламенты и BI-навигацию</div>
+            <div class="metric-card">
+              <div class="metric-label">команды</div>
+              <div class="metric-value">до 70+ человек</div>
+              <div class="metric-note">от собственника до middle-менеджеров</div>
             </div>
           </div>
         </aside>
       </section>
 
-      <!-- СТРУКТУРА КАБИНЕТОВ -->
-      <section class="section reveal">
-        <div class="section-inner section-grid">
+      <!-- === СТРУКТУРА КАБИНЕТОВ === -->
+      <section class="card reveal">
+        <div class="card-header-label">архитектура управления</div>
+        <div class="section-layout">
           <div class="section-text">
-            <div class="section-label">Архитектура управления</div>
-            <h2 class="section-title">Структура кабинетов, регламенты и обучение команды</h2>
-            <p class="section-sub">
-              Не просто «ведём маркетплейсы», а строим карту кабинетов, ролей и коридоров: где зарабатываем, где
-              сливаем маржу, какие решения принимать в первую очередь. Под это собираются регламенты, чек-листы и
-              навигатор, на которых обучается команда.
+            <h2 class="section-title"><span>Структура кабинетов, регламенты и обучение команды</span></h2>
+            <p>
+              Не просто «ведём маркетплейсы», а строим карту кабинетов, ролей и коридоров:
+              где зарабатываем, где сливаем маржу, какие решения принимать в первую очередь.
+              Под это собираются регламенты, чек-листы и навигатор, на которых обучается команда.
             </p>
-
             <p><strong>Карта управления кабинетами</strong></p>
             <ul>
-              <li>
-                Для ИП и ООО формируем карту: роли кабинетов, целевые коридоры по марже и DRR/TACOS, сценарии
-                «масштабировать / чинить / ликвидировать», ключевые риски.
-              </li>
-              <li>
-                Разделяем «локомотивы» и кабинеты-ликвидации, чтобы не путать тесты и деньги.
-              </li>
-              <li>
-                Чёткие целевые уровни маржи и допустимого DRR/TACOS по каждому блоку. Понимание: что делать с конкретным
-                SKU, хвостами, акциями и тестами.
-              </li>
+              <li>Для ИП и ООО формирую карту: роли кабинетов, целевые коридоры по марже и DRR/TACOS, сценарии «масштабировать / чинить / ликвидировать», ключевые риски.</li>
+              <li>Разделение «локомотивов» и кабинетов-ликвидаций, чтобы не путать тесты и деньги.</li>
+              <li>Чёткие целевые уровни маржи и допустимого DRR/TACOS по каждому блоку.</li>
             </ul>
-
-            <p style="margin-top:10px;"><strong>Чек-листы и навигатор для менеджеров</strong></p>
+            <p><strong>Чек-листы и навигатор для менеджеров</strong></p>
             <ul>
-              <li>
-                Менеджер перестаёт работать «по настроению», а идёт по чек-листу: утренний разбор кабинета, действия по
-                SKU в статусе «МАСШТАБИРОВАТЬ / ЧИНИТЬ / ЛИКВИДАЦИЯ», контроль рекламы и остатков до конца дня.
-              </li>
-              <li>
-                Ежедневный онбординг новых людей: вместо хаотичных объяснений — чек-лист, привязанный к реальным
-                процессам.
-              </li>
+              <li>Менеджер перестаёт работать «по настроению», и идёт по чек-листу: утренний разбор кабинета, действия по SKU в статусе «МАСШТАБИРОВАТЬ / ЧИНИТЬ / ЛИКВИДАЦИЯ», контроль рекламы и остатков до конца дня.</li>
+              <li>Вечером фиксируются новые инсайты именно по реальным процессам, а не абстрактным инструкциям.</li>
             </ul>
-
-            <div class="section-meta-row">
-              <div class="section-meta-chip">ежедневный чек-лист</div>
-              <div class="section-meta-chip">статусы SKU</div>
-              <div class="section-meta-chip section-meta-chip--ghost">система обучения</div>
+            <div class="pill-row">
+              <div class="pill pill--accent">ежедневный чек-лист</div>
+              <div class="pill">статусы SKU</div>
+              <div class="pill">система обучения</div>
             </div>
           </div>
 
           <div class="section-media">
-            <div class="case-gallery">
-              <img
-                src="mgmt_accounts_map_v01.png"
-                alt="Карта управления кабинетами"
-                class="case-image js-zoom"
-              />
-              <img
-                src="daily_manager_checklist_v01.png"
-                alt="Ежедневный чек-лист менеджера"
-                class="case-image js-zoom"
-              />
-              <img
-                src="bi_which_metrics_to_watch_v01.png"
-                alt="Памятка по ключевым метрикам в BI"
-                class="case-image js-zoom"
-              />
+            <div class="thumb-grid">
+              <button class="thumb-btn js-zoomable" data-full="mgmt_accounts_map_v01.png">
+                <img src="mgmt_accounts_map_v01.png" alt="Карта управления кабинетами">
+              </button>
+              <button class="thumb-btn js-zoomable" data-full="daily_manager_checklist_v01.png">
+                <img src="daily_manager_checklist_v01.png" alt="Ежедневный чек-лист менеджера">
+              </button>
+              <button class="thumb-btn js-zoomable" data-full="bi_which_metrics_to_watch_v01.png">
+                <img src="bi_which_metrics_to_watch_v01.png" alt="Памятка по ключевым метрикам">
+              </button>
+            </div>
+            <div class="section-note">
+              Примеры: карта управления кабинетами, ежедневный чек-лист и памятка по метрикам.
             </div>
           </div>
         </div>
       </section>
 
-      <!-- P&L / ФИНМОДЕЛЬ -->
-      <section class="section reveal">
-        <div class="section-inner section-grid">
+      <!-- === P&L === -->
+      <section class="card reveal">
+        <div class="card-header-label">финмодель и учёт</div>
+        <div class="section-layout">
           <div class="section-text">
-            <div class="section-label">Финмодель и учёт</div>
-            <h2 class="section-title">Управленческий P&amp;L: от бухгалтерии до лимитов по марже</h2>
-            <p class="section-sub">
-              Собираю данные из бухгалтерии, продажных каналов (маркетплейсы, сайт, опт, офлайн-точки), логистики и
-              приводим всё к управленческому P&amp;L. На его основе ставим лимиты на расходы и маржу, строим стратегию
-              по ассортименту и развитию.
+            <h2 class="section-title"><span>Управленческий P&amp;L: от бухгалтерии до лимитов по марже</span></h2>
+            <p>
+              Собираю данные из бухгалтерии, продажных каналов (маркетплейсы, сайт, опт, офлайн-точки),
+              логистики и превращаю всё в управленческий P&amp;L. На его основе ставим лимиты по расходам
+              и марже, строим стратегию по ассортименту и рекламе.
             </p>
-
-            <p><strong>Управленческий P&amp;L по проектам</strong></p>
             <ul>
-              <li>
-                P&amp;L не только по «кассе» маркетплейса: учитываем выручку, логистику, маркетинг, операционные
-                расходы, налоги. Видно, где зарабатываем, а где просто гоняем оборот.
-              </li>
-              <li>
-                Для не-маркетплейс бизнеса (производство, опт, розница) строим отдельные P&amp;L и модель cash-flow,
-                чтобы не смешивать экономику каналов.
-              </li>
+              <li><strong>Управленческий P&amp;L по проектам:</strong> выручка, логистика, маркетинг, операционные расходы, налоги — видно, где зарабатываем, а где просто гоняем оборот.</li>
+              <li><strong>Unit-экономика по SKU и брендам:</strong> маржа, обороты, возвраты, логистика, реклама и налоги — всё в одной модели.</li>
+              <li><strong>Лимиты по метрикам:</strong> DRR/TACOS, стоимость логистики, расходы на склад и персонал. Понимаем, что можно увеличивать, а где нужен жёсткий контроль.</li>
+              <li><strong>Дашборды и printable-отчёты в Google Sheets + Apps Script / SQL / Power BI,</strong> чтобы собственник видел P&amp;L без ручного копания в Excel.</li>
             </ul>
-
-            <p style="margin-top:10px;"><strong>Unit-экономика и коридоры по марже</strong></p>
-            <ul>
-              <li>
-                Unit-экономика по SKU и брендам: маржа, DRR/TACOS, стоимость логистики, расходы на склад и персонал.
-              </li>
-              <li>
-                Лимиты по метрикам: где можно увеличивать, а где «кранчик» на рекламе и расходах уже должен быть
-                под контролем.
-              </li>
-              <li>
-                Дашборды и прогнозы в едином формате: Google Sheets + Apps Script / SQL / Power BI, чтобы собственникам
-                не жить в десяти Excel-файлах.
-              </li>
-            </ul>
-
-            <div class="section-meta-row">
-              <div class="section-meta-chip">управленческий учёт</div>
-              <div class="section-meta-chip">unit-экономика</div>
-              <div class="section-meta-chip section-meta-chip--ghost">лимиты по затратам</div>
+            <div class="pill-row">
+              <div class="pill pill--accent">управленческий учёт</div>
+              <div class="pill">unit-экономика</div>
+              <div class="pill">лимиты по затратам</div>
             </div>
           </div>
 
           <div class="section-media">
-            <div class="case-gallery">
-              <img
-                src="pnl_wb_project_2023_v01.png"
-                alt="Пример P&amp;L по проекту"
-                class="case-image js-zoom"
-              />
-              <img
-                src="2025-09_forecast_vs_actual_30d_sparklines_v01.png"
-                alt="Факт vs план, 30-дневные спарклайны"
-                class="case-image js-zoom"
-              />
-              <img
-                src="forecast_vs_actual_30d_v01.png"
-                alt="План/факт по выручке за 30 дней"
-                class="case-image js-zoom"
-              />
+            <div class="thumb-grid thumb-large">
+              <button class="thumb-btn js-zoomable thumb-tall" data-full="pnl_wb_project_2023_v01.png">
+                <img src="pnl_wb_project_2023_v01.png" alt="Управленческий P&L по проекту">
+              </button>
+              <button class="thumb-btn js-zoomable" data-full="forecast_vs_actual_30d_v01.png">
+                <img src="forecast_vs_actual_30d_v01.png" alt="План/факт по выручке и марже">
+              </button>
+              <button class="thumb-btn js-zoomable" data-full="2025-09_forecast_vs_actual_30d_sparklines_v01.png">
+                <img src="2025-09_forecast_vs_actual_30d_sparklines_v01.png" alt="Пример спарклайнов для директора">
+              </button>
+            </div>
+            <div class="section-note">
+              Пример управленческого P&amp;L по проекту, план/факт по выручке и компоновка отчёта.
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ПРОГРАММЫ И ДАШБОРДЫ -->
-      <section class="section reveal">
-        <div class="section-inner section-grid">
+      <!-- === ПРОГРАММЫ И ДАШБОРДЫ === -->
+      <section class="card reveal">
+        <div class="card-header-label">системы и автоматизация</div>
+        <div class="section-layout">
           <div class="section-text">
-            <div class="section-label">Системы и автоматизация</div>
-            <h2 class="section-title">Программы и дашборды под задачи вашего бизнеса</h2>
-            <p class="section-sub">
-              Не только таблицы — на выходе под ваши процессы стоит SQL-слой и/или Google Apps Script. Данные по
-              продажам, рекламе, складу и логистике собираются в одну модель, из которой можно принимать решения, а не
-              угадывать по скриншотам.
+            <h2 class="section-title"><span>Программы и дашборды под задачи вашего бизнеса</span></h2>
+            <p>
+              Не только таблицы — я пишу код, когда весь процесс от SQL-слоя до Google Apps Script.
+              Данные по продажам, рекламе, складам и логистике собираются в одну модель, с которой
+              уже можно принимать решения, а не угадывать по отчёту.
             </p>
-
-            <p><strong>Построение моделей данных и витрин</strong></p>
             <ul>
-              <li>
-                Проектируем модель данных: витрины по продажам, рекламе, складу, остаткам. Отдельно — витрина по
-                марже/DRR/TACOS.
-              </li>
-              <li>
-                Пишем SQL-выборки и представления: ежедневные отчёты, дашборды по DRR и SKU, сводки заказов и остатков.
-              </li>
+              <li>Проектируем модель данных: витрины по прибыльности, рекламе, остаткам.</li>
+              <li>Пишу SQL-представления, ежедневные отчёты, дашборды по DRR, по SKU, заказам и остаткам.</li>
+              <li>Настраиваем дашборды и формы в Google Sheets: чек-листы, управленческие карты, печатные формы для «полей» и для команды.</li>
+              <li>Автоматизируем отчётность по всем каналам: BI-отчёты, Google Sheets + Apps Script, чтобы не бегать между файлами.</li>
             </ul>
-
-            <p style="margin-top:10px;"><strong>Автоматизация отчётности и контроля</strong></p>
-            <ul>
-              <li>
-                Настраиваем выгрузки в Google Sheets: чек-листы, уведомления, контроль лимитов, печатные формы для
-                собственника и команды.
-              </li>
-              <li>
-                Можно «подключить» не только маркетплейс: учёт по чекам, CRM или другие точки, куда уже ложатся ваши
-                продажи.
-              </li>
-            </ul>
-
-            <div class="section-meta-row">
-              <div class="section-meta-chip">Google Apps Script</div>
-              <div class="section-meta-chip">SQL-выборки и витрины</div>
-              <div class="section-meta-chip section-meta-chip--ghost">под задачи бизнеса</div>
+            <div class="pill-row">
+              <div class="pill pill--accent">SQL</div>
+              <div class="pill">Google Apps Script</div>
+              <div class="pill">пакет дашбордов и отчётов</div>
             </div>
           </div>
 
           <div class="section-media">
-            <div class="case-gallery">
-              <img
-                src="sql_v_daily_funnel_v01.png"
-                alt="SQL-код для витрины ежедневной воронки"
-                class="case-image js-zoom"
-              />
-              <img
-                src="sql_v_daily_funnel_v02.png"
-                alt="SQL-представление, BI-запросы и витрины"
-                class="case-image js-zoom"
-              />
-              <img
-                src="bi_wb_ozon_monthly_planfact_v01.png"
-                alt="BI-дашборд: план/факт по выручке и марже"
-                class="case-image js-zoom"
-              />
+            <div class="thumb-grid">
+              <button class="thumb-btn js-zoomable" data-full="sql_v_daily_funnel_v01.png">
+                <img src="sql_v_daily_funnel_v01.png" alt="SQL-вид по ежедневной воронке">
+              </button>
+              <button class="thumb-btn js-zoomable" data-full="sql_v_daily_funnel_v02.png">
+                <img src="sql_v_daily_funnel_v02.png" alt="Расширенная версия SQL-отчёта">
+              </button>
+              <button class="thumb-btn js-zoomable thumb-wide" data-full="bi_wb_ozon_monthly_planfact_v01.png">
+                <img src="bi_wb_ozon_monthly_planfact_v01.png" alt="BI-дашборд план/факт по маркетплейсам">
+              </button>
+            </div>
+            <div class="section-note">
+              Примеры: SQL-представления, BI-отчёты и управленческие дашборды.
             </div>
           </div>
         </div>
       </section>
 
-      <!-- КЕЙС ПО ОБУВИ -->
-      <section class="section reveal">
-        <div class="section-inner section-grid">
+      <!-- === КЕЙС ОБУВЬ === -->
+      <section class="card reveal">
+        <div class="card-header-label">кейс по маркетплейсам</div>
+        <div class="section-layout">
           <div class="section-text">
-            <div class="section-label">Кейсы по маркетплейсам</div>
-            <h2 class="section-title">Запуск обуви с нуля и масштабирование fashion-категорий</h2>
-            <p class="section-sub">
-              Показательная история не только о «чувствах» — вдохнули цифру до реальных продаж по ассортименту, ценам и
-              рекламе. Отправная точка — понимать экономику по DRR, марже и выкупу на уровне SKU, а не на ощущениях.
+            <h2 class="section-title"><span>Запуск обуви с нуля и масштабирование fashion-категорий</span></h2>
+            <p>
+              Показательная история не только о «чувствах» — здесь цифры до реальных продаж по
+              ассортименту, ценам и выкупам. Отправная точка — ботинки, запуск категории обуви на WB
+              с нуля, выход на обороты и контроль по DRR, марже и выкупу.
             </p>
-
             <p><strong>Запуск новой категории обуви на WB с нуля</strong></p>
             <ul>
-              <li>
-                Старт с нулевой истории продаж, без отзывов: анализ спроса, конкурентов и коридоров по DRR и марже.
-              </li>
-              <li>
-                Воронка продаж и выкупа: связываем трафик, конверсию в корзину, выкуп и P&amp;L по SKU.
-              </li>
-              <li>
-                Управление ставками рекламы и остатками: не жечь бюджет, когда карточка ещё не готова к масштабированию.
-              </li>
+              <li>Старт с нулевой истории продаж, без отзывов: анализ спроса, конкурентов и коридоров по DRR и марже.</li>
+              <li>Воронка продаж и выкупа: связали трафик, конверсию в корзину, выкуп и P&amp;L по SKU.</li>
+              <li>Управление ставками рекламы и остатками: не жечь бюджет, когда карточка ещё не готова к масштабированию.</li>
             </ul>
-
-            <p style="margin-top:10px;"><strong>Контроль логистики и закупок</strong></p>
+            <p><strong>Контроль логистики и закупок</strong></p>
             <ul>
-              <li>
-                Работа с китайской логистикой: инвойсы, калькуляторы стоимости за кг/м³, проверка реальной себестоимости
-                с учётом всех расходов.
-              </li>
-              <li>
-                Коридоры по закупочной цене и партии — чтобы не возить «воздух» и не морозить деньги на складе.
-              </li>
+              <li>Работа с китайской логистикой: инвойсы, калькуляторы стоимости за кг/м³, проверка реальной себестоимости с учётом всех расходов.</li>
+              <li>Коридоры по закупочной цене и партии — чтобы не возить «воздух» и не морозить деньги на складе.</li>
             </ul>
-
-            <div class="section-meta-row">
-              <div class="section-meta-chip">воронка продаж</div>
-              <div class="section-meta-chip">обувь, худи, ремни</div>
-              <div class="section-meta-chip section-meta-chip--ghost">логистика и Китай</div>
+            <div class="pill-row">
+              <div class="pill pill--accent">воронка продаж</div>
+              <div class="pill">обувь, худи, ремни</div>
+              <div class="pill">логистика и Китай</div>
             </div>
           </div>
 
           <div class="section-media">
-            <div class="case-gallery">
-              <img
-                src="bi_ads_funnel_wb_v01.png"
-                alt="BI-воронка рекламы и заказов на WB"
-                class="case-image js-zoom"
-              />
-              <img
-                src="case_wb_boots_sales_funnel_v01.png"
-                alt="Кейс по запуску обуви: воронка продаж и выкупа"
-                class="case-image js-zoom"
-              />
-              <img
-                src="case_wb_hoodie_black_mpstats_v01.png"
-                alt="Кейс по худи: аналитика MPStats и управление ставками"
-                class="case-image js-zoom"
-              />
-              <img
-                src="china_freight_invoice_goodchina_v01.png"
-                alt="Инвойс по китайской логистике"
-                class="case-image js-zoom"
-              />
-              <img
-                src="freight_cost_calc_rub_two_steps_v01.png"
-                alt="Калькулятор стоимости доставки в рублях"
-                class="case-image js-zoom"
-              />
+            <div class="thumb-grid thumb-large">
+              <button class="thumb-btn js-zoomable thumb-tall" data-full="case_wb_boots_sales_funnel_v01.png">
+                <img src="case_wb_boots_sales_funnel_v01.png" alt="Кейс: воронка продаж по обуви">
+              </button>
+              <button class="thumb-btn js-zoomable" data-full="bi_ads_funnel_wb_v01.png">
+                <img src="bi_ads_funnel_wb_v01.png" alt="Воронка рекламных кампаний по WB">
+              </button>
+              <button class="thumb-btn js-zoomable" data-full="china_freight_invoice_goodchina_v01.png">
+                <img src="china_freight_invoice_goodchina_v01.png" alt="Инвойс по китайской логистике">
+              </button>
+              <button class="thumb-btn js-zoomable thumb-wide" data-full="freight_cost_calc_rub_two_steps_v01.png">
+                <img src="freight_cost_calc_rub_two_steps_v01.png" alt="Калькулятор стоимости логистики">
+              </button>
+            </div>
+            <div class="section-note">
+              Примеры: запуск новой категории обуви, рост группы товаров, проверка логистики и работы с Китаем.
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <span>KOMMDIR. Экономика и построение систем для бизнеса.</span>
-          <span>Системный коммерческий директор: от P&amp;L и учёта до регламентов, BI и запусков новых категорий.</span>
-        </div>
-        <div class="footer-links">
-          <a href="mailto:S@artyuhin.ru" class="footer-link">
-            <span>S@artyuhin.ru</span>
-          </a>
-          <a href="https://t.me/Hardlivers" target="_blank" rel="noopener" class="footer-link">
-            <span>@Hardlivers</span>
-          </a>
-        </div>
+    <footer>
+      <div class="footer-left">
+        KOMMDIR. Экономика и построение систем для бизнеса.
+      </div>
+      <div class="footer-contact">
+        Почта: <a href="mailto:S@artyuhin.ru">S@artyuhin.ru</a> · Telegram: <a href="https://t.me/Hardlivers" target="_blank" rel="noopener noreferrer">@Hardlivers</a>
       </div>
     </footer>
   </div>
 
-  <!-- Лайтбокс для увеличения картинок -->
-  <div class="lightbox js-lightbox">
-    <img src="" alt="" class="lightbox__image" />
+  <!-- Zoom modal -->
+  <div class="zoom-modal" id="zoomModal">
+    <div class="zoom-modal-inner">
+      <button class="zoom-close" type="button" aria-label="Закрыть">×</button>
+      <img src="" alt="" id="zoomImage">
+    </div>
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // REVEAL
-      const revealEls = document.querySelectorAll(".reveal");
-      if (!("IntersectionObserver" in window)) {
-        revealEls.forEach((el) => el.classList.add("reveal-visible"));
+      /* Reveal on scroll */
+      const revealBlocks = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("reveal-visible");
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+
+        revealBlocks.forEach(el => observer.observe(el));
       } else {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("reveal-visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.12 }
-        );
-        revealEls.forEach((el) => observer.observe(el));
+        revealBlocks.forEach(el => el.classList.add("reveal-visible"));
       }
 
-      // LIGHTBOX
-      const zoomImages = document.querySelectorAll(".js-zoom");
-      const lightbox = document.querySelector(".js-lightbox");
-      if (!zoomImages.length || !lightbox) return;
-      const lightboxImg = lightbox.querySelector(".lightbox__image");
+      /* Zoomable images */
+      const zoomButtons = document.querySelectorAll(".js-zoomable");
+      const zoomModal = document.getElementById("zoomModal");
+      const zoomImage = document.getElementById("zoomImage");
+      const zoomClose = document.querySelector(".zoom-close");
 
-      zoomImages.forEach((img) => {
-        img.addEventListener("click", () => {
-          const src = img.getAttribute("src");
-          const alt = img.getAttribute("alt") || "";
-          lightboxImg.src = src;
-          lightboxImg.alt = alt;
-          lightbox.classList.add("lightbox--visible");
+      if (zoomButtons.length && zoomModal && zoomImage) {
+        zoomButtons.forEach(btn => {
+          btn.addEventListener("click", () => {
+            const full = btn.dataset.full || (btn.querySelector("img") && btn.querySelector("img").src);
+            if (!full) return;
+            zoomImage.src = full;
+            zoomModal.classList.add("open");
+          });
         });
-      });
 
-      lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) {
-          lightbox.classList.remove("lightbox--visible");
-          lightboxImg.src = "";
-          lightboxImg.alt = "";
-        }
-      });
+        const closeModal = () => {
+          zoomModal.classList.remove("open");
+          zoomImage.src = "";
+        };
 
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          lightbox.classList.remove("lightbox--visible");
-          lightboxImg.src = "";
-          lightboxImg.alt = "";
-        }
-      });
+        zoomClose.addEventListener("click", closeModal);
+        zoomModal.addEventListener("click", (e) => {
+          if (e.target === zoomModal) closeModal();
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && zoomModal.classList.contains("open")) {
+            closeModal();
+          }
+        });
+      }
     });
   </script>
 </body>
