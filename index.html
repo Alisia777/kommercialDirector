@@ -421,6 +421,78 @@
       box-shadow: 0 18px 55px rgba(0, 0, 0, 0.92);
     }
 
+    /* ===== CTA row ===== */
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 12px;
+      color: #e5e7eb;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      transition: transform var(--transition-fast),
+                  box-shadow var(--transition-fast),
+                  border-color var(--transition-fast),
+                  background var(--transition-fast),
+                  color var(--transition-fast);
+    }
+
+    .cta-btn--primary {
+      border-color: rgba(248, 189, 80, 0.8);
+      background: radial-gradient(circle at 30% 0, #fefce8, #fbbf24, #f97316);
+      color: #111827;
+    }
+
+    .cta-btn--ghost {
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(248, 189, 80, 0.85);
+      background: radial-gradient(circle at 0 0, rgba(248, 189, 80, 0.32), rgba(15, 23, 42, 0.98));
+      color: #fefce8;
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.85);
+    }
+
+    .cta-btn--primary:hover {
+      background: radial-gradient(circle at 0 0, #fef9c3, #f59e0b);
+      color: #111827;
+    }
+
+    .cta-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 600;
+      background: rgba(15, 23, 42, 0.9);
+      color: #facc15;
+      box-shadow: 0 0 0 1px rgba(248, 189, 80, 0.6);
+    }
+
+    .cta-btn--primary .cta-icon {
+      background: #111827;
+      color: #facc15;
+    }
+
     /* ===== Section layouts ===== */
 
     .section-layout {
@@ -727,6 +799,11 @@
       .thumb-grid {
         grid-template-columns: minmax(0, 1fr);
       }
+
+      .cta-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
     }
   </style>
 
@@ -735,30 +812,16 @@
     (function(m,e,t,r,i,k,a){
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {
-          if (document.scripts[j].src === r) { return; }
-        }
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a);
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105600432', 'ym');
 
-    ym(105600432, 'init', {
-      ssr:true,
-      webvisor:true,
-      clickmap:true,
-      ecommerce:"dataLayer",
-      accurateTrackBounce:true,
-      trackLinks:true
-    });
+    ym(105600432, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
   </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/105600432" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
 </head>
 <body>
-  <noscript>
-    <div>
-      <img src="https://mc.yandex.ru/watch/105600432" style="position:absolute; left:-9999px;" alt="" />
-    </div>
-  </noscript>
-
   <div class="page">
     <!-- === TOP BAR === -->
     <header class="top-bar">
@@ -796,16 +859,44 @@
             дашборды под вашу модель, оцифровываю ключевые процессы — и только потом принимаю
             решения по ассортименту, запуску новых категорий и рекламе.
           </p>
+          <p><strong>С какими запросами обычно приходят:</strong></p>
+          <ul>
+            <li>нет прозрачной картины: где прибыль, а где «просто оборот»;</li>
+            <li>маржа гуляет, DRR/TACOS живут своей жизнью, планы и факт не сходятся;</li>
+            <li>данные разложены по Excel и кабинетам, а единого управленческого P&amp;L нет;</li>
+            <li>команда тушит «пожары» вместо того, чтобы работать по системе и чек-листам.</li>
+          </ul>
+          <p><strong>Как выстраиваем работу:</strong></p>
           <ul>
             <li><strong>1–2 недели диагностики:</strong> собираем данные из БД, отчётов, складов и маркетплейсов.</li>
             <li><strong>Настраиваем управленческий P&amp;L и лимиты:</strong> маржа, DRR/TACOS, логистика, операционные затраты.</li>
             <li><strong>Пишем программы и дашборды:</strong> SQL-выборки, Google Apps Script, BI-дашборды под задачи вашей команды.</li>
             <li><strong>Формируем стратегию:</strong> где зарабатываем, что держим в тестах, какие товары и каналы масштабировать.</li>
           </ul>
+
           <div class="pill-row">
             <div class="pill pill--accent">WB · Ozon · маркетплейс-проекты</div>
             <div class="pill">опт/розница и e-com-сети</div>
             <div class="pill">вывод бизнеса в плюс и систему учёта</div>
+          </div>
+
+          <div class="cta-row">
+            <a class="cta-btn cta-btn--primary" href="https://t.me/Hardlivers" target="_blank" rel="noopener noreferrer">
+              <span class="cta-icon">TG</span>
+              <span>Получить разбор в Telegram</span>
+            </a>
+            <a class="cta-btn cta-btn--ghost" href="https://t.me/+lGRx6z04pcRlYTNi" target="_blank" rel="noopener noreferrer">
+              <span class="cta-icon">CH</span>
+              <span>Канал KOMMDIR</span>
+            </a>
+            <a class="cta-btn cta-btn--ghost" href="artyuhin_sergey_cco_resume.pdf" target="_blank" rel="noopener noreferrer">
+              <span class="cta-icon">PDF</span>
+              <span>Резюме (PDF)</span>
+            </a>
+            <a class="cta-btn cta-btn--ghost" href="https://spb.hh.ru/applicant/resumes?hhtmFrom=main&amp;hhtmFromLabel=header" target="_blank" rel="noopener noreferrer">
+              <span class="cta-icon">hh</span>
+              <span>Профиль на hh.ru</span>
+            </a>
           </div>
         </div>
 
