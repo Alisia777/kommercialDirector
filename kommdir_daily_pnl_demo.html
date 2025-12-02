@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>KOMMDIR · Пример мини-дашборда дневного P&L</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --bg-body: #020617;
+      --bg-card: #050816;
+      --accent: #fbbf24;
+      --accent-soft: #fef3c7;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3c9;
+      --border-soft: rgba(148, 163, 184, 0.4);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 10% 0, rgba(248, 189, 80, 0.14), transparent 55%),
+        radial-gradient(circle at 90% 0, rgba(59, 130, 246, 0.18), transparent 55%),
+        #020617;
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 32px auto 40px;
+      padding: 0 16px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #020617, #050816);
+      border-radius: 24px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 20px 22px 22px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 189, 80, 0.7);
+      background: radial-gradient(circle at 0 0, rgba(248, 189, 80, 0.3), rgba(15, 23, 42, 0.96));
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      line-height: 1.3;
+      background: linear-gradient(90deg, #fefce8, #fbbf24, #f97316);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      max-width: 720px;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    thead {
+      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.25), rgba(15, 23, 42, 0.95));
+    }
+
+    th, td {
+      padding: 6px 8px;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    th:first-child,
+    td:first-child {
+      text-align: left;
+    }
+
+    th {
+      font-weight: 500;
+      color: var(--accent-soft);
+      border-bottom-color: rgba(148, 163, 184, 0.7);
+    }
+
+    tbody tr:last-child td {
+      border-bottom-color: transparent;
+    }
+
+    tfoot td {
+      font-weight: 600;
+      border-top: 1px solid rgba(248, 189, 80, 0.7);
+      padding-top: 8px;
+      background: radial-gradient(circle at 0 0, rgba(248, 189, 80, 0.13), rgba(15, 23, 42, 0.97));
+    }
+
+    tfoot td:first-child {
+      text-align: left;
+      color: var(--accent-soft);
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 4px 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-main);
+      font-size: 12px;
+      text-align: right;
+      outline: none;
+      transition: border-color 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+    }
+
+    input[type="number"]:focus {
+      border-color: rgba(248, 189, 80, 0.9);
+      box-shadow: 0 0 0 1px rgba(248, 189, 80, 0.7);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .metric-badge {
+      display: inline-flex;
+      padding: 2px 6px;
+      border-radius: 999px;
+      font-size: 11px;
+    }
+
+    .metric-badge--ok {
+      background: rgba(22, 163, 74, 0.18);
+      color: #a7f3d0;
+    }
+
+    .metric-badge--warn {
+      background: rgba(234, 179, 8, 0.18);
+      color: #facc15;
+    }
+
+    .metric-badge--bad {
+      background: rgba(239, 68, 68, 0.18);
+      color: #fecaca;
+    }
+
+    .layout-top {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tagline {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 11px;
+      color: var(--text-muted);
+      gap: 6px;
+    }
+
+    .pill span:first-child {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-soft);
+    }
+
+    .footer-note {
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 720px) {
+      .card {
+        padding: 16px 14px 18px;
+      }
+
+      h1 {
+        font-size: 18px;
+      }
+
+      table {
+        font-size: 12px;
+      }
+
+      th, td {
+        padding: 5px 6px;
+      }
+
+      .top-row {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <div class="layout-top">
+        <span class="badge">пример · kommdir</span>
+        <h1>Мини-дашборд дневного P&amp;L по каналам</h1>
+        <p class="subtitle">
+          Простой пример того, как я собираю дневную экономику бизнеса: выручка, себестоимость,
+          реклама и логистика по каналам → чистая прибыль, маржа и DRR. Числа можно менять —
+          расчёт обновится автоматически.
+        </p>
+        <div class="top-row">
+          <div class="tagline">
+            💡 Подходит для быстрых разборов: WB, Ozon, сайт, опт — в одном взгляде.
+          </div>
+          <div class="pill">
+            <span>Лимиты</span>
+            <span>DRR до 15–20%, маржа ≥ 10–12% (примерные ориентиры)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hint">
+        Введите свои цифры по каналам (₽), чтобы посмотреть чистую прибыль, маржу и DRR.
+        Это демонстрационный файл: формулы упрощены, но логика близка к рабочей.
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Канал</th>
+              <th>Выручка, ₽</th>
+              <th>Себестоимость, ₽</th>
+              <th>Реклама, ₽</th>
+              <th>Логистика, ₽</th>
+              <th>Прочие, ₽</th>
+              <th>Чистая прибыль, ₽</th>
+              <th>Маржа, %</th>
+              <th>DRR, %</th>
+            </tr>
+          </thead>
+          <tbody id="pnl-body">
+            <tr data-row="1">
+              <td>WB</td>
+              <td><input type="number" class="js-input" data-field="revenue" value="250000"></td>
+              <td><input type="number" class="js-input" data-field="cogs" value="150000"></td>
+              <td><input type="number" class="js-input" data-field="ads" value="25000"></td>
+              <td><input type="number" class="js-input" data-field="log" value="18000"></td>
+              <td><input type="number" class="js-input" data-field="other" value="7000"></td>
+              <td data-field="net"></td>
+              <td data-field="margin"></td>
+              <td data-field="drr"></td>
+            </tr>
+            <tr data-row="2">
+              <td>Ozon</td>
+              <td><input type="number" class="js-input" data-field="revenue" value="180000"></td>
+              <td><input type="number" class="js-input" data-field="cogs" value="105000"></td>
+              <td><input type="number" class="js-input" data-field="ads" value="21000"></td>
+              <td><input type="number" class="js-input" data-field="log" value="14000"></td>
+              <td><input type="number" class="js-input" data-field="other" value="6000"></td>
+              <td data-field="net"></td>
+              <td data-field="margin"></td>
+              <td data-field="drr"></td>
+            </tr>
+            <tr data-row="3">
+              <td>Сайт / опт</td>
+              <td><input type="number" class="js-input" data-field="revenue" value="120000"></td>
+              <td><input type="number" class="js-input" data-field="cogs" value="70000"></td>
+              <td><input type="number" class="js-input" data-field="ads" value="8000"></td>
+              <td><input type="number" class="js-input" data-field="log" value="9000"></td>
+              <td><input type="number" class="js-input" data-field="other" value="4000"></td>
+              <td data-field="net"></td>
+              <td data-field="margin"></td>
+              <td data-field="drr"></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Итого по дню</td>
+              <td id="total-revenue"></td>
+              <td id="total-cogs"></td>
+              <td id="total-ads"></td>
+              <td id="total-log"></td>
+              <td id="total-other"></td>
+              <td id="total-net"></td>
+              <td id="total-margin"></td>
+              <td id="total-drr"></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <div class="footer-note">
+        🔍 В боевых проектах сюда обычно добавляются налоги, комиссии платёжных систем, фиксированные расходы по юрлицу
+        и детализация по SKU/брендам. Но принцип остаётся тем же: сначала видим экономику, потом принимаем решения.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Простейшие лимиты для подсветки (примерные значения)
+    const LIMITS = {
+      marginOk: 12,   // маржа >= 12% — зелёная зона
+      marginWarn: 8,  // 8–12% — жёлтая зона, ниже — красная
+      drrOk: 15,      // DRR <= 15% — зелёная зона
+      drrWarn: 20     // 15–20% — жёлтая, выше — красная
+    };
+
+    function parseNumber(value) {
+      if (value === "" || value === null || value === undefined) return 0;
+      const normalized = String(value).replace(",", ".");
+      const parsed = parseFloat(normalized);
+      return isNaN(parsed) ? 0 : parsed;
+    }
+
+    function formatMoney(value) {
+      const rounded = Math.round(value);
+      return rounded.toLocaleString("ru-RU");
+    }
+
+    function formatPercent(value) {
+      if (!isFinite(value)) return "–";
+      return value.toFixed(1).replace(".", ",") + " %";
+    }
+
+    function createBadge(value, type) {
+      if (!isFinite(value)) return "";
+      let cls = "metric-badge metric-badge--ok";
+      if (type === "margin") {
+        if (value < LIMITS.marginWarn) cls = "metric-badge metric-badge--bad";
+        else if (value < LIMITS.marginOk) cls = "metric-badge metric-badge--warn";
+      } else if (type === "drr") {
+        if (value > LIMITS.drrWarn) cls = "metric-badge metric-badge--bad";
+        else if (value > LIMITS.drrOk) cls = "metric-badge metric-badge--warn";
+      }
+      return '<span class="' + cls + '">' + formatPercent(value) + "</span>";
+    }
+
+    function recalc() {
+      const rows = document.querySelectorAll("#pnl-body tr[data-row]");
+      let totalRevenue = 0;
+      let totalCogs = 0;
+      let totalAds = 0;
+      let totalLog = 0;
+      let totalOther = 0;
+      let totalNet = 0;
+
+      rows.forEach(row => {
+        const inputs = row.querySelectorAll("input.js-input");
+        let revenue = 0, cogs = 0, ads = 0, log = 0, other = 0;
+
+        inputs.forEach(input => {
+          const field = input.dataset.field;
+          const val = parseNumber(input.value);
+          if (field === "revenue") revenue = val;
+          if (field === "cogs") cogs = val;
+          if (field === "ads") ads = val;
+          if (field === "log") log = val;
+          if (field === "other") other = val;
+        });
+
+        const net = revenue - cogs - ads - log - other;
+        const marginPct = revenue > 0 ? (net / revenue) * 100 : NaN;
+        const drrPct = revenue > 0 ? (ads / revenue) * 100 : NaN;
+
+        totalRevenue += revenue;
+        totalCogs += cogs;
+        totalAds += ads;
+        totalLog += log;
+        totalOther += other;
+        totalNet += net;
+
+        const netCell = row.querySelector('td[data-field="net"]');
+        const marginCell = row.querySelector('td[data-field="margin"]');
+        const drrCell = row.querySelector('td[data-field="drr"]');
+
+        if (netCell) netCell.textContent = formatMoney(net);
+        if (marginCell) marginCell.innerHTML = createBadge(marginPct, "margin");
+        if (drrCell) drrCell.innerHTML = createBadge(drrPct, "drr");
+      });
+
+      const totalMarginPct = totalRevenue > 0 ? (totalNet / totalRevenue) * 100 : NaN;
+      const totalDrrPct = totalRevenue > 0 ? (totalAds / totalRevenue) * 100 : NaN;
+
+      document.getElementById("total-revenue").textContent = formatMoney(totalRevenue);
+      document.getElementById("total-cogs").textContent = formatMoney(totalCogs);
+      document.getElementById("total-ads").textContent = formatMoney(totalAds);
+      document.getElementById("total-log").textContent = formatMoney(totalLog);
+      document.getElementById("total-other").textContent = formatMoney(totalOther);
+      document.getElementById("total-net").textContent = formatMoney(totalNet);
+      document.getElementById("total-margin").innerHTML = createBadge(totalMarginPct, "margin");
+      document.getElementById("total-drr").innerHTML = createBadge(totalDrrPct, "drr");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const inputs = document.querySelectorAll("input.js-input");
+      inputs.forEach(input => {
+        input.addEventListener("input", recalc);
+        input.addEventListener("change", recalc);
+      });
+      recalc();
+    });
+  </script>
+</body>
+</html>
