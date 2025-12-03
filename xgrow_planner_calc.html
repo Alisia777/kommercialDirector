@@ -191,6 +191,23 @@
             transform: translateY(1px);
         }
 
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: #ffffff;
+            color: var(--text-muted);
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .btn-secondary:active {
+            transform: translateY(1px);
+        }
+
         .output-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -261,7 +278,7 @@
         </div>
         <h1>Калькулятор плана по SKU</h1>
         <p class="subtitle">
-            Внеси фактические данные за прошлые месяцы + коэффициент месяца, и калькулятор посчитает план штук, оборот и маржу по выбранному товару.
+            Внеси фактические данные за прошлые месяцы или подтяни их из CSV, задай коэффициент месяца — и калькулятор посчитает план штук, оборот и маржу.
         </p>
     </header>
 
@@ -308,10 +325,15 @@
                         <div>
                             <div class="card-title">2. История за последние 3 месяца</div>
                             <div class="card-caption">
-                                Внеси факт по штукам (и при желании по выручке) — копируешь из выгрузок/BI.
+                                Можно забить руками или подтянуть автоматически из <span class="mono">xgrow_history.csv</span>.
                             </div>
                         </div>
-                        <div class="pill">Step 2</div>
+                        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+                            <div class="pill">Step 2</div>
+                            <button type="button" class="btn-secondary" onclick="prefillFromHistory()">
+                                Из истории CSV
+                            </button>
+                        </div>
                     </div>
                     <div class="form-grid">
                         <div class="form-row">
@@ -364,8 +386,8 @@
                         </div>
                     </div>
                     <p class="small-note">
-                        Калькулятор сам посчитает средний объём за 3 месяца и коэффициент тренда (месяц −1 / месяц −2),
-                        с ограничением, чтобы один «поехавший» месяц не убивал всю картину.
+                        CSV ищется по связке: <span class="mono">cabinet + mp + sku</span>,
+                        где mp = WB / OZON / Both (для Both суммируются обе площадки).
                     </p>
                 </div>
 
@@ -384,7 +406,7 @@
                         <div class="form-row">
                             <label for="kSeason">K сезона для целевого месяца</label>
                             <input type="text" id="kSeason" placeholder="1 по умолчанию">
-                            <div class="hint">Например: 1.2 для декабря, 0.8 для «слабого» месяца.</div>
+                            <div class="hint">Например: 1.2 для декабря, 0.8 для «слабого» месяца. Из CSV берётся k_season_next последнего месяца.</div>
                         </div>
                         <div class="form-row">
                             <label for="kScenario">K сценария (База/Опт/Пессим)</label>
@@ -405,7 +427,7 @@
                         <div>
                             <div class="card-title">4. Цена, СПП и затраты по SKU</div>
                             <div class="card-caption">
-                                Эти параметры по сути дублируют логику P&L / BI по единице товара.
+                                Эти параметры повторяют логику P&L / BI по единице товара.
                             </div>
                         </div>
                         <div class="pill">Step 4</div>
@@ -448,7 +470,7 @@
                             <input type="text" id="returnsPercent" placeholder="например: 5">
                         </div>
                         <div class="form-row">
-                            <label for="defectPercent">Брак, % по штукам (упрощённо)</label>
+                            <label for="defectPercent">Брак, % по штукам</label>
                             <input type="text" id="defectPercent" placeholder="например: 2">
                         </div>
                         <div class="form-row">
@@ -568,42 +590,149 @@
 </div>
 
 <script>
+    // --- Глобальные данные истории из CSV ---
+    let historyData = [];
+    let historyLoaded = false;
+
     function parseNumber(value) {
         if (!value) return 0;
         value = String(value).replace(/\s+/g, "").replace(",", ".");
-        var num = parseFloat(value);
+        const num = parseFloat(value);
         return isNaN(num) ? 0 : num;
     }
 
     function parsePercentInput(id) {
-        var v = parseNumber(document.getElementById(id).value);
+        const v = parseNumber(document.getElementById(id).value);
         return v / 100.0;
     }
 
     function formatNumber(value, decimals) {
         if (!isFinite(value)) value = 0;
         decimals = decimals === undefined ? 0 : decimals;
-        var options = {
+        const options = {
             minimumFractionDigits: decimals,
             maximumFractionDigits: decimals
         };
         return value.toLocaleString("ru-RU", options);
     }
 
+    // Загрузка CSV с историей
+    function loadHistoryCsv() {
+        fetch("data/xgrow_history.csv")
+            .then(resp => {
+                if (!resp.ok) throw new Error("HTTP " + resp.status);
+                return resp.text();
+            })
+            .then(text => {
+                const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+                if (lines.length <= 1) return;
+
+                const header = lines[0].split(";");
+                const idxCabinet = header.indexOf("cabinet");
+                const idxMp = header.indexOf("mp");
+                const idxSku = header.indexOf("sku");
+                const idxMonth = header.indexOf("month");
+                const idxUnits = header.indexOf("units");
+                const idxRevenue = header.indexOf("revenue_net");
+                const idxKSeasonNext = header.indexOf("k_season_next");
+
+                historyData = lines.slice(1).map(line => {
+                    const cols = line.split(";");
+                    return {
+                        cabinet: (cols[idxCabinet] || "").trim(),
+                        mp: (cols[idxMp] || "").trim(),
+                        sku: (cols[idxSku] || "").trim(),
+                        month: (cols[idxMonth] || "").trim(), // формат YYYY-MM
+                        units: parseNumber(cols[idxUnits] || ""),
+                        revenueNet: parseNumber(cols[idxRevenue] || ""),
+                        kSeasonNext: idxKSeasonNext >= 0 ? parseNumber(cols[idxKSeasonNext] || "") : 0
+                    };
+                });
+
+                historyLoaded = true;
+                console.log("История загружена, строк:", historyData.length);
+            })
+            .catch(err => {
+                console.warn("Не удалось загрузить data/xgrow_history.csv:", err);
+            });
+    }
+
+    // Автозаполнение истории из CSV
+    function prefillFromHistory() {
+        if (!historyLoaded || historyData.length === 0) {
+            alert("История из CSV ещё не загружена или файл пуст. Проверь, что data/xgrow_history.csv доступен.");
+            return;
+        }
+
+        const cabinet = document.getElementById("cabinet").value.trim();
+        const mp = document.getElementById("marketplace").value;
+        const sku = document.getElementById("skuName").value.trim();
+
+        if (!cabinet || !sku) {
+            alert("Заполни поля «SKU / Модель» и «Кабинет / ИП», чтобы поискать данные в CSV.");
+            return;
+        }
+
+        let filtered = historyData.filter(row =>
+            row.cabinet === cabinet &&
+            row.sku === sku
+        );
+
+        if (mp !== "Both") {
+            filtered = filtered.filter(row => row.mp === mp);
+        }
+
+        if (filtered.length === 0) {
+            alert("В CSV не найдены строки с таким кабинетом / SKU / площадкой.");
+            return;
+        }
+
+        // Сортируем по месяцу и берём последние 3
+        filtered.sort((a, b) => a.month.localeCompare(b.month));
+        const last3 = filtered.slice(-3);
+
+        // Очищаем сначала поля
+        ["m1Name","m2Name","m3Name","m1Units","m2Units","m3Units","m1Revenue","m2Revenue","m3Revenue"]
+            .forEach(id => document.getElementById(id).value = "");
+
+        function setMonthFields(pos, row) {
+            const nameId = "m" + pos + "Name";
+            const unitsId = "m" + pos + "Units";
+            const revId = "m" + pos + "Revenue";
+            document.getElementById(nameId).value = row.month;
+            document.getElementById(unitsId).value = row.units > 0 ? row.units : "";
+            if (row.revenueNet > 0) {
+                document.getElementById(revId).value = row.revenueNet;
+            }
+        }
+
+        // заполняем начиная с самого старого из last3
+        const startPos = 4 - last3.length; // чтобы при 1 строке она попала в m3, при 2 — m2/m3, при 3 — m1/m2/m3
+        last3.forEach((row, idx) => {
+            setMonthFields(startPos + idx, row);
+        });
+
+        // K сезона подтягиваем из k_season_next последнего месяца
+        const lastRow = last3[last3.length - 1];
+        if (lastRow && lastRow.kSeasonNext > 0) {
+            document.getElementById("kSeason").value = lastRow.kSeasonNext;
+        }
+    }
+
     function calculatePlan() {
         // История
-        var isNew = document.getElementById("isNew").checked;
-        var m1Units = parseNumber(document.getElementById("m1Units").value);
-        var m2Units = parseNumber(document.getElementById("m2Units").value);
-        var m3Units = parseNumber(document.getElementById("m3Units").value);
+        const isNew = document.getElementById("isNew").checked;
+        const m1Units = parseNumber(document.getElementById("m1Units").value);
+        const m2Units = parseNumber(document.getElementById("m2Units").value);
+        const m3Units = parseNumber(document.getElementById("m3Units").value);
 
-        var baseUnits = 0;
-        var trendK = 1;
+        let baseUnits = 0;
+        let trendK = 1;
 
         if (!isNew) {
-            var hist = [m1Units, m2Units, m3Units].filter(function (v) { return v > 0; });
+            const hist = [m1Units, m2Units, m3Units].filter(v => v > 0);
             if (hist.length > 0) {
-                var sum = hist.reduce(function (a, b) { return a + b; }, 0);
+                const sum = hist.reduce((a, b) => a + b, 0);
                 baseUnits = sum / hist.length;
             }
             if (m2Units > 0 && m3Units > 0) {
@@ -616,55 +745,54 @@
             trendK = 1;
         }
 
-        var kSeason = parseNumber(document.getElementById("kSeason").value || "1");
+        let kSeason = parseNumber(document.getElementById("kSeason").value || "1");
         if (kSeason <= 0) kSeason = 1;
-        var kScenario = parseNumber(document.getElementById("kScenario").value || "1");
+        let kScenario = parseNumber(document.getElementById("kScenario").value || "1");
         if (kScenario <= 0) kScenario = 1;
 
-        var totalK = trendK * kSeason * kScenario;
+        const totalK = trendK * kSeason * kScenario;
 
-        var planUnitsAuto = baseUnits * totalK;
-        var planUnitsOverride = parseNumber(document.getElementById("planUnitsOverride").value);
-        var planUnits = planUnitsOverride > 0 ? planUnitsOverride : Math.round(planUnitsAuto);
-
+        const planUnitsAuto = baseUnits * totalK;
+        const planUnitsOverride = parseNumber(document.getElementById("planUnitsOverride").value);
+        let planUnits = planUnitsOverride > 0 ? planUnitsOverride : Math.round(planUnitsAuto);
         if (!isFinite(planUnits) || planUnits < 0) planUnits = 0;
 
         // Цена и проценты
-        var priceGross = parseNumber(document.getElementById("priceGross").value);
-        var spp = parsePercentInput("sppPercent");
-        var cogs = parseNumber(document.getElementById("cogs").value);
-        var logStock = parseNumber(document.getElementById("logStock").value);
-        var logClient = parseNumber(document.getElementById("logClient").value);
-        var storageCost = parseNumber(document.getElementById("storageCost").value);
-        var otherVar = parseNumber(document.getElementById("otherVar").value);
-        var commissionP = parsePercentInput("commissionPercent");
-        var returnsP = parsePercentInput("returnsPercent");
-        var defectP = parsePercentInput("defectPercent");
-        var drrP = parsePercentInput("drrPercent");
-        var taxP = parsePercentInput("taxPercent");
+        const priceGross = parseNumber(document.getElementById("priceGross").value);
+        const spp = parsePercentInput("sppPercent");
+        const cogs = parseNumber(document.getElementById("cogs").value);
+        const logStock = parseNumber(document.getElementById("logStock").value);
+        const logClient = parseNumber(document.getElementById("logClient").value);
+        const storageCost = parseNumber(document.getElementById("storageCost").value);
+        const otherVar = parseNumber(document.getElementById("otherVar").value);
+        const commissionP = parsePercentInput("commissionPercent");
+        const returnsP = parsePercentInput("returnsPercent");
+        const defectP = parsePercentInput("defectPercent");
+        const drrP = parsePercentInput("drrPercent");
+        const taxP = parsePercentInput("taxPercent");
 
         // Планы по выручке
-        var revenueGross = planUnits * priceGross;
-        var sppRub = revenueGross * spp;
-        var revenueAfterSPP = revenueGross - sppRub;
-        var returnsRub = revenueAfterSPP * returnsP;
-        var revenueNet = revenueAfterSPP - returnsRub;
+        const revenueGross = planUnits * priceGross;
+        const sppRub = revenueGross * spp;
+        const revenueAfterSPP = revenueGross - sppRub;
+        const returnsRub = revenueAfterSPP * returnsP;
+        const revenueNet = revenueAfterSPP - returnsRub;
 
-        // Брак по штукам (упростим — списываем себестоимость брака)
-        var defectUnits = planUnits * defectP;
-        var goodUnits = planUnits - defectUnits;
+        // Брак по штукам (списываем себестоимость брака)
+        const defectUnits = planUnits * defectP;
+        const goodUnits = planUnits - defectUnits;
         if (goodUnits < 0) goodUnits = 0;
 
         // Переменные затраты
-        var cogsTotal = planUnits * cogs;
-        var logStockTotal = planUnits * logStock;
-        var logClientTotal = planUnits * logClient;
-        var storageTotal = planUnits * storageCost;
-        var otherVarTotal = planUnits * otherVar;
-        var commissionTotal = revenueAfterSPP * commissionP;
+        const cogsTotal = planUnits * cogs;
+        const logStockTotal = planUnits * logStock;
+        const logClientTotal = planUnits * logClient;
+        const storageTotal = planUnits * storageCost;
+        const otherVarTotal = planUnits * otherVar;
+        const commissionTotal = revenueAfterSPP * commissionP;
 
         // Валовая прибыль до маркетинга
-        var grossProfitBeforeMkt =
+        const grossProfitBeforeMkt =
             revenueNet -
             cogsTotal -
             logStockTotal -
@@ -674,17 +802,17 @@
             commissionTotal;
 
         // Реклама
-        var adSpend = revenueNet * drrP;
-        var profitBeforeTax = grossProfitBeforeMkt - adSpend;
+        const adSpend = revenueNet * drrP;
+        const profitBeforeTax = grossProfitBeforeMkt - adSpend;
 
         // Налоги
-        var tax = profitBeforeTax * taxP;
-        var netProfit = profitBeforeTax - tax;
+        const tax = profitBeforeTax * taxP;
+        const netProfit = profitBeforeTax - tax;
 
         // KPI
-        var marginPercent = revenueNet > 0 ? (netProfit / revenueNet) * 100 : 0;
-        var profitPerUnit = planUnits > 0 ? netProfit / planUnits : 0;
-        var realDRR = revenueNet > 0 ? (adSpend / revenueNet) * 100 : 0;
+        const marginPercent = revenueNet > 0 ? (netProfit / revenueNet) * 100 : 0;
+        const profitPerUnit = planUnits > 0 ? netProfit / planUnits : 0;
+        const realDRR = revenueNet > 0 ? (adSpend / revenueNet) * 100 : 0;
 
         // Обновляем UI
         document.getElementById("baseUnitsInfo").textContent = formatNumber(baseUnits, 1);
@@ -702,7 +830,7 @@
         document.getElementById("outRealDRR").textContent = formatNumber(realDRR, 1) + " %";
 
         // Подсветка маржи
-        var marginEl = document.getElementById("outMarginPercent");
+        const marginEl = document.getElementById("outMarginPercent");
         marginEl.classList.remove("bad", "good");
         if (marginPercent < 0) {
             marginEl.classList.add("bad");
@@ -710,7 +838,8 @@
             marginEl.classList.add("good");
         }
     }
+
+    document.addEventListener("DOMContentLoaded", loadHistoryCsv);
 </script>
 </body>
 </html>
-
