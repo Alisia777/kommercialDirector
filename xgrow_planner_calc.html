@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>X-Grow · Калькулятор плана и маржи по SKU</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            --bg: #f5f5f7;
+            --card-bg: #ffffff;
+            --border: #d7d7dd;
+            --text-main: #111111;
+            --text-muted: #666666;
+            --accent: #2f6bff;
+            --accent-soft: rgba(47, 107, 255, 0.07);
+            --danger: #dc3545;
+            --success: #198754;
+            --radius-lg: 14px;
+            --radius-md: 10px;
+            --shadow-soft: 0 14px 30px rgba(15, 23, 42, 0.10);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top left, #e3ebff 0, #f5f5f7 40%, #f5f5f7 100%);
+            color: var(--text-main);
+        }
+
+        .page {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 26px;
+            margin: 6px 0 2px;
+        }
+
+        .subtitle {
+            margin: 0 0 18px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 960px) {
+            .layout {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            padding: 14px 16px 16px;
+            margin-bottom: 12px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .card-caption {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .pill {
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-size: 11px;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .pill-strong {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px 12px;
+        }
+
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            font-size: 12px;
+        }
+
+        label {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        input[type="text"],
+        select {
+            padding: 6px 7px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            font-size: 12px;
+            width: 100%;
+            background: #fafafa;
+            outline: none;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            border-color: var(--accent);
+            background: #ffffff;
+        }
+
+        .form-row-inline {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+        }
+
+        .form-row-inline input[type="checkbox"] {
+            transform: translateY(1px);
+        }
+
+        .hint {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 7px 16px;
+            border-radius: 999px;
+            border: none;
+            background: var(--accent);
+            color: white;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 6px;
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px);
+        }
+
+        .output-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 6px 12px;
+            margin-top: 6px;
+        }
+
+        .output-row {
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .output-label {
+            color: var(--text-muted);
+        }
+
+        .output-value {
+            font-weight: 600;
+        }
+
+        .output-value.bad {
+            color: var(--danger);
+        }
+
+        .output-value.good {
+            color: var(--success);
+        }
+
+        .small-note {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        .chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-size: 11px;
+            margin-top: 4px;
+            color: var(--text-muted);
+        }
+
+        .chip {
+            padding: 2px 6px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .mono {
+            font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <header>
+        <div class="badge">
+            <span class="badge-dot"></span>
+            X-Grow · План/маржа калькулятор
+        </div>
+        <h1>Калькулятор плана по SKU</h1>
+        <p class="subtitle">
+            Внеси фактические данные за прошлые месяцы + коэффициент месяца, и калькулятор посчитает план штук, оборот и маржу по выбранному товару.
+        </p>
+    </header>
+
+    <main class="layout">
+        <!-- Левая часть: ввод данных -->
+        <section>
+            <form id="planner-form" onsubmit="event.preventDefault(); calculatePlan();">
+                <!-- Блок: общая информация -->
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">1. Общая информация</div>
+                            <div class="card-caption">SKU, площадка и целевой месяц плана.</div>
+                        </div>
+                        <div class="pill">Step 1</div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-row">
+                            <label for="skuName">SKU / Модель</label>
+                            <input type="text" id="skuName" placeholder="Например: Storm 5800W">
+                        </div>
+                        <div class="form-row">
+                            <label for="cabinet">Кабинет / ИП</label>
+                            <input type="text" id="cabinet" placeholder="ИП Вершкова / ООО ИКС ГРОУ">
+                        </div>
+                        <div class="form-row">
+                            <label for="marketplace">Площадка</label>
+                            <select id="marketplace">
+                                <option value="WB">Wildberries</option>
+                                <option value="OZON">Ozon</option>
+                                <option value="Both">WB + Ozon (совокупно)</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label for="targetMonth">Целевой месяц (название для отчёта)</label>
+                            <input type="text" id="targetMonth" placeholder="Например: Декабрь 2025">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Блок: история продаж -->
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">2. История за последние 3 месяца</div>
+                            <div class="card-caption">
+                                Внеси факт по штукам (и при желании по выручке) — копируешь из выгрузок/BI.
+                            </div>
+                        </div>
+                        <div class="pill">Step 2</div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-row">
+                            <label>Месяц −3 (самый старый)</label>
+                            <input type="text" id="m1Name" placeholder="Например: Сентябрь">
+                            <div class="form-row">
+                                <label for="m1Units">Продано, шт</label>
+                                <input type="text" id="m1Units" placeholder="шт">
+                            </div>
+                            <div class="form-row">
+                                <label for="m1Revenue">Выручка после СПП, ₽ (опц.)</label>
+                                <input type="text" id="m1Revenue" placeholder="можно оставить пустым">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label>Месяц −2</label>
+                            <input type="text" id="m2Name" placeholder="Например: Октябрь">
+                            <div class="form-row">
+                                <label for="m2Units">Продано, шт</label>
+                                <input type="text" id="m2Units" placeholder="шт">
+                            </div>
+                            <div class="form-row">
+                                <label for="m2Revenue">Выручка после СПП, ₽ (опц.)</label>
+                                <input type="text" id="m2Revenue" placeholder="можно оставить пустым">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label>Месяц −1 (последний факт)</label>
+                            <input type="text" id="m3Name" placeholder="Например: Ноябрь">
+                            <div class="form-row">
+                                <label for="m3Units">Продано, шт</label>
+                                <input type="text" id="m3Units" placeholder="шт">
+                            </div>
+                            <div class="form-row">
+                                <label for="m3Revenue">Выручка после СПП, ₽ (опц.)</label>
+                                <input type="text" id="m3Revenue" placeholder="можно оставить пустым">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label>Настройки истории</label>
+                            <div class="form-row-inline">
+                                <input type="checkbox" id="isNew">
+                                <label for="isNew">Новинка (нет истории, план задаём руками)</label>
+                            </div>
+                            <div class="form-row">
+                                <label for="manualBaseUnits">Если новинка: базовый план, шт</label>
+                                <input type="text" id="manualBaseUnits" placeholder="Например: 30">
+                                <div class="hint">Если не новинка, это поле можно игнорировать.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="small-note">
+                        Калькулятор сам посчитает средний объём за 3 месяца и коэффициент тренда (месяц −1 / месяц −2),
+                        с ограничением, чтобы один «поехавший» месяц не убивал всю картину.
+                    </p>
+                </div>
+
+                <!-- Блок: коэффициенты месяца и сценарий -->
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">3. Коэффициент месяца и сценарий</div>
+                            <div class="card-caption">
+                                Сезонность и сценарий (база/опт/пессим), плюс ручной оверрайд плана штук.
+                            </div>
+                        </div>
+                        <div class="pill">Step 3</div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-row">
+                            <label for="kSeason">K сезона для целевого месяца</label>
+                            <input type="text" id="kSeason" placeholder="1 по умолчанию">
+                            <div class="hint">Например: 1.2 для декабря, 0.8 для «слабого» месяца.</div>
+                        </div>
+                        <div class="form-row">
+                            <label for="kScenario">K сценария (База/Опт/Пессим)</label>
+                            <input type="text" id="kScenario" value="1">
+                            <div class="hint">1 — базовый; 1.1 — оптимист; 0.85 — пессимист.</div>
+                        </div>
+                        <div class="form-row">
+                            <label for="planUnitsOverride">Ручной план, шт (оверрайд)</label>
+                            <input type="text" id="planUnitsOverride" placeholder="оставь пустым, если доверяешь формуле">
+                            <div class="hint">Если заполнишь — калькулятор возьмёт это значение вместо авторасчёта.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Блок: цена, СПП, затраты -->
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <div class="card-title">4. Цена, СПП и затраты по SKU</div>
+                            <div class="card-caption">
+                                Эти параметры по сути дублируют логику P&L / BI по единице товара.
+                            </div>
+                        </div>
+                        <div class="pill">Step 4</div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-row">
+                            <label for="priceGross">Цена до СПП, ₽</label>
+                            <input type="text" id="priceGross" placeholder="Например: 4 490">
+                        </div>
+                        <div class="form-row">
+                            <label for="sppPercent">СПП / скидка, %</label>
+                            <input type="text" id="sppPercent" placeholder="Например: 15">
+                        </div>
+                        <div class="form-row">
+                            <label for="cogs">Себестоимость, ₽/ед</label>
+                            <input type="text" id="cogs" placeholder="закупка + доставка до РФ">
+                        </div>
+                        <div class="form-row">
+                            <label for="logStock">Логистика до склада, ₽/ед</label>
+                            <input type="text" id="logStock" placeholder="средняя ставка">
+                        </div>
+                        <div class="form-row">
+                            <label for="logClient">Логистика до клиента, ₽/ед</label>
+                            <input type="text" id="logClient" placeholder="FBO/FBS">
+                        </div>
+                        <div class="form-row">
+                            <label for="storageCost">Хранение, ₽/ед</label>
+                            <input type="text" id="storageCost" placeholder="в месяц">
+                        </div>
+                        <div class="form-row">
+                            <label for="otherVar">Прочие переменные, ₽/ед</label>
+                            <input type="text" id="otherVar" placeholder="упаковка, услуги, средние штрафы">
+                        </div>
+                        <div class="form-row">
+                            <label for="commissionPercent">Комиссия МП, %</label>
+                            <input type="text" id="commissionPercent" placeholder="например: 15">
+                        </div>
+                        <div class="form-row">
+                            <label for="returnsPercent">Возвраты, % от выручки</label>
+                            <input type="text" id="returnsPercent" placeholder="например: 5">
+                        </div>
+                        <div class="form-row">
+                            <label for="defectPercent">Брак, % по штукам (упрощённо)</label>
+                            <input type="text" id="defectPercent" placeholder="например: 2">
+                        </div>
+                        <div class="form-row">
+                            <label for="drrPercent">Плановый ДРР, %</label>
+                            <input type="text" id="drrPercent" placeholder="например: 20">
+                        </div>
+                        <div class="form-row">
+                            <label for="taxPercent">Налог, % от прибыли</label>
+                            <input type="text" id="taxPercent" placeholder="например: 6">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Рассчитать план и маржу</button>
+                    <p class="small-note">
+                        Все проценты вводим как <span class="mono">15</span> = 15%, а не 0.15.
+                        Разделитель для чисел — точка или запятая, пробелы можно.
+                    </p>
+                </div>
+            </form>
+        </section>
+
+        <!-- Правая часть: результаты и расшифровка -->
+        <aside>
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Итоги по SKU на месяц</div>
+                        <div class="card-caption">
+                            План штук, оборот и маржа по выбранному товару и месяцу.
+                        </div>
+                    </div>
+                    <div class="pill-strong">Result</div>
+                </div>
+
+                <div class="chip-row">
+                    <div class="chip">
+                        База, шт: <span id="baseUnitsInfo" class="mono">0</span>
+                    </div>
+                    <div class="chip">
+                        K тренда: <span id="trendInfo" class="mono">1.00</span>
+                    </div>
+                    <div class="chip">
+                        Итоговый K: <span id="totalKInfo" class="mono">1.00</span>
+                    </div>
+                    <div class="chip">
+                        Новинка: <span id="isNewInfo" class="mono">нет</span>
+                    </div>
+                </div>
+
+                <div class="output-grid" style="margin-top:10px;">
+                    <div class="output-row">
+                        <div class="output-label">План продаж, шт</div>
+                        <div class="output-value" id="outPlanUnits">0</div>
+                    </div>
+                    <div class="output-row">
+                        <div class="output-label">Выручка до СПП, ₽</div>
+                        <div class="output-value" id="outRevenueGross">0</div>
+                    </div>
+                    <div class="output-row">
+                        <div class="output-label">Выручка после СПП и возвратов, ₽</div>
+                        <div class="output-value" id="outRevenueNet">0</div>
+                    </div>
+                    <div class="output-row">
+                        <div class="output-label">Расход на рекламу, ₽</div>
+                        <div class="output-value" id="outAdSpend">0</div>
+                    </div>
+                    <div class="output-row">
+                        <div class="output-label">Маржа, ₽</div>
+                        <div class="output-value" id="outProfit">0</div>
+                    </div>
+                    <div class="output-row">
+                        <div class="output-label">Маржа, % от выручки</div>
+                        <div class="output-value" id="outMarginPercent">0%</div>
+                    </div>
+                    <div class="output-row">
+                        <div class="output-label">Маржа, ₽/ед</div>
+                        <div class="output-value" id="outProfitPerUnit">0</div>
+                    </div>
+                    <div class="output-row">
+                        <div class="output-label">Фактический ДРР по плану</div>
+                        <div class="output-value" id="outRealDRR">0%</div>
+                    </div>
+                </div>
+
+                <p class="small-note">
+                    Если маржа в % подсвечивается красным — ниже 0 или совсем «тонкая».
+                    Можно играться ценой, K сезона, ДРР и проверять сценарии.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">Формула плана штук</div>
+                        <div class="card-caption">Как именно считается план по количеству.</div>
+                    </div>
+                    <div class="pill">Logic</div>
+                </div>
+                <p class="small-note">
+                    Если товар не новинка:
+                </p>
+                <p class="small-note mono">
+                    База_шт = среднее(шт_м−3, шт_м−2, шт_м−1)<br>
+                    K_тренда = шт_м−1 / шт_м−2 (ограничен 0.6…1.4)<br>
+                    План_шт_авто = База_шт × K_тренда × K_сезона × K_сценария
+                </p>
+                <p class="small-note">
+                    Если стоит галочка «Новинка» — База_шт берётся из поля
+                    «базовый план, шт», без учёта истории, K тренда = 1.
+                </p>
+                <p class="small-note">
+                    Поле «Ручной план, шт» полностью перекрывает автоматический расчёт, если там не пусто.
+                </p>
+            </div>
+        </aside>
+    </main>
+</div>
+
+<script>
+    function parseNumber(value) {
+        if (!value) return 0;
+        value = String(value).replace(/\s+/g, "").replace(",", ".");
+        var num = parseFloat(value);
+        return isNaN(num) ? 0 : num;
+    }
+
+    function parsePercentInput(id) {
+        var v = parseNumber(document.getElementById(id).value);
+        return v / 100.0;
+    }
+
+    function formatNumber(value, decimals) {
+        if (!isFinite(value)) value = 0;
+        decimals = decimals === undefined ? 0 : decimals;
+        var options = {
+            minimumFractionDigits: decimals,
+            maximumFractionDigits: decimals
+        };
+        return value.toLocaleString("ru-RU", options);
+    }
+
+    function calculatePlan() {
+        // История
+        var isNew = document.getElementById("isNew").checked;
+        var m1Units = parseNumber(document.getElementById("m1Units").value);
+        var m2Units = parseNumber(document.getElementById("m2Units").value);
+        var m3Units = parseNumber(document.getElementById("m3Units").value);
+
+        var baseUnits = 0;
+        var trendK = 1;
+
+        if (!isNew) {
+            var hist = [m1Units, m2Units, m3Units].filter(function (v) { return v > 0; });
+            if (hist.length > 0) {
+                var sum = hist.reduce(function (a, b) { return a + b; }, 0);
+                baseUnits = sum / hist.length;
+            }
+            if (m2Units > 0 && m3Units > 0) {
+                trendK = m3Units / m2Units;
+                if (trendK < 0.6) trendK = 0.6;
+                if (trendK > 1.4) trendK = 1.4;
+            }
+        } else {
+            baseUnits = parseNumber(document.getElementById("manualBaseUnits").value);
+            trendK = 1;
+        }
+
+        var kSeason = parseNumber(document.getElementById("kSeason").value || "1");
+        if (kSeason <= 0) kSeason = 1;
+        var kScenario = parseNumber(document.getElementById("kScenario").value || "1");
+        if (kScenario <= 0) kScenario = 1;
+
+        var totalK = trendK * kSeason * kScenario;
+
+        var planUnitsAuto = baseUnits * totalK;
+        var planUnitsOverride = parseNumber(document.getElementById("planUnitsOverride").value);
+        var planUnits = planUnitsOverride > 0 ? planUnitsOverride : Math.round(planUnitsAuto);
+
+        if (!isFinite(planUnits) || planUnits < 0) planUnits = 0;
+
+        // Цена и проценты
+        var priceGross = parseNumber(document.getElementById("priceGross").value);
+        var spp = parsePercentInput("sppPercent");
+        var cogs = parseNumber(document.getElementById("cogs").value);
+        var logStock = parseNumber(document.getElementById("logStock").value);
+        var logClient = parseNumber(document.getElementById("logClient").value);
+        var storageCost = parseNumber(document.getElementById("storageCost").value);
+        var otherVar = parseNumber(document.getElementById("otherVar").value);
+        var commissionP = parsePercentInput("commissionPercent");
+        var returnsP = parsePercentInput("returnsPercent");
+        var defectP = parsePercentInput("defectPercent");
+        var drrP = parsePercentInput("drrPercent");
+        var taxP = parsePercentInput("taxPercent");
+
+        // Планы по выручке
+        var revenueGross = planUnits * priceGross;
+        var sppRub = revenueGross * spp;
+        var revenueAfterSPP = revenueGross - sppRub;
+        var returnsRub = revenueAfterSPP * returnsP;
+        var revenueNet = revenueAfterSPP - returnsRub;
+
+        // Брак по штукам (упростим — списываем себестоимость брака)
+        var defectUnits = planUnits * defectP;
+        var goodUnits = planUnits - defectUnits;
+        if (goodUnits < 0) goodUnits = 0;
+
+        // Переменные затраты
+        var cogsTotal = planUnits * cogs;
+        var logStockTotal = planUnits * logStock;
+        var logClientTotal = planUnits * logClient;
+        var storageTotal = planUnits * storageCost;
+        var otherVarTotal = planUnits * otherVar;
+        var commissionTotal = revenueAfterSPP * commissionP;
+
+        // Валовая прибыль до маркетинга
+        var grossProfitBeforeMkt =
+            revenueNet -
+            cogsTotal -
+            logStockTotal -
+            logClientTotal -
+            storageTotal -
+            otherVarTotal -
+            commissionTotal;
+
+        // Реклама
+        var adSpend = revenueNet * drrP;
+        var profitBeforeTax = grossProfitBeforeMkt - adSpend;
+
+        // Налоги
+        var tax = profitBeforeTax * taxP;
+        var netProfit = profitBeforeTax - tax;
+
+        // KPI
+        var marginPercent = revenueNet > 0 ? (netProfit / revenueNet) * 100 : 0;
+        var profitPerUnit = planUnits > 0 ? netProfit / planUnits : 0;
+        var realDRR = revenueNet > 0 ? (adSpend / revenueNet) * 100 : 0;
+
+        // Обновляем UI
+        document.getElementById("baseUnitsInfo").textContent = formatNumber(baseUnits, 1);
+        document.getElementById("trendInfo").textContent = formatNumber(trendK, 2);
+        document.getElementById("totalKInfo").textContent = formatNumber(totalK, 2);
+        document.getElementById("isNewInfo").textContent = isNew ? "да" : "нет";
+
+        document.getElementById("outPlanUnits").textContent = formatNumber(planUnits, 0);
+        document.getElementById("outRevenueGross").textContent = formatNumber(revenueGross, 0);
+        document.getElementById("outRevenueNet").textContent = formatNumber(revenueNet, 0);
+        document.getElementById("outAdSpend").textContent = formatNumber(adSpend, 0);
+        document.getElementById("outProfit").textContent = formatNumber(netProfit, 0);
+        document.getElementById("outMarginPercent").textContent = formatNumber(marginPercent, 1) + " %";
+        document.getElementById("outProfitPerUnit").textContent = formatNumber(profitPerUnit, 0);
+        document.getElementById("outRealDRR").textContent = formatNumber(realDRR, 1) + " %";
+
+        // Подсветка маржи
+        var marginEl = document.getElementById("outMarginPercent");
+        marginEl.classList.remove("bad", "good");
+        if (marginPercent < 0) {
+            marginEl.classList.add("bad");
+        } else if (marginPercent >= 20) {
+            marginEl.classList.add("good");
+        }
+    }
+</script>
+</body>
+</html>
