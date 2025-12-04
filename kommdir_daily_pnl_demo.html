@@ -2,22 +2,24 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Калькулятор плана и маржи по SKU · DEMO</title>
+  <title>Коммдир · Калькулятор плана и маржи по SKU (демо)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
-      --bg: #f5f5f7;
-      --card-bg: #ffffff;
-      --border: #d7d7dd;
-      --text-main: #111111;
-      --text-muted: #666666;
-      --accent: #2f6bff;
-      --accent-soft: rgba(47, 107, 255, 0.07);
-      --danger: #dc3545;
-      --success: #198754;
-      --radius-lg: 14px;
+      /* Имперская тёмная тема */
+      --bg: #020617;
+      --bg-soft: #050b1f;
+      --card-bg: #020617;
+      --border: #293548;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --accent: #fbbf24;
+      --accent-soft: rgba(251, 191, 36, 0.12);
+      --danger: #f97373;
+      --success: #4ade80;
+      --radius-lg: 16px;
       --radius-md: 10px;
-      --shadow-soft: 0 14px 30px rgba(15, 23, 42, 0.10);
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.65);
     }
 
     * {
@@ -26,9 +28,10 @@
 
     body {
       margin: 0;
-      padding: 20px;
+      padding: 24px 16px 32px;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top left, #e3ebff 0, #f5f5f7 40%, #f5f5f7 100%);
+      background:
+        radial-gradient(circle at top left, #0b1120 0, #020617 55%, #000 100%);
       color: var(--text-main);
     }
 
@@ -37,40 +40,59 @@
       margin: 0 auto;
     }
 
+    header {
+      margin-bottom: 18px;
+    }
+
     h1 {
       font-size: 26px;
-      margin: 6px 0 2px;
+      font-weight: 650;
+      margin: 8px 0 4px;
     }
 
     .subtitle {
       margin: 0 0 18px;
       font-size: 13px;
       color: var(--text-muted);
+      max-width: 640px;
     }
 
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
+      gap: 8px;
+      padding: 6px 14px 6px 10px;
       border-radius: 999px;
       font-size: 11px;
-      background: var(--accent-soft);
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.18), rgba(15, 23, 42, 0.9));
       color: var(--accent);
       font-weight: 500;
+      border: 1px solid rgba(248, 250, 252, 0.15);
+      backdrop-filter: blur(10px);
     }
 
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--accent);
+    .badge-fox {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 20%, #fef9c3 0, #f97316 55%, #7c2d12 100%);
+      box-shadow: 0 0 0 1px rgba(15,23,42,0.5);
+      font-size: 14px;
+    }
+
+    .badge-sep {
+      width: 1px;
+      height: 16px;
+      background: rgba(248, 250, 252, 0.25);
     }
 
     .layout {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 16px;
+      gap: 18px;
       align-items: flex-start;
     }
 
@@ -81,11 +103,12 @@
     }
 
     .card {
-      background: var(--card-bg);
+      background: radial-gradient(circle at top left, #0f172a 0, #020617 55%);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-soft);
       padding: 14px 16px 16px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
     }
 
     .card-header {
@@ -93,7 +116,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .card-title {
@@ -107,12 +130,13 @@
     }
 
     .pill {
-      padding: 3px 8px;
+      padding: 3px 10px;
       border-radius: 999px;
       font-size: 11px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(148, 163, 184, 0.6);
       color: var(--text-muted);
       white-space: nowrap;
+      background: rgba(15, 23, 42, 0.8);
     }
 
     .pill-strong {
@@ -143,17 +167,25 @@
     select {
       padding: 6px 7px;
       border-radius: var(--radius-md);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(148, 163, 184, 0.45);
       font-size: 12px;
       width: 100%;
-      background: #fafafa;
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
       outline: none;
+      transition: border-color 0.12s ease-out, box-shadow 0.12s ease-out, background 0.12s;
+    }
+
+    input[type="text"]::placeholder,
+    select::placeholder {
+      color: rgba(148, 163, 184, 0.8);
     }
 
     input[type="text"]:focus,
     select:focus {
       border-color: var(--accent);
-      background: #ffffff;
+      box-shadow: 0 0 0 1px rgba(251, 191, 36, 0.35);
+      background: #020617;
     }
 
     .form-row-inline {
@@ -176,19 +208,26 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 7px 16px;
+      padding: 8px 18px;
       border-radius: 999px;
       border: none;
-      background: var(--accent);
-      color: white;
+      background: linear-gradient(135deg, #fbbf24, #f97316);
+      color: #111827;
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 600;
       cursor: pointer;
-      margin-top: 6px;
+      margin-top: 8px;
+      box-shadow: 0 10px 25px rgba(251, 191, 36, 0.45);
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
     }
 
     .btn-primary:active {
       transform: translateY(1px);
+      box-shadow: 0 6px 16px rgba(251, 191, 36, 0.4);
     }
 
     .btn-secondary {
@@ -197,11 +236,16 @@
       justify-content: center;
       padding: 5px 12px;
       border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #ffffff;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.9);
       color: var(--text-muted);
       font-size: 11px;
       cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     .btn-secondary:active {
@@ -254,9 +298,10 @@
     }
 
     .chip {
-      padding: 2px 6px;
+      padding: 3px 8px;
       border-radius: 999px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(148, 163, 184, 0.65);
+      background: rgba(15, 23, 42, 0.9);
     }
 
     .highlight {
@@ -273,13 +318,15 @@
 <div class="page">
   <header>
     <div class="badge">
-      <span class="badge-dot"></span>
-      План/маржа калькулятор
+      <span class="badge-fox">🦊</span>
+      <span>Коммдир · мини-калькулятор P&amp;L по SKU</span>
+      <span class="badge-sep"></span>
+      <span>демо-версия</span>
     </div>
     <h1>Калькулятор плана по SKU</h1>
     <p class="subtitle">
-      Внеси фактические данные за прошлые месяцы или подтяни их из CSV, задай коэффициент месяца —
-      и калькулятор посчитает план штук, оборот и маржу.
+      Внесите фактические данные за прошлые месяцы или подтяните их из CSV, задайте коэффициент месяца —
+      и калькулятор посчитает план штук, оборот и маржу по выбранному товару.
     </p>
   </header>
 
@@ -326,7 +373,7 @@
             <div>
               <div class="card-title">2. История за последние 3 месяца</div>
               <div class="card-caption">
-                Можно забить руками или подтянуть автоматически из CSV с историей продаж.
+                Можно ввести руками или подтянуть автоматически из CSV с историей продаж.
               </div>
             </div>
             <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
@@ -398,7 +445,7 @@
             <div>
               <div class="card-title">3. Коэффициент месяца и сценарий</div>
               <div class="card-caption">
-                Сезонность и сценарий (база/опт/пессим), плюс ручной оверрайд плана штук.
+                Сезонность и сценарий (база / оптимист / пессимист), плюс ручной оверрайд плана штук.
               </div>
             </div>
             <div class="pill">Step 3</div>
@@ -408,18 +455,18 @@
               <label for="kSeason">K сезона для целевого месяца</label>
               <input type="text" id="kSeason" placeholder="1 по умолчанию">
               <div class="hint">
-                Например: 1.2 для декабря, 0.8 для «слабого» месяца. Из CSV можно брать k_season_next последнего месяца.
+                Например: 1.2 для декабря, 0.8 для «слабого» месяца.
               </div>
             </div>
             <div class="form-row">
-              <label for="kScenario">K сценария (База/Опт/Пессим)</label>
+              <label for="kScenario">K сценария (База / Опт / Пессим)</label>
               <input type="text" id="kScenario" value="1">
               <div class="hint">1 — базовый; 1.1 — оптимист; 0.85 — пессимист.</div>
             </div>
             <div class="form-row">
               <label for="planUnitsOverride">Ручной план, шт (оверрайд)</label>
-              <input type="text" id="planUnitsOverride" placeholder="оставь пустым, если доверяешь формуле">
-              <div class="hint">Если заполнишь — калькулятор возьмёт это значение вместо авторасчёта.</div>
+              <input type="text" id="planUnitsOverride" placeholder="оставьте пустым, если доверяете формуле">
+              <div class="hint">Если заполнить — калькулятор возьмёт это значение вместо авторасчёта.</div>
             </div>
           </div>
         </div>
@@ -663,7 +710,7 @@
   // Автозаполнение истории из CSV
   function prefillFromHistory() {
     if (!historyLoaded || historyData.length === 0) {
-      alert("История из CSV ещё не загружена или файл пуст. Проверь, что data/xgrow_history.csv доступен.");
+      alert("История из CSV ещё не загружена или файл пуст. Проверьте, что data/xgrow_history.csv доступен.");
       return;
     }
 
@@ -672,7 +719,7 @@
     const sku = document.getElementById("skuName").value.trim();
 
     if (!cabinet || !sku) {
-      alert("Заполни поля «SKU / Модель» и «Кабинет / юрлицо», чтобы поискать данные в CSV.");
+      alert("Заполните поля «SKU / Модель» и «Кабинет / юрлицо», чтобы поискать данные в CSV.");
       return;
     }
 
@@ -846,4 +893,3 @@
 </script>
 </body>
 </html>
-
