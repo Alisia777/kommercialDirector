@@ -2,447 +2,848 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>KOMMDIR · Пример мини-дашборда дневного P&L</title>
+  <title>Калькулятор плана и маржи по SKU · DEMO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <style>
     :root {
-      --bg-body: #020617;
-      --bg-card: #050816;
-      --accent: #fbbf24;
-      --accent-soft: #fef3c7;
-      --text-main: #f9fafb;
-      --text-muted: #9ca3c9;
-      --border-soft: rgba(148, 163, 184, 0.4);
-      --radius: 18px;
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --border: #d7d7dd;
+      --text-main: #111111;
+      --text-muted: #666666;
+      --accent: #2f6bff;
+      --accent-soft: rgba(47, 107, 255, 0.07);
+      --danger: #dc3545;
+      --success: #198754;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --shadow-soft: 0 14px 30px rgba(15, 23, 42, 0.10);
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      min-height: 100%;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
     body {
-      background:
-        radial-gradient(circle at 10% 0, rgba(248, 189, 80, 0.14), transparent 55%),
-        radial-gradient(circle at 90% 0, rgba(59, 130, 246, 0.18), transparent 55%),
-        #020617;
+      margin: 0;
+      padding: 20px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e3ebff 0, #f5f5f7 40%, #f5f5f7 100%);
       color: var(--text-main);
-      -webkit-font-smoothing: antialiased;
     }
 
     .page {
-      max-width: 1080px;
-      margin: 32px auto 40px;
-      padding: 0 16px;
+      max-width: 1180px;
+      margin: 0 auto;
     }
 
-    .card {
-      background: linear-gradient(145deg, #020617, #050816);
-      border-radius: 24px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      padding: 20px 22px 22px;
+    h1 {
+      font-size: 26px;
+      margin: 6px 0 2px;
+    }
+
+    .subtitle {
+      margin: 0 0 18px;
+      font-size: 13px;
+      color: var(--text-muted);
     }
 
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 3px 10px;
+      padding: 4px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(248, 189, 80, 0.7);
-      background: radial-gradient(circle at 0 0, rgba(248, 189, 80, 0.3), rgba(15, 23, 42, 0.96));
       font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-soft);
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      margin: 0 0 8px;
-      font-size: 22px;
-      line-height: 1.3;
-      background: linear-gradient(90deg, #fefce8, #fbbf24, #f97316);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .subtitle {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-      max-width: 720px;
-    }
-
-    .hint {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-
-    thead {
-      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.25), rgba(15, 23, 42, 0.95));
-    }
-
-    th, td {
-      padding: 6px 8px;
-      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
-      text-align: right;
-      white-space: nowrap;
-    }
-
-    th:first-child,
-    td:first-child {
-      text-align: left;
-    }
-
-    th {
+      background: var(--accent-soft);
+      color: var(--accent);
       font-weight: 500;
-      color: var(--accent-soft);
-      border-bottom-color: rgba(148, 163, 184, 0.7);
     }
 
-    tbody tr:last-child td {
-      border-bottom-color: transparent;
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
     }
 
-    tfoot td {
-      font-weight: 600;
-      border-top: 1px solid rgba(248, 189, 80, 0.7);
-      padding-top: 8px;
-      background: radial-gradient(circle at 0 0, rgba(248, 189, 80, 0.13), rgba(15, 23, 42, 0.97));
-    }
-
-    tfoot td:first-child {
-      text-align: left;
-      color: var(--accent-soft);
-    }
-
-    input[type="number"] {
-      width: 100%;
-      padding: 4px 6px;
-      border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      background: rgba(15, 23, 42, 0.95);
-      color: var(--text-main);
-      font-size: 12px;
-      text-align: right;
-      outline: none;
-      transition: border-color 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
-    }
-
-    input[type="number"]:focus {
-      border-color: rgba(248, 189, 80, 0.9);
-      box-shadow: 0 0 0 1px rgba(248, 189, 80, 0.7);
-      background: rgba(15, 23, 42, 1);
-    }
-
-    .metric-badge {
-      display: inline-flex;
-      padding: 2px 6px;
-      border-radius: 999px;
-      font-size: 11px;
-    }
-
-    .metric-badge--ok {
-      background: rgba(22, 163, 74, 0.18);
-      color: #a7f3d0;
-    }
-
-    .metric-badge--warn {
-      background: rgba(234, 179, 8, 0.18);
-      color: #facc15;
-    }
-
-    .metric-badge--bad {
-      background: rgba(239, 68, 68, 0.18);
-      color: #fecaca;
-    }
-
-    .layout-top {
-      display: flex;
-      flex-direction: column;
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
       gap: 16px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 960px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      padding: 14px 16px 16px;
       margin-bottom: 12px;
     }
 
-    .top-row {
+    .card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
     }
 
-    .tagline {
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .card-caption {
       font-size: 12px;
       color: var(--text-muted);
     }
 
     .pill {
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .pill-strong {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 12px;
+    }
+
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 12px;
+    }
+
+    label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    input[type="text"],
+    select {
+      padding: 6px 7px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      font-size: 12px;
+      width: 100%;
+      background: #fafafa;
+      outline: none;
+    }
+
+    input[type="text"]:focus,
+    select:focus {
+      border-color: var(--accent);
+      background: #ffffff;
+    }
+
+    .form-row-inline {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .form-row-inline input[type="checkbox"] {
+      transform: translateY(1px);
+    }
+
+    .hint {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .btn-primary {
       display: inline-flex;
       align-items: center;
-      padding: 4px 10px;
+      justify-content: center;
+      padding: 7px 16px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--text-muted);
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .btn-secondary:active {
+      transform: translateY(1px);
+    }
+
+    .output-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px 12px;
+      margin-top: 6px;
+    }
+
+    .output-row {
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .output-label {
+      color: var(--text-muted);
+    }
+
+    .output-value {
+      font-weight: 600;
+    }
+
+    .output-value.bad {
+      color: var(--danger);
+    }
+
+    .output-value.good {
+      color: var(--success);
+    }
+
+    .small-note {
       font-size: 11px;
       color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
       gap: 6px;
-    }
-
-    .pill span:first-child {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent-soft);
-    }
-
-    .footer-note {
-      margin-top: 10px;
       font-size: 11px;
+      margin-top: 4px;
       color: var(--text-muted);
     }
 
-    @media (max-width: 720px) {
-      .card {
-        padding: 16px 14px 18px;
-      }
+    .chip {
+      padding: 2px 6px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+    }
 
-      h1 {
-        font-size: 18px;
-      }
+    .highlight {
+      font-weight: 600;
+      color: var(--accent);
+    }
 
-      table {
-        font-size: 12px;
-      }
-
-      th, td {
-        padding: 5px 6px;
-      }
-
-      .top-row {
-        align-items: flex-start;
-      }
+    .mono {
+      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <div class="card">
-      <div class="layout-top">
-        <span class="badge">пример · kommdir</span>
-        <h1>Мини-дашборд дневного P&amp;L по каналам</h1>
-        <p class="subtitle">
-          Простой пример того, как я собираю дневную экономику бизнеса: выручка, себестоимость,
-          реклама и логистика по каналам → чистая прибыль, маржа и DRR. Числа можно менять —
-          расчёт обновится автоматически.
-        </p>
-        <div class="top-row">
-          <div class="tagline">
-            💡 Подходит для быстрых разборов: WB, Ozon, сайт, опт — в одном взгляде.
+<div class="page">
+  <header>
+    <div class="badge">
+      <span class="badge-dot"></span>
+      План/маржа калькулятор
+    </div>
+    <h1>Калькулятор плана по SKU</h1>
+    <p class="subtitle">
+      Внеси фактические данные за прошлые месяцы или подтяни их из CSV, задай коэффициент месяца —
+      и калькулятор посчитает план штук, оборот и маржу.
+    </p>
+  </header>
+
+  <main class="layout">
+    <!-- Левая часть: ввод данных -->
+    <section>
+      <form id="planner-form" onsubmit="event.preventDefault(); calculatePlan();">
+        <!-- Блок: общая информация -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">1. Общая информация</div>
+              <div class="card-caption">SKU, площадка и целевой месяц плана.</div>
+            </div>
+            <div class="pill">Step 1</div>
           </div>
-          <div class="pill">
-            <span>Лимиты</span>
-            <span>DRR до 15–20%, маржа ≥ 10–12% (примерные ориентиры)</span>
+          <div class="form-grid">
+            <div class="form-row">
+              <label for="skuName">SKU / Модель</label>
+              <input type="text" id="skuName" placeholder="Например: SKU-1234 / Товар A">
+            </div>
+            <div class="form-row">
+              <label for="cabinet">Кабинет / юрлицо</label>
+              <input type="text" id="cabinet" placeholder="Например: ИП Иванов / ООО «Пример»">
+            </div>
+            <div class="form-row">
+              <label for="marketplace">Площадка</label>
+              <select id="marketplace">
+                <option value="WB">Wildberries</option>
+                <option value="OZON">Ozon</option>
+                <option value="Both">WB + Ozon (совокупно)</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="targetMonth">Целевой месяц (название для отчёта)</label>
+              <input type="text" id="targetMonth" placeholder="Например: Декабрь 2025">
+            </div>
           </div>
         </div>
+
+        <!-- Блок: история продаж -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">2. История за последние 3 месяца</div>
+              <div class="card-caption">
+                Можно забить руками или подтянуть автоматически из CSV с историей продаж.
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+              <div class="pill">Step 2</div>
+              <button type="button" class="btn-secondary" onclick="prefillFromHistory()">
+                Из истории CSV
+              </button>
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-row">
+              <label>Месяц −3 (самый старый)</label>
+              <input type="text" id="m1Name" placeholder="Например: Сентябрь">
+              <div class="form-row">
+                <label for="m1Units">Продано, шт</label>
+                <input type="text" id="m1Units" placeholder="шт">
+              </div>
+              <div class="form-row">
+                <label for="m1Revenue">Выручка после СПП, ₽ (опц.)</label>
+                <input type="text" id="m1Revenue" placeholder="можно оставить пустым">
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Месяц −2</label>
+              <input type="text" id="m2Name" placeholder="Например: Октябрь">
+              <div class="form-row">
+                <label for="m2Units">Продано, шт</label>
+                <input type="text" id="m2Units" placeholder="шт">
+              </div>
+              <div class="form-row">
+                <label for="m2Revenue">Выручка после СПП, ₽ (опц.)</label>
+                <input type="text" id="m2Revenue" placeholder="можно оставить пустым">
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Месяц −1 (последний факт)</label>
+              <input type="text" id="m3Name" placeholder="Например: Ноябрь">
+              <div class="form-row">
+                <label for="m3Units">Продано, шт</label>
+                <input type="text" id="m3Units" placeholder="шт">
+              </div>
+              <div class="form-row">
+                <label for="m3Revenue">Выручка после СПП, ₽ (опц.)</label>
+                <input type="text" id="m3Revenue" placeholder="можно оставить пустым">
+              </div>
+            </div>
+            <div class="form-row">
+              <label>Настройки истории</label>
+              <div class="form-row-inline">
+                <input type="checkbox" id="isNew">
+                <label for="isNew">Новинка (нет истории, план задаём руками)</label>
+              </div>
+              <div class="form-row">
+                <label for="manualBaseUnits">Если новинка: базовый план, шт</label>
+                <input type="text" id="manualBaseUnits" placeholder="Например: 30">
+                <div class="hint">Если не новинка, это поле можно игнорировать.</div>
+              </div>
+            </div>
+          </div>
+          <p class="small-note">
+            CSV ищется по связке: <span class="mono">cabinet + mp + sku</span>,
+            где mp = WB / OZON / Both (для Both суммируются обе площадки).
+          </p>
+        </div>
+
+        <!-- Блок: коэффициенты месяца и сценарий -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">3. Коэффициент месяца и сценарий</div>
+              <div class="card-caption">
+                Сезонность и сценарий (база/опт/пессим), плюс ручной оверрайд плана штук.
+              </div>
+            </div>
+            <div class="pill">Step 3</div>
+          </div>
+          <div class="form-grid">
+            <div class="form-row">
+              <label for="kSeason">K сезона для целевого месяца</label>
+              <input type="text" id="kSeason" placeholder="1 по умолчанию">
+              <div class="hint">
+                Например: 1.2 для декабря, 0.8 для «слабого» месяца. Из CSV можно брать k_season_next последнего месяца.
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="kScenario">K сценария (База/Опт/Пессим)</label>
+              <input type="text" id="kScenario" value="1">
+              <div class="hint">1 — базовый; 1.1 — оптимист; 0.85 — пессимист.</div>
+            </div>
+            <div class="form-row">
+              <label for="planUnitsOverride">Ручной план, шт (оверрайд)</label>
+              <input type="text" id="planUnitsOverride" placeholder="оставь пустым, если доверяешь формуле">
+              <div class="hint">Если заполнишь — калькулятор возьмёт это значение вместо авторасчёта.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Блок: цена, СПП, затраты -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">4. Цена, СПП и затраты по SKU</div>
+              <div class="card-caption">
+                Эти параметры повторяют логику P&amp;L / BI по единице товара.
+              </div>
+            </div>
+            <div class="pill">Step 4</div>
+          </div>
+          <div class="form-grid">
+            <div class="form-row">
+              <label for="priceGross">Цена до СПП, ₽</label>
+              <input type="text" id="priceGross" placeholder="Например: 4 490">
+            </div>
+            <div class="form-row">
+              <label for="sppPercent">СПП / скидка, %</label>
+              <input type="text" id="sppPercent" placeholder="Например: 15">
+            </div>
+            <div class="form-row">
+              <label for="cogs">Себестоимость, ₽/ед</label>
+              <input type="text" id="cogs" placeholder="закупка + доставка до РФ">
+            </div>
+            <div class="form-row">
+              <label for="logStock">Логистика до склада, ₽/ед</label>
+              <input type="text" id="logStock" placeholder="средняя ставка">
+            </div>
+            <div class="form-row">
+              <label for="logClient">Логистика до клиента, ₽/ед</label>
+              <input type="text" id="logClient" placeholder="FBO/FBS">
+            </div>
+            <div class="form-row">
+              <label for="storageCost">Хранение, ₽/ед</label>
+              <input type="text" id="storageCost" placeholder="в месяц">
+            </div>
+            <div class="form-row">
+              <label for="otherVar">Прочие переменные, ₽/ед</label>
+              <input type="text" id="otherVar" placeholder="упаковка, услуги, средние штрафы">
+            </div>
+            <div class="form-row">
+              <label for="commissionPercent">Комиссия МП, %</label>
+              <input type="text" id="commissionPercent" placeholder="например: 15">
+            </div>
+            <div class="form-row">
+              <label for="returnsPercent">Возвраты, % от выручки</label>
+              <input type="text" id="returnsPercent" placeholder="например: 5">
+            </div>
+            <div class="form-row">
+              <label for="defectPercent">Брак, % по штукам</label>
+              <input type="text" id="defectPercent" placeholder="например: 2">
+            </div>
+            <div class="form-row">
+              <label for="drrPercent">Плановый ДРР, %</label>
+              <input type="text" id="drrPercent" placeholder="например: 20">
+            </div>
+            <div class="form-row">
+              <label for="taxPercent">Налог, % от прибыли</label>
+              <input type="text" id="taxPercent" placeholder="например: 6">
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary">Рассчитать план и маржу</button>
+          <p class="small-note">
+            Все проценты вводим как <span class="mono">15</span> = 15%, а не 0.15.
+            Разделитель для чисел — точка или запятая, пробелы можно.
+          </p>
+        </div>
+      </form>
+    </section>
+
+    <!-- Правая часть: результаты и расшифровка -->
+    <aside>
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Итоги по SKU на месяц</div>
+            <div class="card-caption">
+              План штук, оборот и маржа по выбранному товару и месяцу.
+            </div>
+          </div>
+          <div class="pill-strong">Result</div>
+        </div>
+
+        <div class="chip-row">
+          <div class="chip">
+            База, шт: <span id="baseUnitsInfo" class="mono">0</span>
+          </div>
+          <div class="chip">
+            K тренда: <span id="trendInfo" class="mono">1.00</span>
+          </div>
+          <div class="chip">
+            Итоговый K: <span id="totalKInfo" class="mono">1.00</span>
+          </div>
+          <div class="chip">
+            Новинка: <span id="isNewInfo" class="mono">нет</span>
+          </div>
+        </div>
+
+        <div class="output-grid" style="margin-top:10px;">
+          <div class="output-row">
+            <div class="output-label">План продаж, шт</div>
+            <div class="output-value" id="outPlanUnits">0</div>
+          </div>
+          <div class="output-row">
+            <div class="output-label">Выручка до СПП, ₽</div>
+            <div class="output-value" id="outRevenueGross">0</div>
+          </div>
+          <div class="output-row">
+            <div class="output-label">Выручка после СПП и возвратов, ₽</div>
+            <div class="output-value" id="outRevenueNet">0</div>
+          </div>
+          <div class="output-row">
+            <div class="output-label">Расход на рекламу, ₽</div>
+            <div class="output-value" id="outAdSpend">0</div>
+          </div>
+          <div class="output-row">
+            <div class="output-label">Маржа, ₽</div>
+            <div class="output-value" id="outProfit">0</div>
+          </div>
+          <div class="output-row">
+            <div class="output-label">Маржа, % от выручки</div>
+            <div class="output-value" id="outMarginPercent">0%</div>
+          </div>
+          <div class="output-row">
+            <div class="output-label">Маржа, ₽/ед</div>
+            <div class="output-value" id="outProfitPerUnit">0</div>
+          </div>
+          <div class="output-row">
+            <div class="output-label">Фактический ДРР по плану</div>
+            <div class="output-value" id="outRealDRR">0%</div>
+          </div>
+        </div>
+
+        <p class="small-note">
+          Если маржа в % подсвечивается красным — ниже 0 или совсем «тонкая».
+          Можно играться ценой, K сезона, ДРР и проверять сценарии.
+        </p>
       </div>
 
-      <div class="hint">
-        Введите свои цифры по каналам (₽), чтобы посмотреть чистую прибыль, маржу и DRR.
-        Это демонстрационный файл: формулы упрощены, но логика близка к рабочей.
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Формула плана штук</div>
+            <div class="card-caption">Как именно считается план по количеству.</div>
+          </div>
+          <div class="pill">Logic</div>
+        </div>
+        <p class="small-note">
+          Если товар не новинка:
+        </p>
+        <p class="small-note mono">
+          База_шт = среднее(шт_м−3, шт_м−2, шт_м−1)<br>
+          K_тренда = шт_м−1 / шт_м−2 (ограничен 0.6…1.4)<br>
+          План_шт_авто = База_шт × K_тренда × K_сезона × K_сценария
+        </p>
+        <p class="small-note">
+          Если стоит галочка «Новинка» — База_шт берётся из поля
+          «базовый план, шт», без учёта истории, K тренда = 1.
+        </p>
+        <p class="small-note">
+          Поле «Ручной план, шт» полностью перекрывает автоматический расчёт, если там не пусто.
+        </p>
       </div>
+    </aside>
+  </main>
+</div>
 
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Канал</th>
-              <th>Выручка, ₽</th>
-              <th>Себестоимость, ₽</th>
-              <th>Реклама, ₽</th>
-              <th>Логистика, ₽</th>
-              <th>Прочие, ₽</th>
-              <th>Чистая прибыль, ₽</th>
-              <th>Маржа, %</th>
-              <th>DRR, %</th>
-            </tr>
-          </thead>
-          <tbody id="pnl-body">
-            <tr data-row="1">
-              <td>WB</td>
-              <td><input type="number" class="js-input" data-field="revenue" value="250000"></td>
-              <td><input type="number" class="js-input" data-field="cogs" value="150000"></td>
-              <td><input type="number" class="js-input" data-field="ads" value="25000"></td>
-              <td><input type="number" class="js-input" data-field="log" value="18000"></td>
-              <td><input type="number" class="js-input" data-field="other" value="7000"></td>
-              <td data-field="net"></td>
-              <td data-field="margin"></td>
-              <td data-field="drr"></td>
-            </tr>
-            <tr data-row="2">
-              <td>Ozon</td>
-              <td><input type="number" class="js-input" data-field="revenue" value="180000"></td>
-              <td><input type="number" class="js-input" data-field="cogs" value="105000"></td>
-              <td><input type="number" class="js-input" data-field="ads" value="21000"></td>
-              <td><input type="number" class="js-input" data-field="log" value="14000"></td>
-              <td><input type="number" class="js-input" data-field="other" value="6000"></td>
-              <td data-field="net"></td>
-              <td data-field="margin"></td>
-              <td data-field="drr"></td>
-            </tr>
-            <tr data-row="3">
-              <td>Сайт / опт</td>
-              <td><input type="number" class="js-input" data-field="revenue" value="120000"></td>
-              <td><input type="number" class="js-input" data-field="cogs" value="70000"></td>
-              <td><input type="number" class="js-input" data-field="ads" value="8000"></td>
-              <td><input type="number" class="js-input" data-field="log" value="9000"></td>
-              <td><input type="number" class="js-input" data-field="other" value="4000"></td>
-              <td data-field="net"></td>
-              <td data-field="margin"></td>
-              <td data-field="drr"></td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td>Итого по дню</td>
-              <td id="total-revenue"></td>
-              <td id="total-cogs"></td>
-              <td id="total-ads"></td>
-              <td id="total-log"></td>
-              <td id="total-other"></td>
-              <td id="total-net"></td>
-              <td id="total-margin"></td>
-              <td id="total-drr"></td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
+<script>
+  // --- Глобальные данные истории из CSV ---
+  let historyData = [];
+  let historyLoaded = false;
 
-      <div class="footer-note">
-        🔍 В боевых проектах сюда обычно добавляются налоги, комиссии платёжных систем, фиксированные расходы по юрлицу
-        и детализация по SKU/брендам. Но принцип остаётся тем же: сначала видим экономику, потом принимаем решения.
-      </div>
-    </div>
-  </div>
+  function parseNumber(value) {
+    if (!value) return 0;
+    value = String(value).replace(/\s+/g, "").replace(",", ".");
+    const num = parseFloat(value);
+    return isNaN(num) ? 0 : num;
+  }
 
-  <script>
-    // Простейшие лимиты для подсветки (примерные значения)
-    const LIMITS = {
-      marginOk: 12,   // маржа >= 12% — зелёная зона
-      marginWarn: 8,  // 8–12% — жёлтая зона, ниже — красная
-      drrOk: 15,      // DRR <= 15% — зелёная зона
-      drrWarn: 20     // 15–20% — жёлтая, выше — красная
+  function parsePercentInput(id) {
+    const v = parseNumber(document.getElementById(id).value);
+    return v / 100.0;
+  }
+
+  function formatNumber(value, decimals) {
+    if (!isFinite(value)) value = 0;
+    decimals = decimals === undefined ? 0 : decimals;
+    const options = {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
     };
+    return value.toLocaleString("ru-RU", options);
+  }
 
-    function parseNumber(value) {
-      if (value === "" || value === null || value === undefined) return 0;
-      const normalized = String(value).replace(",", ".");
-      const parsed = parseFloat(normalized);
-      return isNaN(parsed) ? 0 : parsed;
-    }
+  // Загрузка CSV с историей
+  function loadHistoryCsv() {
+    fetch("data/xgrow_history.csv")
+      .then(resp => {
+        if (!resp.ok) throw new Error("HTTP " + resp.status);
+        return resp.text();
+      })
+      .then(text => {
+        const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+        if (lines.length <= 1) return;
 
-    function formatMoney(value) {
-      const rounded = Math.round(value);
-      return rounded.toLocaleString("ru-RU");
-    }
+        const header = lines[0].split(";");
+        const idxCabinet = header.indexOf("cabinet");
+        const idxMp = header.indexOf("mp");
+        const idxSku = header.indexOf("sku");
+        const idxMonth = header.indexOf("month");
+        const idxUnits = header.indexOf("units");
+        const idxRevenue = header.indexOf("revenue_net");
+        const idxKSeasonNext = header.indexOf("k_season_next");
 
-    function formatPercent(value) {
-      if (!isFinite(value)) return "–";
-      return value.toFixed(1).replace(".", ",") + " %";
-    }
-
-    function createBadge(value, type) {
-      if (!isFinite(value)) return "";
-      let cls = "metric-badge metric-badge--ok";
-      if (type === "margin") {
-        if (value < LIMITS.marginWarn) cls = "metric-badge metric-badge--bad";
-        else if (value < LIMITS.marginOk) cls = "metric-badge metric-badge--warn";
-      } else if (type === "drr") {
-        if (value > LIMITS.drrWarn) cls = "metric-badge metric-badge--bad";
-        else if (value > LIMITS.drrOk) cls = "metric-badge metric-badge--warn";
-      }
-      return '<span class="' + cls + '">' + formatPercent(value) + "</span>";
-    }
-
-    function recalc() {
-      const rows = document.querySelectorAll("#pnl-body tr[data-row]");
-      let totalRevenue = 0;
-      let totalCogs = 0;
-      let totalAds = 0;
-      let totalLog = 0;
-      let totalOther = 0;
-      let totalNet = 0;
-
-      rows.forEach(row => {
-        const inputs = row.querySelectorAll("input.js-input");
-        let revenue = 0, cogs = 0, ads = 0, log = 0, other = 0;
-
-        inputs.forEach(input => {
-          const field = input.dataset.field;
-          const val = parseNumber(input.value);
-          if (field === "revenue") revenue = val;
-          if (field === "cogs") cogs = val;
-          if (field === "ads") ads = val;
-          if (field === "log") log = val;
-          if (field === "other") other = val;
+        historyData = lines.slice(1).map(line => {
+          const cols = line.split(";");
+          return {
+            cabinet: (cols[idxCabinet] || "").trim(),
+            mp: (cols[idxMp] || "").trim(),
+            sku: (cols[idxSku] || "").trim(),
+            month: (cols[idxMonth] || "").trim(), // формат YYYY-MM
+            units: parseNumber(cols[idxUnits] || ""),
+            revenueNet: parseNumber(cols[idxRevenue] || ""),
+            kSeasonNext: idxKSeasonNext >= 0 ? parseNumber(cols[idxKSeasonNext] || "") : 0
+          };
         });
 
-        const net = revenue - cogs - ads - log - other;
-        const marginPct = revenue > 0 ? (net / revenue) * 100 : NaN;
-        const drrPct = revenue > 0 ? (ads / revenue) * 100 : NaN;
-
-        totalRevenue += revenue;
-        totalCogs += cogs;
-        totalAds += ads;
-        totalLog += log;
-        totalOther += other;
-        totalNet += net;
-
-        const netCell = row.querySelector('td[data-field="net"]');
-        const marginCell = row.querySelector('td[data-field="margin"]');
-        const drrCell = row.querySelector('td[data-field="drr"]');
-
-        if (netCell) netCell.textContent = formatMoney(net);
-        if (marginCell) marginCell.innerHTML = createBadge(marginPct, "margin");
-        if (drrCell) drrCell.innerHTML = createBadge(drrPct, "drr");
+        historyLoaded = true;
+        console.log("История загружена, строк:", historyData.length);
+      })
+      .catch(err => {
+        console.warn("Не удалось загрузить data/xgrow_history.csv:", err);
       });
+  }
 
-      const totalMarginPct = totalRevenue > 0 ? (totalNet / totalRevenue) * 100 : NaN;
-      const totalDrrPct = totalRevenue > 0 ? (totalAds / totalRevenue) * 100 : NaN;
-
-      document.getElementById("total-revenue").textContent = formatMoney(totalRevenue);
-      document.getElementById("total-cogs").textContent = formatMoney(totalCogs);
-      document.getElementById("total-ads").textContent = formatMoney(totalAds);
-      document.getElementById("total-log").textContent = formatMoney(totalLog);
-      document.getElementById("total-other").textContent = formatMoney(totalOther);
-      document.getElementById("total-net").textContent = formatMoney(totalNet);
-      document.getElementById("total-margin").innerHTML = createBadge(totalMarginPct, "margin");
-      document.getElementById("total-drr").innerHTML = createBadge(totalDrrPct, "drr");
+  // Автозаполнение истории из CSV
+  function prefillFromHistory() {
+    if (!historyLoaded || historyData.length === 0) {
+      alert("История из CSV ещё не загружена или файл пуст. Проверь, что data/xgrow_history.csv доступен.");
+      return;
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const inputs = document.querySelectorAll("input.js-input");
-      inputs.forEach(input => {
-        input.addEventListener("input", recalc);
-        input.addEventListener("change", recalc);
-      });
-      recalc();
+    const cabinet = document.getElementById("cabinet").value.trim();
+    const mp = document.getElementById("marketplace").value;
+    const sku = document.getElementById("skuName").value.trim();
+
+    if (!cabinet || !sku) {
+      alert("Заполни поля «SKU / Модель» и «Кабинет / юрлицо», чтобы поискать данные в CSV.");
+      return;
+    }
+
+    let filtered = historyData.filter(row =>
+      row.cabinet === cabinet &&
+      row.sku === sku
+    );
+
+    if (mp !== "Both") {
+      filtered = filtered.filter(row => row.mp === mp);
+    }
+
+    if (filtered.length === 0) {
+      alert("В CSV не найдены строки с таким кабинетом / SKU / площадкой.");
+      return;
+    }
+
+    // Сортируем по месяцу и берём последние 3
+    filtered.sort((a, b) => a.month.localeCompare(b.month));
+    const last3 = filtered.slice(-3);
+
+    // Очищаем сначала поля
+    ["m1Name","m2Name","m3Name","m1Units","m2Units","m3Units","m1Revenue","m2Revenue","m3Revenue"]
+      .forEach(id => document.getElementById(id).value = "");
+
+    function setMonthFields(pos, row) {
+      const nameId = "m" + pos + "Name";
+      const unitsId = "m" + pos + "Units";
+      const revId = "m" + pos + "Revenue";
+      document.getElementById(nameId).value = row.month;
+      document.getElementById(unitsId).value = row.units > 0 ? row.units : "";
+      if (row.revenueNet > 0) {
+        document.getElementById(revId).value = row.revenueNet;
+      }
+    }
+
+    // заполняем начиная с самого старого из last3
+    const startPos = 4 - last3.length; // при 1 строке она в m3, при 2 — m2/m3, при 3 — m1/m2/m3
+    last3.forEach((row, idx) => {
+      setMonthFields(startPos + idx, row);
     });
-  </script>
+
+    // K сезона подтягиваем из k_season_next последнего месяца
+    const lastRow = last3[last3.length - 1];
+    if (lastRow && lastRow.kSeasonNext > 0) {
+      document.getElementById("kSeason").value = lastRow.kSeasonNext;
+    }
+  }
+
+  function calculatePlan() {
+    // История
+    const isNew = document.getElementById("isNew").checked;
+    const m1Units = parseNumber(document.getElementById("m1Units").value);
+    const m2Units = parseNumber(document.getElementById("m2Units").value);
+    const m3Units = parseNumber(document.getElementById("m3Units").value);
+
+    let baseUnits = 0;
+    let trendK = 1;
+
+    if (!isNew) {
+      const hist = [m1Units, m2Units, m3Units].filter(v => v > 0);
+      if (hist.length > 0) {
+        const sum = hist.reduce((a, b) => a + b, 0);
+        baseUnits = sum / hist.length;
+      }
+      if (m2Units > 0 && m3Units > 0) {
+        trendK = m3Units / m2Units;
+        if (trendK < 0.6) trendK = 0.6;
+        if (trendK > 1.4) trendK = 1.4;
+      }
+    } else {
+      baseUnits = parseNumber(document.getElementById("manualBaseUnits").value);
+      trendK = 1;
+    }
+
+    let kSeason = parseNumber(document.getElementById("kSeason").value || "1");
+    if (kSeason <= 0) kSeason = 1;
+    let kScenario = parseNumber(document.getElementById("kScenario").value || "1");
+    if (kScenario <= 0) kScenario = 1;
+
+    const totalK = trendK * kSeason * kScenario;
+
+    const planUnitsAuto = baseUnits * totalK;
+    const planUnitsOverride = parseNumber(document.getElementById("planUnitsOverride").value);
+    let planUnits = planUnitsOverride > 0 ? planUnitsOverride : Math.round(planUnitsAuto);
+    if (!isFinite(planUnits) || planUnits < 0) planUnits = 0;
+
+    // Цена и проценты
+    const priceGross = parseNumber(document.getElementById("priceGross").value);
+    const spp = parsePercentInput("sppPercent");
+    const cogs = parseNumber(document.getElementById("cogs").value);
+    const logStock = parseNumber(document.getElementById("logStock").value);
+    const logClient = parseNumber(document.getElementById("logClient").value);
+    const storageCost = parseNumber(document.getElementById("storageCost").value);
+    const otherVar = parseNumber(document.getElementById("otherVar").value);
+    const commissionP = parsePercentInput("commissionPercent");
+    const returnsP = parsePercentInput("returnsPercent");
+    const defectP = parsePercentInput("defectPercent");
+    const drrP = parsePercentInput("drrPercent");
+    const taxP = parsePercentInput("taxPercent");
+
+    // Планы по выручке
+    const revenueGross = planUnits * priceGross;
+    const sppRub = revenueGross * spp;
+    const revenueAfterSPP = revenueGross - sppRub;
+    const returnsRub = revenueAfterSPP * returnsP;
+    const revenueNet = revenueAfterSPP - returnsRub;
+
+    // Брак по штукам (списываем себестоимость брака)
+    const defectUnits = planUnits * defectP;
+    let goodUnits = planUnits - defectUnits;
+    if (goodUnits < 0) goodUnits = 0;
+
+    // Переменные затраты
+    const cogsTotal = planUnits * cogs;
+    const logStockTotal = planUnits * logStock;
+    const logClientTotal = planUnits * logClient;
+    const storageTotal = planUnits * storageCost;
+    const otherVarTotal = planUnits * otherVar;
+    const commissionTotal = revenueAfterSPP * commissionP;
+
+    // Валовая прибыль до маркетинга
+    const grossProfitBeforeMkt =
+      revenueNet -
+      cogsTotal -
+      logStockTotal -
+      logClientTotal -
+      storageTotal -
+      otherVarTotal -
+      commissionTotal;
+
+    // Реклама
+    const adSpend = revenueNet * drrP;
+    const profitBeforeTax = grossProfitBeforeMkt - adSpend;
+
+    // Налоги
+    const tax = profitBeforeTax * taxP;
+    const netProfit = profitBeforeTax - tax;
+
+    // KPI
+    const marginPercent = revenueNet > 0 ? (netProfit / revenueNet) * 100 : 0;
+    const profitPerUnit = planUnits > 0 ? netProfit / planUnits : 0;
+    const realDRR = revenueNet > 0 ? (adSpend / revenueNet) * 100 : 0;
+
+    // Обновляем UI
+    document.getElementById("baseUnitsInfo").textContent = formatNumber(baseUnits, 1);
+    document.getElementById("trendInfo").textContent = formatNumber(trendK, 2);
+    document.getElementById("totalKInfo").textContent = formatNumber(totalK, 2);
+    document.getElementById("isNewInfo").textContent = isNew ? "да" : "нет";
+
+    document.getElementById("outPlanUnits").textContent = formatNumber(planUnits, 0);
+    document.getElementById("outRevenueGross").textContent = formatNumber(revenueGross, 0);
+    document.getElementById("outRevenueNet").textContent = formatNumber(revenueNet, 0);
+    document.getElementById("outAdSpend").textContent = formatNumber(adSpend, 0);
+    document.getElementById("outProfit").textContent = formatNumber(netProfit, 0);
+    document.getElementById("outMarginPercent").textContent = formatNumber(marginPercent, 1) + " %";
+    document.getElementById("outProfitPerUnit").textContent = formatNumber(profitPerUnit, 0);
+    document.getElementById("outRealDRR").textContent = formatNumber(realDRR, 1) + " %";
+
+    // Подсветка маржи
+    const marginEl = document.getElementById("outMarginPercent");
+    marginEl.classList.remove("bad", "good");
+    if (marginPercent < 0) {
+      marginEl.classList.add("bad");
+    } else if (marginPercent >= 20) {
+      marginEl.classList.add("good");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", loadHistoryCsv);
+</script>
 </body>
 </html>
+
