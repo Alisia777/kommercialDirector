@@ -805,6 +805,151 @@
         align-items: stretch;
       }
     }
+
+    /* ===== P&L DEMO CALCULATOR ===== */
+
+    .pnl-demo-layout {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      margin-top: 14px;
+    }
+
+    .pnl-table-wrap {
+      flex: 1.7;
+      min-width: 0;
+      overflow-x: auto;
+    }
+
+    .pnl-grid {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .pnl-grid thead th {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(148, 163, 184, 0.9);
+      padding: 6px 8px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.45);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .pnl-grid thead th:first-child,
+    .pnl-grid tbody td:first-child {
+      text-align: left;
+    }
+
+    .pnl-grid tbody td {
+      padding: 6px 8px;
+      border-bottom: 1px solid rgba(30, 64, 175, 0.4);
+      text-align: right;
+    }
+
+    .pnl-grid tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .pnl-input {
+      width: 100%;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(51, 65, 85, 0.95);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--text-main);
+      font-size: 13px;
+      outline: none;
+      text-align: right;
+      -moz-appearance: textfield;
+    }
+
+    .pnl-input::-webkit-outer-spin-button,
+    .pnl-input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .pnl-row-label {
+      font-size: 13px;
+      color: #e5e7eb;
+    }
+
+    .pnl-total-row td {
+      border-top: 1px solid rgba(248, 189, 80, 0.7);
+      border-bottom: none;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .pnl-total-label {
+      font-size: 13px;
+    }
+
+    .pnl-profit,
+    .pnl-margin {
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .pnl-negative {
+      color: #fecaca;
+    }
+
+    .pnl-summary {
+      flex: 1;
+      min-width: 0;
+      border-radius: 22px;
+      padding: 14px 16px;
+      background: radial-gradient(circle at 0 0, rgba(248, 189, 80, 0.22), rgba(15, 23, 42, 0.98));
+      border: 1px solid rgba(248, 189, 80, 0.65);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.9);
+    }
+
+    .pnl-summary-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(249, 250, 251, 0.85);
+      margin-bottom: 6px;
+    }
+
+    .pnl-summary-value {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent-soft);
+      margin-bottom: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pnl-summary-note {
+      font-size: 12px;
+      color: rgba(248, 250, 252, 0.85);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 960px) {
+      .pnl-demo-layout {
+        flex-direction: column;
+      }
+
+      .pnl-summary {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .pnl-summary {
+        padding: 12px 14px;
+      }
+
+      .pnl-summary-value {
+        font-size: 22px;
+      }
+    }
   </style>
 
   <!-- Yandex.Metrika counter -->
@@ -1130,6 +1275,87 @@
           </a>
         </div>
       </section>
+
+      <!-- === DEMO CALCULATOR (INLINE) === -->
+      <section class="card reveal">
+        <div class="card-header-label">demo / bi</div>
+        <h2 class="section-title"><span>Интерактивный мини-калькулятор дневного P&amp;L</span></h2>
+        <p>
+          Небольшой пример того, как выглядит сводка по каналам в управленческом учёте. Можно
+          подставить свои цифры выручки и затрат по каналам — модель посчитает прибыль и маржу
+          по каждому из них и по дню в целом. В реальных проектах эта логика едет в BI и
+          расширяется налогами, возвратами, складом и остальными блоками финмодели.
+        </p>
+
+        <div class="pnl-demo-layout">
+          <div class="pnl-table-wrap">
+            <table class="pnl-grid" id="pnlDemoTable">
+              <thead>
+                <tr>
+                  <th>Канал</th>
+                  <th>Выручка, ₽</th>
+                  <th>Себестоимость, ₽</th>
+                  <th>Реклама, ₽</th>
+                  <th>Логистика, ₽</th>
+                  <th>Прочие, ₽</th>
+                  <th>Прибыль, ₽</th>
+                  <th>Маржа, %</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-row="wb">
+                  <td class="pnl-row-label">WB</td>
+                  <td><input class="pnl-input" type="number" data-field="revenue" value="370000"></td>
+                  <td><input class="pnl-input" type="number" data-field="cogs" value="240000"></td>
+                  <td><input class="pnl-input" type="number" data-field="ads" value="75000"></td>
+                  <td><input class="pnl-input" type="number" data-field="log" value="35000"></td>
+                  <td><input class="pnl-input" type="number" data-field="other" value="5000"></td>
+                  <td class="pnl-profit">0</td>
+                  <td class="pnl-margin">0%</td>
+                </tr>
+                <tr data-row="ozon">
+                  <td class="pnl-row-label">Ozon</td>
+                  <td><input class="pnl-input" type="number" data-field="revenue" value="200000"></td>
+                  <td><input class="pnl-input" type="number" data-field="cogs" value="135000"></td>
+                  <td><input class="pnl-input" type="number" data-field="ads" value="35000"></td>
+                  <td><input class="pnl-input" type="number" data-field="log" value="20000"></td>
+                  <td><input class="pnl-input" type="number" data-field="other" value="5000"></td>
+                  <td class="pnl-profit">0</td>
+                  <td class="pnl-margin">0%</td>
+                </tr>
+                <tr data-row="site">
+                  <td class="pnl-row-label">Сайт/опт</td>
+                  <td><input class="pnl-input" type="number" data-field="revenue" value="140000"></td>
+                  <td><input class="pnl-input" type="number" data-field="cogs" value="90000"></td>
+                  <td><input class="pnl-input" type="number" data-field="ads" value="20000"></td>
+                  <td><input class="pnl-input" type="number" data-field="log" value="15000"></td>
+                  <td><input class="pnl-input" type="number" data-field="other" value="5000"></td>
+                  <td class="pnl-profit">0</td>
+                  <td class="pnl-margin">0%</td>
+                </tr>
+                <tr class="pnl-total-row" data-row="total">
+                  <td class="pnl-total-label">Итого за день</td>
+                  <td class="pnl-total-revenue">0</td>
+                  <td class="pnl-total-cost">0</td>
+                  <td colspan="2"></td>
+                  <td></td>
+                  <td class="pnl-profit">0</td>
+                  <td class="pnl-margin">0%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <aside class="pnl-summary">
+            <div class="pnl-summary-label">Маржа дня (демо)</div>
+            <div class="pnl-summary-value" id="pnlDemoMargin">0%</div>
+            <p class="pnl-summary-note">
+              Демонстрационная логика: прибыль = выручка − (себестоимость + реклама + логистика + прочие).
+              В боевых моделях добавляем комиссии площадок, возвраты, склад, налоги и прочие блоки P&amp;L —
+              но философия остаётся такой же: смотреть не на оборот, а на деньги после всех расходов.
+            </p>
+          </aside>
+        </div>
+      </section>
     </main>
 
     <footer>
@@ -1201,6 +1427,107 @@
           }
         });
       }
+    });
+  </script>
+
+  <!-- P&L demo calculator logic -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const table = document.getElementById("pnlDemoTable");
+      if (!table) return;
+
+      const inputs = table.querySelectorAll("input.pnl-input");
+
+      const parseNumber = (value) => {
+        if (value == null) return 0;
+        const normalized = String(value).replace(/\s/g, "").replace(",", ".");
+        const num = parseFloat(normalized);
+        return isNaN(num) ? 0 : num;
+      };
+
+      const formatNumber = (num) => {
+        return Number(num || 0).toLocaleString("ru-RU", { maximumFractionDigits: 0 });
+      };
+
+      const formatPercent = (num) => {
+        return Number(num || 0).toLocaleString("ru-RU", { maximumFractionDigits: 1 }) + "%";
+      };
+
+      function recalcPnl() {
+        let totalRevenue = 0;
+        let totalCost = 0;
+        let totalProfit = 0;
+
+        const bodyRows = table.querySelectorAll("tbody tr");
+        bodyRows.forEach((tr) => {
+          const key = tr.dataset.row;
+          if (key === "total") return;
+
+          const revenue = parseNumber(tr.querySelector('input[data-field="revenue"]').value);
+          const cogs    = parseNumber(tr.querySelector('input[data-field="cogs"]').value);
+          const ads     = parseNumber(tr.querySelector('input[data-field="ads"]').value);
+          const log     = parseNumber(tr.querySelector('input[data-field="log"]').value);
+          const other   = parseNumber(tr.querySelector('input[data-field="other"]').value);
+
+          const cost   = cogs + ads + log + other;
+          const profit = revenue - cost;
+          const margin = revenue > 0 ? (profit / revenue) * 100 : 0;
+
+          totalRevenue += revenue;
+          totalCost    += cost;
+          totalProfit  += profit;
+
+          const profitCell = tr.querySelector(".pnl-profit");
+          const marginCell = tr.querySelector(".pnl-margin");
+
+          if (profitCell) {
+            profitCell.textContent = formatNumber(profit);
+            profitCell.classList.toggle("pnl-negative", profit < 0);
+          }
+
+          if (marginCell) {
+            marginCell.textContent = formatPercent(margin);
+            marginCell.classList.toggle("pnl-negative", margin < 0);
+          }
+        });
+
+        const totalRow         = table.querySelector('tr[data-row="total"]');
+        if (!totalRow) return;
+
+        const totalRevenueCell = totalRow.querySelector(".pnl-total-revenue");
+        const totalCostCell    = totalRow.querySelector(".pnl-total-cost");
+        const totalProfitCell  = totalRow.querySelector(".pnl-profit");
+        const totalMarginCell  = totalRow.querySelector(".pnl-margin");
+
+        if (totalRevenueCell) {
+          totalRevenueCell.textContent = formatNumber(totalRevenue);
+        }
+        if (totalCostCell) {
+          totalCostCell.textContent = formatNumber(totalCost);
+        }
+        const totalMargin = totalRevenue > 0 ? (totalProfit / totalRevenue) * 100 : 0;
+
+        if (totalProfitCell) {
+          totalProfitCell.textContent = formatNumber(totalProfit);
+          totalProfitCell.classList.toggle("pnl-negative", totalProfit < 0);
+        }
+        if (totalMarginCell) {
+          totalMarginCell.textContent = formatPercent(totalMargin);
+          totalMarginCell.classList.toggle("pnl-negative", totalMargin < 0);
+        }
+
+        const summaryEl = document.getElementById("pnlDemoMargin");
+        if (summaryEl) {
+          summaryEl.textContent = formatPercent(totalMargin);
+        }
+      }
+
+      inputs.forEach((input) => {
+        input.addEventListener("input", recalcPnl);
+      });
+
+      // первый пересчёт при загрузке
+      recalcPnl();
     });
   </script>
 </body>
