@@ -38,6 +38,10 @@
       min-height: 100%;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
@@ -979,9 +983,9 @@
           </div>
         </div>
         <div class="top-tags">
-          <div class="chip">маркетплейсы · опт · розница</div>
-          <div class="chip">P&amp;L · unit-экономика · DRR/TACOS</div>
-          <div class="chip">BI-отчётность · SQL · системы учёта</div>
+          <a class="chip" href="#section-structure">маркетплейсы · опт · розница</a>
+          <a class="chip" href="#section-pnl">P&amp;L · unit-экономика · DRR/TACOS</a>
+          <a class="chip" href="#section-bi">BI-отчётность · SQL · системы учёта</a>
         </div>
       </div>
 
@@ -1070,7 +1074,7 @@
       </section>
 
       <!-- === СТРУКТУРА КАБИНЕТОВ === -->
-      <section class="card reveal">
+      <section class="card reveal" id="section-structure">
         <div class="card-header-label">архитектура управления</div>
         <div class="section-layout">
           <div class="section-text">
@@ -1118,7 +1122,7 @@
       </section>
 
       <!-- === P&L === -->
-      <section class="card reveal">
+      <section class="card reveal" id="section-pnl">
         <div class="card-header-label">финмодель и учёт</div>
         <div class="section-layout">
           <div class="section-text">
@@ -1161,7 +1165,7 @@
       </section>
 
       <!-- === ПРОГРАММЫ И ДАШБОРДЫ === -->
-      <section class="card reveal">
+      <section class="card reveal" id="section-bi">
         <div class="card-header-label">системы и автоматизация</div>
         <div class="section-layout">
           <div class="section-text">
@@ -1269,7 +1273,7 @@
           <li>Цифры можно менять — расчёт обновляется прямо в браузере.</li>
         </ul>
         <div class="cta-row">
-          <a class="cta-btn cta-btn--primary" href="kommdir_daily_pnl_demo.html" target="_blank" rel="noopener noreferrer">
+          <a class="cta-btn cta-btn--primary" href="https://kommdir-systems.ru/kommdir_daily_pnl_demo.html" target="_blank" rel="noopener noreferrer">
             <span class="cta-icon">P&amp;L</span>
             <span>Открыть демо-дэшборд P&amp;L</span>
           </a>
@@ -1439,18 +1443,18 @@
       const inputs = table.querySelectorAll("input.pnl-input");
 
       const parseNumber = (value) => {
-        if (value == null) return 0;
-        const normalized = String(value).replace(/\s/g, "").replace(",", ".");
+        if (typeof value !== "string") return 0;
+        const normalized = value.replace(/\s/g, "").replace(",", ".");
         const num = parseFloat(normalized);
         return isNaN(num) ? 0 : num;
       };
 
       const formatNumber = (num) => {
-        return Number(num || 0).toLocaleString("ru-RU", { maximumFractionDigits: 0 });
+        return num.toLocaleString("ru-RU", { maximumFractionDigits: 0 });
       };
 
       const formatPercent = (num) => {
-        return Number(num || 0).toLocaleString("ru-RU", { maximumFractionDigits: 1 }) + "%";
+        return num.toLocaleString("ru-RU", { maximumFractionDigits: 1 }) + "%";
       };
 
       function recalcPnl() {
@@ -1464,18 +1468,18 @@
           if (key === "total") return;
 
           const revenue = parseNumber(tr.querySelector('input[data-field="revenue"]').value);
-          const cogs    = parseNumber(tr.querySelector('input[data-field="cogs"]').value);
-          const ads     = parseNumber(tr.querySelector('input[data-field="ads"]').value);
-          const log     = parseNumber(tr.querySelector('input[data-field="log"]').value);
-          const other   = parseNumber(tr.querySelector('input[data-field="other"]').value);
+          const cogs = parseNumber(tr.querySelector('input[data-field="cogs"]').value);
+          const ads = parseNumber(tr.querySelector('input[data-field="ads"]').value);
+          const log = parseNumber(tr.querySelector('input[data-field="log"]').value);
+          const other = parseNumber(tr.querySelector('input[data-field="other"]').value);
 
-          const cost   = cogs + ads + log + other;
+          const cost = cogs + ads + log + other;
           const profit = revenue - cost;
           const margin = revenue > 0 ? (profit / revenue) * 100 : 0;
 
           totalRevenue += revenue;
-          totalCost    += cost;
-          totalProfit  += profit;
+          totalCost += cost;
+          totalProfit += profit;
 
           const profitCell = tr.querySelector(".pnl-profit");
           const marginCell = tr.querySelector(".pnl-margin");
@@ -1491,34 +1495,30 @@
           }
         });
 
-        const totalRow         = table.querySelector('tr[data-row="total"]');
-        if (!totalRow) return;
+        const totalRow = table.querySelector('tr[data-row="total"]');
+        if (totalRow) {
+          const totalRevenueCell = totalRow.querySelector(".pnl-total-revenue");
+          const totalCostCell = totalRow.querySelector(".pnl-total-cost");
+          const totalProfitCell = totalRow.querySelector(".pnl-profit");
+          const totalMarginCell = totalRow.querySelector(".pnl-margin");
 
-        const totalRevenueCell = totalRow.querySelector(".pnl-total-revenue");
-        const totalCostCell    = totalRow.querySelector(".pnl-total-cost");
-        const totalProfitCell  = totalRow.querySelector(".pnl-profit");
-        const totalMarginCell  = totalRow.querySelector(".pnl-margin");
+          const totalMargin = totalRevenue > 0 ? (totalProfit / totalRevenue) * 100 : 0;
 
-        if (totalRevenueCell) {
-          totalRevenueCell.textContent = formatNumber(totalRevenue);
-        }
-        if (totalCostCell) {
-          totalCostCell.textContent = formatNumber(totalCost);
-        }
-        const totalMargin = totalRevenue > 0 ? (totalProfit / totalRevenue) * 100 : 0;
+          if (totalRevenueCell) totalRevenueCell.textContent = formatNumber(totalRevenue);
+          if (totalCostCell) totalCostCell.textContent = formatNumber(totalCost);
+          if (totalProfitCell) {
+            totalProfitCell.textContent = formatNumber(totalProfit);
+            totalProfitCell.classList.toggle("pnl-negative", totalProfit < 0);
+          }
+          if (totalMarginCell) {
+            totalMarginCell.textContent = formatPercent(totalMargin);
+            totalMarginCell.classList.toggle("pnl-negative", totalMargin < 0);
+          }
 
-        if (totalProfitCell) {
-          totalProfitCell.textContent = formatNumber(totalProfit);
-          totalProfitCell.classList.toggle("pnl-negative", totalProfit < 0);
-        }
-        if (totalMarginCell) {
-          totalMarginCell.textContent = formatPercent(totalMargin);
-          totalMarginCell.classList.toggle("pnl-negative", totalMargin < 0);
-        }
-
-        const summaryEl = document.getElementById("pnlDemoMargin");
-        if (summaryEl) {
-          summaryEl.textContent = formatPercent(totalMargin);
+          const summaryMarginEl = document.getElementById("pnlDemoMargin");
+          if (summaryMarginEl) {
+            summaryMarginEl.textContent = formatPercent(totalMargin);
+          }
         }
       }
 
@@ -1526,9 +1526,9 @@
         input.addEventListener("input", recalcPnl);
       });
 
-      // первый пересчёт при загрузке
       recalcPnl();
     });
   </script>
 </body>
 </html>
+
