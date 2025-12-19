@@ -2,31 +2,38 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Kommdir Systems — управление продажами на маркетплейсах</title>
+  <title>Коммерческий директор маркетплейсов — Sergey Artyukhin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description"
-        content="Помогаем собственникам выстроить продажи и аналитику на Wildberries и Ozon: коммерческий директор, дашборды, калькуляторы и операционная система под ключ." />
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
+  <meta
+    name="description"
+    content="Коммерческий директор маркетплейсов: выстрою продажи, аналитику и управленческий учёт на Wildberries и Ozon. Кейсы в цифрах, дашборды, калькуляторы, понятный формат работы."
+  />
+  <link rel="icon" type="image/png" href="image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
   <style>
     :root {
-      --bg: #030712;
-      --bg-elevated: #050b1d;
-      --bg-soft: #070f26;
-      --card: #070f26;
-      --border: #1f2937;
-      --accent: #ffb347;           /* наш фирменный оранжевый */
-      --accent-soft: rgba(255, 179, 71, 0.15);
-      --accent-strong: #ff9a1f;
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --muted-soft: #6b7280;
-      --danger: #f97373;
-      --radius-lg: 18px;
-      --radius-xl: 20px;
-      --shadow-soft: 0 22px 60px rgba(15, 23, 42, 0.7);
-      --badge: #0b1220;
+      --bg-main: #050815;
+      --bg-elevated: #070c1e;
+      --card-bg: #0b1024;
+      --card-bg-soft: #090f20;
+      --accent-main: #ffb347; /* тёплое золото, а не оранжевый */
+      --accent-main-soft: rgba(255, 179, 71, 0.1);
+      --accent-contrast: #111827;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --text-soft: #6b7280;
+      --border-subtle: rgba(148, 163, 184, 0.24);
+      --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.7);
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --radius-pill: 999px;
+      --transition-fast: 0.18s ease-out;
+      --max-width: 1120px;
     }
 
     * {
@@ -35,19 +42,12 @@
 
     body {
       margin: 0;
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 0 0, rgba(255, 179, 71, 0.12), transparent 55%),
-        radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.12), transparent 55%),
-        linear-gradient(180deg, #020617, #020617 45%, #020617 100%);
       min-height: 100vh;
-    }
-
-    .page {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 32px 20px 64px;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
@@ -60,318 +60,372 @@
       display: block;
     }
 
+    .page {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px 24px 72px;
+    }
+
+    /* HEADER */
+
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 32px;
       gap: 24px;
+      margin-bottom: 32px;
     }
 
-    .brand {
+    .logo-row {
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
-    .brand-logo {
-      width: 34px;
-      height: 34px;
+    .logo-mark {
+      width: 32px;
+      height: 32px;
       border-radius: 12px;
-      background: radial-gradient(circle at 30% 20%, #fff7ed, #fed7aa);
+      background: radial-gradient(circle at 30% 20%, #ffffff 0, #ffb347 22%, #f97316 55%, #7c2d12 100%);
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04),
+        0 16px 40px rgba(0, 0, 0, 0.75);
+      font-size: 15px;
+      font-weight: 700;
       color: #111827;
-      font-weight: 800;
-      font-size: 16px;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.6);
     }
 
-    .brand-text-title {
-      font-size: 16px;
+    .logo-text-main {
+      font-size: 15px;
       font-weight: 600;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
-    .brand-text-sub {
+    .logo-text-sub {
       font-size: 12px;
-      color: var(--muted);
+      color: var(--text-soft);
     }
 
     nav {
       display: flex;
-      gap: 18px;
+      gap: 20px;
       font-size: 13px;
-      color: var(--muted-soft);
+      color: var(--text-muted);
     }
 
     nav a {
       padding: 6px 10px;
       border-radius: 999px;
-      transition: all 0.18s ease-out;
+      transition: background var(--transition-fast), color var(--transition-fast),
+        transform var(--transition-fast);
     }
 
     nav a:hover {
-      color: var(--text);
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      transform: translateY(-1px);
     }
+
+    /* HERO */
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.4fr);
       gap: 28px;
+      align-items: stretch;
       margin-bottom: 40px;
     }
 
     .hero-main {
-      background: radial-gradient(circle at 0 0, rgba(255, 179, 71, 0.2), transparent 65%),
-                  radial-gradient(circle at 100% 0, rgba(59, 130, 246, 0.12), transparent 55%),
-                  #020617;
-      border-radius: 24px;
-      padding: 24px 24px 22px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: radial-gradient(circle at top left, rgba(255, 179, 71, 0.15), transparent 55%),
+        radial-gradient(circle at bottom, rgba(59, 130, 246, 0.12), transparent 60%),
+        var(--bg-elevated);
+      border-radius: var(--radius-lg);
+      padding: 26px 26px 24px;
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
     }
 
-    .hero-badge {
+    .hero-kicker {
       display: inline-flex;
       align-items: center;
-      padding: 4px 10px 4px 4px;
+      gap: 8px;
+      padding: 4px 10px;
       border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
       font-size: 11px;
-      background: rgba(15, 23, 42, 0.92);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      color: var(--muted-soft);
-      gap: 6px;
+      color: var(--text-muted);
       margin-bottom: 14px;
     }
 
-    .hero-badge-dot {
-      width: 18px;
-      height: 18px;
+    .hero-kicker span {
+      padding: 2px 8px;
       border-radius: 999px;
-      background:
-        radial-gradient(circle at 30% 25%, #fefce8, #fed7aa);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 700;
-      color: #111827;
+      background: var(--accent-main-soft);
+      color: var(--accent-main);
+      font-weight: 500;
     }
 
-    .hero-title {
+    .hero h1 {
+      margin: 0 0 12px;
       font-size: 28px;
-      line-height: 1.18;
-      font-weight: 700;
-      margin-bottom: 14px;
+      line-height: 1.25;
+      letter-spacing: 0.01em;
     }
 
-    .hero-title span {
-      color: var(--accent);
-    }
-
-    .hero-lead {
+    .hero-sub {
+      margin: 0 0 18px;
       font-size: 14px;
       line-height: 1.5;
-      color: var(--muted);
-      max-width: 540px;
-      margin-bottom: 18px;
+      color: var(--text-muted);
+      max-width: 520px;
     }
 
     .hero-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
-    .tag {
-      padding: 5px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.45);
+    .pill {
+      padding: 6px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.35);
       font-size: 11px;
-      color: var(--muted);
-      background: rgba(15, 23, 42, 0.85);
+      color: var(--text-soft);
+      background: rgba(15, 23, 42, 0.9);
     }
 
-    .hero-buttons {
+    .pill-accent {
+      border-color: rgba(255, 179, 71, 0.7);
+      background: var(--accent-main-soft);
+      color: var(--accent-main);
+      font-weight: 500;
+    }
+
+    .hero-ctas {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 500;
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: all 0.2s ease-out;
+      margin-bottom: 18px;
     }
 
     .btn-primary {
-      background: radial-gradient(circle at 30% 0, #ffe7c2, #ffb347);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ffb347, #ffd27f);
       color: #111827;
-      box-shadow: 0 14px 38px rgba(15, 23, 42, 0.9);
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+      text-decoration: none;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        filter var(--transition-fast);
+      white-space: nowrap;
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 18px 44px rgba(15, 23, 42, 0.95);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.8);
+      filter: brightness(1.03);
     }
 
-    .btn-ghost {
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.65);
       background: rgba(15, 23, 42, 0.9);
-      border-color: rgba(148, 163, 184, 0.5);
-      color: var(--muted);
+      color: var(--text-main);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--transition-fast), border-color var(--transition-fast),
+        transform var(--transition-fast);
+      white-space: nowrap;
     }
 
-    .btn-ghost:hover {
-      color: var(--text);
-      border-color: var(--accent);
-      background: rgba(15, 23, 42, 0.95);
+    .btn-secondary:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: var(--accent-main);
+      transform: translateY(-1px);
     }
 
     .hero-note {
-      font-size: 11px;
-      color: var(--muted-soft);
-      margin-top: 4px;
+      font-size: 12px;
+      color: var(--text-soft);
+      max-width: 520px;
     }
 
-    .hero-aside {
-      border-radius: 22px;
-      background: rgba(15, 23, 42, 0.95);
+    .hero-note strong {
+      color: var(--accent-main);
+      font-weight: 500;
+    }
+
+    .hero-metrics {
+      background: radial-gradient(circle at top, rgba(15, 23, 42, 0.75), #020617 65%);
+      border-radius: var(--radius-lg);
+      padding: 20px 20px 18px;
       border: 1px solid rgba(148, 163, 184, 0.4);
-      padding: 18px 20px 18px;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 16px;
+    }
+
+    .metrics-title {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
       gap: 10px;
     }
 
-    .hero-aside-title {
-      font-size: 13px;
+    .metrics-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .metric-pill {
+      padding: 6px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .metric-pill strong {
+      color: var(--accent-main);
       font-weight: 600;
-      margin-bottom: 4px;
     }
 
-    .hero-metric-row {
-      display: flex;
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
+      font-size: 11px;
     }
 
-    .hero-metric {
-      flex: 1;
-      background: radial-gradient(circle at 0 0, rgba(255, 179, 71, 0.16), transparent 70%);
+    .metric-card {
+      padding: 10px 10px 9px;
       border-radius: 16px;
-      padding: 10px 12px;
-      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: linear-gradient(
+        145deg,
+        rgba(15, 23, 42, 0.95),
+        rgba(15, 23, 42, 0.8)
+      );
+      border: 1px solid rgba(148, 163, 184, 0.35);
     }
 
-    .hero-metric-label {
-      font-size: 11px;
-      color: var(--muted-soft);
-      margin-bottom: 2px;
+    .metric-label {
+      color: var(--text-soft);
+      margin-bottom: 6px;
     }
 
-    .hero-metric-value {
-      font-size: 17px;
+    .metric-value {
+      font-size: 16px;
       font-weight: 600;
+      letter-spacing: 0.02em;
     }
 
-    .hero-metric-descr {
-      font-size: 11px;
-      color: var(--muted-soft);
+    .metric-caption {
+      font-size: 10px;
+      color: var(--text-muted);
       margin-top: 2px;
     }
 
-    /* Sections */
+    /* SEGMENTS */
 
-    .section {
-      margin-top: 40px;
-    }
-
-    .section-header {
-      margin-bottom: 18px;
-    }
-
-    .section-kicker {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted-soft);
-      margin-bottom: 4px;
-    }
-
-    .section-title {
-      font-size: 20px;
-      font-weight: 600;
-    }
-
-    .section-subtitle {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 4px;
-      max-width: 620px;
-    }
-
-    /* Audience */
-
-    .audience-grid {
+    .segments {
+      margin-bottom: 40px;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
 
-    .aud-card {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 14px 14px 13px;
-      position: relative;
-      overflow: hidden;
+    .segment-card {
+      background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.10), transparent 60%),
+        var(--bg-elevated);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.55);
+      font-size: 12px;
     }
 
-    .aud-badge {
-      display: inline-flex;
-      padding: 4px 8px;
-      border-radius: 999px;
-      font-size: 11px;
-      background: rgba(15, 23, 42, 0.88);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      margin-bottom: 8px;
-      color: var(--muted-soft);
-    }
-
-    .aud-title {
-      font-size: 14px;
+    .segment-title {
+      font-size: 13px;
       font-weight: 600;
       margin-bottom: 6px;
     }
 
-    .aud-text {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .aud-footnote {
+    .segment-tagline {
       font-size: 11px;
-      color: var(--muted-soft);
-      margin-top: 6px;
+      color: var(--text-soft);
+      margin-bottom: 8px;
     }
 
-    /* Services */
+    .segment-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 10px;
+    }
+
+    .segment-chip {
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: var(--text-muted);
+    }
+
+    /* GENERIC SECTION */
+
+    section {
+      margin-bottom: 52px;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 620px;
+      margin-bottom: 18px;
+    }
+
+    /* SERVICES */
 
     .services-grid {
       display: grid;
@@ -380,65 +434,54 @@
     }
 
     .service-card {
-      background: rgba(15, 23, 42, 0.95);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(30, 64, 175, 0.5);
-      padding: 14px 14px 12px;
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 12px 14px 14px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    .service-tag-row {
+    .service-label-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 6px;
-    }
-
-    .badge-pill {
-      display: inline-flex;
-      padding: 3px 9px;
-      border-radius: 999px;
+      gap: 8px;
       font-size: 10px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--muted-soft);
+      color: var(--text-soft);
     }
 
-    .badge-pill--accent {
-      background: var(--accent-soft);
-      border-color: rgba(250, 204, 21, 0.8);
-      color: var(--accent-strong);
+    .service-label-row span:first-child {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
     }
 
     .service-title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
-      margin-bottom: 6px;
     }
 
-    .service-subtitle {
+    .service-body {
       font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 8px;
+      color: var(--text-muted);
+      line-height: 1.55;
     }
 
-    .service-list {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 8px;
-      font-size: 12px;
-      color: var(--muted);
+    .service-body ul {
+      padding-left: 16px;
+      margin: 6px 0 0;
     }
 
-    .service-list li {
+    .service-body li {
       margin-bottom: 4px;
     }
 
-    .service-meta {
-      font-size: 11px;
-      color: var(--muted-soft);
-    }
-
-    /* Cases */
+    /* CASES */
 
     .cases-grid {
       display: grid;
@@ -447,51 +490,63 @@
     }
 
     .case-card {
-      background: rgba(15, 23, 42, 0.95);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(15, 23, 42, 0.9);
-      padding: 14px 14px 12px;
-      position: relative;
-      overflow: hidden;
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 12px 14px 14px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    .case-pill-row {
+    .case-label-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 6px;
-      font-size: 11px;
-      color: var(--muted-soft);
+      gap: 8px;
+      font-size: 10px;
+      color: var(--text-soft);
+    }
+
+    .case-label-row span:first-child {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.9);
     }
 
     .case-title {
       font-size: 13px;
       font-weight: 600;
-      margin-bottom: 6px;
     }
 
-    .case-text {
+    .case-image {
+      margin: 4px 0 6px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(15, 23, 42, 0.8);
+    }
+
+    .case-body {
+      color: var(--text-muted);
+      line-height: 1.55;
       font-size: 12px;
-      color: var(--muted);
-      line-height: 1.5;
-      margin-bottom: 7px;
+    }
+
+    .case-body ul {
+      padding-left: 16px;
+      margin: 6px 0;
     }
 
     .case-result {
       font-size: 11px;
-      color: #bbf7d0;
+      color: var(--accent-main);
       margin-top: 4px;
     }
 
-    .case-image {
-      border-radius: 12px;
-      overflow: hidden;
-      margin-top: 8px;
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      background: #020617;
-    }
-
-    /* Tools (calculators & dashboards) */
+    /* TOOLS */
 
     .tools-grid {
       display: grid;
@@ -500,10 +555,12 @@
     }
 
     .tool-card {
-      background: rgba(15, 23, 42, 0.95);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(31, 41, 55, 0.95);
-      padding: 12px 12px 11px;
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 12px 14px 14px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      font-size: 12px;
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -513,664 +570,907 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 11px;
-      color: var(--muted-soft);
+      gap: 8px;
+      font-size: 10px;
+      color: var(--text-soft);
+    }
+
+    .badge-pill {
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .badge-pill-accent {
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 179, 71, 0.8);
+      background: rgba(255, 179, 71, 0.12);
+      color: var(--accent-main);
+      font-weight: 500;
+    }
+
+    .tool-image {
+      margin-top: 4px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      background: radial-gradient(circle at top, #111827, #020617);
+    }
+
+    .tool-image img {
+      width: 100%;
+      display: block;
     }
 
     .tool-title {
       font-size: 13px;
       font-weight: 600;
-    }
-
-    .tool-image-wrap {
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      background: #020617;
+      margin-top: 4px;
     }
 
     .tool-text {
       font-size: 12px;
-      color: var(--muted);
-      line-height: 1.5;
+      color: var(--text-muted);
+      line-height: 1.55;
     }
 
-    .tool-link {
-      margin-top: 2px;
+    .tool-text ul {
+      padding-left: 16px;
+      margin: 4px 0 0;
+    }
+
+    .tool-text li {
+      margin-bottom: 3px;
+    }
+
+    .tool-footer-link {
+      margin-top: 6px;
       font-size: 11px;
-      color: var(--accent-strong);
+      color: var(--accent-main);
     }
 
-    /* Process */
+    .subsection-title {
+      margin-top: 26px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
 
-    .steps-grid {
+    .app-card .tool-image {
+      border-style: dashed;
+      border-color: rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.6);
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    /* PROCESS */
+
+    .process-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+      gap: 14px;
     }
 
     .step-card {
-      background: rgba(15, 23, 42, 0.96);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(31, 41, 55, 0.9);
-      padding: 12px 12px 11px;
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 12px 14px 14px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      font-size: 12px;
     }
 
     .step-badge {
-      font-size: 11px;
-      color: var(--muted-soft);
+      font-size: 10px;
+      color: var(--text-soft);
       margin-bottom: 4px;
     }
 
     .step-title {
       font-size: 13px;
       font-weight: 600;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
 
-    .step-text {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.5;
+    .step-card ul {
+      padding-left: 16px;
+      margin: 0;
+      color: var(--text-muted);
     }
 
-    /* Contacts */
+    .step-card li {
+      margin-bottom: 4px;
+    }
 
-    .contacts {
+    /* CONTACT */
+
+    .contact-grid {
       display: grid;
-      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.2fr);
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 2fr);
       gap: 18px;
     }
 
-    .contacts-card {
-      background: rgba(15, 23, 42, 0.95);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      padding: 16px 18px 18px;
+    .contact-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 16px 18px 16px;
+      border: 1px solid var(--border-subtle);
       box-shadow: var(--shadow-soft);
-    }
-
-    .contacts-title {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .contacts-text {
       font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 10px;
     }
 
-    .contacts-list {
-      font-size: 13px;
-      color: var(--muted-soft);
+    .contact-card h3 {
+      margin: 0 0 8px;
+      font-size: 15px;
+    }
+
+    .contact-card p {
+      margin: 8px 0;
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .contact-list {
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin: 10px 0 0;
+      font-size: 13px;
     }
 
-    .contacts-list li {
+    .contact-list li {
       margin-bottom: 6px;
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
     }
 
-    .contacts-hint {
-      font-size: 11px;
-      color: var(--muted-soft);
-      margin-top: 6px;
+    .contact-label {
+      width: 70px;
+      color: var(--text-soft);
+      font-size: 12px;
+    }
+
+    .contact-link {
+      color: var(--accent-main);
+      font-weight: 500;
     }
 
     footer {
-      margin-top: 32px;
+      margin-top: 40px;
       font-size: 11px;
-      color: var(--muted-soft);
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      border-top: 1px solid rgba(15, 23, 42, 0.9);
-      padding-top: 10px;
+      color: var(--text-soft);
+      text-align: center;
     }
 
-    /* Buttons OEM colors for площадки */
+    /* RESPONSIVE */
 
-    .btn-wb {
-      background: #ff4f9f;
-      color: #020617;
-    }
-
-    .btn-ozon {
-      background: #005cff;
-      color: #f9fafb;
-    }
-
-    .btn-wb:hover,
-    .btn-ozon:hover {
-      filter: brightness(1.05);
-      transform: translateY(-1px);
-      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.8);
-    }
-
-    /* Responsive */
-
-    @media (max-width: 960px) {
+    @media (max-width: 1024px) {
       .hero {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
       }
-      .audience-grid,
+      .segments {
+        grid-template-columns: 1fr 1fr;
+      }
       .services-grid,
       .cases-grid,
       .tools-grid,
-      .steps-grid,
-      .contacts {
-        grid-template-columns: minmax(0, 1fr);
+      .process-grid,
+      .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        padding: 18px 16px 40px;
       }
       header {
         flex-direction: column;
         align-items: flex-start;
+        gap: 14px;
+      }
+      nav {
+        flex-wrap: wrap;
+      }
+      .hero {
+        gap: 20px;
+      }
+      .hero-main {
+        padding: 18px 16px 16px;
+      }
+      .hero h1 {
+        font-size: 22px;
+      }
+      .segments,
+      .services-grid,
+      .cases-grid,
+      .tools-grid,
+      .process-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-<div class="page">
-
-  <!-- HEADER -->
-  <header>
-    <div class="brand">
-      <div class="brand-logo">KS</div>
-      <div>
-        <div class="brand-text-title">Kommdir Systems</div>
-        <div class="brand-text-sub">Маркетплейсы · Выручка · Операционный дизайн</div>
-      </div>
-    </div>
-
-    <nav>
-      <a href="#services">Услуги</a>
-      <a href="#cases">Кейсы</a>
-      <a href="#tools">Инструменты</a>
-      <a href="#process">Формат работы</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="hero-main">
-      <div class="hero-badge">
-        <div class="hero-badge-dot">⚡</div>
-        Настраиваем систему, чтобы собственник видел цифры, а команда — что делать
-      </div>
-
-      <h1 class="hero-title">
-        Помогаем собственникам выстроить продажи и аналитику
-        <span>на Wildberries и Ozon</span>
-      </h1>
-
-      <p class="hero-lead">
-        Вместо хаоса из Excel и ручных таблиц — прозрачная системка отчётов,
-        понятные планы и управляемая реклама. Заходим как коммерческий директор
-        и остаёмся системой, которая работает без нас.
-      </p>
-
-      <div class="hero-tags">
-        <span class="tag">3+ млрд ₽ оборота через маркетплейсы</span>
-        <span class="tag">70+ человек удалённая команда</span>
-        <span class="tag">500+ SKU под управлением</span>
-      </div>
-
-      <div class="hero-buttons">
-        <a href="#contacts" class="btn btn-primary">Обсудить проект</a>
-        <a href="#services" class="btn btn-ghost">Посмотреть услуги</a>
-      </div>
-
-      <div class="hero-note">
-        Можно начать с небольшого аудита и карты роста, а уже потом переходить к системе отчётов.
-      </div>
-    </div>
-
-    <aside class="hero-aside">
-      <div class="hero-aside-title">Коротко о цифрах</div>
-      <div class="hero-metric-row">
-        <div class="hero-metric">
-          <div class="hero-metric-label">Выручка под управлением</div>
-          <div class="hero-metric-value">3,2–3,8 млрд ₽</div>
-          <div class="hero-metric-descr">одежда, обувь, аксессуары, авто-электроника</div>
-        </div>
-        <div class="hero-metric">
-          <div class="hero-metric-label">Команда</div>
-          <div class="hero-metric-value">70+ человек</div>
-          <div class="hero-metric-descr">отдел продаж, аналитики, контента и логистики</div>
+  <div class="page">
+    <header>
+      <div class="logo-row">
+        <div class="logo-mark">K</div>
+        <div>
+          <div class="logo-text-main">KommDir Systems</div>
+          <div class="logo-text-sub">
+            Маркетплейсы · Управление выручкой · BI-архитектура
+          </div>
         </div>
       </div>
-      <div class="hero-metric-row">
-        <div class="hero-metric">
-          <div class="hero-metric-label">SKU</div>
-          <div class="hero-metric-value">500+</div>
-          <div class="hero-metric-descr">одежда, обувь, бижутерия, авто-звук</div>
+      <nav>
+        <a href="#services">Услуги</a>
+        <a href="#cases">Кейсы</a>
+        <a href="#tools">Инструменты</a>
+        <a href="#process">Формат работы</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-main">
+          <div class="hero-kicker">
+            <span>Маркетплейсы и цифровой учёт</span>
+            коммерческий директор для Wildberries и Ozon
+          </div>
+          <h1>Помогаю собственнику выстроить продажи и аналитику на маркетплейсах</h1>
+          <p class="hero-sub">
+            Выручка — не в красивых отчётах. Задача — сделать систему, где цифры по WB и Ozon
+            прозрачно сходятся: от закупки и логистики до DRR, маржи и кассовых разрывов.
+          </p>
+          <div class="hero-tags">
+            <span class="pill pill-accent">WB + Ozon под ключ</span>
+            <span class="pill">3+ млрд ₽ оборота в управлении</span>
+            <span class="pill">70+ человек в пик команды</span>
+            <span class="pill">500+ SKU одновременно</span>
+          </div>
+          <div class="hero-ctas">
+            <a href="#contacts" class="btn-primary">Обсудить проект</a>
+            <a href="#services" class="btn-secondary">Посмотреть услуги</a>
+          </div>
+          <p class="hero-note">
+            Формат — не отчёт ради отчёта. Цель — собрать управляемую систему, где
+            собственник видит, что происходит с деньгами и запасами.
+          </p>
         </div>
-        <div class="hero-metric">
-          <div class="hero-metric-label">Роль в проектах</div>
-          <div class="hero-metric-value">CDO / COO</div>
-          <div class="hero-metric-descr">коммерческий директор и архитектор системы</div>
+
+        <aside class="hero-metrics">
+          <div class="metrics-title">
+            <span>Коротко про опыт и цифры</span>
+            <div class="metrics-badges">
+              <span class="metric-pill"><strong>одежда, обувь, электроника</strong></span>
+            </div>
+          </div>
+          <div class="metrics-grid">
+            <div class="metric-card">
+              <div class="metric-label">Суммарный оборот управляемых брендов</div>
+              <div class="metric-value">3+ млрд ₽</div>
+              <div class="metric-caption">WB, Ozon, офлайн и опт</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Команда на пике загрузки</div>
+              <div class="metric-value">70+ человек</div>
+              <div class="metric-caption">маркетинг, закупка, логистика, аналитика</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Ассортимент</div>
+              <div class="metric-value">500+ SKU</div>
+              <div class="metric-caption">одежда, обувь, автозвук, аксессуары</div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- SEGMENTS -->
+      <section>
+        <div class="section-kicker">Кому подойдёт</div>
+        <div class="section-title">Кому такой формат обычно заходит</div>
+        <div class="section-subtitle">
+          В фокусе — собственник или партнёр, который держит финансовый результат
+          и хочет ясности по выручке, DRR и запасам.
         </div>
-      </div>
-    </aside>
-  </section>
 
-  <!-- AUDIENCE -->
-  <section class="section" id="audience">
-    <div class="section-header">
-      <div class="section-kicker">Для кого</div>
-      <div class="section-title">С кем мы работаем</div>
-      <div class="section-subtitle">
-        Подстраиваем формат под задачу: от «запустить бренд с нуля» до «разобраться,
-        куда утекает маржа и почему команда не тянет».
-      </div>
-    </div>
+        <div class="segments">
+          <article class="segment-card">
+            <div class="segment-title">Владельцы брендов</div>
+            <div class="segment-tagline">
+              Одежда, обувь, авто, аксессуары. Оборот от 3–5 млн ₽ в месяц, сложные
+              скидки и сезонность.
+            </div>
+            <div class="segment-chips">
+              <span class="segment-chip">WB и Ozon</span>
+              <span class="segment-chip">оптовые каналы</span>
+              <span class="segment-chip">несколько юрлиц</span>
+            </div>
+          </article>
 
-    <div class="audience-grid">
-      <div class="aud-card">
-        <div class="aud-badge">Владельцы брендов</div>
-        <div class="aud-title">Марка одежды, обуви, аксессуаров</div>
-        <p class="aud-text">
-          Обороты от 3–5 млн ₽ в месяц и выше. Нужна системка отчётов, понятные KPI
-          и управление маркетингом, чтобы не жить в чате с менеджерами 24/7.
-        </p>
-        <div class="aud-footnote">Чаще всего работаем с собственником напрямую.</div>
-      </div>
+          <article class="segment-card">
+            <div class="segment-title">Инвесторы и управляющие</div>
+            <div class="segment-tagline">
+              Есть команда, но цифры живут в разных таблицах. Нужны единые регламенты
+              и отчёты «на один экран».
+            </div>
+            <div class="segment-chips">
+              <span class="segment-chip">отчётность для совета</span>
+              <span class="segment-chip">контроль DRR и маржи</span>
+            </div>
+          </article>
 
-      <div class="aud-card">
-        <div class="aud-badge">Инвесторы и управляющие</div>
-        <div class="aud-title">Объединённые портфели WB и Ozon</div>
-        <p class="aud-text">
-          Когда под управлением несколько юрлиц и брендов. Важно видеть P&amp;L
-          по каждому направлению, DRR и окупаемость маркетинга,
-          не ковыряясь в первичке.
-        </p>
-        <div class="aud-footnote">Часто начинаем с «быстрого» аудита и карты роста.</div>
-      </div>
-
-      <div class="aud-card">
-        <div class="aud-badge">Внутренние команды маркетплейсов</div>
-        <div class="aud-title">Отдел маркетплейсов внутри компании</div>
-        <p class="aud-text">
-          Команда уже есть, но отчёты и задачи разбросаны между Excel, BI и чатами.
-          Помогаем собрать единый дашборд, регламенты и формат работы, чтобы
-          собственнику не быть «ручным менеджером».
-        </p>
-        <div class="aud-footnote">Можно сохранить текущую команду и усилить её цифрами.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="section" id="services">
-    <div class="section-header">
-      <div class="section-kicker">Что делаем</div>
-      <div class="section-title">Ключевые услуги</div>
-      <div class="section-subtitle">
-        Можно взять отдельный блок (например, только BI или настройку логистики),
-        но чаще мы собираем систему «под ключ» — от аналитики до управления командой.
-      </div>
-    </div>
-
-    <div class="services-grid">
-      <article class="service-card">
-        <div class="service-tag-row">
-          <span class="badge-pill badge-pill--accent">Аналитика и стратегия</span>
-          <span class="badge-pill">Старт 3–4 недели</span>
+          <article class="segment-card">
+            <div class="segment-title">Внутренние команды маркетплейсов</div>
+            <div class="segment-tagline">
+              Штаты уже набраны, но нет общей картины: кто за что отвечает и какие
+              цифры важны.
+            </div>
+            <div class="segment-chips">
+              <span class="segment-chip">регламенты и роли</span>
+              <span class="segment-chip">дашборды для отдела</span>
+            </div>
+          </article>
         </div>
-        <h3 class="service-title">Аудит и карта роста</h3>
-        <p class="service-subtitle">
-          Разбираем текущий P&amp;L, DRR, остатки и рекламу. Собираем карту роста
-          на 6–12 месяцев с приоритетами по категориям и SKU.
-        </p>
-        <ul class="service-list">
-          <li>юнит-экономика по ключевым товарам;</li>
-          <li>план по обороту, DRR и марже;</li>
-          <li>список решений «что делаем первым, что вторым».</li>
-        </ul>
-        <div class="service-meta">Формат: отчёт + созвон с собственником.</div>
-      </article>
+      </section>
 
-      <article class="service-card">
-        <div class="service-tag-row">
-          <span class="badge-pill badge-pill--accent">Операционный дизайн</span>
-          <span class="badge-pill">От 2 месяцев</span>
+      <!-- SERVICES -->
+      <section id="services">
+        <div class="section-kicker">Что делаю</div>
+        <div class="section-title">Ключевые услуги</div>
+        <div class="section-subtitle">
+          Каждый блок можно взять отдельно, но чаще всего всё собирается в единую
+          систему: стратегия, цифры, управленческий учёт и процессы команды.
         </div>
-        <h3 class="service-title">Коммерческий директор под задачу</h3>
-        <p class="service-subtitle">
-          Заходим в роль CDO/COO: выстраиваем отдел маркетплейсов, систему отчётов
-          и управленческие циклы. Фокус на росте маржи, а не просто оборота.
-        </p>
-        <ul class="service-list">
-          <li>сборка оргструктуры и ролей;</li>
-          <li>KPI, отчётность и регулярные планёрки;</li>
-          <li>контроль цен, закупок и рекламных бюджетов.</li>
-        </ul>
-        <div class="service-meta">Работаем в связке с собственником и командой.</div>
-      </article>
 
-      <article class="service-card">
-        <div class="service-tag-row">
-          <span class="badge-pill badge-pill--accent">BI и отчётность</span>
-          <span class="badge-pill">1–2 месяца</span>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-label-row">
+              <span>Аналитический разбор</span>
+              <span>от 3–12 месяцев истории</span>
+            </div>
+            <div class="service-title">Антикризисный разбор и карта роста</div>
+            <div class="service-body">
+              <p>
+                Разбор текущей ситуации по выручке, DRR, остаткам, рекламным расходам,
+                кассовым разрывам.
+              </p>
+              <ul>
+                <li>Диагностика WB и Ozon, отчёты по марже.</li>
+                <li>Карта точек роста на 3–6 месяцев.</li>
+                <li>Список решений: где поднять цену, где резать DRR и SKU.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-label-row">
+              <span>Операционный блок</span>
+              <span>CMO / CCO как сервис</span>
+            </div>
+            <div class="service-title">Функция коммерческого директора</div>
+            <div class="service-body">
+              <p>
+                Единая точка за выручку: цели по брендам, воронки, DRR, запуск
+                коллекций и акций.
+              </p>
+              <ul>
+                <li>Цели по выручке и марже по юрлицам и площадкам.</li>
+                <li>Сетка запусков коллекций и контента.</li>
+                <li>Контроль закупки, логистики и остатков.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-label-row">
+              <span>BI + отчётность</span>
+              <span>Google Sheets / Datalens / Excel</span>
+            </div>
+            <div class="service-title">Дашборды и отчёты для решений</div>
+            <div class="service-body">
+              <p>
+                Воронки по заказам, DRR и выкупам, отчёт по марже и кассе в одном
+                окне.
+              </p>
+              <ul>
+                <li>Настройка отчётности под задачи собственника.</li>
+                <li>Интеграция выгрузок WB/Ozon и внутренних таблиц.</li>
+                <li>Обучение менеджеров читать цифры.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-label-row">
+              <span>Запуск бренда</span>
+              <span>от идеи до первых 2–3 месяцев</span>
+            </div>
+            <div class="service-title">Вывод товара на маркетплейсы с нуля</div>
+            <div class="service-body">
+              <p>
+                Отбор ассортимента, прогноз, стартовая воронка рекламы,
+                упаковка карточек.
+              </p>
+              <ul>
+                <li>Расчёт экономики по SKU.</li>
+                <li>Подготовка поставки и логистики.</li>
+                <li>План выхода на окупаемость.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-label-row">
+              <span>Управленческий учёт</span>
+              <span>проект 2–3 месяца</span>
+            </div>
+            <div class="service-title">Настройка управленческого учёта</div>
+            <div class="service-body">
+              <p>
+                Финмодель по юрлицам, сегментам и брендам, отчёт по P&L
+                и кассе.
+              </p>
+              <ul>
+                <li>Карта статей доходов и расходов.</li>
+                <li>Связка с фактом по маркетплейсам.</li>
+                <li>Отчёт для собственника раз в месяц.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-label-row">
+              <span>Обучение команды</span>
+              <span>формат воркшопов</span>
+            </div>
+            <div class="service-title">Разбор процессов с командой</div>
+            <div class="service-body">
+              <p>
+                Обучающие сессии для маркетолога, закупки и аналитика:
+                как смотреть на цифры и какие решения принимать.
+              </p>
+              <ul>
+                <li>Регламенты по ежедневным и еженедельным отчётам.</li>
+                <li>Чек-листы задач для менеджеров.</li>
+                <li>Материалы и записи для онбординга новых людей.</li>
+              </ul>
+            </div>
+          </article>
         </div>
-        <h3 class="service-title">Дашборды и управленческий учёт</h3>
-        <p class="service-subtitle">
-          Собираем отчётность так, чтобы в одном-двух дашбордах было видно
-          ключевые ответы: сколько мы зарабатываем, где проседаем и что делать.
-        </p>
-        <ul class="service-list">
-          <li>отчёты P&amp;L по юрлицам и брендам;</li>
-          <li>воронка по заказам, выкупам и DRR;</li>
-          <li>система алертов по проблемам в запасах и ценах.</li>
-        </ul>
-        <div class="service-meta">Инструменты: Google Sheets, DataLens / Power BI, SQL.</div>
-      </article>
-    </div>
-  </section>
+      </section>
 
-  <!-- CASES -->
-  <section class="section" id="cases">
-    <div class="section-header">
-      <div class="section-kicker">Примеры результатов</div>
-      <div class="section-title">Кейсы в цифрах и скринах (без названий компаний)</div>
-      <div class="section-subtitle">
-        Ниже — живые кейсы из проектов. Без красивых легенд, только конкретные
-        изменения в цифрах, скриншоты дашбордов и управленческих отчётов.
-      </div>
-    </div>
-
-    <div class="cases-grid">
-      <article class="case-card">
-        <div class="case-pill-row">
-          <span class="badge-pill">Одежда · Wildberries · Худи</span>
-          <span class="badge-pill badge-pill--accent">Рост выручки с 3,2 до 7,8 млн ₽ за сезон</span>
+      <!-- CASES -->
+      <section id="cases">
+        <div class="section-kicker">Примеры результатов</div>
+        <div class="section-title">Кейсы в цифрах и скринах (без названий компаний)</div>
+        <div class="section-subtitle">
+          В примерах — реальные проекты: одежда, обувь и электроника. На скринах
+          видно, как выглядят дашборды и калькуляторы.
         </div>
-        <h3 class="case-title">Линия базовых худи: рост выручки и маржи</h3>
-        <p class="case-text">
-          Старт: несколько базовых моделей, хаотичная реклама, DRR &gt; 25%, нет
-          понимания, какие размеры и цвета держать в приоритете.
-        </p>
-        <p class="case-text">
-          Что сделали: пересобрали матрицу, настроили отчёт по остаткам и заказам,
-          выровняли цены и рекламу под маржу, добавили план-факт по каждому артикулу.
-        </p>
-        <p class="case-result">
-          Результат: +140% к обороту, DRR опустился до 10–12%, маржа стала предсказуемой.
-        </p>
-      </article>
 
-      <article class="case-card">
-        <div class="case-pill-row">
-          <span class="badge-pill">Обувь · WB + Ozon · Кассовый разрыв</span>
-          <span class="badge-pill badge-pill--accent">Выход из кассового разрыва за 2,5 месяца</span>
+        <div class="cases-grid">
+          <article class="case-card">
+            <div class="case-label-row">
+              <span>Одежда · Wildberries · худи</span>
+              <span>рост выручки с 3,2 до 7,8 млн ₽ за сезон</span>
+            </div>
+            <div class="case-title">Линия базовых худи</div>
+            <div class="case-image">
+              <img
+                src="case_wb_hoodie_black_mtpstats_v01.png"
+                alt="Кейс по базовым худи"
+                loading="lazy"
+              />
+            </div>
+            <div class="case-body">
+              <p>
+                На старте — несколько базовых моделей, ограниченный бюджет на рекламу,
+                DRR &gt; 25%, нет понимания, какие размеры и цвета тянут выручку.
+              </p>
+              <ul>
+                <li>Собран план-факт по выручке и DRR.</li>
+                <li>Выделены ростовые ряды, которые держат основную маржу.</li>
+                <li>Сформирован план докупок и снятия моделей.</li>
+              </ul>
+              <div class="case-result">
+                Итог: за сезон рост выручки +140% по выручке, DRR — в коридор 14–16%,
+                выкуп &gt; 90%. Линейка работала стабильно, без кассовых провалов.
+              </div>
+            </div>
+          </article>
+
+          <article class="case-card">
+            <div class="case-label-row">
+              <span>Обувь · WB + Ozon</span>
+              <span>выход из кассового разрыва за 10–12% маржи</span>
+            </div>
+            <div class="case-title">Выход из кассового разрыва и рост бренда</div>
+            <div class="case-image">
+              <img
+                src="case_wb_boots_sales_funnel_v01.png"
+                alt="Кейс по обувному бренду"
+                loading="lazy"
+              />
+            </div>
+            <div class="case-body">
+              <p>
+                Оборот есть, маржа &gt; 20% в P&L, но деньги постоянно «застревают»
+                в поставках и скидках, не хватает оборотки на новые коллекции.
+              </p>
+              <ul>
+                <li>Выручка разбита по каналам и коллекциям.</li>
+                <li>Собран помесячный план-факт по марже и DRR.</li>
+                <li>Настроены лимиты на закупку и маркетинг.</li>
+              </ul>
+              <div class="case-result">
+                Результат: за 2 месяца кассовый разрыв закрыт, структура скидок
+                и DRR приведена к рабочему уровню, стало видно 10–12% маржи «поверх»
+                логистики и постоянных расходов.
+              </div>
+            </div>
+          </article>
+
+          <article class="case-card">
+            <div class="case-label-row">
+              <span>Одежда · Wildberries · лонгсливы</span>
+              <span>от обесценённых остатков к стабильной оборачиваемости</span>
+            </div>
+            <div class="case-title">Перезапуск линейки: от «висящих» остатков к стабильной продаже</div>
+            <div class="case-image">
+              <img
+                src="case_wb_longslieve_chocolate_mtpstats_v01.png"
+                alt="Кейс по лонгсливам"
+                loading="lazy"
+              />
+            </div>
+            <div class="case-body">
+              <p>
+                Остатки лежат месяцами, коллекция выглядит «уставшей», фото не
+                попадает в ожидания покупателей, акции не спасают.
+              </p>
+              <ul>
+                <li>Разбор цен, DRR и позиций в выдаче.</li>
+                <li>Новая стратегия контента, фото и описаний.</li>
+                <li>Пересборка матрицы размеров и оттенков.</li>
+              </ul>
+              <div class="case-result">
+                Итог: оборачиваемость стабилизирована, остатки распроданы без
+                жёсткого демпинга, линейка получила вторую жизнь без
+                переработки всего ассортимента.
+              </div>
+            </div>
+          </article>
         </div>
-        <h3 class="case-title">От кассового разрыва к росту маржи</h3>
-        <p class="case-text">
-          Старт: бренд в двух маркетплейсах, обороты есть, но денег на счету мало
-          из-за логистики, затяжных выкупов и неуправляемых скидок.
-        </p>
-        <p class="case-text">
-          Что сделали: собрали P&amp;L по юрлицам, отчёт по марже и DRR по моделям,
-          настроили план-факт закупок и рекламных бюджетов, ограничили акции.
-        </p>
-        <p class="case-result">
-          Результат: через 2–3 месяца кассовый разрыв закрыт, система перешла
-          в устойчивый плюс по марже.
-        </p>
-      </article>
+      </section>
 
-      <article class="case-card">
-        <div class="case-pill-row">
-          <span class="badge-pill">Одежда · Wildberries · Лонгсливы</span>
-          <span class="badge-pill badge-pill--accent">Разгрузка склада и стабильная оборачиваемость</span>
+      <!-- TOOLS -->
+      <section id="tools">
+        <div class="section-kicker">Инструменты</div>
+        <div class="section-title">Калькуляторы и дашборды, с которыми приходится работать</div>
+        <div class="section-subtitle">
+          Скриншоты — не про дизайн, а про архитектуру. На проектах отчёты и калькуляторы
+          подстраиваются под конкретную компанию, юрлица и задачи.
         </div>
-        <h3 class="case-title">Перезапуск линейки: от «висящих» остатков к управляемым продажам</h3>
-        <p class="case-text">
-          Старт: логистические и складские остатки, неочевидный ассортимент,
-          слабые фото и мало выкупов. Акции уже не вытягивали просадки.
-        </p>
-        <p class="case-text">
-          Что сделали: пересобрали матрицу, обновили карточки, фото и тексты,
-          настроили планёрки по запасам и промо, вывели отчёт по оборачиваемости.
-        </p>
-        <p class="case-result">
-          Результат: остатки стали управляемыми, дистрибьюция по размерам и цветам
-          выровнялась, линейка стала работать без «завалов».
-        </p>
-      </article>
-    </div>
-  </section>
 
-  <!-- TOOLS -->
-  <section class="section" id="tools">
-    <div class="section-header">
-      <div class="section-kicker">Инструменты</div>
-      <div class="section-title">Калькуляторы и дашборды, с которыми работаем</div>
-      <div class="section-subtitle">
-        Часть инструментов можно показать сразу в браузере, часть — разворачиваем
-        под вашу систему учёта и BI. Ниже — живые скрины, без «дизайнерских мокапов».
-      </div>
-    </div>
+        <div class="tools-grid">
+          <article class="tool-card">
+            <div class="tool-label-row">
+              <span class="badge-pill">Дашборд</span>
+              <span class="badge-pill-accent">Daily P&amp;L</span>
+            </div>
+            <div class="tool-image">
+              <img
+                src="pnl_wb_project_2023_v01.png"
+                alt="Daily P&L по маркетплейсам"
+                loading="lazy"
+              />
+            </div>
+            <div class="tool-title">Daily P&amp;L по маркетплейсам</div>
+            <div class="tool-text">
+              <p>
+                Ежедневный отчёт по обороту, марже и DRR по каждому маркетплейсу.
+                Удобен для контроля план-факта и кассы.
+              </p>
+              <ul>
+                <li>Разворачивание по юрлицам и брендам.</li>
+                <li>Показывает, где маржа «проседает» из-за скидок и логистики.</li>
+              </ul>
+            </div>
+          </article>
 
-    <div class="tools-grid">
+          <article class="tool-card">
+            <div class="tool-label-row">
+              <span class="badge-pill">Калькулятор</span>
+              <span class="badge-pill-accent">Планировщик роста X-Grow</span>
+            </div>
+            <div class="tool-image">
+              <img
+                src="forecast_vs_actual_30d_v01.png"
+                alt="Планировщик роста X-Grow"
+                loading="lazy"
+              />
+            </div>
+            <div class="tool-title">Планировщик роста X-Grow</div>
+            <div class="tool-text">
+              <p>
+                Модуль для сценариев оборота, DRR и выручки по горизонтам 3–12 месяцев
+                с учётом сезонности.
+              </p>
+              <ul>
+                <li>Сценарии: базовый, осторожный и агрессивный.</li>
+                <li>Помогает согласовать план с инвестором и командой.</li>
+              </ul>
+            </div>
+          </article>
 
-      <!-- Daily P&L -->
-      <article class="tool-card">
-        <div class="tool-label-row">
-          <span class="badge-pill badge-pill--accent">P&amp;L / Финансовый учёт</span>
-          <span class="badge-pill">Калькулятор</span>
+          <article class="tool-card">
+            <div class="tool-label-row">
+              <span class="badge-pill">BI-дашборд</span>
+              <span class="badge-pill-accent">Воронка рекламы WB</span>
+            </div>
+            <div class="tool-image">
+              <img
+                src="bi_ads_funnel_wb_v01.png"
+                alt="Воронка рекламы Wildberries"
+                loading="lazy"
+              />
+            </div>
+            <div class="tool-title">Воронка рекламы Wildberries</div>
+            <div class="tool-text">
+              <p>
+                Детализация рекламы по кластерам запросов и типам кампаний:
+                показы, клики, CTR, CR и DRR.
+              </p>
+              <ul>
+                <li>Показывает, какие запросы тянут ROI, а какие только сжигают бюджет.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-label-row">
+              <span class="badge-pill">Дашборд</span>
+              <span class="badge-pill-accent">Помесячный план-факт</span>
+            </div>
+            <div class="tool-image">
+              <img
+                src="bi_wb_ozon_monthly_planfact_v01.png"
+                alt="Помесячный план-факт WB и Ozon"
+                loading="lazy"
+              />
+            </div>
+            <div class="tool-title">Помесячный план-факт WB + Ozon</div>
+            <div class="tool-text">
+              <p>
+                Отчёт по выручке, марже и DRR по маркетплейсам. Помогает планировать
+                остатки и рекламные бюджеты.
+              </p>
+              <ul>
+                <li>Срез по брендам, категориям и юрлицам.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-label-row">
+              <span class="badge-pill">Калькулятор</span>
+              <span class="badge-pill-accent">Логистика из Китая</span>
+            </div>
+            <div class="tool-image">
+              <img
+                src="freight_cost_calc_two_step_v01.png"
+                alt="Калькулятор логистики из Китая"
+                loading="lazy"
+              />
+            </div>
+            <div class="tool-title">Логистика из Китая и себестоимость</div>
+            <div class="tool-text">
+              <p>
+                Калькулятор считает полную цену товара (фрахт, таможня, склад, PL),
+                учитывает особенности поставки и итоговую себестоимость.
+              </p>
+              <ul>
+                <li>Помогает оценить маржу до запуска товара в продажу.</li>
+                <li>Показывает, какие SKU вообще не стоит везти.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="tool-card">
+            <div class="tool-label-row">
+              <span class="badge-pill">BI + SQL</span>
+              <span class="badge-pill-accent">Ежедневная воронка</span>
+            </div>
+            <div class="tool-image">
+              <img
+                src="sql_y_daily_funnel_v02.png"
+                alt="Ежедневная воронка в SQL-дашборде"
+                loading="lazy"
+              />
+            </div>
+            <div class="tool-title">Ежедневная воронка в SQL-дашборде</div>
+            <div class="tool-text">
+              <p>
+                Воронка по дням: показы, клики, корзины, выкуп, оборот и маржа.
+                Источник — выгрузки маркетплейсов, консолидированные в базе данных.
+              </p>
+              <ul>
+                <li>Подходит для e-commerce-директоров, кто любит SQL и хочет видеть динамику по дням.</li>
+              </ul>
+            </div>
+          </article>
         </div>
-        <div class="tool-image-wrap">
-          <img src="pnl_wb_project_2023_v01.png" alt="Daily P&L по маркетплейсам" loading="lazy" />
+
+        <!-- CUSTOM APPS -->
+        <div class="subsection-title">Примеры самописных программ</div>
+        <div class="tools-grid">
+          <article class="tool-card app-card">
+            <div class="tool-label-row">
+              <span class="badge-pill">Web-калькулятор</span>
+              <span class="badge-pill-accent">Daily P&amp;L demo</span>
+            </div>
+            <div class="tool-image">
+              <div>Интерактивный прототип ежедневного P&amp;L для маркетплейсов.</div>
+            </div>
+            <div class="tool-title">Калькулятор Daily P&amp;L в браузере</div>
+            <div class="tool-text">
+              <p>
+                Прототип показывает, как выглядит живой калькулятор маржи и DRR
+                в формате HTML-страницы. Можно открыть, покликать и представить,
+                как похожий инструмент встраивается в систему собственника.
+              </p>
+              <div class="tool-footer-link">
+                <a href="kommdir_daily_pnl_demo.html" target="_blank" rel="noopener">
+                  Открыть демо-калькулятор Daily P&amp;L →
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="tool-card app-card">
+            <div class="tool-label-row">
+              <span class="badge-pill">Web-калькулятор</span>
+              <span class="badge-pill-accent">Планировщик X-Grow</span>
+            </div>
+            <div class="tool-image">
+              <div>Самописный планировщик роста выручки X-Grow.</div>
+            </div>
+            <div class="tool-title">Планировщик роста X-Grow (HTML-версия)</div>
+            <div class="tool-text">
+              <p>
+                Калькулятор помогает примерить цели по обороту и марже к реальным
+                ограничениям: DRR, сезонность, поставки. Полезен собственнику,
+                который хочет увидеть «коридоры» по обороту до старта проекта.
+              </p>
+              <div class="tool-footer-link">
+                <a href="xgrow_planner_calc.html" target="_blank" rel="noopener">
+                  Открыть планировщик X-Grow →
+                </a>
+              </div>
+            </div>
+          </article>
         </div>
-        <h3 class="tool-title">Daily P&amp;L по маркетплейсам</h3>
-        <p class="tool-text">
-          Ежедневный отчёт по обороту, марже и DRR по каждому маркетплейсу.
-          Удобен для оперативного планирования и контроля кассовых разрывов.
-        </p>
-        <p class="tool-text">
-          Показывает вклад маркетинга и логистики, помогает видеть просадки
-          ещё до того, как проблемы попадают в управленческий P&amp;L.
-        </p>
-      </article>
+      </section>
 
-      <!-- Planner X-Grow -->
-      <article class="tool-card">
-        <div class="tool-label-row">
-          <span class="badge-pill badge-pill--accent">Планирование роста</span>
-          <span class="badge-pill">Калькулятор</span>
+      <!-- PROCESS -->
+      <section id="process">
+        <div class="section-kicker">Как идёт работа</div>
+        <div class="section-title">Как собираются цифры и система для собственника</div>
+        <div class="section-subtitle">
+          Задача — не забрать отчётность себе, а встроить решения в компанию так,
+          чтобы команда продолжала работать самостоятельно.
         </div>
-        <div class="tool-image-wrap">
-          <img src="2025-09_forecast_vs_actual_30d_sparklines_v01.png"
-               alt="Планировщик роста X-Grow" loading="lazy" />
+
+        <div class="process-grid">
+          <article class="step-card">
+            <div class="step-badge">Шаг 1</div>
+            <div class="step-title">Знакомство и бриф</div>
+            <ul>
+              <li>Обсуждение текущей ситуации по обороту, марже и задачам.</li>
+              <li>Сбор выгрузок: WB, Ozon, CRM, финучёт.</li>
+              <li>Формирование гипотез по узким местам.</li>
+            </ul>
+          </article>
+
+          <article class="step-card">
+            <div class="step-badge">Шаг 2</div>
+            <div class="step-title">Аудит и карта роста</div>
+            <ul>
+              <li>Разбор юрлиц, ассортиментных матриц и DRR.</li>
+              <li>Карта точек роста: выручка, маржа, оборотка.</li>
+              <li>Приоритизация: что важно сделать в ближайшие 6–12 недель.</li>
+            </ul>
+          </article>
+
+          <article class="step-card">
+            <div class="step-badge">Шаг 3</div>
+            <div class="step-title">Внедрение и еженедельный цикл</div>
+            <ul>
+              <li>Настройка отчётов и дашбордов.</li>
+              <li>Регламенты и задачи для команды.</li>
+              <li>Еженедельные созвоны по результатам и планам.</li>
+            </ul>
+          </article>
+
+          <article class="step-card">
+            <div class="step-badge">Шаг 4</div>
+            <div class="step-title">Передача системы</div>
+            <ul>
+              <li>Документация и чек-листы для команды.</li>
+              <li>Передача отчётности и калькуляторов внутрь компании.</li>
+              <li>При необходимости — поддержка в формате «по запросу».</li>
+            </ul>
+          </article>
         </div>
-        <h3 class="tool-title">Планировщик роста X-Grow</h3>
-        <p class="tool-text">
-          Модуль, который показывает прогноз/план, DRR и фактический оборот
-          по неделям и месяцам. Помогает выстраивать коридор роста и не «отбивать»
-          рекламу в слепую.
-        </p>
-        <p class="tool-text">
-          Можно использовать и для одного бренда, и для портфеля юрлиц.
-        </p>
-      </article>
+      </section>
 
-      <!-- WB ads funnel -->
-      <article class="tool-card">
-        <div class="tool-label-row">
-          <span class="badge-pill badge-pill--accent">Реклама WB</span>
-          <span class="badge-pill">Дашборд</span>
+      <!-- CONTACT -->
+      <section id="contacts">
+        <div class="section-kicker">Связаться</div>
+        <div class="section-title">Обсудить проект</div>
+        <div class="section-subtitle">
+          Можно прислать выгрузки по выручке, DRR и остаткам или просто описать
+          задачу. Ответ обычно в течение рабочего дня.
         </div>
-        <div class="tool-image-wrap">
-          <img src="bi_ads_funnel_wb_v01.png"
-               alt="Воронка рекламы Wildberries" loading="lazy" />
+
+        <div class="contact-grid">
+          <article class="contact-card">
+            <h3>Что подготовить к созвону</h3>
+            <p>
+              Чтобы не тратить время впустую, полезно заранее собрать базу:
+            </p>
+            <ul class="contact-list">
+              <li>
+                <span class="contact-label">1.</span>
+                <span>Оборот и DRR за 3–6 месяцев по WB и Ozon.</span>
+              </li>
+              <li>
+                <span class="contact-label">2.</span>
+                <span>Кратко: какие бренды, категории и бизнес-цели.</span>
+              </li>
+              <li>
+                <span class="contact-label">3.</span>
+                <span>Основные боли: касса, маржа, команда, хаос в цифрах.</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="contact-card">
+            <h3>Контакты</h3>
+            <p>Проще всего написать в Telegram или на почту.</p>
+            <ul class="contact-list">
+              <li>
+                <span class="contact-label">E-mail</span>
+                <a class="contact-link" href="mailto:s@artyuhin.ru">s@artyuhin.ru</a>
+              </li>
+              <li>
+                <span class="contact-label">Telegram</span>
+                <a class="contact-link" href="https://t.me/Hardlivers" target="_blank" rel="noopener">
+                  @Hardlivers
+                </a>
+              </li>
+            </ul>
+          </article>
         </div>
-        <h3 class="tool-title">Воронка рекламы Wildberries</h3>
-        <p class="tool-text">
-          Детализированная воронка по кластерам запросов и типам кампаний:
-          показы, клики, CTR, CR, DRR и выручка.
-        </p>
-        <p class="tool-text">
-          Помогает отключать «мусорный» трафик и усиливать прибыльные кластеры,
-          видеть эффект акций и скидок.
-        </p>
-      </article>
+      </section>
+    </main>
 
-      <!-- Monthly plan-fact WB + Ozon -->
-      <article class="tool-card">
-        <div class="tool-label-row">
-          <span class="badge-pill badge-pill--accent">BI · Дашборд по обороту</span>
-          <span class="badge-pill">Дашборд</span>
-        </div>
-        <div class="tool-image-wrap">
-          <img src="bi_wb_ozon_monthly_planfact_v01.png"
-               alt="Помещенный план-факт WB и Ozon" loading="lazy" />
-        </div>
-        <h3 class="tool-title">Помещенный план-факт WB + Ozon</h3>
-        <p class="tool-text">
-          Сводный отчёт по обороту, марже и DRR по маркетплейсам. Используем
-          для ежемесячного планирования и договорённостей с инвесторами.
-        </p>
-        <p class="tool-text">
-          В одном экране видно: какие юрлица «тянут» портфель, где падает маржа
-          и какие каналы не оправдывают рекламу.
-        </p>
-      </article>
-
-      <!-- Logistics & cost -->
-      <article class="tool-card">
-        <div class="tool-label-row">
-          <span class="badge-pill badge-pill--accent">Калькулятор</span>
-          <span class="badge-pill">Логистика из Китая</span>
-        </div>
-        <div class="tool-image-wrap">
-          <img src="freight_cost_calc_two_step_v01.png"
-               alt="Калькулятор логистики и себестоимости из Китая" loading="lazy" />
-        </div>
-        <h3 class="tool-title">Логистика из Китая и себестоимость</h3>
-        <p class="tool-text">
-          Калькулятор считает полную цену товара (фрахт, таможня, склад, РЦ,
-          маркетплейсы), чтобы принимать решения не «на глаз», а от юнит-экономики.
-        </p>
-        <p class="tool-text">
-          Помогает заранее оценить маржу до запуска товара и понять, какие SKU
-          вообще не стоит везти.
-        </p>
-      </article>
-
-      <!-- Daily SQL funnel -->
-      <article class="tool-card">
-        <div class="tool-label-row">
-          <span class="badge-pill badge-pill--accent">BI · SQL</span>
-          <span class="badge-pill">Дашборд</span>
-        </div>
-        <div class="tool-image-wrap">
-          <img src="sql_y_daily_funnel_v02.png"
-               alt="Ежедневная воронка в SQL-дашборде" loading="lazy" />
-        </div>
-        <h3 class="tool-title">Ежедневная воронка в SQL-дашборде</h3>
-        <p class="tool-text">
-          Воронка по дням: показы, клики, корзины, выкуп, оборот и маржа.
-          Источник — выгрузки маркетплейса, консолидированные в базе данных.
-        </p>
-        <p class="tool-text">
-          Показывает динамику по дням и неделям, подходит руководителям, которым
-          важна именно структура воронки, а не только общий оборот.
-        </p>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section class="section" id="process">
-    <div class="section-header">
-      <div class="section-kicker">Как работаем</div>
-      <div class="section-title">Как мы собираем цифры и систему для собственника</div>
-    </div>
-
-    <div class="steps-grid">
-      <article class="step-card">
-        <div class="step-badge">Шаг 1</div>
-        <h3 class="step-title">Знакомство и бриф</h3>
-        <p class="step-text">
-          Обсуждаем текущую ситуацию по обороту, марже и задачам. Собираем доступы
-          к кабинетам, BI и отчётам. Формируем гипотезы, где «болит» сильнее всего.
-        </p>
-      </article>
-
-      <article class="step-card">
-        <div class="step-badge">Шаг 2</div>
-        <h3 class="step-title">Аудит и карта роста</h3>
-        <p class="step-text">
-          Разбираем юнит-экономику, DRR, остатки и рекламу. Выявляем точки роста,
-          формируем карту на 6–12 месяцев с приоритетами.
-        </p>
-      </article>
-
-      <article class="step-card">
-        <div class="step-badge">Шаг 3</div>
-        <h3 class="step-title">Внедрение и еженедельный цикл</h3>
-        <p class="step-text">
-          Настраиваем отчёты, регламенты и управленческие созвоны. Обучаем команду,
-          чтобы новый формат стал частью рутины.
-        </p>
-      </article>
-
-      <article class="step-card">
-        <div class="step-badge">Шаг 4</div>
-        <h3 class="step-title">Передача системы</h3>
-        <p class="step-text">
-          Когда система стабильно работает, остаёмся на формате ежемесячного
-          сопровождения или передаём управление внутренней команде.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <!-- CONTACTS -->
-  <section class="section" id="contacts">
-    <div class="contacts">
-      <div class="contacts-card">
-        <h3 class="contacts-title">Обсудить проект</h3>
-        <p class="contacts-text">
-          Напишите пару слов о бренде, обороте и задаче. Можно прислать ссылку
-          на кабинет WB/Ozon или скриншоты — так быстрее поймём масштаб работы.
-        </p>
-        <ul class="contacts-list">
-          <li>• Telegram: <strong>@Hardlivers</strong></li>
-          <li>• Email: <strong>s@artyuhin.ru</strong></li>
-        </ul>
-        <p class="contacts-hint">
-          В ответ пришлём короткий список гипотез по росту и предложим формат работы.
-        </p>
-      </div>
-
-      <div class="contacts-card">
-        <h3 class="contacts-title">Что подготовить к созвону</h3>
-        <p class="contacts-text">
-          Чтобы не тратить время, достаточно:
-        </p>
-        <ul class="contacts-list">
-          <li>• Скрин оборота и DRR за 3–6 месяцев.</li>
-          <li>• Понимание, какие категории приоритетны.</li>
-          <li>• Примерно обозначить желаемый результат и горизонт (3–12 мес).</li>
-        </ul>
-        <p class="contacts-hint">
-          Остальное разберём уже на встрече — поможем сформулировать цель и план.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <span>© 2025 Kommdir Systems</span>
-    <span>Маркетплейсы · BI · Операционный дизайн</span>
-  </footer>
-</div>
+    <footer>
+      Коммерческий директор маркетплейсов · Sergey Artyukhin · Kommdir Systems
+    </footer>
+  </div>
 </body>
 </html>
-
