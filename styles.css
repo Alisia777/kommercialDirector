@@ -1,0 +1,213 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #0e1a2b;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    color: #ffa600;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.hero {
+    background: radial-gradient(circle at top right, #1c2e4a, #0e1a2b);
+    padding: 3rem 0;
+}
+
+.hero .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-content {
+    flex: 1 1 400px;
+    margin-right: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    margin-bottom: 1.5rem;
+    color: #b3c3d3;
+}
+
+.hero .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #ffa600;
+    color: #0e1a2b;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.hero .btn:hover {
+    background: #cc8400;
+}
+
+.hero-image img {
+    max-width: 500px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.services {
+    background: #0a1420;
+}
+
+.services h2, .cases h2, .cta h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.card {
+    flex: 1 1 280px;
+    background: #15263f;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.4rem;
+    color: #ffa600;
+}
+
+.card p {
+    color: #b3c3d3;
+    font-size: 0.95rem;
+}
+
+.cases {
+    background: #0e1a2b;
+}
+
+.cases-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.case {
+    flex: 1 1 300px;
+    background: #15263f;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.case h4 {
+    color: #ffa600;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.case p {
+    color: #b3c3d3;
+    font-size: 0.9rem;
+}
+
+.cta {
+    background: #15263f;
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.cta p {
+    color: #b3c3d3;
+    margin-bottom: 1rem;
+}
+
+.cta .btn {
+    padding: 0.75rem 2rem;
+    background: #ffa600;
+    color: #0e1a2b;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.cta .btn:hover {
+    background: #cc8400;
+}
+
+footer {
+    background: #0a1420;
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.85rem;
+    color: #6e7f96;
+}
+
+.telegram-float {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 56px;
+    height: 56px;
+    z-index: 100;
+    transition: transform 0.3s;
+}
+
+.telegram-float:hover {
+    transform: scale(1.1);
+}
+
+.telegram-float svg {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-content {
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+    .cards, .cases-grid {
+        flex-direction: column;
+    }
+    .hero-image img {
+        max-width: 300px;
+    }
+}
