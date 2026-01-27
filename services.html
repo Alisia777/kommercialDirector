@@ -27,20 +27,27 @@
     <a class="btn" href="tg.html?g=tg_header" data-track="tg">Написать в Telegram</a>
   </div>
 
-  <header class="header" id="top">
-    <div class="container">
-      <nav class="nav">
-        <a class="brand" href="index.html"><span class="logo">🦊</span><strong>Kommdir Systems</strong><span class="micro">— маркетплейсы · BI</span></a>
-        <button class="menu" type="button" data-nav-toggle aria-expanded="false" aria-label="Открыть меню">Меню</button>
-        <div class="nav-links">
-          <a href="index.html">Главная</a>
-          <a class="active" href="services.html">Услуги</a>
-          <a href="cases.html">Кейсы</a>
+  <header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">🦊</span>
+      <span class="brand-name">Kommdir Systems</span>
+      <span class="badge badge-glow">WB • Ozon • BI • Автоматизация</span>
+    </a>
+
+    <div class="nav" data-nav>
+      <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" data-nav-toggle>☰</button>
+      <nav class="nav-links" aria-label="Навигация">
+        <a href="index.html">Главная</a>
+        <a href="services.html">Услуги</a>
+        <a href="cases.html">Кейсы</a>
         <a href="demos.html">Демо</a>
-</div>
+        <a href="index.html#contact">Контакты</a>
+        <a class="btn small" href="tg.html?g=header">Написать</a>
       </nav>
     </div>
-  </header>
+  </div>
+</header>
 
   <main>
     <section class="section">
@@ -79,7 +86,7 @@
         <div class="kicker">Блоки</div>
         <h2 class="h2">Что именно делаем</h2>
         <div class="grid-3" data-stagger="80">
-          <div class="card pad" data-reveal>
+          <div class="card pad" data-reveal id="start">
             <div class="badge">Старт</div>
             <h3 class="h3">Подбор ниши и оценка категории</h3>
             <ul class="list">
@@ -99,7 +106,7 @@
               <li>Подготовка к старту рекламы.</li>
             </ul>
           </div>
-          <div class="card pad" data-reveal>
+          <div class="card pad" data-reveal id="cabinet">
             <div class="badge">Операционка</div>
             <h3 class="h3">Ведение кабинета WB / Ozon</h3>
             <ul class="list">
@@ -129,7 +136,7 @@
               <li>Калькуляторы: логистика, Китай, себестоимость.</li>
             </ul>
           </div>
-          <div class="card pad" data-reveal>
+          <div class="card pad" data-reveal id="bi">
             <div class="badge">BI</div>
             <h3 class="h3">Дашборды и аналитика</h3>
             <ul class="list">

@@ -97,3 +97,55 @@
     });
   }
 })();
+
+// ---- v7: nav active state (no more "нет подсветки" + items don't jump) ----
+(function(){
+  const links = Array.from(document.querySelectorAll('.nav-links a[href]'));
+  if (!links.length) return;
+
+  const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+
+  function setActive(target){
+    links.forEach(a => {
+      a.classList.remove('active');
+      a.removeAttribute('aria-current');
+    });
+    if (!target) return;
+    target.classList.add('active');
+    // Only set aria-current for real pages (not hash on index)
+    const href = (target.getAttribute('href') || '').split('#')[0].toLowerCase();
+    if (href && href !== '' && href !== 'index.html#contact') {
+      target.setAttribute('aria-current','page');
+    }
+  }
+
+  // Initial active based on pathname
+  let matched = null;
+  for (const a of links) {
+    const href = (a.getAttribute('href') || '').trim();
+    if (!href || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) continue;
+    const page = href.split('#')[0].toLowerCase();
+    if (!page) continue;
+    if (page === current) { matched = a; break; }
+    // Treat "index.html" as default for root
+    if (current === '' && page === 'index.html') { matched = a; break; }
+  }
+  if (matched) setActive(matched);
+
+  // If we're on index and there is a hash, highlight "Контакты" when appropriate
+  if (current === 'index.html' && location.hash) {
+    const h = location.hash.toLowerCase();
+    if (h === '#contact') {
+      const c = links.find(a => (a.getAttribute('href')||'').toLowerCase().includes('#contact'));
+      if (c) setActive(c);
+    }
+  }
+
+  // Click highlight for in-page anchors
+  links.forEach(a => {
+    a.addEventListener('click', () => {
+      const href = (a.getAttribute('href') || '');
+      if (href.includes('#')) setActive(a);
+    });
+  });
+})();
