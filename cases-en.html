@@ -6,7 +6,7 @@
   <title>Cases — Kommdir Systems</title>
   <meta name="description" content="Cases: BI, plan vs actual, inventory, ads and operating processes."/>
   <link rel="icon" type="image/png" href="assets/favicon.png"/>
-  <link rel="stylesheet" href="assets/styles.css?v=7"/>
+  <link rel="stylesheet" href="assets/styles.css"/>
 
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
@@ -74,7 +74,7 @@
                 <a class="btn ghost" href="services-en.html#cabinet">Operations</a>
               </div>
             </div>
-            <div class="hero-visual" aria-hidden="true"><img src="assets/hero_cases.svg" alt=""></div>
+            <div class="hero-visual" style="background-image:url('assets/hero_cases.png')" aria-hidden="true"></div>
           </div>
         </div>
       </div>
@@ -83,50 +83,39 @@
     <section class="section">
       <div class="container">
         <div class="kicker">BI</div>
-        <h2>Control screens</h2>
-        <p class="muted" style="margin-top:10px">Below are real screenshots from my control loops and growth cases (some data may be anonymized).</p>
+        <h2>Control screens (masked)</h2>
+        <p class="muted" style="margin-top:10px">NDA-safe masking. Purpose: show the structure and logic of decision making.</p>
 
         <div class="gallery" style="margin-top:16px">
-<a class="figure hover screen" href="bi_ads_funnel_wb_v01.png" target="_blank" rel="noopener">
-  <div class="thumb">
-    <img loading="lazy" decoding="async" src="assets/thumbs/bi_ads_funnel_wb_v01_thumb.webp" alt="WB Ads funnel & KPIs">
-  </div>
-  <div class="figcap">
-    <strong>WB ads: funnel & KPIs</strong>
-    <span>DRR/CTR/CPC, orders, trends, and campaign breakdown by funnel stages.</span>
-  </div>
-</a>
-
-<a class="figure hover screen" href="daily_manager_checklist_v01.png" target="_blank" rel="noopener">
-  <div class="thumb">
-    <img loading="lazy" decoding="async" src="assets/thumbs/daily_manager_checklist_v01_thumb.webp" alt="Daily manager checklist">
-  </div>
-  <div class="figcap">
-    <strong>Daily manager checklist</strong>
-    <span>Rates / stock / price / listing control — to stop profit leaks early.</span>
-  </div>
-</a>
-
-<a class="figure hover screen" href="case_wb_boots_sales_funnel_v01.png" target="_blank" rel="noopener">
-  <div class="thumb">
-    <img loading="lazy" decoding="async" src="assets/thumbs/case_wb_boots_sales_funnel_v01_thumb.webp" alt="Growth case: boots sales funnel">
-  </div>
-  <div class="figcap">
-    <strong>Growth case: boots sales funnel</strong>
-    <span>Funnel structure + ads “links” control + SKU-level actions.</span>
-  </div>
-</a>
-
-<a class="figure hover screen" href="case_wb_hoodie_black_mpstats_v01.png" target="_blank" rel="noopener">
-  <div class="thumb">
-    <img loading="lazy" decoding="async" src="assets/thumbs/case_wb_hoodie_black_mpstats_v01_thumb.webp" alt="Growth case: hoodie (MPStats)">
-  </div>
-  <div class="figcap">
-    <strong>Growth case: hoodie (MPStats)</strong>
-    <span>Data → hypotheses → execution control. You see where money “leaks”.</span>
-  </div>
-</a>
-</div>
+          <a class="figure hover" href="assets/screens/bi_kpi_overview_masked.jpg" target="_blank" rel="noopener">
+            <img src="assets/screens/bi_kpi_overview_masked.jpg" alt="BI KPI overview (masked)">
+            <div class="figcap">
+              <strong>Executive KPI overview</strong>
+              <span>Revenue, orders, AOV, dynamics, deviations.</span>
+            </div>
+          </a>
+          <a class="figure hover" href="assets/screens/bi_reorder_masked.jpg" target="_blank" rel="noopener">
+            <img src="assets/screens/bi_reorder_masked.jpg" alt="Reorder / stock (masked)">
+            <div class="figcap">
+              <strong>Inventory & replenishment</strong>
+              <span>OOS/overstock signals, SKU prioritization.</span>
+            </div>
+          </a>
+          <a class="figure hover" href="assets/screens/bi_abcxyz_masked.jpg" target="_blank" rel="noopener">
+            <img src="assets/screens/bi_abcxyz_masked.jpg" alt="ABC/XYZ (masked)">
+            <div class="figcap">
+              <strong>ABC/XYZ & assortment</strong>
+              <span>Top/anti items, discounts, contribution.</span>
+            </div>
+          </a>
+          <a class="figure hover" href="assets/screens/bi_rfm_clients_masked.jpg" target="_blank" rel="noopener">
+            <img src="assets/screens/bi_rfm_clients_masked.jpg" alt="RFM clients (masked)">
+            <div class="figcap">
+              <strong>Customers / RFM</strong>
+              <span>Segments, repeat purchases, growth levers.</span>
+            </div>
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -152,8 +141,8 @@
     </div>
   </footer>
 
-  <script src="assets/site.js?v=7"></script>
-  <script src="assets/lang.js?v=7"></script>
+  <script src="assets/site.js"></script>
+  <script src="assets/lang.js"></script>
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
