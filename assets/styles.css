@@ -238,3 +238,7 @@ p{margin:0;line-height:1.7}
   .card.hover, .btn{transition:none!important}
   .card.hover:hover{transform:none}
 }
+
+
+/* v6 premium hero: show more of image */
+.hero-visual:after{background:linear-gradient(90deg, rgba(7,9,16,.10), rgba(7,9,16,.35));}
