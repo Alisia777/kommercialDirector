@@ -3,17 +3,16 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Kommdir Systems — коммерческий директор для WB / Ozon</title>
-  <meta name="description" content="Коммерческий директор/операционный архитектор для маркетплейсов: стратегия, рост продаж, финмодели, BI и автоматизация."/>
+  <title>Kommdir Systems — коммерческий директор маркетплейсов</title>
+  <meta name="description" content="Внешний коммерческий директор маркетплейсов: системы управления, BI, контроль прибыли, ведение WB/Ozon."/>
+  <link rel="icon" href="assets/favicon.png"/>
   <link rel="stylesheet" href="assets/styles.css"/>
-
-
-  <!-- Yandex.Metrika counter --> 
+  <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}
         m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; } }
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105600432', 'ym');
 
@@ -23,229 +22,309 @@
   <!-- /Yandex.Metrika counter -->
 </head>
 <body id="top">
+
+  <!-- Icon sprite -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden">
+    <symbol id="ico-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 6L9 17l-5-5"/>
+    </symbol>
+    <symbol id="ico-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </symbol>
+    <symbol id="ico-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V7l8-4z"/>
+      <path d="M9 12l2 2 4-5"/>
+    </symbol>
+    <symbol id="ico-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 19V5"/>
+      <path d="M4 19h16"/>
+      <path d="M8 15v-4"/>
+      <path d="M12 15V7"/>
+      <path d="M16 15v-2"/>
+    </symbol>
+    <symbol id="ico-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4h7v7H4z"/>
+      <path d="M13 4h7v7h-7z"/>
+      <path d="M4 13h7v7H4z"/>
+      <path d="M13 13h7v7h-7z"/>
+    </symbol>
+    <symbol id="ico-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10z"/>
+      <path d="M12 6v6l4 2"/>
+    </symbol>
+    <symbol id="ico-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/>
+    </symbol>
+    <symbol id="ico-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="12" cy="5" rx="8" ry="3"/>
+      <path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/>
+      <path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>
+    </symbol>
+    <symbol id="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h12"/>
+      <path d="M13 6l6 6-6 6"/>
+    </symbol>
+  </svg>
+
   <div class="floating">
-    <a class="btn" href="tg.html?g=tg_header" data-track="tg">Написать в Telegram</a>
+    <a class="btn primary" href="tg.html?g=tg_float" data-track="tg">Написать в Telegram</a>
   </div>
 
   <header class="site-header">
-  <div class="container header-row">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">🦊</span>
-      <span class="brand-name">Kommdir Systems</span>
-      <span class="badge badge-glow">WB • Ozon • BI • Автоматизация</span>
-    </a>
+    <div class="container header-row">
+      <a class="brand" href="index.html" aria-label="Kommdir Systems">
+        <img src="assets/fox.png" alt="Fox logo">
+        <span class="brand-name">Kommdir Systems</span>
+        <span class="badge" data-i18n="brand_badge">WB • Ozon • BI • Автоматизация</span>
+      </a>
 
-    <div class="nav" data-nav>
-      <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" data-nav-toggle>☰</button>
-      <nav class="nav-links" aria-label="Навигация">
-        <a href="index.html">Главная</a>
-        <a href="services.html">Услуги</a>
-        <a href="cases.html">Кейсы</a>
-        <a href="demos.html">Демо</a>
-        <a href="index.html#contact">Контакты</a>
-        <a class="btn small" href="tg.html?g=header">Написать</a>
-      </nav>
+      <div class="nav" data-nav>
+        <button class="burger btn small" type="button" aria-label="Открыть меню" aria-expanded="false" data-nav-toggle>☰</button>
+        <nav class="nav-links" aria-label="Навигация">
+          <a href="index.html" data-i18n="nav_home">Главная</a>
+          <a href="services.html" data-i18n="nav_services">Услуги</a>
+          <a href="cases.html" data-i18n="nav_cases">Кейсы</a>
+          <a href="demos.html" data-i18n="nav_demo">Демо</a>
+          <a href="index.html#contact" data-i18n="nav_contacts">Контакты</a>
+          <a class="btn small primary" href="tg.html?g=header" data-i18n="nav_write">Написать</a>
+        </nav>
+      </div>
+
+      <div class="lang" aria-label="Language">
+        <button type="button" data-lang-btn="ru" class="active">RU</button>
+        <button type="button" data-lang-btn="en">EN</button>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
   <main>
     <section class="hero">
-  <div class="container">
-    <div class="hero-frame">
-      <div class="hero-grid">
-        <div data-reveal>
-          <h1>Помогаю собственнику выстроить <span class="accent">продажи и аналитику</span> на маркетплейсах</h1>
-          <p class="lead">Если нужно перестать «тушить пожары» и собрать систему: стратегия, ассортимент, финмодель, реклама, BI и автоматизация. Подключаюсь как внешний коммерческий директор / архитектор роста.</p>
+      <div class="container">
+        <div class="hero-frame">
+          <div class="hero-inner">
+            <div>
+              <div class="kicker">Kommdir Systems</div>
+              <h1 data-i18n="hero_title">Внешний коммерческий директор маркетплейсов</h1>
+              <p class="lead" data-i18n="hero_sub">Системы, BI и контроль прибыли — без хаоса и слива маржи</p>
+              <p class="lead" data-i18n="hero_lead">Если оборот есть, но прибыль не управляется: DRR прыгает, остатки то 0 то «2 месяца», команда работает по чату. Я собираю контур: P&L, BI, ритм решений 30/60/90 и KPI.</p>
 
-          <div class="chips" style="margin-top:14px">
-            <span class="chip">Аудит и план роста за 7–10 дней</span>
-            <span class="chip">Ведение WB/Ozon + контроль DRR/маржи</span>
-            <span class="chip">Дашборды, SQL, API, автоматизация</span>
-          </div>
+              <div class="chips" style="margin-top:14px">
+                <span class="chip">Фокус: прибыль, а не “выручка ради выручки”</span>
+                <span class="chip">DRR/ACoS под контролем</span>
+                <span class="chip">Остатки, заказ товара, оборачиваемость</span>
+              </div>
 
-          <div class="topic-tabs" style="margin-top:14px">
-            <a class="topic-tab" href="services.html#start">Старт</a>
-            <a class="topic-tab" href="services.html#cabinet">Ведение</a>
-            <a class="topic-tab" href="services.html#bi">BI/Автоматизация</a>
-            <a class="topic-tab" href="cases.html">Кейсы</a>
-          </div>
+              <div class="btn-row" style="margin-top:18px">
+                <a class="btn primary" href="tg.html?g=lead_main" data-track="lead_main" data-i18n="cta_main">Написать в Telegram</a>
+                <a class="btn ghost" href="services.html" data-i18n="cta_secondary">Посмотреть услуги</a>
+              </div>
 
-          <div class="btn-row" style="margin-top:18px">
-            <a class="btn" href="tg.html?g=lead_main">Написать в Telegram</a>
-            <a class="btn secondary" href="services.html">Посмотреть услуги</a>
-          </div>
-
-          <div class="micro">
-            Быстрый вход: <a href="services.html#start">подбор ниши</a> · <a href="services.html#cabinet">ведение кабинета</a> · <a href="services.html#bi">BI/автоматизация</a>
-          </div>
-        </div>
-
-        <div class="hero-card" data-reveal>
-          <div class="hero-img" style="background-image:url('assets/hero.png')"></div>
-          <div class="hero-stats">
-            <div class="stat">
-              <div class="k">70+</div>
-              <div class="t">человек в командах</div>
+              <div class="micro" style="margin-top:10px">
+                Быстрый вход: <a href="services.html#start">аудит</a> · <a href="services.html#cabinet">ведение</a> · <a href="services.html#bi">BI</a>
+              </div>
             </div>
-            <div class="stat">
-              <div class="k">500+</div>
-              <div class="t">SKU в управлении</div>
-            </div>
-            <div class="stat">
-              <div class="k">3+ млрд ₽</div>
-              <div class="t">опыт оборота проектов</div>
-            </div>
-          </div>
-          <div class="hero-note">
-            <span class="dot"></span>
-            Фокус: прибыльность, оборачиваемость, устойчивые процессы.
+
+            <div class="hero-visual" style="background-image:url('assets/hero_home.png')" aria-hidden="true"></div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
+
+
+    <section class="section" id="trust">
+      <div class="container">
+        <div class="grid-2">
+          <div>
+            <div class="kicker">Доверие</div>
+            <h2>Вы получаете управленческий контур, а не “ведение кабинета”</h2>
+            <p class="muted" style="margin-top:10px">Подключаюсь как внешний коммерческий директор маркетплейсов: экономика, реклама, ассортимент, остатки, BI и ритм решений. Цель — стабильная прибыль и понятные причины отклонений.</p>
+
+            <div class="stats">
+              <div class="stat">
+                <div class="stat-top">
+                  <div class="stat-num">3+ млрд ₽</div>
+                  <svg class="icon gold" aria-hidden="true"><use href="#ico-chart"></use></svg>
+                </div>
+                <div class="stat-label">оборот проектов в управлении (часть кейсов под NDA)</div>
+              </div>
+
+              <div class="stat">
+                <div class="stat-top">
+                  <div class="stat-num">50–70</div>
+                  <svg class="icon gold" aria-hidden="true"><use href="#ico-shield"></use></svg>
+                </div>
+                <div class="stat-label">команды и операционные контуры, которые я выстраивала/вела</div>
+              </div>
+
+              <div class="stat">
+                <div class="stat-top">
+                  <div class="stat-num">30/60/90</div>
+                  <svg class="icon gold" aria-hidden="true"><use href="#ico-clock"></use></svg>
+                </div>
+                <div class="stat-label">управленческий цикл: план → факт → причины → решения</div>
+              </div>
+
+              <div class="stat">
+                <div class="stat-top">
+                  <div class="stat-num">BI‑контур</div>
+                  <svg class="icon gold" aria-hidden="true"><use href="#ico-db"></use></svg>
+                </div>
+                <div class="stat-label">одно окно для собственника: маржа, DRR, остатки, план‑факт</div>
+              </div>
+            </div>
+
+            <div class="note micro" style="margin-top:12px">
+              NDA: названия кабинетов и брендов не публикую. Но покажу структуру отчётности и демо‑экран, чтобы было видно уровень контроля.
+            </div>
+          </div>
+
+          <div class="card pad">
+            <div class="badge"><svg class="icon" aria-hidden="true"><use href="#ico-shield"></use></svg>Как устроена работа</div>
+            <ul class="checklist">
+              <li><svg class="icon" aria-hidden="true"><use href="#ico-check"></use></svg>24–48 часов: сбор вводных + первичная диагностика</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#ico-check"></use></svg>7–10 дней: план 30/60/90 + KPI и “что делать завтра”</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#ico-check"></use></svg>Еженедельно: план→факт→причины→решения (без воды)</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#ico-check"></use></svg>BI и алерты: собственник видит прибыль и риски раньше, чем “пожар”</li>
+            </ul>
+
+            <div class="cta" style="margin-top:14px">
+              <div class="cta-row">
+                <div>
+                  <strong>Напишите в Telegram</strong>
+                  <div class="micro">Ниша → оборот → главная боль. В ответ — 3–5 вопросов и формат подключения.</div>
+                </div>
+                <div><a class="btn primary" href="tg.html?g=lead_trust">Написать</a></div>
+              </div>
+            </div>
+
+            <div class="micro" style="margin-top:10px">Беру ограниченное число проектов одновременно — качество и контроль важнее объёма.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
 
     <section class="section">
       <div class="container">
-        <h2>Кому обычно подходит</h2>
-    <div class="cards3" data-stagger="80">
-        <div class="card" data-reveal>
-            <h3>Собственнику бренда</h3>
-            <ul>
-              <li>Нужен рост продаж и контроль маржи</li>
-              <li>Хочется понятный план + система</li>
-              <li>Надо «собрать» команду и процессы</li>
-            </ul>
+        <h2>Что вы получаете</h2>
+        <div class="cards3" style="margin-top:14px">
+          <div class="card pad">
+            <div class="badge"><svg class="icon" aria-hidden="true"><use href="#ico-chart"></use></svg>Контроль</div>
+            <h3 style="margin-top:10px">P&L и метрики</h3>
+            <p class="muted" style="margin-top:8px">Маржа по SKU/категориям, DRR/ACoS, оборачиваемость, остатки, план‑факт. Без “на глаз”.</p>
           </div>
-          <div class="card" data-reveal>
-            <h3>Инвестору / управляющему</h3>
-            <ul>
-              <li>Нужна прозрачная отчётность и P&L</li>
-              <li>Выявить дырки: реклама, цены, логистика</li>
-              <li>Сделать контроль исполнения</li>
-            </ul>
+          <div class="card pad">
+            <div class="badge"><svg class="icon" aria-hidden="true"><use href="#ico-clock"></use></svg>Ритм</div>
+            <h3 style="margin-top:10px">30/60/90</h3>
+            <p class="muted" style="margin-top:8px">Еженедельный цикл: план → факт → причины → решения. У собственника появляется предсказуемость.</p>
           </div>
-          <div class="card" data-reveal>
-            <h3>Внутренней команде</h3>
-            <ul>
-              <li>Не хватает стратегии и приоритетов</li>
-              <li>Нужно ритм: планы/факт/действия</li>
-              <li>Нужны дашборды и автоматизация</li>
-            </ul>
+          <div class="card pad">
+            <div class="badge"><svg class="icon" aria-hidden="true"><use href="#ico-grid"></use></svg>Система</div>
+            <h3 style="margin-top:10px">Команда и процессы</h3>
+            <p class="muted" style="margin-top:8px">Регламенты, KPI, ответственность по блокам. Я выстраиваю систему, а не “живу в задачах”.</p>
+          </div>
+        </div>
+
+        <div class="cta" style="margin-top:16px">
+          <div class="cta-row">
+            <div>
+              <div class="kicker">Быстрый шаг</div>
+              <p class="muted">Напишите в Telegram 3 вещи: ниша/категория, оборот, главная боль. В ответ — уточняющие вопросы и следующий шаг.</p>
+            </div>
+            <div><a class="btn primary" href="tg.html?g=lead_home_bottom">Написать в Telegram</a></div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
+
 
     <section class="section">
       <div class="container">
-        <div class="section-head">
-          <h2>Ключевые услуги</h2>
-          <a class="btn small secondary" href="services.html">Открыть все услуги</a>
+        <h2>Кому это подходит</h2>
+        <div class="cards2" style="margin-top:14px">
+          <div class="card pad">
+            <div class="badge"><svg class="icon" aria-hidden="true"><use href="#ico-check"></use></svg>Подходит</div>
+            <h3 style="margin-top:10px">Собственнику с оборотом</h3>
+            <ul class="list">
+              <li>Есть продажи, но прибыль “плавает” и не объясняется цифрами</li>
+              <li>Реклама есть, контроля нет: DRR/ACoS не держится</li>
+              <li>Остатки то 0, то “залиты” — оборачиваемость не под управлением</li>
+            </ul>
+          </div>
+          <div class="card pad">
+            <div class="badge"><svg class="icon" aria-hidden="true"><use href="#ico-x"></use></svg>Не подходит</div>
+            <h3 style="margin-top:10px">Если ищете “исполнителя”</h3>
+            <ul class="list">
+              <li>Нужен “менеджер по кнопкам” без ответственности за P&L</li>
+              <li>Вы хотите отчёты “для галочки”, а не причинно‑следственные решения</li>
+              <li>Вы не готовы смотреть на реальную маржу и менять процессы</li>
+            </ul>
+          </div>
         </div>
-    <div class="cards3" data-stagger="80">
-          <div class="card" data-reveal>
-            <h3>Подбор ниши + финмодель</h3>
-            <p class="muted">Считаем экономику: себестоимость, комиссия, логистика, реклама, маржа. Выбираем SKU «по деньгам».</p>
-            <div class="pill">от 7–14 дней</div>
-          </div>
-          <div class="card" data-reveal>
-            <h3>Ведение кабинетов WB/Ozon</h3>
-            <p class="muted">Контроль воронки: цены, остатки, реклама, карточки, отзывы, акции. Планы/факт, ежедневный P&L.</p>
-            <div class="pill">еженедельный цикл</div>
-          </div>
-          <div class="card" data-reveal>
-            <h3>BI и автоматизация</h3>
-            <p class="muted">Дашборды, SQL, API, ETL. Убираем ручной труд, даём прозрачность и скорость решений.</p>
-            <div class="pill">проектно / ретейнер</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Кейсы</h2>
-          <a class="btn small secondary" href="cases.html">Смотреть кейсы</a>
-        </div>
-    <div class="cards3" data-stagger="80">
-          <a class="card link" data-reveal href="cases.html#case-01">
-            <h3>Рост выручки + контроль DRR</h3>
-            <p class="muted">Пересборка рекламной структуры + KPI по марже → рост и стабилизация.</p>
-            <div class="pill">скрин + цифры</div>
-          </a>
-          <a class="card link" data-reveal href="cases.html#case-02">
-            <h3>План‑факт + ежедневный P&L</h3>
-            <p class="muted">Единый формат отчётности, чтобы команда не расползалась и было видно «что делаем».</p>
-            <div class="pill">таблицы + дашборд</div>
-          </a>
-          <a class="card link" data-reveal href="cases.html#case-03">
-            <h3>BI‑слой: SQL + витрины</h3>
-            <p class="muted">Собрали витрины данных для маркетплейсов: продажи, остатки, реклама, маржа.</p>
-            <div class="pill">SQL + графики</div>
-          </a>
+        <div class="cta" style="margin-top:16px">
+          <div class="cta-row">
+            <div>
+              <strong>Быстрый вход:</strong> ниша → оборот → главная боль.
+              <div class="micro">В ответ — 3–5 вопросов и вариант формата: аудит / ведение / BI.</div>
+            </div>
+            <div><a class="btn primary" href="tg.html?g=lead_fit">Написать</a></div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
+
 
     <section class="section" id="contact">
       <div class="container">
-        <h2>Контакты</h2>
-    <div class="cards2" data-stagger="80">
-          <div class="card" data-reveal>
-            <h3>Быстрее всего — Telegram</h3>
-            <p class="muted">Напишите 2 строки: ниша, оборот, и что болит (маржа/реклама/остатки/команда/BI). В ответ — уточняющие вопросы и план созвона.</p>
-            <div class="btn-row">
-              <a class="btn" href="tg.html?g=lead_main">Написать в Telegram</a>
-              <a class="btn secondary" href="services.html#packages">Посмотреть пакеты</a>
+        <h2 data-i18n="nav_contacts">Контакты</h2>
+        <div class="cards2" style="margin-top:14px">
+          <div class="card pad">
+            <h3>Telegram — основной канал</h3>
+            <p class="muted">Коммуникация короткая и деловая. Я отвечаю по сути: что вижу и какой формат работы имеет смысл.</p>
+            <div class="btn-row" style="margin-top:12px">
+              <a class="btn primary" href="tg.html?g=lead_contact">Написать</a>
+              <a class="btn" href="services.html#packages">Пакеты</a>
             </div>
-            <div class="micro">Только Telegram (без звонков): <a href="https://t.me/Hardlivers" target="_blank" rel="noopener">t.me/Hardlivers</a></div>
+            <div class="micro" style="margin-top:8px">Telegram: <a href="https://t.me/Hardlivers" target="_blank" rel="noopener">@Hardlivers</a></div>
           </div>
-          <div class="card" data-reveal>
-            <h3>Что подготовить к созвону</h3>
-            <ul>
-              <li>Ссылка на кабинет WB/Ozon (или доступ гостем)</li>
-              <li>Топ‑10 SKU по обороту / марже</li>
-              <li>Текущие расходы: логистика, реклама, склад</li>
-              <li>Цели на 30/90 дней</li>
+          <div class="card pad">
+            <h3>Что подготовить</h3>
+            <ul class="list">
+              <li>Ссылку на магазин / бренд и ключевые SKU</li>
+              <li>Оборот и маржа (если знаете) / DRR</li>
+              <li>Где болит: реклама / остатки / команда / отчётность</li>
             </ul>
-            <div class="callout" style="margin-top:12px">Если метрика/цели ещё не настроены — сделаем это в первые 24 часа, иначе реклама «слепая».</div>
+            <div class="callout" style="margin-top:12px">Если метрики и цели не настроены — выстроим в первые 24 часа. Иначе вы “едете без приборов”.</div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
   </main>
-
   <footer class="footer">
     <div class="container">
       <div class="footer-row">
         <div>
-          <div class="brand" style="gap:10px"><span class="logo">🦊</span><strong>Kommdir Systems</strong></div>
-          <div class="micro">© <span id="y"></span> · Коммерческий директор маркетплейсов · BI/автоматизация</div>
+          <div class="brand" style="gap:10px">
+            <img src="assets/fox.png" alt="Fox logo">
+            <strong>Kommdir Systems</strong>
+          </div>
+          <div class="micro">© <span id="y"></span> · Marketplace CCO · BI/Automation</div>
         </div>
         <div class="footer-links">
-          <a href="index.html">Главная</a>
-          <a href="services.html">Услуги</a>
-          <a href="cases.html">Кейсы</a>
-          <a href="demos.html">Демо</a>
-          <a href="#top">Наверх ↑</a>
+          <a href="index.html" data-i18n="nav_home">Главная</a>
+          <a href="services.html" data-i18n="nav_services">Услуги</a>
+          <a href="cases.html" data-i18n="nav_cases">Кейсы</a>
+          <a href="demos.html" data-i18n="nav_demo">Демо</a>
+          <a href="#top">↑</a>
         </div>
       </div>
     </div>
   </footer>
 
   <script src="assets/site.js"></script>
+  <script src="assets/i18n.js"></script>
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>

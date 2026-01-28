@@ -1,57 +1,118 @@
 <!doctype html>
 <html lang="ru" data-ym-id="105600432">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Демо — калькуляторы и BI</title>
-  <meta name="description" content="Интерактивные демо и примеры BI/аналитики: калькуляторы, чек‑листы, воронки, отчёты." />
-  <link rel="stylesheet" href="assets/styles.css" />
-
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Демо — Kommdir Systems</title>
+  <meta name="description" content="Демо: калькуляторы, примеры отчётности и BI."/>
+  <link rel="icon" href="assets/favicon.png"/>
+  <link rel="stylesheet" href="assets/styles.css"/>
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
-      (function(m,e,t,r,i,k,a){
-          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-          m[i].l=1*new Date();
-          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105600432', 'ym');
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; } }
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105600432', 'ym');
 
-      ym(105600432, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    ym(105600432, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/105600432" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
 </head>
 <body id="top">
-  <header class="site-header">
-  <div class="container header-row">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">🦊</span>
-      <span class="brand-name">Kommdir Systems</span>
-      <span class="badge badge-glow">WB • Ozon • BI • Автоматизация</span>
-    </a>
 
-    <div class="nav" data-nav>
-      <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" data-nav-toggle>☰</button>
-      <nav class="nav-links" aria-label="Навигация">
-        <a href="index.html">Главная</a>
-        <a href="services.html">Услуги</a>
-        <a href="cases.html">Кейсы</a>
-        <a href="demos.html">Демо</a>
-        <a href="index.html#contact">Контакты</a>
-        <a class="btn small" href="tg.html?g=header">Написать</a>
-      </nav>
-    </div>
+  <!-- Icon sprite -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden">
+    <symbol id="ico-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 6L9 17l-5-5"/>
+    </symbol>
+    <symbol id="ico-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </symbol>
+    <symbol id="ico-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V7l8-4z"/>
+      <path d="M9 12l2 2 4-5"/>
+    </symbol>
+    <symbol id="ico-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 19V5"/>
+      <path d="M4 19h16"/>
+      <path d="M8 15v-4"/>
+      <path d="M12 15V7"/>
+      <path d="M16 15v-2"/>
+    </symbol>
+    <symbol id="ico-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4h7v7H4z"/>
+      <path d="M13 4h7v7h-7z"/>
+      <path d="M4 13h7v7H4z"/>
+      <path d="M13 13h7v7h-7z"/>
+    </symbol>
+    <symbol id="ico-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10z"/>
+      <path d="M12 6v6l4 2"/>
+    </symbol>
+    <symbol id="ico-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/>
+    </symbol>
+    <symbol id="ico-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="12" cy="5" rx="8" ry="3"/>
+      <path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/>
+      <path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>
+    </symbol>
+    <symbol id="ico-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12h12"/>
+      <path d="M13 6l6 6-6 6"/>
+    </symbol>
+  </svg>
+
+  <div class="floating">
+    <a class="btn primary" href="tg.html?g=tg_float" data-track="tg">Написать в Telegram</a>
   </div>
-</header>
+
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="brand" href="index.html" aria-label="Kommdir Systems">
+        <img src="assets/fox.png" alt="Fox logo">
+        <span class="brand-name">Kommdir Systems</span>
+        <span class="badge" data-i18n="brand_badge">WB • Ozon • BI • Автоматизация</span>
+      </a>
+
+      <div class="nav" data-nav>
+        <button class="burger btn small" type="button" aria-label="Открыть меню" aria-expanded="false" data-nav-toggle>☰</button>
+        <nav class="nav-links" aria-label="Навигация">
+          <a href="index.html" data-i18n="nav_home">Главная</a>
+          <a href="services.html" data-i18n="nav_services">Услуги</a>
+          <a href="cases.html" data-i18n="nav_cases">Кейсы</a>
+          <a href="demos.html" data-i18n="nav_demo">Демо</a>
+          <a href="index.html#contact" data-i18n="nav_contacts">Контакты</a>
+          <a class="btn small primary" href="tg.html?g=header" data-i18n="nav_write">Написать</a>
+        </nav>
+      </div>
+
+      <div class="lang" aria-label="Language">
+        <button type="button" data-lang-btn="ru" class="active">RU</button>
+        <button type="button" data-lang-btn="en">EN</button>
+      </div>
+    </div>
+  </header>
 
   <main>
-    <section class="hero small" data-reveal>
+    <section class="hero">
       <div class="container">
-        <h1>Демо и примеры</h1>
-        <p class="lead">Калькуляторы, BI‑экраны, чек‑листы и рабочие шаблоны. Всё можно открыть прямо в браузере.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="tg.html?g=lead_demo" data-track="lead_demo">Запросить демо под ваш бизнес</a>
-          <a class="btn" href="cases.html">Смотреть кейсы</a>
+        <div class="hero-frame">
+          <div class="hero-inner">
+            <div>
+              <div class="kicker" data-i18n="demos_title">Демо</div>
+              <h1>Как выглядит управление “по приборам”</h1>
+              <p class="lead">Мини‑инструменты и примеры. Ваша цель — не “красивый дашборд”, а скорость правильных решений.</p>
+              <div class="btn-row" style="margin-top:18px">
+                <a class="btn primary" href="tg.html?g=lead_demo">Запросить демо под ваш бизнес</a>
+                <a class="btn ghost" href="cases.html">Смотреть кейсы</a>
+              </div>
+            </div>
+            <div class="hero-visual" style="background-image:url('assets/hero_demo.png')" aria-hidden="true"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -59,161 +120,81 @@
     <section class="section">
       <div class="container">
         <h2>Интерактив</h2>
-        <div class="grid three" data-stagger="80">
-          <article class="card" data-reveal>
-            <h3>XGrow Planner — калькулятор</h3>
-            <p>Пример расчёта экономики/плана (маржа, план, сценарии). Открывается как отдельная страница.</p>
-            <div class="card-actions">
-              <a class="btn" href="xgrow_planner_calc.html" target="_blank" rel="noopener" data-track="open_calc">Открыть калькулятор</a>
-            </div>
-          </article>
 
-          <article class="card" data-reveal>
-            <h3>Демо отчёта P&L (HTML)</h3>
-            <p>Небольшая демо‑страница для объяснения юнит‑экономики и ежедневного контроля.</p>
-            <div class="card-actions">
-              <a class="btn" href="kommdir_daily_pnl_demo.html" target="_blank" rel="noopener" data-track="open_pnl">Открыть демо</a>
+        <div class="cards2" style="margin-top:14px">
+          <div class="card pad">
+            <div class="badge"><svg class="icon" aria-hidden="true"><use href="#ico-chart"></use></svg>Маржа</div>
+            <h3 style="margin-top:10px">Калькулятор маржи WB/Ozon</h3>
+            <p class="muted" style="margin-top:8px">Быстро посчитать прибыль/ед и “порог DRR”. Удобно, когда надо принять решение.</p>
+            <div class="btn-row" style="margin-top:12px">
+              <a class="btn" href="calc_margin.html" target="_blank" rel="noopener">Открыть</a>
             </div>
-          </article>
+          </div>
 
-          <article class="card" data-reveal>
-            <h3>Шаблоны + чек‑листы</h3>
-            <p>Что смотреть в BI, как быстро проверить SKU, ежедневные действия менеджера — всё в картинках и коротких инструкциях.</p>
-            <div class="card-actions">
-              <a class="btn" href="#gallery" data-track="open_gallery">Смотреть примеры</a>
+          <div class="card pad">
+            <div class="badge"><svg class="icon" aria-hidden="true"><use href="#ico-clock"></use></svg>План</div>
+            <h3 style="margin-top:10px">XGrow Planner</h3>
+            <p class="muted" style="margin-top:8px">Планирование оборота/маржи по SKU и проверка сценариев.</p>
+            <div class="btn-row" style="margin-top:12px">
+              <a class="btn" href="xgrow_planner_calc.html" target="_blank" rel="noopener">Открыть</a>
             </div>
-          </article>
+          </div>
+
+          <div class="card pad">
+            <div class="badge"><svg class="icon" aria-hidden="true"><use href="#ico-grid"></use></svg>Шаблон</div>
+            <h3 style="margin-top:10px">Ежедневный P&L</h3>
+            <p class="muted" style="margin-top:8px">Формат отчёта, который не даёт прибыли “утекать в шум”.</p>
+            <div class="btn-row" style="margin-top:12px">
+              <a class="btn" href="services.html#bi">Запросить</a>
+            </div>
+          </div>
+
+          <div class="card pad">
+            <div class="badge"><svg class="icon" aria-hidden="true"><use href="#ico-db"></use></svg>BI</div>
+            <h3 style="margin-top:10px">Экраны контроля</h3>
+            <p class="muted" style="margin-top:8px">Воронки, сегменты, анти‑SKU, остатки и сигналы — в одном контуре.</p>
+            <div class="btn-row" style="margin-top:12px">
+              <a class="btn" href="cases.html">Смотреть</a>
+            </div>
+          </div>
         </div>
 
-        <p class="muted" style="margin-top:12px">Если каких‑то файлов нет в вашем репо — просто положите их рядом с этим сайтом (в корень), и ссылки заработают.</p>
-      </div>
-    </section>
 
-    <section class="section" id="gallery">
-      <div class="container">
-        <h2>Галерея BI и материалов</h2>
-        <p class="muted">Кликните на карточку, чтобы открыть изображение крупно.</p>
-
-        <div class="grid three" id="casesGrid" data-stagger="80">
-          <article class="card case" data-reveal data-case-image="bi_wb_ozon_monthly_planfact_v01.png">
-            <img src="bi_wb_ozon_monthly_planfact_v01.png" alt="BI: план/факт и показатели" loading="lazy" />
-            <h3>BI: План/факт + реклама (WB/Ozon)</h3>
-            <p>Панель контроля DRR/ACOS, заказов, кликов и воронки — с переключением периодов.</p>
-          </article>
-
-          <article class="card case" data-reveal data-case-image="bi_which_metrics_to_watch_v01.png">
-            <img src="bi_which_metrics_to_watch_v01.png" alt="Какие метрики смотреть" loading="lazy" />
-            <h3>Какие метрики смотреть ежедневно</h3>
-            <p>Набор показателей + мини‑алгоритм проверки SKU за 5 минут.</p>
-          </article>
-
-          <article class="card case" data-reveal data-case-image="daily_manager_checklist_v01.png">
-            <img src="daily_manager_checklist_v01.png" alt="Ежедневный чек-лист менеджера" loading="lazy" />
-            <h3>Ежедневный чек‑лист менеджера</h3>
-            <p>Утро → день → вечер: что делать, чтобы стабильно расти и не «съедать» маржу.</p>
-          </article>
-
-          <article class="card case" data-reveal data-case-image="case_wb_boots_sales_funnel_v01.png">
-            <img src="case_wb_boots_sales_funnel_v01.png" alt="Воронка продаж" loading="lazy" />
-            <h3>WB: воронка продаж по категории</h3>
-            <p>Конверсия по шагам, влияние цены/категории, точки роста.</p>
-          </article>
-
-          <article class="card case" data-reveal data-case-image="forecast_vs_actual_30d_v01.png">
-            <img src="forecast_vs_actual_30d_v01.png" alt="Прогноз vs факт" loading="lazy" />
-            <h3>Прогноз vs факт (30 дней)</h3>
-            <p>Сценарийный контроль плана: где отставание и что делать сегодня.</p>
-          </article>
-
-          <article class="card case" data-reveal data-case-image="mgmt_accounts_map_v01.png">
-            <img src="mgmt_accounts_map_v01.png" alt="Карта кабинетов" loading="lazy" />
-            <h3>Карта кабинетов и ответственности</h3>
-            <p>Структура аккаунтов/ИП/брендов, зоны ответственности, логика управления.</p>
-          </article>
-
-          <article class="card case" data-reveal data-case-image="case_wb_hoodie_black_mpstats_v01.png">
-            <img src="case_wb_hoodie_black_mpstats_v01.png" alt="mpstats кейс" loading="lazy" />
-            <h3>MPStats: анализ товара и роста</h3>
-            <p>Динамика, промо‑события, конкурентная среда, точки усиления.</p>
-          </article>
-
-          <article class="card case" data-reveal data-case-image="case_wb_longsleeve_chocolate_mpstats_v01.png">
-            <img src="case_wb_longsleeve_chocolate_mpstats_v01.png" alt="mpstats кейс 2" loading="lazy" />
-            <h3>MPStats: сценарии по цене/промо</h3>
-            <p>Анализ и гипотезы по цене/скидкам, чтобы держать маржу.</p>
-          </article>
-
-          <article class="card case" data-reveal data-case-image="china_freight_invoice_goodchina_v01.png">
-            <img src="china_freight_invoice_goodchina_v01.png" alt="Инвойс фрахта" loading="lazy" />
-            <h3>Китай: инвойс и логистика</h3>
-            <p>Документы, расчёт доставки и контроль себестоимости на входе.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section cta">
-      <div class="container">
-        <div class="cta-box">
-          <h2>Хотите «под вас» такой же набор?</h2>
-          <p>Соберу структуру отчётов, подключу источники (WB/Ozon/Sheets), настрою расчёт маржи и регламенты действий для команды.</p>
-          <a class="btn primary" href="tg.html?g=lead_demo_bottom" data-track="lead_demo_bottom">Обсудить задачу в Telegram</a>
+        <div class="cta" style="margin-top:16px">
+          <div class="cta-row">
+            <div>
+              <strong>Нужен контур под вашу архитектуру?</strong>
+              <div class="micro">WB/Ozon/Sheets/SQL — соберу витрины, дашборды, алерты.</div>
+            </div>
+            <div><a class="btn primary" href="tg.html?g=lead_demo_bottom">Написать в Telegram</a></div>
+          </div>
         </div>
       </div>
     </section>
   </main>
-
   <footer class="footer">
     <div class="container">
-      <div class="footer-grid">
+      <div class="footer-row">
         <div>
-          <div class="brand">Komdir Systems</div>
-          <div class="muted">Коммерческий директор маркетплейсов • BI • Автоматизация</div>
+          <div class="brand" style="gap:10px">
+            <img src="assets/fox.png" alt="Fox logo">
+            <strong>Kommdir Systems</strong>
+          </div>
+          <div class="micro">© <span id="y"></span> · Marketplace CCO · BI/Automation</div>
         </div>
         <div class="footer-links">
-          <a href="index.html">Главная</a>
-          <a href="services.html">Услуги</a>
-          <a href="cases.html">Кейсы</a>
-          <a href="demos.html">Демо</a>
-          <a href="#top">Наверх ↑</a>
+          <a href="index.html" data-i18n="nav_home">Главная</a>
+          <a href="services.html" data-i18n="nav_services">Услуги</a>
+          <a href="cases.html" data-i18n="nav_cases">Кейсы</a>
+          <a href="demos.html" data-i18n="nav_demo">Демо</a>
+          <a href="#top">↑</a>
         </div>
       </div>
-      <div class="muted small">© <span id="year"></span> Komdir Systems. Все материалы приведены в учебных/демонстрационных целях.</div>
     </div>
   </footer>
 
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Закрыть">×</button>
-    <img class="lightbox-img" id="lightboxImg" alt="" />
-  </div>
-
   <script src="assets/site.js"></script>
-  <script>
-    // Lightbox for gallery
-    (function(){
-      const lb = document.getElementById('lightbox');
-      const img = document.getElementById('lightboxImg');
-      const close = document.getElementById('lightboxClose');
-      function open(src, alt){
-        img.src = src;
-        img.alt = alt || '';
-        lb.setAttribute('aria-hidden','false');
-        lb.classList.add('open');
-      }
-      function hide(){
-        lb.setAttribute('aria-hidden','true');
-        lb.classList.remove('open');
-        img.src = '';
-      }
-      document.getElementById('casesGrid').addEventListener('click', (e)=>{
-        const card = e.target.closest('.case');
-        if (!card) return;
-        open(card.getAttribute('data-case-image'), card.querySelector('img')?.alt);
-      });
-      close.addEventListener('click', hide);
-      lb.addEventListener('click', (e)=>{ if(e.target===lb) hide(); });
-      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') hide(); });
-    })();
-  </script>
+  <script src="assets/i18n.js"></script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
