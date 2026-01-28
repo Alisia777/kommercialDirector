@@ -6,7 +6,7 @@
   <title>Демо — Kommdir Systems</title>
   <meta name="description" content="Демо: калькуляторы, BI‑экраны, примеры отчётности."/>
   <link rel="icon" type="image/png" href="assets/favicon.png"/>
-  <link rel="stylesheet" href="assets/styles.css"/>
+  <link rel="stylesheet" href="assets/styles.css?v=5"/>
 
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
@@ -67,7 +67,7 @@
                 <a class="btn ghost" href="cases.html">Смотреть примеры</a>
               </div>
             </div>
-            <div class="hero-visual" style="background-image:url('assets/hero_demo.png')" aria-hidden="true"></div>
+            <div class="hero-visual" aria-hidden="true"><img src="assets/hero_demo.svg" alt=""></div>
           </div>
         </div>
       </div>
@@ -109,18 +109,27 @@
 
         <div class="kicker" style="margin-top:28px">BI</div>
         <h2>Экраны контроля</h2>
-        <p class="muted" style="margin-top:10px">Не пусто: ниже — демо‑экраны с замаскированными данными (NDA-safe).</p>
+        <p class="muted" style="margin-top:10px">Ниже — демо‑макеты экранов контроля (NDA-safe): без реальных данных, но с понятной структурой.</p>
 
         <div class="gallery" style="margin-top:16px">
-          <a class="figure hover" href="assets/screens/bi_kpi_overview_masked.jpg" target="_blank" rel="noopener">
-            <img src="assets/screens/bi_kpi_overview_masked.jpg" alt="BI KPI overview (masked)">
-            <div class="figcap"><strong>KPI overview</strong><span>Один экран для собственника.</span></div>
+          <a class="figure hover" href="assets/screens/kpi_overview.svg" target="_blank" rel="noopener">
+            <img src="assets/screens/kpi_overview.svg" alt="BI KPI overview">
+            <div class="figcap"><strong>Общий KPI‑экран</strong><span>Один экран для собственника.</span></div>
           </a>
-          <a class="figure hover" href="assets/screens/bi_reorder_masked.jpg" target="_blank" rel="noopener">
-            <img src="assets/screens/bi_reorder_masked.jpg" alt="Reorder (masked)">
-            <div class="figcap"><strong>Reorder / stock</strong><span>Сигналы и решения по SKU.</span></div>
+          <a class="figure hover" href="assets/screens/reorder_stock.svg" target="_blank" rel="noopener">
+            <img src="assets/screens/reorder_stock.svg" alt="Reorder">
+            <div class="figcap"><strong>Остатки и заказ товара</strong><span>Сигналы и решения по SKU.</span></div>
           </a>
-        </div>
+        
+          <a class="figure hover" href="assets/screens/abcxyz.svg" target="_blank" rel="noopener">
+            <img src="assets/screens/abcxyz.svg" alt="ABC/XYZ screen">
+            <div class="figcap"><strong>ABC/XYZ и ассортимент</strong><span>Топ/анти‑товары, скидки, вклад в оборот и маржу.</span></div>
+          </a>
+          <a class="figure hover" href="assets/screens/rfm.svg" target="_blank" rel="noopener">
+            <img src="assets/screens/rfm.svg" alt="RFM clients screen">
+            <div class="figcap"><strong>Клиенты / RFM</strong><span>Сегменты, повторные, точки роста.</span></div>
+          </a>
+</div>
 
         <div class="cta" style="margin-top:18px">
           <div class="cta-row">
@@ -156,8 +165,8 @@
     </div>
   </footer>
 
-  <script src="assets/site.js"></script>
-  <script src="assets/lang.js"></script>
+  <script src="assets/site.js?v=5"></script>
+  <script src="assets/lang.js?v=5"></script>
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
