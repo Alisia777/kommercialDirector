@@ -177,7 +177,7 @@ p{margin:0;line-height:1.7}
 .hero-visual:after{
   content:"";
   position:absolute;inset:0;
-  background:linear-gradient(90deg, rgba(7,9,16,.08), rgba(7,9,16,.40));
+  background:linear-gradient(90deg, rgba(7,9,16,.05), rgba(7,9,16,.22));
 }
 .lead{font-size:16px;color:var(--muted);margin-top:10px}
 
