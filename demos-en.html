@@ -6,7 +6,7 @@
   <title>Demo — Kommdir Systems</title>
   <meta name="description" content="Demo: calculators, BI screens, reporting examples."/>
   <link rel="icon" type="image/png" href="assets/favicon.png"/>
-  <link rel="stylesheet" href="assets/styles.css?v=6"/>
+  <link rel="stylesheet" href="assets/styles.css?v=7"/>
 
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
@@ -62,9 +62,15 @@
               <div class="kicker">Demo</div>
               <h1>What “instrument-driven management” looks like</h1>
               <p class="lead">Mini-tools and examples. Goal: not “pretty dashboards”, but faster correct decisions.</p>
+              <ul class="hero-bullets" style="margin-top:14px">
+                <li><strong>4 control screens</strong>: ads, margin, stock, assortment</li>
+                <li><strong>Data loop</strong>: marts/sources/refresh + basic alerts</li>
+                <li><strong>7‑day rollout plan</strong> for your architecture</li>
+              </ul>
+
               <div class="btn-row" style="margin-top:18px">
                 <a class="btn primary" href="tg.html?g=lead_demo_en">Request a demo</a>
-                <a class="btn ghost" href="cases-en.html">Examples</a>
+                <a class="btn ghost" href="#screens">Examples</a>
               </div>
             </div>
             <div class="hero-visual" aria-hidden="true"><img src="assets/hero_demo.svg" alt=""></div>
@@ -84,15 +90,15 @@
             <h3 style="margin-top:10px">Margin calculator</h3>
             <p class="muted" style="margin-top:8px">Profit per unit, margin %, DRR threshold.</p>
             <div class="btn-row" style="margin-top:12px">
-              <a class="btn" href="calc_margin.html">Open</a>
+              <a class="btn" href="calc_margin.html">Calculate margin</a>
             </div>
           </div>
           <div class="card pad hover">
             <div class="badge"><span class="dot"></span>Plan</div>
-            <h3 style="margin-top:10px">XGrow Planner</h3>
+            <h3 style="margin-top:10px">Calculator</h3>
             <p class="muted" style="margin-top:8px">SKU plan & scenario checks.</p>
             <div class="btn-row" style="margin-top:12px">
-              <a class="btn" href="xgrow_planner_calc.html">Open</a>
+              <a class="btn" href="xgrow_planner_calc.html">Build SKU plan</a>
             </div>
           </div>
           <div class="card pad hover">
@@ -100,19 +106,19 @@
             <h3 style="margin-top:10px">Daily P&amp;L</h3>
             <p class="muted" style="margin-top:8px">The report format that prevents profit leakage.</p>
             <div class="btn-row" style="margin-top:12px">
-              <a class="btn primary" href="tg.html?g=lead_daily_pnl_en">Request</a>
+              <a class="btn primary" href="tg.html?g=lead_daily_pnl_en">Get template</a>
             </div>
           </div>
         </div>
 
         <div class="kicker" style="margin-top:28px">BI</div>
-        <h2>Control screens</h2>
+        <h2 id="screens">Control screens</h2>
         <p class="muted" style="margin-top:10px">Below are real screenshots from my control loops and growth cases (some data may be anonymized).</p>
 
         <div class="gallery" style="margin-top:16px">
 <a class="figure hover screen" href="bi_ads_funnel_wb_v01.png" target="_blank" rel="noopener">
   <div class="thumb">
-    <img src="bi_ads_funnel_wb_v01.png" alt="WB Ads funnel & KPIs">
+    <img loading="lazy" decoding="async" src="assets/thumbs/bi_ads_funnel_wb_v01_thumb.webp" alt="WB Ads funnel & KPIs">
   </div>
   <div class="figcap">
     <strong>WB ads: funnel & KPIs</strong>
@@ -122,7 +128,7 @@
 
 <a class="figure hover screen" href="daily_manager_checklist_v01.png" target="_blank" rel="noopener">
   <div class="thumb">
-    <img src="daily_manager_checklist_v01.png" alt="Daily manager checklist">
+    <img loading="lazy" decoding="async" src="assets/thumbs/daily_manager_checklist_v01_thumb.webp" alt="Daily manager checklist">
   </div>
   <div class="figcap">
     <strong>Daily manager checklist</strong>
@@ -132,7 +138,7 @@
 
 <a class="figure hover screen" href="case_wb_boots_sales_funnel_v01.png" target="_blank" rel="noopener">
   <div class="thumb">
-    <img src="case_wb_boots_sales_funnel_v01.png" alt="Growth case: boots sales funnel">
+    <img loading="lazy" decoding="async" src="assets/thumbs/case_wb_boots_sales_funnel_v01_thumb.webp" alt="Growth case: boots sales funnel">
   </div>
   <div class="figcap">
     <strong>Growth case: boots sales funnel</strong>
@@ -142,17 +148,29 @@
 
 <a class="figure hover screen" href="case_wb_hoodie_black_mpstats_v01.png" target="_blank" rel="noopener">
   <div class="thumb">
-    <img src="case_wb_hoodie_black_mpstats_v01.png" alt="Growth case: hoodie (MPStats)">
+    <img loading="lazy" decoding="async" src="assets/thumbs/case_wb_hoodie_black_mpstats_v01_thumb.webp" alt="Growth case: hoodie (MPStats)">
   </div>
   <div class="figcap">
     <strong>Growth case: hoodie (MPStats)</strong>
     <span>Data → hypotheses → execution control. You see where money “leaks”.</span>
   </div>
 </a>
+
+        <div class="cta" style="margin-top:18px">
+          <div class="cta-row">
+            <div>
+              <strong>Need a control loop for your architecture?</strong>
+              <div class="micro">WB/Ozon/Sheets/SQL — I’ll build data marts, dashboards and alerts.</div>
+            </div>
+            <div><a class="btn primary" href="tg.html?g=lead_demo_bottom_en">Message in Telegram</a></div>
+          </div>
+        </div>
 </div>
       </div>
     </section>
-  </main>
+        </div>
+
+</main>
 
   <footer class="footer">
     <div class="container">
@@ -175,8 +193,8 @@
     </div>
   </footer>
 
-  <script src="assets/site.js?v=6"></script>
-  <script src="assets/lang.js?v=6"></script>
+  <script src="assets/site.js?v=7"></script>
+  <script src="assets/lang.js?v=7"></script>
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
