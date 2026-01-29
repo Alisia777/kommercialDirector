@@ -41,10 +41,15 @@
       var TG_URL = "https://t.me/Hardlivers";
       var params = new URLSearchParams(window.location.search || "");
       var goal = params.get("g") || "tg_open";
+
       var a = document.getElementById("tgLink");
       if (a) { a.href = TG_URL; a.setAttribute("data-track", goal); }
+
+      // Send goal first, then redirect a bit later.
+      // On iOS Safari, an immediate redirect may cancel Metrika requests.
       try { if (typeof ym === "function") { ym(105600432, "reachGoal", goal); } } catch(e) {}
-      setTimeout(function(){ window.location.href = TG_URL; }, 450);
+
+      setTimeout(function(){ window.location.href = TG_URL; }, 1200);
     })();
   </script>
 </body>

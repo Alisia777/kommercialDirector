@@ -129,6 +129,19 @@ p{margin:0;line-height:1.7}
 }
 .lang a.active{color:var(--text);border-color:rgba(110,231,255,.42);background:rgba(110,231,255,.10)}
 .burger{display:none}
+
+/* Mobile header fixes (iOS Safari): prevent pill/controls overlap */
+@media(max-width:640px){
+  .brand .badge{display:none}
+  .brand-name{font-size:16px}
+  .header-row{gap:10px}
+  .lang a{padding:7px 10px;font-size:13px}
+}
+
+/* Even narrower screens: keep the header compact */
+@media(max-width:420px){
+  .brand-name{max-width:180px;overflow:hidden;text-overflow:ellipsis}
+}
 @media(max-width:860px){
   .burger{display:inline-flex}
   .nav-links{
@@ -233,6 +246,69 @@ p{margin:0;line-height:1.7}
 .figure .figcap{padding:12px 14px}
 .figure .figcap strong{display:block}
 .figure .figcap span{display:block;color:var(--muted);font-size:13px;margin-top:4px;line-height:1.6}
+
+/* Lightbox (tap screenshots without opening a new white browser page) */
+.lightbox{
+  position:fixed;
+  inset:0;
+  z-index:120;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:rgba(0,0,0,.82);
+  backdrop-filter:blur(6px);
+}
+.lightbox.open{display:flex}
+.lightbox__inner{
+  width:min(1100px, 100%);
+  max-height:86vh;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.lightbox__img{
+  width:100%;
+  height:auto;
+  max-height:78vh;
+  object-fit:contain;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:var(--shadow);
+  background:rgba(7,9,16,.65);
+}
+.lightbox__cap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.lightbox__title{
+  font-weight:900;
+  color:var(--text);
+}
+.lightbox__hint{color:var(--muted);font-size:12px}
+.lightbox__close{
+  align-self:flex-end;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.20);
+  background:rgba(255,255,255,.06);
+  color:var(--text);
+  font-size:22px;
+  font-weight:900;
+  cursor:pointer;
+}
+.lightbox__close:hover{background:rgba(255,255,255,.10)}
+
+@media(max-width:640px){
+  .lightbox{padding:12px}
+  .lightbox__img{max-height:74vh}
+}
 
 @media (prefers-reduced-motion: reduce){
   .card.hover, .btn{transition:none!important}
