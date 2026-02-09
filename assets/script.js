@@ -1,44 +1,50 @@
-(() => {
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+// Small UX helpers for the static site.
 
-  const burger = document.querySelector('.burger');
-  const menu = document.getElementById('mobileMenu');
-  if (burger && menu) {
-    const closeMenu = () => {
-      burger.setAttribute('aria-expanded', 'false');
-      menu.hidden = true;
-    };
+(function () {
+  // 1) Burger menu
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
 
-    burger.addEventListener('click', () => {
-      const expanded = burger.getAttribute('aria-expanded') === 'true';
-      burger.setAttribute('aria-expanded', String(!expanded));
-      menu.hidden = expanded;
-    });
+  function openMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.add('isOpen');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+  }
 
-    // Close on navigation click
-    menu.addEventListener('click', (e) => {
-      const t = e.target;
-      if (t && t.matches('a')) closeMenu();
-    });
+  function closeMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.remove('isOpen');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  }
 
-    // Close on Escape
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMenu();
+  if (burger) burger.addEventListener('click', openMenu);
+  if (mobileClose) mobileClose.addEventListener('click', closeMenu);
+
+  // Close menu on link click
+  if (mobileMenu) {
+    mobileMenu.addEventListener('click', (e) => {
+      const a = e.target && e.target.closest ? e.target.closest('a') : null;
+      if (a && a.getAttribute('href')) closeMenu();
     });
   }
 
-  // If user clicks a Telegram CTA, prefill message for quicker lead conversion.
-  // Safe: simply adds ?text=... to t.me links.
-  const tgLinks = document.querySelectorAll('a[data-cta="tg"], a[href^="https://t.me/"], a[href^="http://t.me/"]');
-  const msg = encodeURIComponent('Привет! Хочу разбор и план 30/60/90. Вот мой магазин/артикулы: ...');
-  tgLinks.forEach(a => {
+  // 2) Telegram prefill: ONLY for links explicitly marked with data-prefill="true"
+  // (Important: do not add ?text to group links.)
+  const msg = encodeURIComponent(
+    'Привет! Хочу обсудить разбор/план 30/60/90 и варианты сопровождения.\n' +
+      'Ссылка на мой магазин/ЛК: '
+  );
+
+  document.querySelectorAll('a[data-prefill="true"]').forEach((a) => {
     try {
-      const href = a.getAttribute('href') || '';
-      if (!href.includes('t.me')) return;
-      // Only add for direct user links or groups; if already has query, keep it.
-      if (href.includes('?')) return;
-      a.setAttribute('href', href + '?text=' + msg);
-    } catch (_e) {}
+      const url = new URL(a.href);
+      if (url.hostname !== 't.me') return;
+      if (url.searchParams.has('text')) return;
+      url.searchParams.set('text', decodeURIComponent(msg));
+      a.href = url.toString();
+    } catch (_) {
+      // ignore
+    }
   });
 })();

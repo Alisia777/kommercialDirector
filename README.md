@@ -1,17 +1,11 @@
-# AVA — landing (разбор + план 30/60/90)
+# Kommdir Systems — services site
 
-Что внутри:
-- `index.html` — страница
-- `assets/style.css` — стили
-- `assets/script.js` — меню + автоподстановка текста в Telegram
+Статический сайт (HTML/CSS/JS). Страницы:
+- `index.html` — главная
+- `services.html` — услуги и цены
+- `cases.html` — кейсы
+- `calculators.html` — калькуляторы
 
-## Как изменить контакты
-1) В `index.html` найдите `https://t.me/Hardlivers` и замените на нужную ссылку/ник.
-2) В `assets/script.js` можно поменять автосообщение, которое подставляется в Telegram.
-
-## Как загрузить на хостинг
-Загрузите содержимое архива в корень сайта так, чтобы `index.html` лежал в корне.
-
-Если вы используете GitHub Pages:
-- загрузите файлы в репозиторий
-- включите Pages для ветки `main` / папки `/ (root)`
+Контакты/CTA:
+- Telegram: https://t.me/Hardlivers
+- Группа: https://t.me/kommdirector
