@@ -783,3 +783,50 @@ img{ max-width:100%; display:block; }
   letter-spacing: -.01em;
   color: rgba(255,255,255,.92);
 }
+
+/* === v20260210 hotfixes & polish === */
+
+/* Hidden attribute should always win (prevents accidental visible mobile menu / blocks) */
+[hidden]{display:none !important;}
+
+/* Mobile menu: hidden by default, shown only when [hidden] is removed */
+.mobileMenu{display:none;}
+.mobileMenu:not([hidden]){display:block;}
+
+/* Brand mark — force fox logo as primary */
+.brand__mark{
+  background-image: url('./logo-fox.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Shots (cases): avoid "missing" look if an image fails to load */
+.shotCard__img{background:#0b0f14;}
+
+/* Small-screen polish */
+@media (max-width: 420px){
+  .brand__tag{display:none;}
+  .topbar__inner{gap:10px;}
+  .ctaRow{flex-direction:column; align-items:stretch;}
+  .ctaRow .btn{width:100%;}
+}
+
+/* Mobile polish */
+@media (max-width: 520px){
+  .wrap{padding:0 14px;}
+  .h1{font-size:30px; line-height:1.1;}
+  .h2{font-size:22px;}
+  .topbar__inner{height:auto; padding:10px 0;}
+  .topbar__actions{flex-wrap:wrap; justify-content:flex-end; gap:8px;}
+  .btn{padding:10px 12px;}
+  .btnFull{width:100%; justify-content:center;}
+  .heroCard{padding:14px;}
+  .heroPoints{grid-template-columns:1fr;}
+  .calcGrid{gap:14px;}
+  .calcBox{padding:14px;}
+  .fields2{grid-template-columns:1fr;}
+  .outRow{grid-template-columns:1fr;}
+  .outBox{padding:12px;}
+  .footer{padding:18px 0;}
+}
