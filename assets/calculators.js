@@ -1,5 +1,5 @@
 // Calculators (unit economics + max DRR)
-// v20260210-fix: align element IDs with calculators.html and avoid null crashes
+// v20260210-v12: clear explanation when max ads = 0 (no room for ads under target profit)
 
 (function () {
   const moneyFmt = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 });
@@ -26,7 +26,6 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     // --- Unit economics (simplified)
-    // IDs in calculators.html
     const u = {
       sale: $('u_price'),
       feePct: $('u_comm'),
@@ -46,7 +45,6 @@
     };
 
     const refreshUnit = () => {
-      // Guard: if calculators markup changed, do nothing instead of throwing
       if (!uOut.profit || !uOut.costs || !uOut.margin || !uOut.drr) return;
 
       const sale = num(u.sale);
@@ -56,7 +54,6 @@
       const pack = num(u.pack);
       const returns = sale * (num(u.returnsPct) / 100);
       const other = num(u.other);
-
       const ads = sale * (num(u.adsPct) / 100);
 
       const totalCosts = fee + ship + cogs + pack + returns + other + ads;
@@ -88,6 +85,9 @@
     const dOut = {
       maxAdsRub: $('drr_max_ads_rub'),
       maxAdsPct: $('drr_max_ads_pct'),
+      delta: $('drr_delta'),
+      comment: $('drr_comment'),
+      deltaBox: $('drr_delta_box'),
     };
 
     const refreshDRR = () => {
@@ -103,11 +103,23 @@
       const targetProfit = num(d.targetProfit);
 
       const baseCosts = fee + ship + cogs + pack + returns + other;
-      const maxAdsRub = Math.max(0, sale - baseCosts - targetProfit);
+      const delta = sale - baseCosts - targetProfit; // can be negative
+      const maxAdsRub = Math.max(0, delta);
       const maxAdsPct = sale > 0 ? (maxAdsRub / sale) * 100 : 0;
 
       dOut.maxAdsRub.textContent = fmtMoney(maxAdsRub);
       dOut.maxAdsPct.textContent = fmtPct(maxAdsPct);
+
+      if (dOut.delta) dOut.delta.textContent = fmtMoney(delta);
+
+      if (dOut.comment) {
+        dOut.comment.textContent =
+          delta < 0
+            ? 'При этих вводных целевая прибыль не достигается даже без рекламы. Пересоберите цену/COGS/логистику/комиссию/возвраты.'
+            : 'Это запас до цели. Его можно направить на рекламу, не падая ниже целевой прибыли.';
+      }
+
+      if (dOut.deltaBox) dOut.deltaBox.classList.toggle('isBad', delta < 0);
     };
 
     bind(d, refreshDRR);

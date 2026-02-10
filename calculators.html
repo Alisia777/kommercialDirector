@@ -2,7 +2,9 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-fox.png">
+  <link rel="apple-touch-icon" href="assets/logo-fox.png">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Калькуляторы — Kommdir Systems</title>
   <meta name="description" content="Калькуляторы юнит-экономики и максимального DRR для маркетплейсов. Kommdir Systems." />
   
@@ -10,13 +12,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="assets/style.css?v=20260210-v11" />
+<link rel="stylesheet" href="assets/style.css?v=20260210-v12" />
 </head>
 <body>
       <header class="topbar">
       <div class="container topbar__inner">
         <a class="brand" href="index.html" aria-label="На главную">
-          <img class="brand__logo" src="assets/fox_logo.png" alt="Kommdir Systems логотип" width="34" height="34">
+          <img class="brand__logo" src="assets/logo-fox.png" alt="Kommdir Systems логотип" width="34" height="34">
           <span class="brand__text">
             <span class="brand__name">Kommdir Systems</span>
             <span class="brand__tag">Marketplace CCO • BI • Automation</span>
@@ -42,7 +44,7 @@
         </button>
       </div>
 
-      <div class="mobileMenu" data-mobile-menu>
+      <div class="mobileMenu" data-mobile-menu hidden>
         <div class="mobileMenu__inner">
           <a class="mobileLink" href="services.html">Услуги</a>
           <a class="mobileLink" href="services.html#how">Как работаем</a>
@@ -72,7 +74,7 @@
 
             <div class="hero__actions">
               <a class="btn btn--primary" href="https://t.me/kommdir_systems" data-prefill="true" target="_blank" rel="noreferrer">Задать вопрос</a>
-              <a class="btn btn--ghost" href="services.html#packages">Смотреть пакеты</a>
+              <a class="btn btn--ghost" href="services.html#packages">Смотреть форматы</a>
             </div>
 
             <p class="fineprint">Мы не делаем выкупы/накрутки — работаем только с реальными данными и реальными людьми.</p>
@@ -227,7 +229,13 @@
                 <div class="k">Макс. DRR, %</div>
                 <div class="v" id="drr_max_ads_pct">—</div>
               </div>
-            </div>
+            
+              <div class="outBox outBox--full" id="drr_delta_box">
+                <div class="k">Запас/недостаток до цели, ₽</div>
+                <div class="v" id="drr_delta">—</div>
+                <div class="sub" id="drr_comment"></div>
+              </div>
+              </div>
 
             <div class="calcOut__note">
               Хотите точный расчёт по вашим отчётам? Достаточно 1–2 выгрузок (заказы/начисления + реклама). Посчитаем и дадим план 30/60/90.
@@ -256,7 +264,7 @@
     </div>
   </footer>
 
-  <script defer src="assets/script.js?v=20260210-v11"></script>
-  <script defer src="assets/calculators.js?v=20260210-v11"></script>
+  <script defer src="assets/script.js?v=20260210-v12"></script>
+  <script defer src="assets/calculators.js?v=20260210-v12"></script>
 </body>
 </html>

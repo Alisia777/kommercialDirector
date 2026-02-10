@@ -8,15 +8,17 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <meta name="theme-color" content="#0b0f14" />
-  <title>Маркетплейсы: разбор + план 30/60/90 + контроль</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-fox.png">
+  <link rel="apple-touch-icon" href="assets/logo-fox.png">
+<title>Маркетплейсы: разбор + план 30/60/90 + контроль</title>
   <meta name="description" content="Разбор и подробный план 30/60/90 по каждому артикулу (10 000 ₽ за 1 SKU), управленческий контроль (от 30 000 ₽/мес) и формат «одно окно» (от 40 000 ₽/мес)." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="preload" href="assets/style.css?v=20260210-v11" as="style" />
-  <link rel="stylesheet" href="assets/style.css?v=20260210-v11" />
+<link rel="preload" href="assets/style.css?v=20260210-v12" as="style" />
+  <link rel="stylesheet" href="assets/style.css?v=20260210-v12" />
 </head>
 <body>
   <a class="skiplink" href="#main">Перейти к содержимому</a>
@@ -24,7 +26,7 @@
     <header class="topbar">
       <div class="container topbar__inner">
         <a class="brand" href="index.html" aria-label="На главную">
-          <img class="brand__logo" src="assets/fox_logo.png" alt="Kommdir Systems логотип" width="34" height="34">
+          <img class="brand__logo" src="assets/logo-fox.png" alt="Kommdir Systems логотип" width="34" height="34">
           <span class="brand__text">
             <span class="brand__name">Kommdir Systems</span>
             <span class="brand__tag">Marketplace CCO • BI • Automation</span>
@@ -50,7 +52,7 @@
         </button>
       </div>
 
-      <div class="mobileMenu" data-mobile-menu>
+      <div class="mobileMenu" data-mobile-menu hidden>
         <div class="mobileMenu__inner">
           <a class="mobileLink mobileLink--active" href="services.html">Услуги</a>
           <a class="mobileLink" href="services.html#how">Как работаем</a>
@@ -99,7 +101,7 @@
               <div class="heroBullet__icon heroBullet__icon--2" aria-hidden="true"></div>
               <div>
                 <div class="heroBullet__title">Автоматизированный учёт</div>
-                <div class="heroBullet__text">Собственная разработка (Python/SQL/JS): дашборды, алерты, отчёты — меньше ручной рутины и ошибок.</div>
+                <div class="heroBullet__text">Собственная разработка: дашборды, алерты, авто‑отчёты — меньше ручной рутины и ошибок.</div>
               </div>
             </div>
 
@@ -113,7 +115,7 @@
           </div>
 
           <div class="hero__cta">
-            <a class="btn btn--primary btn--lg" href="#packages">Посмотреть пакеты</a>
+            <a class="btn btn--primary btn--lg" href="#packages">Посмотреть форматы</a>
             <a class="btn btn--ghost btn--lg" href="#process">Как это будет</a>
           </div>
 
@@ -142,7 +144,7 @@
         <section class="section" id="packages">
       <div class="sectionHead">
         <div>
-          <span class="sectionKicker">пакеты</span>
+          <span class="sectionKicker">форматы</span>
           <h2 class="sectionTitle">Комплектации — как опции в машине</h2>
           <p class="sectionLead">
             Выберите уровень участия: от разового аудита до полного ведения кабинета и поставок.
@@ -151,16 +153,16 @@
         </div>
       </div>
 
-      <div class="compareWrap" aria-label="Сравнение пакетов">
+      <div class="compareWrap" aria-label="Сравнение форматов">
         <div class="compareScroll">
           <table class="compareTable">
             <thead>
               <tr>
                 <th>Что входит</th>
-                <th><span class="pkgPill">Пакет 0</span><br><span class="muted">Ниша + Китай</span></th>
-                <th><span class="pkgPill">Пакет 1</span><br><span class="muted">Аудит + план</span></th>
-                <th><span class="pkgPill pkgPill--accent">Пакет 2</span><br><span class="muted">Контроль</span></th>
-                <th><span class="pkgPill">Пакет 3</span><br><span class="muted">Ведение</span></th>
+                <th><span class="pkgPill">Старт</span><br><span class="muted">Ниша + поставщик</span></th>
+                <th><span class="pkgPill">Аудит</span><br><span class="muted">Диагностика + план</span></th>
+                <th><span class="pkgPill pkgPill--accent">Контроль</span><br><span class="muted">Ежедневно</span></th>
+                <th><span class="pkgPill">Ведение</span><br><span class="muted">Под ключ</span></th>
               </tr>
             </thead>
             <tbody>
@@ -169,7 +171,7 @@
                 <td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td>
               </tr>
               <tr>
-                <td><b>Фабрики в Китае</b>: shortlist, вопросы/бриф, переговоры и логика сделки</td>
+                <td><b>Поставщик/производство</b>: shortlist, вопросы/бриф, переговоры и логика сделки</td>
                 <td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="maybe">◐</td>
               </tr>
               <tr>
@@ -184,7 +186,7 @@
                 <td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td>
               </tr>
               <tr>
-                <td><b>Юнит-экономика по каждому SKU</b> (DRR, маржа, точки безубыточности)</td>
+                <td><b>Юнит‑экономика по ключевым SKU</b> (DRR, маржа, точки безубыточности)</td>
                 <td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td>
               </tr>
               <tr>
@@ -212,7 +214,7 @@
                 <td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td>
               </tr>
               <tr>
-                <td><b>Поставки</b>: планирование закупок и пополнений, контроль сроков, коммуникация с логистами</td>
+                <td><b>Поставки</b>: планирование пополнений, контроль сроков, коммуникация с логистами</td>
                 <td class="maybe">◐</td><td class="no">—</td><td class="maybe">◐</td><td class="yes">✓</td>
               </tr>
             </tbody>
@@ -230,35 +232,37 @@
       <div class="pricing">
         <article class="priceCard">
           <div class="priceCard__top">
-            <h3 class="priceCard__name">Пакет 0 — Поиск ниши + Китай</h3>
+            <h3 class="priceCard__name">Старт — ниша → поставщик → экономика</h3>
             <p class="priceCard__price">10&nbsp;000 ₽ <span class="priceCard__unit">/ разово</span></p>
-            <p class="priceCard__desc">Если вы только заходите на маркетплейсы и не хотите “тыкать пальцем в небо”.</p>
+            <p class="priceCard__desc">Под ваш бюджет подбираем нишу и поставщика, считаем реальную экономику и собираем понятный маршрут поставки.</p>
           </div>
 
           <ul class="bullets">
-            <li>Аналитика спроса/конкурентов под ваш бюджет</li>
-            <li>3–7 вариантов товара: плюсы/минусы, риски, маржинальность</li>
-            <li>Предварительная юнит‑экономика и ограничения по DRR</li>
-            <li>Shortlist фабрик + вопросы для завода + чек‑лист сделки</li>
-            <li>Рекомендации по карго и “в белую” (документы/этапы/риски)</li>
+            <li>Аналитика спроса/конкурентов под ваш бюджет (Ozon/WB)</li>
+            <li>3–5 вариантов товара: плюсы/минусы, риски, сезонность, маржинальность</li>
+            <li>Юнит‑экономика под <b>реальные</b> себестоимости + логистика (карго/«в белую»)</li>
+            <li>Shortlist поставщиков (Китай) + вопросы заводу + чек‑лист проверки</li>
+            <li>Логистика: документы/этапы/риски — объясняем простым языком</li>
+            <li>Рекомендация: с каким вариантом заходить и почему</li>
           </ul>
 
-          <a class="btn btn--primary btn--full" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Обсудить нишу</a>
+          <a class="btn btn--primary btn--full" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Обсудить старт</a>
         </article>
 
         <article class="priceCard">
           <div class="priceCard__top">
-            <h3 class="priceCard__name">Пакет 1 — Полный аудит + план по SKU</h3>
-            <p class="priceCard__price">10&nbsp;000 ₽ <span class="priceCard__unit">/ SKU (разово)</span></p>
-            <p class="priceCard__desc">Разбираем, где именно “текут деньги”, и даём план действий по каждому SKU.</p>
+            <h3 class="priceCard__name">Аудит — прибыль и план действий</h3>
+            <p class="priceCard__price">10&nbsp;000 ₽ <span class="priceCard__unit">/ разово</span></p>
+            <p class="priceCard__desc">Аудит кабинета целиком: выявляем причины просадки прибыли и даём конкретные шаги, что править и в какой очереди.</p>
           </div>
 
           <ul class="bullets">
-            <li>Диагностика: финмодель, реклама, остатки, ассортимент, процессы</li>
-            <li>Юнит‑экономика по каждому SKU (маржа/DRR/точки)</li>
-            <li>ДДС + ОПиУ: считаем отдельно и приводим к понятной структуре</li>
+            <li>Диагностика: реклама/DRR, маржа, цены, остатки, конверсия, процессы</li>
+            <li>Юнит‑экономика по <b>ключевым SKU</b> (топ по выручке/рекламе) + лимиты DRR</li>
+            <li><b>ДДС + ОПиУ</b> (отдельным блоком): расчёт + структура учёта “как у взрослых”</li>
             <li>План 30/60/90 + приоритеты на 7/30 дней + KPI</li>
-            <li>Чёткий следующий шаг: что вы делаете сами / что делегируете</li>
+            <li>Карта проблем → пути решения (что масштабировать / что резать)</li>
+            <li>Список задач: что делаете вы / что делегируете</li>
           </ul>
 
           <a class="btn btn--primary btn--full" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Хочу аудит</a>
@@ -266,17 +270,18 @@
 
         <article class="priceCard priceCard--focus">
           <div class="priceCard__top">
-            <h3 class="priceCard__name">Пакет 2 — Управленческий контроль (ежедневно)</h3>
+            <h3 class="priceCard__name">Контроль — управленческий контроль (ежедневно)</h3>
             <p class="priceCard__price">30&nbsp;000 ₽ <span class="priceCard__unit">/ месяц</span></p>
-            <p class="priceCard__desc">Чтобы план превращался в результат: контролируем отклонения и подсвечиваем решения.</p>
+            <p class="priceCard__desc">Чтобы план превращался в результат: ежедневно контролируем отклонения, подсвечиваем решения и держим метрики в коридоре.</p>
           </div>
 
           <ul class="bullets">
-            <li>Всё из пакета 1 (модель и план поддерживаем в актуальном виде)</li>
-            <li>Ежедневный контроль: реклама/DRR, маржа, остатки, рейтинг, конверсия</li>
-            <li>Алерты и “подсветка”: что масштабировать, что резать, где утечка</li>
-            <li>Еженедельный план‑факт → решения → список задач (без воды)</li>
-            <li><b>Важно:</b> без ручного “ведения карточек” — строим систему и контроль</li>
+            <li><span class="muted">Включает:</span> всё из «Аудита» (финмодель, лимиты, приоритеты)</li>
+            <li>Ежедневный контроль: DRR, маржа, цены, остатки, позиции, конверсия</li>
+            <li>Алерты и разбор отклонений: где “течёт” и что резать/добавлять</li>
+            <li>Еженедельный план‑факт → выводы → задачи (без воды)</li>
+            <li>Пересчёт экономики под реальные себестоимости и логистику при изменениях</li>
+            <li>Карточки/креатив: даём ТЗ и контроль; исполнение — ваша команда/подрядчики</li>
           </ul>
 
           <a class="btn btn--primary btn--full" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Обсудить контроль</a>
@@ -284,24 +289,24 @@
 
         <article class="priceCard">
           <div class="priceCard__top">
-            <h3 class="priceCard__name">Пакет 3 — Полное ведение + поставки</h3>
+            <h3 class="priceCard__name">Ведение — кабинет под ключ</h3>
             <p class="priceCard__price">40&nbsp;000 ₽ <span class="priceCard__unit">/ месяц</span></p>
-            <p class="priceCard__desc">Берём на себя операционку и ведение кабинета, вы — принимаете решения и контролируете.</p>
+            <p class="priceCard__desc">Берём операционку на себя: ведём кабинет, контролируем поставки и каждую неделю даём собственнику понятный отчёт.</p>
           </div>
 
           <ul class="bullets">
-            <li>Всё из пакета 2 (контроль + система + регулярные улучшения)</li>
-            <li>Полное ведение кабинета: реклама, цены/акции, ассортимент, задачи команде</li>
-            <li>Поставки: план пополнений, сроки, коммуникация с карго/логистами</li>
-            <li>Еженедельная отчетность собственнику: цифры → выводы → действия</li>
-            <li class="muted">Если SKU &gt; 50: +10&nbsp;000 ₽ за каждые 10 SKU сверху</li>
+            <li><span class="muted">Включает:</span> всё из «Контроля» (контроль + система + регулярные улучшения)</li>
+            <li>Полное ведение кабинета: реклама, цены/акции, ассортимент, остатки</li>
+            <li>Поставки: план пополнений, контроль сроков, коммуникация с карго/логистами</li>
+            <li>Еженедельная отчётность собственнику: цифры → выводы → действия</li>
+            <li>Регламенты и система: роли, нормы, чек‑листы, формы контроля</li>
+            <li class="muted">Если SKU &gt; 50: +10&nbsp;000 ₽ за каждые +10 SKU</li>
           </ul>
 
           <a class="btn btn--primary btn--full" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Хочу ведение</a>
         </article>
       </div>
-
-      <div class="smallCards" aria-label="Принципы работы">
+<div class="smallCards" aria-label="Принципы работы">
         <article class="smallCard">
           <h4>Прозрачность</h4>
           <p>Без выкупов/накруток. Решения — на данных, а не на “интуиции”.</p>
@@ -316,7 +321,7 @@
         </article>
         <article class="smallCard">
           <h4>Для небольшого бюджета</h4>
-          <p>Можно начать с пакета 0/1 и делать руками по плану. Мы покажем “что именно делать дальше”.</p>
+          <p>Можно начать со «Старт» или «Аудит» за 10&nbsp;000 ₽ и делать руками по плану. Мы покажем, что именно делать дальше.</p>
         </article>
       </div>
 
@@ -452,6 +457,6 @@
     </div>
   </footer>
 
-  <script src="assets/script.js?v=20260210-v11" defer></script>
+  <script src="assets/script.js?v=20260210-v12" defer></script>
 </body>
 </html>
