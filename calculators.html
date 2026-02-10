@@ -10,68 +10,55 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="assets/style.css?v=20260210" />
+<link rel="stylesheet" href="assets/style.css?v=20260210-v11" />
 </head>
 <body>
       <header class="topbar">
-    <div class="topbar__inner container">
-      <a class="brand" href="index.html">
-        <span class="brand__mark" aria-hidden="true"></span>
-        <span class="brand__text">
-          <span class="brand__name">Kommdir Systems</span>
-          <span class="brand__tag">Marketplace CCO • BI • Automation</span>
-        </span>
-      </a>
+      <div class="container topbar__inner">
+        <a class="brand" href="index.html" aria-label="На главную">
+          <img class="brand__logo" src="assets/fox_logo.png" alt="Kommdir Systems логотип" width="34" height="34">
+          <span class="brand__text">
+            <span class="brand__name">Kommdir Systems</span>
+            <span class="brand__tag">Marketplace CCO • BI • Automation</span>
+          </span>
+        </a>
 
-      <nav class="nav" aria-label="Разделы">
-        <a class="nav__link" href="services.html">Услуги</a>
-        <a class="nav__link" href="services.html#process">Как работаем</a>
-        <a class="nav__link" href="cases.html">Кейсы</a>
-        <a class="nav__link nav__link--active" aria-current="page" href="calculators.html">Калькуляторы</a>
-        <a class="nav__link" href="services.html#faq">FAQ</a>
-      </nav>
+        <nav class="nav" aria-label="Основная навигация">
+          <a class="nav__link" href="services.html">Услуги</a>
+          <a class="nav__link" href="services.html#how">Как работаем</a>
+          <a class="nav__link" href="cases.html">Кейсы</a>
+          <a class="nav__link nav__link--active" href="calculators.html" aria-current="page">Калькуляторы</a>
+          <a class="nav__link" href="services.html#faq">FAQ</a>
+        </nav>
 
-      <div class="topbar__actions">
-        <a class="btn btn--ghost" href="services.html#pricing">Цены</a>
-        <a class="btn btn--ghost" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
-        <a class="btn btn--primary" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Написать в Telegram</a>
+        <div class="topbar__cta">
+          <a class="btn btn--ghost btn--sm" href="services.html#packages">Цены</a>
+          <a class="btn btn--ghost btn--sm" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
+          <a class="btn btn--accent btn--sm" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Написать в Telegram</a>
+        </div>
 
-        <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
+        <button class="burger" type="button" aria-label="Открыть меню" data-burger>
           <span></span><span></span><span></span>
         </button>
       </div>
-    </div>
 
-    <div class="mobileMenu" id="mobileMenu" hidden>
-      <a class="mobileMenu__link" href="services.html">Услуги</a>
-      <a class="mobileMenu__link" href="services.html#process">Как работаем</a>
-      <a class="mobileMenu__link" href="cases.html">Кейсы</a>
-      <a class="mobileMenu__link mobileMenu__link--active" aria-current="page" href="calculators.html">Калькуляторы</a>
-      <a class="mobileMenu__link" href="services.html#faq">FAQ</a>
-      <div class="mobileMenu__actions">
-        <a class="btn btn--ghost" href="services.html#pricing">Цены</a>
-        <a class="btn btn--ghost" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
-        <a class="btn btn--primary" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Написать в Telegram</a>
+      <div class="mobileMenu" data-mobile-menu>
+        <div class="mobileMenu__inner">
+          <a class="mobileLink" href="services.html">Услуги</a>
+          <a class="mobileLink" href="services.html#how">Как работаем</a>
+          <a class="mobileLink" href="cases.html">Кейсы</a>
+          <a class="mobileLink mobileLink--active" href="calculators.html">Калькуляторы</a>
+          <a class="mobileLink" href="services.html#faq">FAQ</a>
+          <div class="mobileMenu__links" aria-label="Быстрые ссылки">
+            <a class="btn btn--ghost btn--sm" href="services.html#packages">Цены</a>
+            <a class="btn btn--ghost btn--sm" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
+            <a class="btn btn--accent btn--sm" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Написать в Telegram</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </header>
-<div class="mobileMenu__links">
-        <a href="services.html" class="mobileMenu__link">Услуги</a>
-        <a href="services.html#how" class="mobileMenu__link">Как работаем</a>
-        <a href="cases.html" class="mobileMenu__link">Кейсы</a>
-        <a href="calculators.html" class="mobileMenu__link mobileMenu__link--active">Калькуляторы</a>
-        <a href="services.html#faq" class="mobileMenu__link">FAQ</a>
-      </div>
+    </header>
 
-      <div class="mobileMenu__cta">
-        <a class="btn btn--ghost btn--full" href="services.html#pricing">Цены</a>
-        <a class="btn btn--ghost btn--full" href="https://t.me/kommdirector" target="_blank" rel="noreferrer">Группа</a>
-        <a class="btn btn--primary btn--full" href="https://t.me/kommdir_systems" data-prefill="true" target="_blank" rel="noreferrer">Написать в Telegram</a>
-      </div>
-    </div>
-  </div>
-
-  <main>
+  <main class="page">
     <section class="hero hero--compact">
       <div class="container">
         <div class="hero__inner">
@@ -85,7 +72,7 @@
 
             <div class="hero__actions">
               <a class="btn btn--primary" href="https://t.me/kommdir_systems" data-prefill="true" target="_blank" rel="noreferrer">Задать вопрос</a>
-              <a class="btn btn--ghost" href="services.html#pricing">Смотреть пакеты</a>
+              <a class="btn btn--ghost" href="services.html#packages">Смотреть пакеты</a>
             </div>
 
             <p class="fineprint">Мы не делаем выкупы/накрутки — работаем только с реальными данными и реальными людьми.</p>
@@ -213,6 +200,10 @@
                   <label for="d_ret">Возвраты/брак, %</label>
                   <input id="d_ret" name="returnsPct" type="number" step="0.1" value="3" />
                 </div>
+                <div>
+                  <label for="d_other">Прочие расходы, ₽</label>
+                  <input id="d_other" name="otherCost" type="number" step="1" value="0" />
+                </div>
                 <div class="field">
                   <label for="d_target">Целевая прибыль / шт, ₽</label>
                   <input id="d_target" name="targetProfit" type="number" step="1" value="800" />
@@ -265,7 +256,7 @@
     </div>
   </footer>
 
-  <script defer src="assets/script.js?v=20260210"></script>
-  <script defer src="assets/calculators.js?v=20260210"></script>
+  <script defer src="assets/script.js?v=20260210-v11"></script>
+  <script defer src="assets/calculators.js?v=20260210-v11"></script>
 </body>
 </html>

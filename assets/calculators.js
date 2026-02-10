@@ -26,14 +26,15 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     // --- Unit economics (simplified)
+    // IDs in calculators.html
     const u = {
-      sale: $('u_sale'),
-      feePct: $('u_fee_pct'),
-      ship: $('u_ship'),
+      sale: $('u_price'),
+      feePct: $('u_comm'),
+      ship: $('u_log'),
       cogs: $('u_cogs'),
       pack: $('u_pack'),
-      adsPct: $('u_ads_pct'),
-      returnsPct: $('u_returns_pct'),
+      adsPct: $('u_drr'),
+      returnsPct: $('u_ret'),
       other: $('u_other'),
     };
 
@@ -74,14 +75,14 @@
 
     // --- Max DRR for target profit
     const d = {
-      sale: $('d_sale'),
-      feePct: $('d_fee_pct'),
-      ship: $('d_ship'),
+      sale: $('d_price'),
+      feePct: $('d_comm'),
+      ship: $('d_log'),
       cogs: $('d_cogs'),
       pack: $('d_pack'),
-      returnsPct: $('d_returns_pct'),
+      returnsPct: $('d_ret'),
       other: $('d_other'),
-      targetProfit: $('d_target_profit'),
+      targetProfit: $('d_target'),
     };
 
     const dOut = {
