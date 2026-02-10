@@ -1,86 +1,115 @@
+// Calculators (unit economics + max DRR)
+// v20260210-fix: align element IDs with calculators.html and avoid null crashes
+
 (function () {
-  function num(v) {
-    const n = Number(String(v).replace(',', '.'));
-    return Number.isFinite(n) ? n : 0;
-  }
+  const moneyFmt = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 });
+  const pctFmt = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 1 });
 
-  function fmtRub(x) {
-    const n = Math.round((Number.isFinite(x) ? x : 0) * 100) / 100;
-    return n.toLocaleString('ru-RU', { maximumFractionDigits: 2 }) + ' ₽';
-  }
+  const fmtMoney = (n) => (Number.isFinite(n) ? `${moneyFmt.format(Math.round(n))} ₽` : '—');
+  const fmtPct = (n) => (Number.isFinite(n) ? `${pctFmt.format(n)}%` : '—');
 
-  function fmtPct(x) {
-    const n = Math.round((Number.isFinite(x) ? x : 0) * 100) / 100;
-    return n.toLocaleString('ru-RU', { maximumFractionDigits: 2 }) + ' %';
-  }
+  const num = (el) => {
+    if (!el) return 0;
+    const v = Number(String(el.value ?? '').replace(',', '.'));
+    return Number.isFinite(v) ? v : 0;
+  };
 
-  // --- Unit economics calculator
-  const unitForm = document.getElementById('unitCalc');
-  if (unitForm) {
-    const outProfit = document.getElementById('unit_profit');
-    const outMargin = document.getElementById('unit_margin');
-    const outCosts = document.getElementById('unit_costs');
-    const outDrr = document.getElementById('unit_drr');
+  const bind = (inputs, fn) => {
+    Object.values(inputs).forEach((el) => {
+      if (!el) return;
+      el.addEventListener('input', fn);
+      el.addEventListener('change', fn);
+    });
+  };
 
-    function recalcUnit() {
-      const price = num(unitForm.price.value);
-      const commissionPct = num(unitForm.commissionPct.value);
-      const logistics = num(unitForm.logistics.value);
-      const cogs = num(unitForm.cogs.value);
-      const pack = num(unitForm.pack.value);
-      const adsPct = num(unitForm.adsPct.value);
-      const returnsPct = num(unitForm.returnsPct.value);
+  const $ = (id) => document.getElementById(id);
 
-      const commission = (price * commissionPct) / 100;
-      const ads = (price * adsPct) / 100;
-      const returns = (price * returnsPct) / 100;
+  document.addEventListener('DOMContentLoaded', () => {
+    // --- Unit economics (simplified)
+    const u = {
+      sale: $('u_sale'),
+      feePct: $('u_fee_pct'),
+      ship: $('u_ship'),
+      cogs: $('u_cogs'),
+      pack: $('u_pack'),
+      adsPct: $('u_ads_pct'),
+      returnsPct: $('u_returns_pct'),
+      other: $('u_other'),
+    };
 
-      const costs = commission + logistics + cogs + pack + ads + returns;
-      const profit = price - costs;
-      const margin = price > 0 ? (profit / price) * 100 : 0;
+    const uOut = {
+      profit: $('unit_profit'),
+      costs: $('unit_costs'),
+      margin: $('unit_margin'),
+      drr: $('unit_drr'),
+    };
 
-      outProfit.textContent = fmtRub(profit);
-      outCosts.textContent = fmtRub(costs);
-      outMargin.textContent = fmtPct(margin);
-      outDrr.textContent = fmtPct(adsPct);
+    const refreshUnit = () => {
+      // Guard: if calculators markup changed, do nothing instead of throwing
+      if (!uOut.profit || !uOut.costs || !uOut.margin || !uOut.drr) return;
 
-      // Visual hint
-      outProfit.parentElement.classList.toggle('isBad', profit < 0);
-    }
+      const sale = num(u.sale);
+      const fee = sale * (num(u.feePct) / 100);
+      const ship = num(u.ship);
+      const cogs = num(u.cogs);
+      const pack = num(u.pack);
+      const returns = sale * (num(u.returnsPct) / 100);
+      const other = num(u.other);
 
-    unitForm.addEventListener('input', recalcUnit);
-    recalcUnit();
-  }
+      const ads = sale * (num(u.adsPct) / 100);
 
-  // --- Max DRR calculator
-  const drrForm = document.getElementById('drrCalc');
-  if (drrForm) {
-    const outMaxAdsRub = document.getElementById('drr_max_ads_rub');
-    const outMaxAdsPct = document.getElementById('drr_max_ads_pct');
+      const totalCosts = fee + ship + cogs + pack + returns + other + ads;
+      const profit = sale - totalCosts;
+      const margin = sale > 0 ? (profit / sale) * 100 : 0;
+      const drr = sale > 0 ? (ads / sale) * 100 : 0;
 
-    function recalcDrr() {
-      const price = num(drrForm.price.value);
-      const commissionPct = num(drrForm.commissionPct.value);
-      const logistics = num(drrForm.logistics.value);
-      const cogs = num(drrForm.cogs.value);
-      const pack = num(drrForm.pack.value);
-      const returnsPct = num(drrForm.returnsPct.value);
-      const targetProfit = num(drrForm.targetProfit.value);
+      uOut.profit.textContent = fmtMoney(profit);
+      uOut.costs.textContent = fmtMoney(totalCosts);
+      uOut.margin.textContent = fmtPct(margin);
+      uOut.drr.textContent = fmtPct(drr);
+    };
 
-      const commission = (price * commissionPct) / 100;
-      const returns = (price * returnsPct) / 100;
+    bind(u, refreshUnit);
+    refreshUnit();
 
-      const fixedCosts = commission + logistics + cogs + pack + returns;
-      const maxAds = price - fixedCosts - targetProfit;
-      const maxAdsPct = price > 0 ? (maxAds / price) * 100 : 0;
+    // --- Max DRR for target profit
+    const d = {
+      sale: $('d_sale'),
+      feePct: $('d_fee_pct'),
+      ship: $('d_ship'),
+      cogs: $('d_cogs'),
+      pack: $('d_pack'),
+      returnsPct: $('d_returns_pct'),
+      other: $('d_other'),
+      targetProfit: $('d_target_profit'),
+    };
 
-      outMaxAdsRub.textContent = fmtRub(maxAds);
-      outMaxAdsPct.textContent = fmtPct(maxAdsPct);
+    const dOut = {
+      maxAdsRub: $('drr_max_ads_rub'),
+      maxAdsPct: $('drr_max_ads_pct'),
+    };
 
-      outMaxAdsRub.parentElement.classList.toggle('isBad', maxAds < 0);
-    }
+    const refreshDRR = () => {
+      if (!dOut.maxAdsRub || !dOut.maxAdsPct) return;
 
-    drrForm.addEventListener('input', recalcDrr);
-    recalcDrr();
-  }
+      const sale = num(d.sale);
+      const fee = sale * (num(d.feePct) / 100);
+      const ship = num(d.ship);
+      const cogs = num(d.cogs);
+      const pack = num(d.pack);
+      const returns = sale * (num(d.returnsPct) / 100);
+      const other = num(d.other);
+      const targetProfit = num(d.targetProfit);
+
+      const baseCosts = fee + ship + cogs + pack + returns + other;
+      const maxAdsRub = Math.max(0, sale - baseCosts - targetProfit);
+      const maxAdsPct = sale > 0 ? (maxAdsRub / sale) * 100 : 0;
+
+      dOut.maxAdsRub.textContent = fmtMoney(maxAdsRub);
+      dOut.maxAdsPct.textContent = fmtPct(maxAdsPct);
+    };
+
+    bind(d, refreshDRR);
+    refreshDRR();
+  });
 })();

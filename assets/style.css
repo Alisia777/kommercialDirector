@@ -13,7 +13,7 @@
   --radius:18px;
   --radius2:22px;
   --container: 1140px;
-  --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  --font:"Manrope",ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
 }
 
 *{ box-sizing:border-box; }
@@ -830,3 +830,25 @@ img{ max-width:100%; display:block; }
   .outBox{padding:12px;}
   .footer{padding:18px 0;}
 }
+
+/* prevent background scroll when mobile menu open */
+.noScroll{overflow:hidden;}
+
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:18px;z-index:9999}
+.lightbox.is-open{display:flex}
+.lightbox__inner{position:relative;max-width:min(1180px,100%);max-height:92vh;width:auto;background:rgba(10,12,16,.92);border:1px solid rgba(255,255,255,.10);border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.55);padding:14px}
+.lightbox__img{display:block;max-width:100%;max-height:72vh;object-fit:contain;border-radius:12px;background:rgba(0,0,0,.30)}
+.lightbox__caption{margin-top:10px;color:rgba(233,238,245,.90);font-size:13px;line-height:1.35}
+.lightbox__close{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(18,22,28,.88);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+.lightbox__close:hover{border-color:rgba(255,255,255,.22)}
+
+/* Gallery grid (cases) */
+.galleryGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+@media (max-width: 980px){.galleryGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width: 560px){.galleryGrid{grid-template-columns:1fr}}
+.galleryItem{display:block;border:1px solid rgba(255,255,255,.10);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.03);box-shadow:0 18px 46px rgba(0,0,0,.40);transition:transform .15s ease,border-color .15s ease}
+.galleryItem:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.18)}
+.galleryItem img{width:100%;height:190px;object-fit:contain;background:rgba(0,0,0,.24);display:block}
+.galleryItem__cap{padding:10px 12px;font-size:13px;color:var(--muted)}

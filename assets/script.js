@@ -1,50 +1,90 @@
-// Small UX helpers for the static site.
+// Shared UI helpers (nav, year, smooth scroll)
+// v20260210: fix mobile menu, close on resize/esc, keep pages consistent
 
 (function () {
-  // 1) Burger menu
-  const burger = document.getElementById('burger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const mobileClose = document.getElementById('mobileClose');
+  const $ = (id) => document.getElementById(id);
 
-  function openMenu() {
-    if (!mobileMenu) return;
-    mobileMenu.classList.add('isOpen');
-    mobileMenu.setAttribute('aria-hidden', 'false');
-  }
+  const lockScroll = (lock) => {
+    document.documentElement.classList.toggle('noScroll', !!lock);
+    document.body.classList.toggle('noScroll', !!lock);
+  };
 
-  function closeMenu() {
-    if (!mobileMenu) return;
-    mobileMenu.classList.remove('isOpen');
-    mobileMenu.setAttribute('aria-hidden', 'true');
-  }
+  const setupMobileMenu = () => {
+    const toggle = $('navToggle');
+    const menu = $('mobileMenu');
+    const closeBtn = $('menuClose');
 
-  if (burger) burger.addEventListener('click', openMenu);
-  if (mobileClose) mobileClose.addEventListener('click', closeMenu);
+    if (!toggle || !menu) return;
 
-  // Close menu on link click
-  if (mobileMenu) {
-    mobileMenu.addEventListener('click', (e) => {
-      const a = e.target && e.target.closest ? e.target.closest('a') : null;
-      if (a && a.getAttribute('href')) closeMenu();
+    // Always start closed (prevents 'двойное меню' на десктопе)
+    menu.setAttribute('hidden', '');
+    menu.setAttribute('aria-hidden', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
+    lockScroll(false);
+
+
+    const open = () => {
+      menu.removeAttribute('hidden');
+      menu.setAttribute('aria-hidden', 'false');
+      toggle.setAttribute('aria-expanded', 'true');
+      lockScroll(true);
+    };
+
+    const close = () => {
+      menu.setAttribute('hidden', '');
+      menu.setAttribute('aria-hidden', 'true');
+      toggle.setAttribute('aria-expanded', 'false');
+      lockScroll(false);
+    };
+
+    const isOpen = () => !menu.hasAttribute('hidden');
+
+    // Initial state
+    toggle.setAttribute('aria-expanded', isOpen() ? 'true' : 'false');
+    menu.setAttribute('aria-hidden', isOpen() ? 'false' : 'true');
+
+    toggle.addEventListener('click', () => {
+      if (isOpen()) close();
+      else open();
     });
-  }
 
-  // 2) Telegram prefill: ONLY for links explicitly marked with data-prefill="true"
-  // (Important: do not add ?text to group links.)
-  const msg = encodeURIComponent(
-    'Привет! Хочу обсудить разбор/план 30/60/90 и варианты сопровождения.\n' +
-      'Ссылка на мой магазин/ЛК: '
-  );
+    if (closeBtn) closeBtn.addEventListener('click', close);
 
-  document.querySelectorAll('a[data-prefill="true"]').forEach((a) => {
-    try {
-      const url = new URL(a.href);
-      if (url.hostname !== 't.me') return;
-      if (url.searchParams.has('text')) return;
-      url.searchParams.set('text', decodeURIComponent(msg));
-      a.href = url.toString();
-    } catch (_) {
-      // ignore
-    }
+    // Click outside panel closes
+    menu.addEventListener('click', (e) => {
+      if (e.target === menu) close();
+    });
+
+    // ESC closes
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen()) close();
+    });
+
+    // If user resized to desktop, close the mobile overlay
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 860 && isOpen()) close();
+    });
+  };
+
+  const setupSmoothAnchors = () => {
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const targetId = a.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        const el = document.querySelector(targetId);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // year
+    const y = $('year');
+    if (y) y.textContent = String(new Date().getFullYear());
+
+    setupMobileMenu();
+    setupSmoothAnchors();
   });
 })();
