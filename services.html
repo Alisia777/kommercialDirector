@@ -21,44 +21,45 @@
 <body>
   <a class="skiplink" href="#main">Перейти к содержимому</a>
 
-  <header class="topbar" id="top">
-    <div class="container topbar__inner">
-      <div class="brand">
-        <div class="brand__mark" aria-hidden="true"></div>
-        <div class="brand__text">
-          <div class="brand__name">Kommdir Systems</div>
-          <div class="brand__tag">Marketplace CCO • BI • Automation</div>
-        </div>
-      </div>
+    <header class="topbar">
+    <div class="topbar__inner container">
+      <a class="brand" href="index.html">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">
+          <span class="brand__name">Kommdir Systems</span>
+          <span class="brand__tag">Marketplace CCO • BI • Automation</span>
+        </span>
+      </a>
 
-      <nav class="nav" aria-label="Навигация">
-        <a class="nav__link" href="services.html#services">Услуги</a>
+      <nav class="nav" aria-label="Разделы">
+        <a class="nav__link nav__link--active" aria-current="page" href="services.html">Услуги</a>
         <a class="nav__link" href="services.html#process">Как работаем</a>
         <a class="nav__link" href="cases.html">Кейсы</a>
         <a class="nav__link" href="calculators.html">Калькуляторы</a>
         <a class="nav__link" href="services.html#faq">FAQ</a>
       </nav>
 
-      <div class="topbar__cta">
-        <a class="btn btn--ghost" href="services.html#services">Цены</a>
+      <div class="topbar__actions">
+        <a class="btn btn--ghost" href="services.html#pricing">Цены</a>
         <a class="btn btn--ghost" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
-        <a class="btn btn--primary" href="https://t.me/Hardlivers" target="_blank" rel="noopener" data-prefill="true">Написать в Telegram</a>
-      </div>
+        <a class="btn btn--primary" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Написать в Telegram</a>
 
-      <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
+        <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
 
     <div class="mobileMenu" id="mobileMenu" hidden>
-      <div class="container mobileMenu__inner">
-        <a class="mobileMenu__link" href="services.html#services">Услуги и цены</a>
-        <a class="mobileMenu__link" href="services.html#process">Как работаем</a>
-        <a class="mobileMenu__link" href="cases.html">Кейсы</a>
-        <a class="mobileMenu__link" href="calculators.html">Калькуляторы</a>
-        <a class="mobileMenu__link" href="services.html#faq">FAQ</a>
-        <a class="btn btn--ghost mobileMenu__btn" href="https://t.me/kommdirector" target="_blank" rel="noopener">Telegram‑группа</a>
-        <a class="btn btn--primary mobileMenu__btn" href="https://t.me/Hardlivers" target="_blank" rel="noopener" data-prefill="true">Написать в Telegram</a>
+      <a class="mobileMenu__link mobileMenu__link--active" aria-current="page" href="services.html">Услуги</a>
+      <a class="mobileMenu__link" href="services.html#process">Как работаем</a>
+      <a class="mobileMenu__link" href="cases.html">Кейсы</a>
+      <a class="mobileMenu__link" href="calculators.html">Калькуляторы</a>
+      <a class="mobileMenu__link" href="services.html#faq">FAQ</a>
+      <div class="mobileMenu__actions">
+        <a class="btn btn--ghost" href="services.html#pricing">Цены</a>
+        <a class="btn btn--ghost" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
+        <a class="btn btn--primary" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Написать в Telegram</a>
       </div>
     </div>
   </header>
@@ -127,7 +128,7 @@
           </ul>
           <div class="cardCta">
             <a class="btn btn--primary btn--full" href="#services">Выбрать формат</a>
-            <a class="btn btn--ghost btn--full" href="https://t.me/Hardlivers" target="_blank" rel="noopener">Задать вопрос</a>
+            <a class="btn btn--ghost btn--full" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Задать вопрос</a>
           </div>
           <div class="cardHint">Чтобы стартовать — достаточно ссылок на карточки и доступа к базовым отчётам.</div>
         </aside>
@@ -135,6 +136,7 @@
     </section>
 
     <section class="section" id="services">
+      <div id="pricing"></div>
       <div class="container">
         <div class="sectionHead">
           <h2 class="sectionTitle">Услуги и стоимость</h2>
@@ -161,7 +163,7 @@
             </ul>
 
             <div class="priceCard__cta">
-              <a class="btn btn--primary btn--full" href="https://t.me/Hardlivers" target="_blank" rel="noopener">Хочу разбор</a>
+              <a class="btn btn--primary btn--full" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Хочу разбор</a>
             </div>
           </article>
 
@@ -185,7 +187,7 @@
             </ul>
 
             <div class="priceCard__cta">
-              <a class="btn btn--primary btn--full" href="https://t.me/Hardlivers" target="_blank" rel="noopener">Обсудить контроль</a>
+              <a class="btn btn--primary btn--full" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Обсудить контроль</a>
             </div>
           </article>
 
@@ -208,7 +210,7 @@
             </ul>
 
             <div class="priceCard__cta">
-              <a class="btn btn--primary btn--full" href="https://t.me/Hardlivers" target="_blank" rel="noopener">Хочу «одно окно»</a>
+              <a class="btn btn--primary btn--full" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Хочу «одно окно»</a>
             </div>
           </article>
         </div>
@@ -264,7 +266,7 @@
           <div class="callout__title">Хотите начать «с малого», но без потери качества?</div>
           <div class="callout__text">Начните с разбора и плана по 1–2 SKU. Это самый быстрый способ увидеть, где именно утекают деньги.</div>
           <div class="callout__cta">
-            <a class="btn btn--primary" href="https://t.me/Hardlivers" target="_blank" rel="noopener" data-prefill="true">Написать в Telegram</a>
+            <a class="btn btn--primary" href="https://t.me/kommdir_systems" target="_blank" rel="noopener" data-prefill="true">Написать в Telegram</a>
             <a class="btn btn--ghost" href="#faq">Посмотреть вопросы</a>
           </div>
         </div>
@@ -326,7 +328,7 @@
             <p class="ctaBlock__text">Напишите, сколько у вас SKU и где сейчас болит сильнее всего. Ответим, какой формат лучше: разбор, контроль или «одно окно».</p>
           </div>
           <div class="ctaBlock__actions">
-            <a class="btn btn--primary btn--lg" href="https://t.me/Hardlivers" target="_blank" rel="noopener" data-prefill="true">Написать в Telegram</a>
+            <a class="btn btn--primary btn--lg" href="https://t.me/kommdir_systems" target="_blank" rel="noopener" data-prefill="true">Написать в Telegram</a>
             <a class="btn btn--ghost btn--lg" href="#services">Посмотреть цены</a>
           </div>
         </div>
@@ -344,7 +346,7 @@
       <div class="footer__right">
         <div class="footer__label">Контакт</div>
         <a class="footer__link footer__link--primary" href="https://t.me/kommdirector" target="_blank" rel="noopener">Telegram‑группа: @kommdirector</a>
-        <a class="footer__link" href="https://t.me/Hardlivers" target="_blank" rel="noopener">Telegram: @Hardlivers</a>
+        <a class="footer__link" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Telegram: @kommdir_systems</a>
         <div class="footer__small">© <span id="year"></span>. Без выкупов/накруток. Работаем «в белую».</div>
       </div>
     </div>

@@ -34,9 +34,17 @@
     };
 
     const open = ({ src, alt, caption }) => {
-      img.src = src;
       img.alt = alt || '';
-      cap.textContent = caption || '';
+      cap.textContent = 'Загрузка…';
+
+      img.onload = () => {
+        cap.textContent = caption || alt || '';
+      };
+      img.onerror = () => {
+        cap.textContent = (caption || alt || '') + ' — не удалось загрузить изображение';
+      };
+
+      img.src = src;
       root.classList.add('is-open');
       root.removeAttribute('aria-hidden');
       document.documentElement.classList.add('noScroll');

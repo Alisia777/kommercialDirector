@@ -14,9 +14,9 @@
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="wrap topbar__inner">
-      <a class="brand" href="./">
+          <header class="topbar">
+    <div class="topbar__inner container">
+      <a class="brand" href="index.html">
         <span class="brand__mark" aria-hidden="true"></span>
         <span class="brand__text">
           <span class="brand__name">Kommdir Systems</span>
@@ -24,194 +24,196 @@
         </span>
       </a>
 
-      <nav class="nav">
-        <button class="navToggle" id="navToggle" aria-label="Меню">
-          <span class="burger" aria-hidden="true"></span>
-        </button>
-
-        <div class="navLinks" id="navLinks">
-          <a href="services.html">Услуги</a>
-          <a href="services.html#how">Как работаем</a>
-          <a class="is-active" href="cases.html">Кейсы</a>
-          <a href="calculators.html">Калькуляторы</a>
-          <a href="services.html#faq">FAQ</a>
-        </div>
-
-        <div class="topbar__actions">
-          <a class="btn btnGhost" href="services.html#pricing">Цены</a>
-          <a class="btn btnGhost" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
-          <a class="btn btnPrimary" href="https://t.me/Hardlivers" target="_blank" rel="noopener">Написать в Telegram</a>
-        </div>
-
-        <div class="mobileMenu" id="mobileMenu" hidden>
-          <div class="mobileMenu__panel" role="dialog" aria-modal="true" aria-label="Меню">
-            <div class="mobileMenu__head">
-              <div class="mobileMenu__title">Меню</div>
-              <button class="mobileMenu__close" id="menuClose" aria-label="Закрыть">✕</button>
-            </div>
-            <div class="mobileMenu__links">
-              <a class="btn btnGhost" href="services.html">Услуги и цены</a>
-              <a class="btn btnGhost" href="services.html#how">Как работаем</a>
-              <a class="btn btnGhost" href="cases.html">Кейсы</a>
-              <a class="btn btnGhost" href="calculators.html">Калькуляторы</a>
-              <a class="btn btnGhost" href="services.html#faq">FAQ</a>
-              <div class="mobileMenu__cta">
-                <a class="btn btnGhost" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
-                <a class="btn btnPrimary" href="https://t.me/Hardlivers" target="_blank" rel="noopener">Написать в Telegram</a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <nav class="nav" aria-label="Разделы">
+        <a class="nav__link" href="services.html">Услуги</a>
+        <a class="nav__link" href="services.html#process">Как работаем</a>
+        <a class="nav__link nav__link--active" aria-current="page" href="cases.html">Кейсы</a>
+        <a class="nav__link" href="calculators.html">Калькуляторы</a>
+        <a class="nav__link" href="services.html#faq">FAQ</a>
       </nav>
+
+      <div class="topbar__actions">
+        <a class="btn btn--ghost" href="services.html#pricing">Цены</a>
+        <a class="btn btn--ghost" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
+        <a class="btn btn--primary" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Написать в Telegram</a>
+
+        <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobileMenu" id="mobileMenu" hidden>
+      <a class="mobileMenu__link" href="services.html">Услуги</a>
+      <a class="mobileMenu__link" href="services.html#process">Как работаем</a>
+      <a class="mobileMenu__link mobileMenu__link--active" aria-current="page" href="cases.html">Кейсы</a>
+      <a class="mobileMenu__link" href="calculators.html">Калькуляторы</a>
+      <a class="mobileMenu__link" href="services.html#faq">FAQ</a>
+      <div class="mobileMenu__actions">
+        <a class="btn btn--ghost" href="services.html#pricing">Цены</a>
+        <a class="btn btn--ghost" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
+        <a class="btn btn--primary" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Написать в Telegram</a>
+      </div>
     </div>
   </header>
 
-  <main>
-    <section class="section">
-      <div class="wrap">
-        <div class="kicker">Кейсы</div>
-        <h1 class="h1">Скриншоты и структура</h1>
-        <p class="sub">
-          Четыре среза, которые чаще всего интересны собственнику: запуск/рост, юнит‑экономика, автоматизация и управленческий контроль.
-          Скриншоты — анонимизировано.
-        </p>
+    <main>
+    <section class="section hero">
+      <div class="container">
+        <div class="hero__inner">
+          <div>
+            <div class="pill">Кейсы</div>
+            <h1 class="hero__title">Скриншоты и структура</h1>
+            <p class="hero__subtitle">Четыре среза, которые чаще всего интересны собственнику: запуск/рост, юнит‑экономика, автоматизация и управленческий контроль. Скриншоты — анонимизировано.</p>
 
-        <div class="shotsGrid">
-          <!-- Case 01 -->
-          <article class="shotCard">
-            <a class="shotCard__media" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/case_wb_hoodie_black_mpstats_v01.png" data-lightbox data-caption="Mpstats: динамика и показатели SKU (анонимизировано)">
-              <img class="shotCard__img" src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/case_wb_hoodie_black_mpstats_v01.png" alt="Mpstats: динамика и показатели SKU" loading="lazy" />
-            </a>
-            <div class="shotCard__body">
-              <span class="pill">Кейс 01</span>
-              <h3>Запуск нового бренда на маркетплейс</h3>
-              <ul>
-                <li>Первые SKU: карточки, контент, позиционирование</li>
-                <li>Настройка рекламы и контроль DRR</li>
-                <li>Поддержка покупателей → реальные отзывы</li>
-              </ul>
-              <div class="shotCard__foot">Скриншоты по NDA • цифры/ссылки — по запросу</div>
+            <div class="hero__cta">
+              <a class="btn btn--primary" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Обсудить задачу</a>
+              <a class="btn btn--ghost" href="calculators.html">Калькуляторы</a>
             </div>
-          </article>
 
-          <!-- Case 02 -->
-          <article class="shotCard">
-            <a class="shotCard__media" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/pl_wb_project_2023_v01.png" data-lightbox data-caption="Юнит‑экономика и план‑факт (анонимизировано)">
-              <img class="shotCard__img" src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/pl_wb_project_2023_v01.png" alt="Юнит‑экономика и план‑факт" loading="lazy" />
-            </a>
-            <div class="shotCard__body">
-              <span class="pill">Кейс 02</span>
-              <h3>Пересборка юнит‑экономики и цены</h3>
-              <ul>
-                <li>Находим «дырки»: комиссия/логистика/упаковка</li>
-                <li>Сценарии: что масштабировать, что резать</li>
-                <li>План 30/60/90 + KPI по каждому SKU</li>
-              </ul>
-              <div class="shotCard__foot">Скриншоты по NDA • цифры/ссылки — по запросу</div>
+            <p class="hero__fineprint">Полные кейсы под NDA — цифры/ссылки/детали по запросу.</p>
+          </div>
+
+          <div class="heroCard">
+            <div class="heroCard__title">Как смотреть</div>
+            <div class="heroCard__points">
+              <div class="heroPoint"><span class="dot"></span>Кликните по любому скриншоту — откроется в полном размере.</div>
+              <div class="heroPoint"><span class="dot"></span>В кейсах показываем реальные действия и реальные данные.</div>
+              <div class="heroPoint"><span class="dot"></span>Выкупов/накруток не делаем — только «белые» методы.</div>
             </div>
-          </article>
-
-          <!-- Case 03 -->
-          <article class="shotCard">
-            <a class="shotCard__media" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/sql_v_daily_funnel_v02.png" data-lightbox data-caption="SQL/витрины данных: ежедневная воронка и метрики (анонимизировано)">
-              <img class="shotCard__img" src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/sql_v_daily_funnel_v02.png" alt="SQL/витрины данных: ежедневная воронка" loading="lazy" />
-            </a>
-            <div class="shotCard__body">
-              <span class="pill">Кейс 03</span>
-              <h3>Автоматизация учёта и алертов</h3>
-              <ul>
-                <li>Витрины данных: продажи, маржа, остатки, реклама</li>
-                <li>Сигналы «что горит» прямо сегодня</li>
-                <li>Меньше ручной рутины → ниже операционные риски</li>
-              </ul>
-              <div class="shotCard__foot">Скриншоты по NDA • цифры/ссылки — по запросу</div>
-            </div>
-          </article>
-
-          <!-- Case 04 -->
-          <article class="shotCard">
-            <a class="shotCard__media" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/daily_manager_checklist_v01.png" data-lightbox data-caption="Ежедневный чек‑лист менеджера: контроль исполнения (анонимизировано)">
-              <img class="shotCard__img" src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/daily_manager_checklist_v01.png" alt="Ежедневный чек‑лист менеджера" loading="lazy" />
-            </a>
-            <div class="shotCard__body">
-              <span class="pill">Кейс 04</span>
-              <h3>Контроль исполнения и рост рейтинга</h3>
-              <ul>
-                <li>Еженедельный план‑факт и разбор отклонений</li>
-                <li>Q&amp;A и помощь по карточкам/подключению/описаниям</li>
-                <li>Без выкупов/накруток — только живые отзывы</li>
-              </ul>
-              <div class="shotCard__foot">Скриншоты по NDA • цифры/ссылки — по запросу</div>
-            </div>
-          </article>
-        </div>
-
-        <div class="note" style="margin-top:14px;">
-          Часть проектов под NDA. Если нужно — дадим больше деталей в личку.
-        </div>
-
-        <div class="ctaRow" style="margin-top:12px;">
-          <a class="btn btnPrimary btnFull" href="https://t.me/Hardlivers" target="_blank" rel="noopener">Обсудить задачу</a>
-          <a class="btn btnGhost btnFull" href="calculators.html">Открыть калькуляторы</a>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="wrap">
-        <div class="kicker">Галерея</div>
-        <h2 class="h2">Ещё примеры (анонимизировано)</h2>
-        <p class="sub">Нажмите на картинку — откроется в полном размере.</p>
+      <div class="container">
+        <div class="sectionHead">
+          <h2 class="sectionTitle">4 кейса</h2>
+          <p class="sectionNote">Запуск → рост → контроль: что делали и какие управленческие срезы собирали.</p>
+        </div>
+
+        <div class="shotGrid">
+          <article class="shotCard">
+            <a class="shotCard__media" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/case_wb_hoodie_black_mpstats_v01.png" data-lightbox data-caption="Mpstats: динамика и показатели SKU (анонимизировано)">
+              <img class="shotCard__img" src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/case_wb_hoodie_black_mpstats_v01.png" alt="Mpstats: динамика и показатели SKU" loading="lazy" decoding="async">
+            </a>
+            <div class="shotCard__body">
+              <div class="shotCard__kicker"><span class="badge">Кейс 01</span> Запуск</div>
+              <h3 class="shotCard__title">Запуск нового бренда на маркетплейс</h3>
+              <ul class="miniList">
+                <li>первые SKU: карточки, контент, позиционирование</li>
+                <li>настройка рекламы и контроль DRR</li>
+                <li>поддержка покупателей → реальные отзывы</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="shotCard">
+            <a class="shotCard__media" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/pl_wb_project_2023_v01.png" data-lightbox data-caption="План 30/60/90 + KPI по SKU (анонимизировано)">
+              <img class="shotCard__img" src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/pl_wb_project_2023_v01.png" alt="План 30/60/90 + KPI по SKU" loading="lazy" decoding="async">
+            </a>
+            <div class="shotCard__body">
+              <div class="shotCard__kicker"><span class="badge">Кейс 02</span> Юнит‑экономика</div>
+              <h3 class="shotCard__title">Пересборка юнит‑экономики и цены</h3>
+              <ul class="miniList">
+                <li>находим «дырки»: комиссия/логистика/упаковка/возвраты</li>
+                <li>сценарии: что масштабировать, что резать</li>
+                <li>план 30/60/90 + KPI по каждому SKU</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="shotCard">
+            <a class="shotCard__media" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/daily_manager_checklist_v01.png" data-lightbox data-caption="Еженедельный план‑факт и разбор отклонений (анонимизировано)">
+              <img class="shotCard__img" src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/daily_manager_checklist_v01.png" alt="Еженедельный план‑факт и разбор отклонений" loading="lazy" decoding="async">
+            </a>
+            <div class="shotCard__body">
+              <div class="shotCard__kicker"><span class="badge">Кейс 03</span> Контроль</div>
+              <h3 class="shotCard__title">Контроль исполнения и рост рейтинга</h3>
+              <ul class="miniList">
+                <li>еженедельный план‑факт разбор отклонений</li>
+                <li>QA по карточкам: подложки/описания/вариации</li>
+                <li>без выкупов/накруток — только живые отзывы</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="shotCard">
+            <a class="shotCard__media" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/forecast_vs_actual_30d_v01.png" data-lightbox data-caption="Прогноз vs факт (30 дней) — управленческий контроль (анонимизировано)">
+              <img class="shotCard__img" src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/forecast_vs_actual_30d_v01.png" alt="Прогноз vs факт (30 дней)" loading="lazy" decoding="async">
+            </a>
+            <div class="shotCard__body">
+              <div class="shotCard__kicker"><span class="badge">Кейс 04</span> Прогноз</div>
+              <h3 class="shotCard__title">Прогноз и управленческий план‑факт</h3>
+              <ul class="miniList">
+                <li>прогноз vs факт на 30 дней: продажи/маржа/DRR</li>
+                <li>контроль рекламных сценариев и эффективности</li>
+                <li>зона риска по SKU: где «течёт» юнит‑экономика</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="ctaRow">
+          <a class="btn btn--primary" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Обсудить задачу</a>
+          <a class="btn btn--ghost" href="services.html">Посмотреть услуги</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="sectionHead">
+          <h2 class="sectionTitle">Ещё примеры (анонимизировано)</h2>
+          <p class="sectionNote">Нажмите на картинку — откроется в полном размере.</p>
+        </div>
 
         <div class="galleryGrid">
-          <a class="galleryItem" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/sql_v_daily_funnel_v01.png" data-lightbox data-caption="SQL: витрина daily_funnel (v01)">
-            <img src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/sql_v_daily_funnel_v01.png" alt="SQL: витрина daily_funnel" loading="lazy" />
-            <span class="galleryItem__cap">SQL / витрина daily_funnel</span>
+          <a class="galleryItem" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/sql_v_daily_funnel_v02.png" data-lightbox data-caption="SQL / витрина daily_funnel">
+            <img src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/sql_v_daily_funnel_v02.png" alt="SQL / витрина daily_funnel" loading="lazy" decoding="async">
+            <span class="galleryItem__label">SQL / витрина daily_funnel</span>
           </a>
 
-          <a class="galleryItem" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/mgmt_accounts_map_v01.png" data-lightbox data-caption="Карта управления кабинетами (анонимизировано)">
-            <img src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/mgmt_accounts_map_v01.png" alt="Карта управления кабинетами" loading="lazy" />
-            <span class="galleryItem__cap">Карта кабинетов</span>
+          <a class="galleryItem" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/mgmt_accounts_map_v01.png" data-lightbox data-caption="Карта кабинетов / структура (анонимизировано)">
+            <img src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/mgmt_accounts_map_v01.png" alt="Карта кабинетов / структура" loading="lazy" decoding="async">
+            <span class="galleryItem__label">Карта кабинетов</span>
           </a>
 
-          <a class="galleryItem" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/forecast_vs_actual_30d_v01.png" data-lightbox data-caption="Прогноз vs факт (30 дней) (анонимизировано)">
-            <img src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/forecast_vs_actual_30d_v01.png" alt="Прогноз vs факт 30 дней" loading="lazy" />
-            <span class="galleryItem__cap">Прогноз vs факт (30д)</span>
-          </a>
-
-          <a class="galleryItem" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/wb_ozon_monthly_planfact_v01.png" data-lightbox data-caption="План‑факт по месяцам (Ozon/WB) (анонимизировано)">
-            <img src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/wb_ozon_monthly_planfact_v01.png" alt="План‑факт Ozon/WB" loading="lazy" />
-            <span class="galleryItem__cap">План‑факт (Ozon/WB)</span>
+          <a class="galleryItem" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/bl_wb_ozon_monthly_plansfact_v01.png" data-lightbox data-caption="План‑факт (Ozon/WB) — сводка (анонимизировано)">
+            <img src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/bl_wb_ozon_monthly_plansfact_v01.png" alt="План‑факт (Ozon/WB) — сводка" loading="lazy" decoding="async">
+            <span class="galleryItem__label">План‑факт (Ozon/WB)</span>
           </a>
 
           <a class="galleryItem" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/case_wb_longsleeve_chocolate_mpstats_v01.png" data-lightbox data-caption="Mpstats: пример SKU (анонимизировано)">
-            <img src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/case_wb_longsleeve_chocolate_mpstats_v01.png" alt="Mpstats пример SKU" loading="lazy" />
-            <span class="galleryItem__cap">Mpstats (пример SKU)</span>
+            <img src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/case_wb_longsleeve_chocolate_mpstats_v01.png" alt="Mpstats: пример SKU" loading="lazy" decoding="async">
+            <span class="galleryItem__label">Mpstats (пример SKU)</span>
           </a>
 
           <a class="galleryItem" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/case_wb_hoodie_black_mpstats_v01.png" data-lightbox data-caption="Mpstats: пример SKU (анонимизировано)">
-            <img src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/case_wb_hoodie_black_mpstats_v01.png" alt="Mpstats пример SKU" loading="lazy" />
-            <span class="galleryItem__cap">Mpstats (пример SKU)</span>
+            <img src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/case_wb_hoodie_black_mpstats_v01.png" alt="Mpstats: пример SKU" loading="lazy" decoding="async">
+            <span class="galleryItem__label">Mpstats (пример SKU)</span>
+          </a>
+
+          <a class="galleryItem" href="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/sql_v_daily_funnel_v01.png" data-lightbox data-caption="SQL / витрина daily_funnel (вариант)">
+            <img src="https://raw.githubusercontent.com/Alisia777/kommercialDirector/main/sql_v_daily_funnel_v01.png" alt="SQL / витрина daily_funnel (вариант)" loading="lazy" decoding="async">
+            <span class="galleryItem__label">SQL (вариант)</span>
           </a>
         </div>
 
-        <div class="note" style="margin-top:14px;">
-          В кейсах мы показываем только реальные действия и реальные данные. Выкупов/накруток не делаем.
-        </div>
+        <p class="sectionNote" style="margin-top:14px">В кейсах мы показываем только реальные действия и реальные данные. Выкупов/накруток не делаем.</p>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="wrap footer__inner">
-      <div class="footer__brand">
-        <div class="footer__name">Kommdir Systems</div>
-        <div class="footer__tag">© <span id="year"></span> • Marketplace CCO • BI • Automation</div>
-      </div>
+    <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">Kommdir Systems<br><span>© <span id="year"></span> • Marketplace CCO • BI • Automation</span></div>
       <div class="footer__links">
         <a href="services.html">Услуги</a>
         <a href="cases.html">Кейсы</a>
         <a href="calculators.html">Калькуляторы</a>
+        <a href="services.html#faq">FAQ</a>
       </div>
     </div>
   </footer>

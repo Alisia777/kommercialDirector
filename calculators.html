@@ -13,9 +13,9 @@
 <link rel="stylesheet" href="assets/style.css?v=20260210" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar__inner">
-      <a class="brand" href="index.html" aria-label="Kommdir Systems — на главную">
+      <header class="topbar">
+    <div class="topbar__inner container">
+      <a class="brand" href="index.html">
         <span class="brand__mark" aria-hidden="true"></span>
         <span class="brand__text">
           <span class="brand__name">Kommdir Systems</span>
@@ -23,36 +23,39 @@
         </span>
       </a>
 
-      <nav class="nav" aria-label="Навигация">
-        <a href="services.html" class="nav__link">Услуги</a>
-        <a href="services.html#how" class="nav__link">Как работаем</a>
-        <a href="cases.html" class="nav__link">Кейсы</a>
-        <a href="calculators.html" class="nav__link nav__link--active">Калькуляторы</a>
-        <a href="services.html#faq" class="nav__link">FAQ</a>
+      <nav class="nav" aria-label="Разделы">
+        <a class="nav__link" href="services.html">Услуги</a>
+        <a class="nav__link" href="services.html#process">Как работаем</a>
+        <a class="nav__link" href="cases.html">Кейсы</a>
+        <a class="nav__link nav__link--active" aria-current="page" href="calculators.html">Калькуляторы</a>
+        <a class="nav__link" href="services.html#faq">FAQ</a>
       </nav>
 
-      <div class="topbar__cta">
+      <div class="topbar__actions">
         <a class="btn btn--ghost" href="services.html#pricing">Цены</a>
-        <a class="btn btn--ghost" href="https://t.me/kommdirector" target="_blank" rel="noreferrer">Группа</a>
-        <a class="btn btn--primary" href="https://t.me/Hardlivers" data-prefill="true" target="_blank" rel="noreferrer">Написать в Telegram</a>
-      </div>
+        <a class="btn btn--ghost" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
+        <a class="btn btn--primary" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Написать в Telegram</a>
 
-      <button class="burger" id="burger" aria-label="Открыть меню" aria-controls="mobileMenu" aria-expanded="false">
-        <span class="burger__line" aria-hidden="true"></span>
-        <span class="burger__line" aria-hidden="true"></span>
-        <span class="burger__line" aria-hidden="true"></span>
-      </button>
+        <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobileMenu" id="mobileMenu" hidden>
+      <a class="mobileMenu__link" href="services.html">Услуги</a>
+      <a class="mobileMenu__link" href="services.html#process">Как работаем</a>
+      <a class="mobileMenu__link" href="cases.html">Кейсы</a>
+      <a class="mobileMenu__link mobileMenu__link--active" aria-current="page" href="calculators.html">Калькуляторы</a>
+      <a class="mobileMenu__link" href="services.html#faq">FAQ</a>
+      <div class="mobileMenu__actions">
+        <a class="btn btn--ghost" href="services.html#pricing">Цены</a>
+        <a class="btn btn--ghost" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
+        <a class="btn btn--primary" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Написать в Telegram</a>
+      </div>
     </div>
   </header>
-
-  <div class="mobileMenu" id="mobileMenu" hidden>
-    <div class="mobileMenu__inner">
-      <div class="mobileMenu__head">
-        <span class="mobileMenu__title">Меню</span>
-        <button class="mobileMenu__close" id="mobileClose" aria-label="Закрыть меню">×</button>
-      </div>
-
-      <div class="mobileMenu__links">
+<div class="mobileMenu__links">
         <a href="services.html" class="mobileMenu__link">Услуги</a>
         <a href="services.html#how" class="mobileMenu__link">Как работаем</a>
         <a href="cases.html" class="mobileMenu__link">Кейсы</a>
@@ -63,7 +66,7 @@
       <div class="mobileMenu__cta">
         <a class="btn btn--ghost btn--full" href="services.html#pricing">Цены</a>
         <a class="btn btn--ghost btn--full" href="https://t.me/kommdirector" target="_blank" rel="noreferrer">Группа</a>
-        <a class="btn btn--primary btn--full" href="https://t.me/Hardlivers" data-prefill="true" target="_blank" rel="noreferrer">Написать в Telegram</a>
+        <a class="btn btn--primary btn--full" href="https://t.me/kommdir_systems" data-prefill="true" target="_blank" rel="noreferrer">Написать в Telegram</a>
       </div>
     </div>
   </div>
@@ -81,7 +84,7 @@
             </p>
 
             <div class="hero__actions">
-              <a class="btn btn--primary" href="https://t.me/Hardlivers" data-prefill="true" target="_blank" rel="noreferrer">Задать вопрос</a>
+              <a class="btn btn--primary" href="https://t.me/kommdir_systems" data-prefill="true" target="_blank" rel="noreferrer">Задать вопрос</a>
               <a class="btn btn--ghost" href="services.html#pricing">Смотреть пакеты</a>
             </div>
 
@@ -240,7 +243,7 @@
             </div>
 
             <div style="margin-top:12px">
-              <a class="btn btn--primary btn--full" href="https://t.me/Hardlivers" data-prefill="true" target="_blank" rel="noreferrer">Написать в Telegram</a>
+              <a class="btn btn--primary btn--full" href="https://t.me/kommdir_systems" data-prefill="true" target="_blank" rel="noreferrer">Написать в Telegram</a>
             </div>
           </div>
         </div>
