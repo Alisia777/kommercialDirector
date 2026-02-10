@@ -2,92 +2,97 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kommdir Systems — Кейсы</title>
-  <meta name="description" content="Кейсы Kommdir Systems: примеры подхода к росту на маркетплейсах (без выкупов и накруток)." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Кейсы — Kommdir Systems</title>
+  <meta name="description" content="Кейсы и примеры: запуск брендов, пересборка юнит-экономики, автоматизация учёта и контроль исполнения. Kommdir Systems." />
   <link rel="stylesheet" href="assets/style.css?v=20260209" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 </head>
-<body class="site">
+<body>
   <header class="topbar">
     <div class="container topbar__inner">
-      <div class="brand">
-        <div class="brand__mark" aria-hidden="true"></div>
-        <div>
-          <div class="brand__name">Kommdir Systems</div>
-          <div class="brand__tag">Marketplace CCO • BI • Automation</div>
-        </div>
-      </div>
+      <a class="brand" href="index.html" aria-label="Kommdir Systems — на главную">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">
+          <span class="brand__name">Kommdir Systems</span>
+          <span class="brand__tag">Marketplace CCO • BI • Automation</span>
+        </span>
+      </a>
 
       <nav class="nav" aria-label="Навигация">
-        <a class="nav__link" href="services.html#services">Услуги</a>
-        <a class="nav__link" href="services.html#process">Как работаем</a>
-        <a class="nav__link" href="cases.html" aria-current="page">Кейсы</a>
-        <a class="nav__link" href="calculators.html">Калькуляторы</a>
-        <a class="nav__link" href="services.html#faq">FAQ</a>
+        <a href="services.html" class="nav__link">Услуги</a>
+        <a href="services.html#how" class="nav__link">Как работаем</a>
+        <a href="cases.html" class="nav__link nav__link--active">Кейсы</a>
+        <a href="calculators.html" class="nav__link">Калькуляторы</a>
+        <a href="services.html#faq" class="nav__link">FAQ</a>
       </nav>
 
       <div class="topbar__cta">
-        <a class="btn btn--ghost" href="services.html#services">Цены</a>
-        <a class="btn btn--ghost" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
-        <a class="btn btn--primary" href="https://t.me/Hardlivers" target="_blank" rel="noopener" data-prefill="true">Написать в Telegram</a>
+        <a class="btn btn--ghost" href="services.html#pricing">Цены</a>
+        <a class="btn btn--ghost" href="https://t.me/kommdirector" target="_blank" rel="noreferrer">Группа</a>
+        <a class="btn btn--primary" href="https://t.me/Hardlivers" data-prefill="true" target="_blank" rel="noreferrer">Написать в Telegram</a>
       </div>
 
-      <button id="burger" class="burger" aria-label="Открыть меню" aria-controls="mobileMenu" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-controls="mobileMenu" aria-expanded="false">
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
       </button>
-    </div>
-
-    <div id="mobileMenu" class="mobileMenu" aria-hidden="true">
-      <div class="mobileMenu__overlay" data-close></div>
-      <div class="mobileMenu__panel" role="dialog" aria-label="Меню">
-        <div class="mobileMenu__head">
-          <div class="mobileMenu__title">Меню</div>
-          <button id="mobileClose" class="mobileMenu__close" aria-label="Закрыть">✕</button>
-        </div>
-        <div class="mobileMenu__body">
-          <a class="mobileMenu__link" href="services.html#services">Услуги и цены</a>
-          <a class="mobileMenu__link" href="services.html#process">Как работаем</a>
-          <a class="mobileMenu__link" href="cases.html">Кейсы</a>
-          <a class="mobileMenu__link" href="calculators.html">Калькуляторы</a>
-          <a class="mobileMenu__link" href="services.html#faq">FAQ</a>
-          <div class="mobileMenu__sep"></div>
-          <a class="btn btn--ghost" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
-          <a class="btn btn--primary" href="https://t.me/Hardlivers" target="_blank" rel="noopener" data-prefill="true">Написать в Telegram</a>
-        </div>
-      </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__left">
-          <div class="pill">Портфолио</div>
-          <h1 class="h1">Кейсы и примеры подхода</h1>
-          <p class="lead">
-            Мы не делаем «презентации ради презентаций». В каждом проекте смотрим финмодель,
-            воронку карточки, рекламу, логистику, остатки и процесс — и собираем систему, которую можно управлять.
-          </p>
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="https://t.me/Hardlivers" target="_blank" rel="noopener" data-prefill="true">Обсудить задачу</a>
-            <a class="btn btn--ghost" href="calculators.html">Открыть калькуляторы</a>
-          </div>
-          <p class="note">Часть проектов под NDA. Цифры/скриншоты — по запросу в личку.</p>
-        </div>
+  <div class="mobileMenu" id="mobileMenu" hidden>
+    <div class="mobileMenu__inner">
+      <div class="mobileMenu__head">
+        <span class="mobileMenu__title">Меню</span>
+        <button class="mobileMenu__close" id="mobileClose" aria-label="Закрыть меню">×</button>
+      </div>
 
-        <div class="hero__right">
-          <div class="card card--glass">
-            <div class="card__title">Что обычно делаем в кейсах</div>
-            <ul class="bullets">
-              <li>Разбор причин: где «утекают» деньги (видимость/конверсия/логистика/маржа).</li>
-              <li>План 30/60/90 по каждому SKU: что делать, в каком порядке, и как мерить результат.</li>
-              <li>Контроль рекламы/остатков/цены: чтобы рост был управляемым.</li>
-              <li>Поддержка: вопросы по карточкам, подключению, описаниям, позиционированию.</li>
-            </ul>
-            <div class="card__footer">
-              <span class="badge">Без выкупов</span>
-              <span class="badge">Без накруток</span>
+      <div class="mobileMenu__links">
+        <a href="services.html" class="mobileMenu__link">Услуги</a>
+        <a href="services.html#how" class="mobileMenu__link">Как работаем</a>
+        <a href="cases.html" class="mobileMenu__link mobileMenu__link--active">Кейсы</a>
+        <a href="calculators.html" class="mobileMenu__link">Калькуляторы</a>
+        <a href="services.html#faq" class="mobileMenu__link">FAQ</a>
+      </div>
+
+      <div class="mobileMenu__cta">
+        <a class="btn btn--ghost btn--full" href="services.html#pricing">Цены</a>
+        <a class="btn btn--ghost btn--full" href="https://t.me/kommdirector" target="_blank" rel="noreferrer">Группа</a>
+        <a class="btn btn--primary btn--full" href="https://t.me/Hardlivers" data-prefill="true" target="_blank" rel="noreferrer">Написать в Telegram</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero hero--compact">
+      <div class="container">
+        <div class="hero__inner">
+          <div class="hero__content">
+            <div class="pill"><span class="pill__dot"></span> Кейсы</div>
+            <h1 class="h1">Примеры того, что мы делаем руками</h1>
+            <p class="lead">
+              Часть проектов под NDA, поэтому вместо «красивых обещаний» — структура: что именно делали и как выглядели результаты.
+              Реальные цифры/скриншоты/ссылки даём в личку.
+            </p>
+
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="https://t.me/Hardlivers" data-prefill="true" target="_blank" rel="noreferrer">Обсудить задачу</a>
+              <a class="btn btn--ghost" href="services.html#pricing">Смотреть цены</a>
+            </div>
+
+            <p class="fineprint">Работаем без выкупов/накруток. Все отзывы — только от живых покупателей.</p>
+          </div>
+
+          <div class="hero__side">
+            <div class="card">
+              <h3 class="card__title">Типовые задачи</h3>
+              <ul class="list">
+                <li>Разбор причин: видимость → конверсия → логистика → маржа.</li>
+                <li>План 30/60/90 по каждому SKU + KPI.</li>
+                <li>Контроль исполнения: план‑факт, реклама, остатки, цены.</li>
+                <li>Автоматизация учёта и алерты — меньше ручных ошибок.</li>
+              </ul>
+              <div class="card__note">Если нужно — дадим «полную версию» кейса с деталями по запросу.</div>
             </div>
           </div>
         </div>
@@ -96,65 +101,80 @@
 
     <section class="section">
       <div class="container">
-        <h2 class="h2">Снапшоты</h2>
-        <p class="muted">Коротко, без лишней «воды». Если нужно — дадим детальный разбор и материалы в личку.</p>
+        <h2 class="h2">Скриншоты и структура</h2>
+        <p class="sub">Четыре «среза», которые чаще всего интересны собственнику/инвестору.</p>
 
-        <div class="grid3" style="margin-top:16px;">
-          <div class="card">
-            <div class="card__kicker">Автозвук</div>
-            <div class="card__title">Запуск бренда и первых SKU на Ozon/WB</div>
-            <ul class="bullets">
-              <li>Витрина: позиционирование, структура карточки, контент.</li>
-              <li>Реклама: базовая структура кампаний + контроль DRR.</li>
-              <li>Поддержка покупателей: вопросы, подключение, живое общение.</li>
-              <li>Отзывы: только реальные покупатели (без выкупов/накруток).</li>
-            </ul>
-            <div class="card__footer">
-              <span class="badge">Система</span>
-              <span class="badge">Тех. продукт</span>
+        <div class="shotGrid">
+          <article class="shotCard">
+            <img class="shotCard__img" src="assets/case-1.png" alt="Кейс 01 — запуск бренда" loading="lazy" />
+            <div class="shotCard__body">
+              <div class="shotCard__kicker">Кейс 01</div>
+              <div class="shotCard__title">Запуск бренда и первые продажи</div>
+              <ul class="miniList">
+                <li>карточки/контент/позиционирование</li>
+                <li>реклама и контроль DRR</li>
+                <li>поддержка → реальные отзывы</li>
+              </ul>
             </div>
-          </div>
+          </article>
 
-          <div class="card">
-            <div class="card__kicker">Одежда / обувь</div>
-            <div class="card__title">Управляемая маржа вместо «просто продаж»</div>
-            <ul class="bullets">
-              <li>Разложили юнит-экономику и нашли «дыры» в прибыли.</li>
-              <li>Сняли убыточные связки, пересобрали структуру рекламы.</li>
-              <li>Навели порядок в остатках и ассортименте.</li>
-              <li>Определили KPI и ритм контроля (еженедельно).</li>
-            </ul>
-            <div class="card__footer">
-              <span class="badge">Маржа</span>
-              <span class="badge">Остатки</span>
+          <article class="shotCard">
+            <img class="shotCard__img" src="assets/case-2.png" alt="Кейс 02 — пересборка юнит-экономики" loading="lazy" />
+            <div class="shotCard__body">
+              <div class="shotCard__kicker">Кейс 02</div>
+              <div class="shotCard__title">Пересборка юнита и цены</div>
+              <ul class="miniList">
+                <li>где «течёт» прибыль</li>
+                <li>что масштабировать/что резать</li>
+                <li>план 30/60/90 с KPI</li>
+              </ul>
             </div>
-          </div>
+          </article>
 
-          <div class="card">
-            <div class="card__kicker">Электроника / товары для дома</div>
-            <div class="card__title">Автоматизация отчётности и контроль исполнения</div>
-            <ul class="bullets">
-              <li>Дашборды: план/факт, маржа, остатки, реклама.</li>
-              <li>Алерты: когда товар «горит» по марже/остаткам/логистике.</li>
-              <li>Единый процесс: задачи → статус → результат.</li>
-              <li>Снижение ручной рутины и ошибок.</li>
-            </ul>
-            <div class="card__footer">
-              <span class="badge">BI</span>
-              <span class="badge">Контроль</span>
+          <article class="shotCard">
+            <img class="shotCard__img" src="assets/case-3.png" alt="Кейс 03 — автоматизация и алерты" loading="lazy" />
+            <div class="shotCard__body">
+              <div class="shotCard__kicker">Кейс 03</div>
+              <div class="shotCard__title">BI и автоматизация учёта</div>
+              <ul class="miniList">
+                <li>дашборды план‑факт</li>
+                <li>алерты: что горит сейчас</li>
+                <li>снижение операционных рисков</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="shotCard">
+            <img class="shotCard__img" src="assets/case-4.png" alt="Кейс 04 — сервис и поддержка" loading="lazy" />
+            <div class="shotCard__body">
+              <div class="shotCard__kicker">Кейс 04</div>
+              <div class="shotCard__title">Сервис как рост рейтинга</div>
+              <ul class="miniList">
+                <li>Q&A и помощь покупателям</li>
+                <li>ниже возвраты</li>
+                <li>только живые отзывы</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="card card--flat" style="margin-top:18px">
+          <div class="card__body">
+            <div class="grid2">
+              <div>
+                <div class="h3">Хотите «как у вас»?</div>
+                <p class="sub" style="margin-top:6px">
+                  Начинаем с короткого запроса: ниша → оборот → главная боль. Дальше — скажем, что делать первым шагом.
+                </p>
+              </div>
+              <div class="ctaRow">
+                <a class="btn btn--primary btn--full" href="https://t.me/Hardlivers" data-prefill="true" target="_blank" rel="noreferrer">Написать в Telegram</a>
+                <a class="btn btn--ghost btn--full" href="calculators.html">Открыть калькуляторы</a>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="banner" style="margin-top:18px;">
-          <div class="banner__left">
-            <div class="banner__title">Хотите, чтобы ваш проект тоже был кейсом?</div>
-            <div class="banner__text">Начнём с короткого запроса: ниша → оборот → главная боль. Дальше — скажем, что делать первым.</div>
-          </div>
-          <div class="banner__right">
-            <a class="btn btn--primary" href="https://t.me/Hardlivers" target="_blank" rel="noopener" data-prefill="true">Написать в Telegram</a>
-          </div>
-        </div>
       </div>
     </section>
   </main>
@@ -163,16 +183,16 @@
     <div class="container footer__inner">
       <div class="footer__left">
         <div class="footer__brand">Kommdir Systems</div>
-        <div class="footer__meta">© 2026 · Marketplace CCO · BI · Automation</div>
+        <div class="footer__meta">© 2026 • Marketplace CCO • BI • Automation</div>
       </div>
       <div class="footer__right">
-        <a class="footer__link" href="services.html">Услуги</a>
-        <a class="footer__link" href="cases.html">Кейсы</a>
-        <a class="footer__link" href="calculators.html">Калькуляторы</a>
+        <a href="services.html" class="footer__link">Услуги</a>
+        <a href="cases.html" class="footer__link">Кейсы</a>
+        <a href="calculators.html" class="footer__link">Калькуляторы</a>
       </div>
     </div>
   </footer>
 
-  <script src="assets/script.js?v=20260209" defer></script>
+  <script defer src="assets/script.js?v=20260209"></script>
 </body>
 </html>

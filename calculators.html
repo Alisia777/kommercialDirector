@@ -2,256 +2,241 @@
 <html lang="ru">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kommdir Systems — Калькуляторы</title>
-  <meta name="description" content="Быстрые калькуляторы: юнит-экономика и максимальный DRR для маркетплейсов." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Калькуляторы — Kommdir Systems</title>
+  <meta name="description" content="Калькуляторы юнит-экономики и максимального DRR для маркетплейсов. Kommdir Systems." />
   <link rel="stylesheet" href="assets/style.css?v=20260209" />
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 </head>
-<body class="site">
+<body>
   <header class="topbar">
     <div class="container topbar__inner">
-      <div class="brand">
-        <div class="brand__mark" aria-hidden="true"></div>
-        <div>
-          <div class="brand__name">Kommdir Systems</div>
-          <div class="brand__tag">Marketplace CCO • BI • Automation</div>
-        </div>
-      </div>
+      <a class="brand" href="index.html" aria-label="Kommdir Systems — на главную">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">
+          <span class="brand__name">Kommdir Systems</span>
+          <span class="brand__tag">Marketplace CCO • BI • Automation</span>
+        </span>
+      </a>
 
       <nav class="nav" aria-label="Навигация">
-        <a class="nav__link" href="services.html#services">Услуги</a>
-        <a class="nav__link" href="services.html#process">Как работаем</a>
-        <a class="nav__link" href="cases.html">Кейсы</a>
-        <a class="nav__link" href="calculators.html" aria-current="page">Калькуляторы</a>
-        <a class="nav__link" href="services.html#faq">FAQ</a>
+        <a href="services.html" class="nav__link">Услуги</a>
+        <a href="services.html#how" class="nav__link">Как работаем</a>
+        <a href="cases.html" class="nav__link">Кейсы</a>
+        <a href="calculators.html" class="nav__link nav__link--active">Калькуляторы</a>
+        <a href="services.html#faq" class="nav__link">FAQ</a>
       </nav>
 
       <div class="topbar__cta">
-        <a class="btn btn--ghost" href="services.html#services">Цены</a>
-        <a class="btn btn--ghost" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
-        <a class="btn btn--primary" href="https://t.me/Hardlivers" target="_blank" rel="noopener" data-prefill="true">Написать в Telegram</a>
+        <a class="btn btn--ghost" href="services.html#pricing">Цены</a>
+        <a class="btn btn--ghost" href="https://t.me/kommdirector" target="_blank" rel="noreferrer">Группа</a>
+        <a class="btn btn--primary" href="https://t.me/Hardlivers" data-prefill="true" target="_blank" rel="noreferrer">Написать в Telegram</a>
       </div>
 
-      <button id="burger" class="burger" aria-label="Открыть меню" aria-controls="mobileMenu" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-controls="mobileMenu" aria-expanded="false">
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
+        <span class="burger__line" aria-hidden="true"></span>
       </button>
-    </div>
-
-    <div id="mobileMenu" class="mobileMenu" aria-hidden="true">
-      <div class="mobileMenu__overlay" id="mobileClose" aria-hidden="true"></div>
-      <div class="mobileMenu__panel">
-        <div class="mobileMenu__head">
-          <div class="mobileMenu__title">Меню</div>
-          <button class="mobileMenu__x" aria-label="Закрыть" id="mobileX">✕</button>
-        </div>
-        <div class="mobileMenu__links">
-          <a class="mobileMenu__link" href="services.html#services">Услуги и цены</a>
-          <a class="mobileMenu__link" href="services.html#process">Как работаем</a>
-          <a class="mobileMenu__link" href="cases.html">Кейсы</a>
-          <a class="mobileMenu__link" href="calculators.html">Калькуляторы</a>
-          <a class="mobileMenu__link" href="services.html#faq">FAQ</a>
-        </div>
-        <div class="mobileMenu__cta">
-          <a class="btn btn--ghost" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа</a>
-          <a class="btn btn--primary" href="https://t.me/Hardlivers" target="_blank" rel="noopener" data-prefill="true">Написать в Telegram</a>
-        </div>
-      </div>
     </div>
   </header>
 
+  <div class="mobileMenu" id="mobileMenu" hidden>
+    <div class="mobileMenu__inner">
+      <div class="mobileMenu__head">
+        <span class="mobileMenu__title">Меню</span>
+        <button class="mobileMenu__close" id="mobileClose" aria-label="Закрыть меню">×</button>
+      </div>
+
+      <div class="mobileMenu__links">
+        <a href="services.html" class="mobileMenu__link">Услуги</a>
+        <a href="services.html#how" class="mobileMenu__link">Как работаем</a>
+        <a href="cases.html" class="mobileMenu__link">Кейсы</a>
+        <a href="calculators.html" class="mobileMenu__link mobileMenu__link--active">Калькуляторы</a>
+        <a href="services.html#faq" class="mobileMenu__link">FAQ</a>
+      </div>
+
+      <div class="mobileMenu__cta">
+        <a class="btn btn--ghost btn--full" href="services.html#pricing">Цены</a>
+        <a class="btn btn--ghost btn--full" href="https://t.me/kommdirector" target="_blank" rel="noreferrer">Группа</a>
+        <a class="btn btn--primary btn--full" href="https://t.me/Hardlivers" data-prefill="true" target="_blank" rel="noreferrer">Написать в Telegram</a>
+      </div>
+    </div>
+  </div>
+
   <main>
     <section class="hero hero--compact">
-      <div class="container hero__grid">
-        <div class="hero__left">
-          <div class="pill">Инструменты</div>
-          <h1 class="hero__title">Калькуляторы для маркетплейса</h1>
-          <p class="hero__subtitle">
-            Быстро прикинуть юнит-экономику, маржу и максимально допустимый DRR. Это упрощённые модели —
-            точные цифры зависят от комиссии, логистики, возвратов и категории.
-          </p>
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="https://t.me/Hardlivers" target="_blank" rel="noopener" data-prefill="true">Задать вопрос по цифрам</a>
-            <a class="btn btn--ghost" href="services.html#services">Посмотреть пакеты</a>
-          </div>
-        </div>
-
-        <div class="hero__right">
-          <div class="card card--soft">
-            <div class="card__title">Как используем в работе</div>
-            <ul class="list">
-              <li>Считаем маржу и «потолок» рекламы до старта.</li>
-              <li>Фиксируем целевую прибыль на SKU и контролируем DRR.</li>
-              <li>Сверяем план/факт по комиссии, логистике, возвратам.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
       <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Юнит‑экономика (упрощённо)</h2>
-          <p class="section__text">Введите основные параметры — получите прибыль и маржу на единицу.</p>
-        </div>
-
-        <div class="grid2">
-          <div class="card">
-            <div class="card__title">Входные данные</div>
-            <div class="formGrid" id="calcUnit">
-              <div class="field">
-                <label for="u_price">Цена продажи, ₽</label>
-                <input id="u_price" type="number" inputmode="decimal" value="5000" min="0" />
-              </div>
-              <div class="field">
-                <label for="u_comm">Комиссия, %</label>
-                <input id="u_comm" type="number" inputmode="decimal" value="15" min="0" />
-              </div>
-              <div class="field">
-                <label for="u_log">Логистика/доставка, ₽</label>
-                <input id="u_log" type="number" inputmode="decimal" value="350" min="0" />
-              </div>
-              <div class="field">
-                <label for="u_cogs">Себестоимость (COGS), ₽</label>
-                <input id="u_cogs" type="number" inputmode="decimal" value="1500" min="0" />
-              </div>
-              <div class="field">
-                <label for="u_pack">Упаковка/маркировка, ₽</label>
-                <input id="u_pack" type="number" inputmode="decimal" value="80" min="0" />
-              </div>
-              <div class="field">
-                <label for="u_ads">Реклама (DRR), %</label>
-                <input id="u_ads" type="number" inputmode="decimal" value="10" min="0" />
-              </div>
-              <div class="field">
-                <label for="u_ret">Возвраты/брак, % (упр.)</label>
-                <input id="u_ret" type="number" inputmode="decimal" value="3" min="0" />
-              </div>
-              <div class="field">
-                <label for="u_other">Прочие расходы, ₽</label>
-                <input id="u_other" type="number" inputmode="decimal" value="0" min="0" />
-              </div>
-            </div>
-            <p class="note" style="margin-top:10px;">* Возвраты считаем как % от выручки (упрощение). Для точности — нужен фактический отчёт.</p>
-          </div>
-
-          <div class="card">
-            <div class="card__title">Результат</div>
-            <div class="kpis">
-              <div class="kpi">
-                <div class="kpi__label">Выручка</div>
-                <div class="kpi__value" id="u_out_rev">—</div>
-              </div>
-              <div class="kpi">
-                <div class="kpi__label">Сумма затрат</div>
-                <div class="kpi__value" id="u_out_cost">—</div>
-              </div>
-              <div class="kpi">
-                <div class="kpi__label">Прибыль / шт</div>
-                <div class="kpi__value" id="u_out_profit">—</div>
-              </div>
-              <div class="kpi">
-                <div class="kpi__label">Маржа, %</div>
-                <div class="kpi__value" id="u_out_margin">—</div>
-              </div>
-            </div>
-
-            <div class="card__divider"></div>
-
-            <div class="card__title">Подсказка</div>
-            <p class="card__text">
-              Если прибыль «тонкая», почти всегда лечится комбинацией: цена → комиссия/логистика →
-              упаковка → рекламные сценарии → ассортимент/остатки.
+        <div class="hero__inner">
+          <div class="hero__content">
+            <div class="pill"><span class="pill__dot"></span> Калькуляторы</div>
+            <h1 class="h1">Юнит‑экономика и DRR — быстро, без Excel</h1>
+            <p class="lead">
+              Набросать цифры «на салфетке», проверить запас по рекламе и понять, что именно ломает прибыль.
+              Для точности используйте фактические отчёты (заказы/начисления/логистика/реклама).
             </p>
+
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="https://t.me/Hardlivers" data-prefill="true" target="_blank" rel="noreferrer">Задать вопрос</a>
+              <a class="btn btn--ghost" href="services.html#pricing">Смотреть пакеты</a>
+            </div>
+
+            <p class="fineprint">Мы не делаем выкупы/накрутки — работаем только с реальными данными и реальными людьми.</p>
+          </div>
+
+          <div class="hero__side">
+            <div class="card">
+              <h3 class="card__title">Как пользоваться</h3>
+              <ul class="list">
+                <li>Заполните базовые параметры (цена, комиссия, логистика, COGS).</li>
+                <li>Добавьте упаковку/маркировку и возвраты — это часто «съедает» маржу.</li>
+                <li>В DRR-калькуляторе задайте целевую прибыль — получите потолок по рекламе.</li>
+              </ul>
+              <div class="card__note">Нужно посчитать точно по вашему отчёту? Напишите — посчитаем и дадим план 30/60/90.</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="unit">
       <div class="container">
-        <div class="section__head">
-          <h2 class="section__title">Максимальный DRR при заданной прибыли</h2>
-          <p class="section__text">Сколько % рекламы можно позволить, чтобы оставалась целевая прибыль на штуку.</p>
-        </div>
+        <h2 class="h2">Юнит‑экономика на единицу</h2>
+        <p class="sub">Считаем прибыль и маржу на 1 шт + оценка DRR (упрощённо).</p>
 
-        <div class="grid2">
-          <div class="card">
-            <div class="card__title">Входные данные</div>
-            <div class="formGrid" id="calcMax">
-              <div class="field">
-                <label for="m_price">Цена продажи, ₽</label>
-                <input id="m_price" type="number" inputmode="decimal" value="5000" min="0" />
+        <div class="calcTwoCol">
+          <form class="card" id="unitCalc" autocomplete="off">
+            <div class="card__body">
+              <div class="formGrid">
+                <div class="field">
+                  <label for="u_price">Цена продажи, ₽</label>
+                  <input id="u_price" name="price" type="number" step="1" value="5000" />
+                </div>
+                <div class="field">
+                  <label for="u_comm">Комиссия, %</label>
+                  <input id="u_comm" name="commissionPct" type="number" step="0.1" value="15" />
+                </div>
+                <div class="field">
+                  <label for="u_log">Логистика/доставка, ₽</label>
+                  <input id="u_log" name="logistics" type="number" step="1" value="350" />
+                </div>
+                <div class="field">
+                  <label for="u_cogs">Себестоимость (COGS), ₽</label>
+                  <input id="u_cogs" name="cogs" type="number" step="1" value="1500" />
+                </div>
+                <div class="field">
+                  <label for="u_pack">Упаковка/маркировка, ₽</label>
+                  <input id="u_pack" name="pack" type="number" step="1" value="80" />
+                </div>
+                <div class="field">
+                  <label for="u_ads">Реклама (DRR), %</label>
+                  <input id="u_ads" name="adsPct" type="number" step="0.1" value="10" />
+                </div>
+                <div class="field">
+                  <label for="u_ret">Возвраты/брак, %</label>
+                  <input id="u_ret" name="returnsPct" type="number" step="0.1" value="3" />
+                </div>
               </div>
-              <div class="field">
-                <label for="m_comm">Комиссия, %</label>
-                <input id="m_comm" type="number" inputmode="decimal" value="15" min="0" />
+
+              <p class="fineprint" style="margin-top:10px">
+                Возвраты считаем как % от цены (упрощение). Для точности — нужен фактический отчёт по возвратам/удержаниям.
+              </p>
+            </div>
+          </form>
+
+          <div class="calcOut">
+            <div class="calcOut__title">Результат</div>
+            <div class="calcOut__grid">
+              <div class="outBox">
+                <div class="k">Прибыль / шт</div>
+                <div class="v" id="unit_profit">—</div>
               </div>
-              <div class="field">
-                <label for="m_log">Логистика/доставка, ₽</label>
-                <input id="m_log" type="number" inputmode="decimal" value="350" min="0" />
+              <div class="outBox">
+                <div class="k">Сумма затрат</div>
+                <div class="v" id="unit_costs">—</div>
               </div>
-              <div class="field">
-                <label for="m_cogs">Себестоимость (COGS), ₽</label>
-                <input id="m_cogs" type="number" inputmode="decimal" value="1500" min="0" />
+              <div class="outBox">
+                <div class="k">Маржа, %</div>
+                <div class="v" id="unit_margin">—</div>
               </div>
-              <div class="field">
-                <label for="m_pack">Упаковка/маркировка, ₽</label>
-                <input id="m_pack" type="number" inputmode="decimal" value="80" min="0" />
-              </div>
-              <div class="field">
-                <label for="m_ret">Возвраты/брак, % (упр.)</label>
-                <input id="m_ret" type="number" inputmode="decimal" value="3" min="0" />
-              </div>
-              <div class="field">
-                <label for="m_other">Прочие расходы, ₽</label>
-                <input id="m_other" type="number" inputmode="decimal" value="0" min="0" />
-              </div>
-              <div class="field">
-                <label for="m_target">Целевая прибыль / шт, ₽</label>
-                <input id="m_target" type="number" inputmode="decimal" value="800" min="0" />
+              <div class="outBox">
+                <div class="k">DRR (упр.), %</div>
+                <div class="v" id="unit_drr">—</div>
               </div>
             </div>
-          </div>
 
-          <div class="card">
-            <div class="card__title">Результат</div>
-            <div class="kpis">
-              <div class="kpi">
-                <div class="kpi__label">Макс. реклама, ₽</div>
-                <div class="kpi__value" id="m_out_adsRub">—</div>
-              </div>
-              <div class="kpi">
-                <div class="kpi__label">Макс. DRR, %</div>
-                <div class="kpi__value" id="m_out_adsPct">—</div>
-              </div>
-              <div class="kpi">
-                <div class="kpi__label">Запас/недостаток, ₽</div>
-                <div class="kpi__value" id="m_out_buf">—</div>
-              </div>
-              <div class="kpi">
-                <div class="kpi__label">Комментарий</div>
-                <div class="kpi__value" id="m_out_note">—</div>
-              </div>
+            <div class="calcOut__note">
+              Если прибыль «тонкая», почти всегда лечится комбинацией: цена → комиссия/логистика → упаковка → рекламные сценарии → ассортимент/остатки.
             </div>
-
-            <div class="card__divider"></div>
-            <p class="note">Если «макс. DRR» получается низкий — значит продукт не тянет платный трафик без пересборки юнита (цена/COGS/логистика/комиссия) или без смены сценария продаж.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="drr">
       <div class="container">
-        <div class="banner">
-          <div class="banner__left">
-            <div class="banner__title">Хотите точный расчёт по вашим отчётам?</div>
-            <div class="banner__text">Достаточно 1–2 выгрузок (заказы/начисления + реклама). Посчитаем и дадим план 30/60/90.</div>
-          </div>
-          <div class="banner__right">
-            <a class="btn btn--primary" href="https://t.me/Hardlivers" target="_blank" rel="noopener" data-prefill="true">Написать в Telegram</a>
+        <h2 class="h2">Максимальный DRR под целевую прибыль</h2>
+        <p class="sub">Сколько рекламы можно позволить, чтобы оставалась целевая прибыль на штуку.</p>
+
+        <div class="calcTwoCol">
+          <form class="card" id="drrCalc" autocomplete="off">
+            <div class="card__body">
+              <div class="formGrid">
+                <div class="field">
+                  <label for="d_price">Цена продажи, ₽</label>
+                  <input id="d_price" name="price" type="number" step="1" value="5000" />
+                </div>
+                <div class="field">
+                  <label for="d_comm">Комиссия, %</label>
+                  <input id="d_comm" name="commissionPct" type="number" step="0.1" value="15" />
+                </div>
+                <div class="field">
+                  <label for="d_log">Логистика/доставка, ₽</label>
+                  <input id="d_log" name="logistics" type="number" step="1" value="350" />
+                </div>
+                <div class="field">
+                  <label for="d_cogs">Себестоимость (COGS), ₽</label>
+                  <input id="d_cogs" name="cogs" type="number" step="1" value="1500" />
+                </div>
+                <div class="field">
+                  <label for="d_pack">Упаковка/маркировка, ₽</label>
+                  <input id="d_pack" name="pack" type="number" step="1" value="80" />
+                </div>
+                <div class="field">
+                  <label for="d_ret">Возвраты/брак, %</label>
+                  <input id="d_ret" name="returnsPct" type="number" step="0.1" value="3" />
+                </div>
+                <div class="field">
+                  <label for="d_target">Целевая прибыль / шт, ₽</label>
+                  <input id="d_target" name="targetProfit" type="number" step="1" value="800" />
+                </div>
+              </div>
+
+              <p class="fineprint" style="margin-top:10px">
+                Если «макс. DRR» получается низкий — значит продукт не тянет платный трафик без пересборки юнита (цена/COGS/логистика/комиссия) или без смены сценария продаж.
+              </p>
+            </div>
+          </form>
+
+          <div class="calcOut">
+            <div class="calcOut__title">Результат</div>
+            <div class="calcOut__grid">
+              <div class="outBox">
+                <div class="k">Макс. реклама, ₽</div>
+                <div class="v" id="drr_max_ads_rub">—</div>
+              </div>
+              <div class="outBox">
+                <div class="k">Макс. DRR, %</div>
+                <div class="v" id="drr_max_ads_pct">—</div>
+              </div>
+            </div>
+
+            <div class="calcOut__note">
+              Хотите точный расчёт по вашим отчётам? Достаточно 1–2 выгрузок (заказы/начисления + реклама). Посчитаем и дадим план 30/60/90.
+            </div>
+
+            <div style="margin-top:12px">
+              <a class="btn btn--primary btn--full" href="https://t.me/Hardlivers" data-prefill="true" target="_blank" rel="noreferrer">Написать в Telegram</a>
+            </div>
           </div>
         </div>
       </div>
@@ -262,17 +247,17 @@
     <div class="container footer__inner">
       <div class="footer__left">
         <div class="footer__brand">Kommdir Systems</div>
-        <div class="footer__meta">© 2026 · Marketplace CCO · BI · Automation</div>
+        <div class="footer__meta">© 2026 • Marketplace CCO • BI • Automation</div>
       </div>
       <div class="footer__right">
-        <a class="footer__link" href="services.html">Услуги</a>
-        <a class="footer__link" href="cases.html">Кейсы</a>
-        <a class="footer__link" href="calculators.html">Калькуляторы</a>
+        <a href="services.html" class="footer__link">Услуги</a>
+        <a href="cases.html" class="footer__link">Кейсы</a>
+        <a href="calculators.html" class="footer__link">Калькуляторы</a>
       </div>
     </div>
   </footer>
 
-  <script src="assets/script.js?v=20260209" defer></script>
-  <script src="assets/calculators.js?v=20260209" defer></script>
+  <script defer src="assets/script.js?v=20260209"></script>
+  <script defer src="assets/calculators.js?v=20260209"></script>
 </body>
 </html>
