@@ -79,7 +79,7 @@
       pack: $('d_pack'),
       returnsPct: $('d_ret'),
       other: $('d_other'),
-      targetProfit: $('d_target'),
+      targetProfit: $('d_profit'),
     };
 
     const dOut = {

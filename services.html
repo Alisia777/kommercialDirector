@@ -167,80 +167,95 @@
         <summary class="compareSummary">Сравнить форматы</summary>
 
       <div class="compareWrap" aria-label="Сравнение форматов">
+        <div class="miniLegend" aria-label="Подсказка по сравнению">
+          <div class="miniLegend__item">
+            <div class="miniLegend__k">Формат</div>
+            <div class="miniLegend__v">4 уровня участия: <b>Старт</b> → <b>Аудит</b> → <b>Контроль</b> → <b>Ведение</b></div>
+          </div>
+          <div class="miniLegend__item">
+            <div class="miniLegend__k">Уровень участия</div>
+            <div class="miniLegend__v">Слева направо растёт наша вовлечённость: <b>разово</b> → <b>ежедневно</b> → <b>под ключ</b></div>
+          </div>
+          <div class="miniLegend__item">
+            <div class="miniLegend__k">Зона ответственности</div>
+            <div class="miniLegend__v">Таблица показывает, что <b>входит</b> в формат. Остальное остаётся на вашей стороне — подскажем, что нужно.</div>
+          </div>
+        </div>
+
+        <div class="compareLegend" aria-label="Легенда таблицы">
+          <div class="legendItem"><span class="ico ico--yes" aria-hidden="true"></span><span>входит</span></div>
+          <div class="legendItem"><span class="ico ico--maybe" aria-hidden="true"></span><span>по запросу / зависит от ситуации</span></div>
+          <div class="legendItem"><span class="ico ico--no" aria-hidden="true"></span><span>не входит</span></div>
+          <div class="legendHint muted">На телефоне таблицу можно листать →</div>
+        </div>
+
         <div class="compareScroll">
           <table class="compareTable">
             <thead>
               <tr>
-                <th>Что входит</th>
-                <th><span class="pkgPill">Старт</span><br><span class="muted">Ниша + поставщик</span></th>
-                <th><span class="pkgPill">Аудит</span><br><span class="muted">Диагностика + план</span></th>
-                <th><span class="pkgPill pkgPill--accent">Контроль</span><br><span class="muted">Ежедневно</span></th>
-                <th><span class="pkgPill">Ведение</span><br><span class="muted">Под ключ</span></th>
+                <th class="thFeature">Что входит</th>
+                <th class="thFormat"><span class="pkgPill">Старт</span><br><span class="muted">Ниша + поставщик</span></th>
+                <th class="thFormat"><span class="pkgPill">Аудит</span><br><span class="muted">Диагностика + план</span></th>
+                <th class="thFormat"><span class="pkgPill pkgPill--accent">Контроль</span><br><span class="muted">Ежедневно</span></th>
+                <th class="thFormat"><span class="pkgPill">Ведение</span><br><span class="muted">Под ключ</span></th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><b>Подбор ниши</b> и товарная стратегия под ваш бюджет (варианты, риски, маржинальность)</td>
-                <td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="no">—</td>
+                <td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td><td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="no"><span class="ico ico--no" aria-hidden="true"></span></td>
               </tr>
               <tr>
                 <td><b>Поставщик/производство</b>: shortlist, вопросы/бриф, переговоры и логика сделки</td>
-                <td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="maybe">◐</td>
+                <td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td><td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="maybe"><span class="ico ico--maybe" aria-hidden="true"></span></td>
               </tr>
               <tr>
                 <td><b>Карго / “в белую”</b>: рекомендации по логистике, документам и этапам поставки</td>
-                <td class="yes">✓</td><td class="no">—</td><td class="no">—</td><td class="maybe">◐</td>
+                <td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td><td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="maybe"><span class="ico ico--maybe" aria-hidden="true"></span></td>
               </tr>
 
               <tr class="compareDivider"><td colspan="5">Управление действующим кабинетом</td></tr>
 
               <tr>
                 <td><b>Полный аудит</b>: финмодель, реклама, остатки, ассортимент, контент, логистика</td>
-                <td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td>
+                <td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td>
               </tr>
               <tr>
                 <td><b>Юнит‑экономика по ключевым SKU</b> (DRR, маржа, точки безубыточности)</td>
-                <td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td>
+                <td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td>
               </tr>
               <tr>
                 <td><b>ДДС + ОПиУ</b> (отдельным блоком): расчёт + структура учета “как у взрослых”</td>
-                <td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td>
+                <td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td>
               </tr>
               <tr>
                 <td><b>План 30/60/90</b> + приоритеты на 7/30 дней + KPI</td>
-                <td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td><td class="yes">✓</td>
+                <td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td>
               </tr>
               <tr>
                 <td><b>Ежедневный контроль</b> отклонений: реклама / маржа / остатки / рейтинг / конверсия</td>
-                <td class="no">—</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td>
+                <td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td>
               </tr>
               <tr class="compareKey">
                 <td><b>Регламенты и система</b>: роли, нормы, чек-листы, формы, “что делаем каждый день/неделю”</td>
-                <td class="no">—</td><td class="maybe">◐</td><td class="yes">✓</td><td class="yes">✓</td>
+                <td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="maybe"><span class="ico ico--maybe" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td>
               </tr>
               <tr>
                 <td><b>Еженедельная отчетность</b> собственнику: план‑факт → решения → задачи</td>
-                <td class="no">—</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td>
+                <td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td>
               </tr>
               <tr>
                 <td><b>Полное ведение кабинета</b>: цены/акции/реклама/ассортимент, задачи команде</td>
-                <td class="no">—</td><td class="no">—</td><td class="no">—</td><td class="yes">✓</td>
+                <td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td>
               </tr>
               <tr>
                 <td><b>Поставки</b>: планирование пополнений, контроль сроков, коммуникация с логистами</td>
-                <td class="maybe">◐</td><td class="no">—</td><td class="maybe">◐</td><td class="yes">✓</td>
+                <td class="maybe"><span class="ico ico--maybe" aria-hidden="true"></span></td><td class="no"><span class="ico ico--no" aria-hidden="true"></span></td><td class="maybe"><span class="ico ico--maybe" aria-hidden="true"></span></td><td class="yes"><span class="ico ico--yes" aria-hidden="true"></span></td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="compareHint">
-          <span class="muted">Легенда:</span>
-          <span class="yes">✓ входит</span>
-          <span class="maybe">◐ по запросу / зависит от ситуации</span>
-          <span class="no">— не входит</span>
-          <span class="muted">На телефоне таблицу можно листать →</span>
-        </div>
-      </div>
+</div>
 
       </details>
 
@@ -488,7 +503,7 @@
 
       <div class="footer__right">
         <div class="footer__label">Контакт</div>
-        <a class="footer__link footer__link--primary" href="https://t.me/kommdirector" target="_blank" rel="noopener">Telegram‑группа: @kommdirector</a>
+        <a class="footer__link footer__link--primary" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа: @kommdirector</a>
         <a class="footer__link" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Telegram: @kommdir_systems</a>
         <a class="footer__link" href="mailto:s@artyuhin.ru">Email: s@artyuhin.ru</a>
         <div class="footer__small">© <span id="year"></span>. Без выкупов/накруток. Работаем «в белую».</div>
