@@ -119,6 +119,7 @@
 
           <div class="hero__cta">
             <a class="btn btn--primary btn--lg" href="#services">Посмотреть форматы</a>
+            <a class="btn btn--ghost btn--lg" href="services.html#compare">Услуги детально</a>
             <a class="btn btn--ghost btn--lg" href="#process">Как это будет</a>
           </div>
 
@@ -147,11 +148,33 @@
     <section class="section" id="services">
       <div class="container">
         <div class="sectionHead">
-          <h2 class="sectionTitle">Услуги и стоимость</h2>
-          <p class="sectionNote">Три уровня вовлечения: разовый аудит по SKU → еженедельная управленка → ежедневное ведение с BI/алертами.</p>
+          <div>
+            <h2 class="sectionTitle">Услуги и стоимость</h2>
+            <p class="sectionNote">
+              4 формата вовлечения: старт (ниша/поставщик/экономика) → аудит по SKU → управленческий контроль → ежедневное
+              ведение с BI/алертами.
+            </p>
+          </div>
+          <a class="btn btn--ghost" href="services.html#compare">Услуги детально</a>
         </div>
 
         <div class="pricing">
+          <article class="priceCard">
+            <div class="priceCard__top">
+              <div class="priceCard__name">Старт: ниша → поставщик → экономика</div>
+              <div class="priceCard__price">10 000 ₽ <span class="muted">/ разово</span></div>
+              <div class="priceCard__desc">Под ваш бюджет подбираем нишу и поставщика, считаем экономику по реальным себестоимостям и логистике.</div>
+            </div>
+            <ul class="priceCard__list bullets">
+              <li class="priceCard__li">Аналитика спроса/конкурентов под ваш бюджет (Ozon/WB)</li>
+              <li class="priceCard__li">3–5 вариантов товара: плюсы/минусы, риски, маржинальность</li>
+              <li class="priceCard__li">Юнит-экономика: реальная себестоимость + логистика (карго/«в белую»)</li>
+              <li class="priceCard__li">Shortlist поставщиков (Китай) + вопросы для завода + чек-лист проверки</li>
+              <li class="priceCard__li">Логистика: этапы/документы/риски — объясняем простым языком</li>
+              <li class="priceCard__li">Рекомендация: с каким вариантом заходить и почему</li>
+            </ul>
+            <a class="btn btn--primary priceCard__cta" href="https://t.me/kommdirector" target="_blank" rel="noopener">Обсудить старт</a>
+          </article>
           <article class="priceCard">
             <div class="priceCard__top">
               <div class="priceCard__name">Аудит по вашим данным + план 30/60/90</div>
@@ -162,7 +185,7 @@
               <div class="priceCard__desc">Разбор цифр и действий: что мешает прибыли и что сделать по каждому SKU.</div>
             </div>
 
-            <ul class="priceCard__list">
+            <ul class="priceCard__list bullets">
               <li>Аудит SKU по данным: продажи, реклама, возвраты, логистика, остатки.</li>
               <li>Контент/карточка: УТП, SEO, ответы, фото — как ТЗ и контроль качества.</li>
               <li>Юнит‑экономика: маржа, комиссия, логистика, DRR (коридоры).</li>
@@ -176,7 +199,7 @@
           </article>
 
           <article class="priceCard priceCard--focus" aria-label="Рекомендуем">
-            <div class="badge">Рекомендуем</div>
+            <div class="badge badge--rec">Рекомендуем</div>
             <div class="priceCard__top">
               <div class="priceCard__name">Управленческая система (1 раз в неделю)</div>
               <div class="priceCard__price">
@@ -186,7 +209,7 @@
               <div class="priceCard__desc">Еженедельный цикл управления: деньги → решения → контроль.</div>
             </div>
 
-            <ul class="priceCard__list">
+            <ul class="priceCard__list bullets">
               <li>ДДС / ОПиУ / юнит‑экономика + план‑факт (1 раз в неделю).</li>
               <li>Контроль DRR, цен и остатков по коридорам (без хаоса).</li>
               <li>Регламенты: роли, нормы, инструкции, формы, календарь отчётности.</li>
@@ -210,7 +233,7 @@
               <div class="priceCard__note muted">до 50 SKU. Свыше — +10 000 ₽ за каждые дополнительные 10 SKU.</div>
             </div>
 
-            <ul class="priceCard__list">
+            <ul class="priceCard__list bullets">
               <li>Ежедневный контроль кабинета и метрик: выручка, маржа, DRR, остатки, цены.</li>
               <li>Дашборды и алерты (Telegram): что горит прямо сейчас.</li>
               <li>Постановка задач команде и контроль исполнения (по плану 30/60/90).</li>
@@ -353,10 +376,21 @@
       </div>
 
       <div class="footer__right">
-        <div class="footer__label">Контакт</div>
-        <a class="footer__link footer__link--primary" href="https://t.me/kommdirector" target="_blank" rel="noopener">Группа: @kommdirector</a>
-        <a class="footer__link" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">Telegram: @kommdir_systems</a>
-        <a class="footer__link" href="mailto:s@artyuhin.ru">Email: s@artyuhin.ru</a>
+        <div class="footer__label">Контакты</div>
+        <div class="footer__links">
+          <div class="footer__row">
+            <span class="footer__k">Группа</span>
+            <a class="footer__link footer__link--primary" href="https://t.me/kommdirector" target="_blank" rel="noopener">@kommdirector</a>
+          </div>
+          <div class="footer__row">
+            <span class="footer__k">Telegram</span>
+            <a class="footer__link" href="https://t.me/kommdir_systems" target="_blank" rel="noopener">@kommdir_systems</a>
+          </div>
+          <div class="footer__row">
+            <span class="footer__k">Email</span>
+            <a class="footer__link" href="mailto:s@artyuhin.ru">s@artyuhin.ru</a>
+          </div>
+        </div>
         <div class="footer__small">© <span id="year"></span>. Без выкупов/накруток. Работаем «в белую».</div>
       </div>
     </div>

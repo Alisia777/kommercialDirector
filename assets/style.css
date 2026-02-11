@@ -341,6 +341,33 @@ img{ max-width:100%; display:block; }
   color: var(--accent2);
 }
 
+/* Round "Рекомендуем" sticker */
+.badge--rec{
+  width: 72px;
+  height: 72px;
+  padding: 10px;
+  top: -14px;
+  right: -14px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.05;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  background: radial-gradient(120% 120% at 30% 25%, rgba(255, 189, 132, .98) 0%, rgba(255, 122, 26, .92) 45%, rgba(255, 122, 26, .62) 100%);
+  border: 1px solid rgba(255, 189, 132, .55);
+  color: #131a24;
+  box-shadow: 0 18px 46px rgba(255, 122, 26, .20);
+}
+@media (max-width: 640px){
+  .badge--rec{ width: 64px; height: 64px; top:-12px; right:-12px; font-size: 10px; }
+}
+
 .priceCard__top{ padding-bottom: 8px; }
 .priceCard__name{ font-weight:800; font-size:16px; margin-bottom: 10px; }
 .priceCard__price{ display:flex; align-items:baseline; gap:8px; }
@@ -492,7 +519,30 @@ img{ max-width:100%; display:block; }
 .footer__brand{ font-weight:950; letter-spacing:.06em; }
 .footer__text{ margin-top: 6px; color:var(--muted2); max-width: 60ch; font-size:13px; }
 .footer__label{ color:var(--muted2); font-size:12px; }
-.footer__link{ display:inline-block; margin-top: 8px; color:var(--muted); }
+
+.footer__right .footer__links{
+  margin-top: 10px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.footer__row{
+  display:grid;
+  grid-template-columns: 86px 1fr;
+  gap:12px;
+  align-items: baseline;
+}
+.footer__k{
+  color: var(--muted2);
+  font-size:12px;
+}
+.footer__link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top: 0;
+  color:var(--muted);
+}
 .footer__link--primary{
   color: var(--accent2);
   font-weight:800;
@@ -512,6 +562,7 @@ img{ max-width:100%; display:block; }
   .callout{ flex-direction:column; align-items:flex-start; }
   .ctaBlock{ flex-direction:column; align-items:flex-start; }
   .footer__inner{ flex-direction:column; }
+  .footer__row{ grid-template-columns: 1fr; gap:4px; }
 }
 
 @media (max-width: 520px){
@@ -988,6 +1039,7 @@ img{ max-width:100%; display:block; }
   width:18px;
   height:18px;
   display:inline-block;
+  vertical-align: middle;
   border-radius:6px;
   border:1px solid rgba(255,182,108,.35);
   background:rgba(255,182,108,.08);
@@ -1017,6 +1069,7 @@ img{ max-width:100%; display:block; }
   margin-top:14px;
   padding-top:12px;
   overflow:auto;
+  scrollbar-gutter: stable both-edges;
 }
 
 .compareTable{
