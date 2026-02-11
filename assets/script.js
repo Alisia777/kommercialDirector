@@ -1,77 +1,64 @@
 // Shared UI helpers (nav, year, smooth scroll)
-// v20260210: fix mobile menu, close on resize/esc, keep pages consistent
+// v20260211: align with current markup (data-burger / data-mobile-menu)
 
 (function () {
-  const $ = (id) => document.getElementById(id);
-
   const lockScroll = (lock) => {
     document.documentElement.classList.toggle('noScroll', !!lock);
     document.body.classList.toggle('noScroll', !!lock);
   };
 
   const setupMobileMenu = () => {
-    const toggle = $('navToggle');
-    const menu = $('mobileMenu');
-    const closeBtn = $('menuClose');
+    // Markup across pages
+    const burger = document.querySelector('[data-burger]');
+    const menu = document.querySelector('[data-mobile-menu]');
+    if (!burger || !menu) return;
 
-    if (!toggle || !menu) return;
-
-    // Always start closed (prevents 'двойное меню' на десктопе)
-    menu.setAttribute('hidden', '');
-    menu.setAttribute('aria-hidden', 'true');
-    toggle.setAttribute('aria-expanded', 'false');
-    lockScroll(false);
-
+    // Start closed
+    menu.hidden = true;
+    burger.setAttribute('aria-expanded', 'false');
 
     const open = () => {
-      menu.removeAttribute('hidden');
-      menu.setAttribute('aria-hidden', 'false');
-      toggle.setAttribute('aria-expanded', 'true');
+      menu.hidden = false;
+      burger.setAttribute('aria-expanded', 'true');
       lockScroll(true);
     };
 
     const close = () => {
-      menu.setAttribute('hidden', '');
-      menu.setAttribute('aria-hidden', 'true');
-      toggle.setAttribute('aria-expanded', 'false');
+      menu.hidden = true;
+      burger.setAttribute('aria-expanded', 'false');
       lockScroll(false);
     };
 
-    const isOpen = () => !menu.hasAttribute('hidden');
+    const toggle = () => {
+      if (menu.hidden) open();
+      else close();
+    };
 
-    // Initial state
-    toggle.setAttribute('aria-expanded', isOpen() ? 'true' : 'false');
-    menu.setAttribute('aria-hidden', isOpen() ? 'false' : 'true');
+    burger.addEventListener('click', toggle);
 
-    toggle.addEventListener('click', () => {
-      if (isOpen()) close();
-      else open();
-    });
-
-    if (closeBtn) closeBtn.addEventListener('click', close);
-
-    // Click outside panel closes
+    // Any link click inside menu closes it
     menu.addEventListener('click', (e) => {
-      if (e.target === menu) close();
+      const link = e.target.closest('a');
+      if (link) close();
     });
 
     // ESC closes
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isOpen()) close();
+      if (e.key === 'Escape' && !menu.hidden) close();
     });
 
-    // If user resized to desktop, close the mobile overlay
+    // Resize to desktop closes
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 860 && isOpen()) close();
+      if (window.innerWidth > 860 && !menu.hidden) close();
     });
   };
 
   const setupSmoothAnchors = () => {
     document.querySelectorAll('a[href^="#"]').forEach((a) => {
       a.addEventListener('click', (e) => {
-        const targetId = a.getAttribute('href');
-        if (!targetId || targetId === '#') return;
-        const el = document.querySelector(targetId);
+        const href = a.getAttribute('href');
+        if (!href || href === '#') return;
+        const el = document.querySelector(href);
         if (!el) return;
         e.preventDefault();
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -80,8 +67,7 @@
   };
 
   document.addEventListener('DOMContentLoaded', () => {
-    // year
-    const y = $('year');
+    const y = document.getElementById('year');
     if (y) y.textContent = String(new Date().getFullYear());
 
     setupMobileMenu();

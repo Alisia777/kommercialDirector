@@ -8,17 +8,18 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <meta name="theme-color" content="#0b0f14" />
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/logo-fox.png">
-  <link rel="apple-touch-icon" href="assets/logo-fox.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png?v=20260211">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png?v=20260211">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png?v=20260211">
 <title>Маркетплейсы: разбор + план 30/60/90 + контроль</title>
-  <meta name="description" content="Разбор и подробный план 30/60/90 по каждому артикулу (10 000 ₽ за 1 SKU), управленческий контроль (от 30 000 ₽/мес) и формат «одно окно» (от 40 000 ₽/мес)." />
+  <meta name="description" content="Форматы сотрудничества: «Старт» (ниша → поставщик → экономика) — 10 000 ₽, «Аудит» (диагностика прибыли и план действий) — 10 000 ₽, «Контроль» — от 30 000 ₽/мес, «Ведение под ключ» — от 40 000 ₽/мес." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="preload" href="assets/style.css?v=20260210-v12" as="style" />
-  <link rel="stylesheet" href="assets/style.css?v=20260210-v12" />
+<link rel="preload" href="assets/style.css?v=20260211-v13" as="style" />
+  <link rel="stylesheet" href="assets/style.css?v=20260211-v13" />
 </head>
 <body>
   <a class="skiplink" href="#main">Перейти к содержимому</a>
@@ -26,7 +27,9 @@
     <header class="topbar">
       <div class="container topbar__inner">
         <a class="brand" href="index.html" aria-label="На главную">
-          <img class="brand__logo" src="assets/logo-fox.png" alt="Kommdir Systems логотип" width="34" height="34">
+          <span class="brand__mark" aria-hidden="true">
+            <img class="brand__img" src="assets/logo-fox.png" alt="" />
+          </span>
           <span class="brand__text">
             <span class="brand__name">Kommdir Systems</span>
             <span class="brand__tag">Marketplace CCO • BI • Automation</span>
@@ -92,7 +95,7 @@
             <div class="heroBullet" role="listitem">
               <div class="heroBullet__icon" aria-hidden="true"></div>
               <div>
-                <div class="heroBullet__title">План по каждому артикулу</div>
+                <div class="heroBullet__title">План действий по SKU</div>
                 <div class="heroBullet__text">Задачи, приоритеты, KPI, дедлайны — без воды.</div>
               </div>
             </div>
@@ -128,7 +131,7 @@
           <div class="cardTitle">На выходе вы получите</div>
           <ul class="checklist">
             <li><b>Диагноз</b>: где именно теряются деньги (видимость/конверсия/логистика/маржа).</li>
-            <li><b>План 30/60/90</b>: подробные действия по каждому SKU, приоритеты и ожидаемый эффект.</li>
+            <li><b>План 30/60/90</b>: действия по SKU с приоритетами, KPI и ожидаемым эффектом.</li>
             <li><b>Список быстрых правок</b> (24–72 часа): что можно сделать сразу.</li>
             <li><b>Карта метрик</b>: что отслеживать еженедельно, чтобы рост был управляемым.</li>
           </ul>
@@ -144,14 +147,24 @@
         <section class="section" id="packages">
       <div class="sectionHead">
         <div>
-          <span class="sectionKicker">форматы</span>
-          <h2 class="sectionTitle">Комплектации — как опции в машине</h2>
+          <span class="sectionKicker">форматы сотрудничества</span>
+          <h2 class="sectionTitle">Сравнение форматов</h2>
           <p class="sectionLead">
-            Выберите уровень участия: от разового аудита до полного ведения кабинета и поставок.
-            Всё прозрачно — что входит, что делаем мы, что остаётся на вашей стороне.
+            Как «опции в машине»: выберите уровень участия — от разового аудита до полного ведения кабинета и поставок.
+            Всё прозрачно: что входит, что делаем мы, что остаётся на вашей стороне.
           </p>
+
+          <div class="noteBlock noteBlock--accent">
+            <strong>Ключевое отличие Kommdir Systems:</strong>
+            мы не делаем «видимость работы» и не продаём разрозненные советы.
+            Мы выстраиваем <strong>систему управления</strong>: юнит‑экономика → метрики → алерты → задачи → контроль исполнения.
+            Отсюда и результат: рост становится управляемым.
+          </div>
         </div>
       </div>
+
+      <details class="compareDetails" open>
+        <summary class="compareSummary">Сравнить форматы</summary>
 
       <div class="compareWrap" aria-label="Сравнение форматов">
         <div class="compareScroll">
@@ -201,7 +214,7 @@
                 <td><b>Ежедневный контроль</b> отклонений: реклама / маржа / остатки / рейтинг / конверсия</td>
                 <td class="no">—</td><td class="no">—</td><td class="yes">✓</td><td class="yes">✓</td>
               </tr>
-              <tr>
+              <tr class="compareKey">
                 <td><b>Регламенты и система</b>: роли, нормы, чек-листы, формы, “что делаем каждый день/неделю”</td>
                 <td class="no">—</td><td class="maybe">◐</td><td class="yes">✓</td><td class="yes">✓</td>
               </tr>
@@ -228,6 +241,8 @@
           <span class="muted">На телефоне таблицу можно листать →</span>
         </div>
       </div>
+
+      </details>
 
       <div class="pricing">
         <article class="priceCard">
@@ -328,9 +343,33 @@
       <div class="noteBlock">
         <h3>Логистика и “в белую” — аккуратно и прозрачно</h3>
         <p>
-          Если задача упирается в поставки: подключаем проверенных логистов/карго и помогаем пройти этапы сделки.
-          Переговоры с заводами, контроль сроков, документы и риски — объясняем человеческим языком.
-          Юридическое оформление и оплаты остаются на вашей стороне — мы ведём процесс и структуру.
+          Если задача упирается в поставки — подключаем проверенных карго/логистов и помогаем пройти сделку
+          от завода до приёмки. Делаем это аккуратно: объясняем риски, документы, сроки и бюджет простым языком.
+        </p>
+
+        <div class="noteGrid">
+          <div>
+            <div class="noteMiniTitle">Что делаем мы</div>
+            <ul class="bullets bullets--dot">
+              <li>Подбор 2–3 сценариев логистики: <b>карго</b> и <b>“в белую”</b> (если нужно) — с плюсами/минусами.</li>
+              <li>Переговоры с заводом: вводные, контроль сроков, чек‑лист сделки, фиксация договорённостей.</li>
+              <li>Коммуникация с карго/логистикой: этапы, статусы, контроль дедлайнов и “узких мест”.</li>
+              <li>Прозрачный бюджет: себестоимость → логистика → комиссии → возвраты → DRR — чтобы не «влететь».</li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="noteMiniTitle">Что остаётся на вашей стороне</div>
+            <ul class="bullets bullets--dot">
+              <li>Юридическое оформление/контракт и оплаты (мы помогаем структурой и контролем, но не подменяем юристов).</li>
+              <li>Финальное решение по схеме ввоза и поставщику (мы даём варианты и рекомендуем).</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="muted">
+          Для небольшого бюджета можно начать со «Старт» за 10 000 ₽: получите расчёты и маршрут,
+          а дальше — решите, делать руками или включать контроль/ведение.
         </p>
       </div>
     </section>
@@ -457,6 +496,6 @@
     </div>
   </footer>
 
-  <script src="assets/script.js?v=20260210-v12" defer></script>
+  <script src="assets/script.js?v=20260211-v13" defer></script>
 </body>
 </html>

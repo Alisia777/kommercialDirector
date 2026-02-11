@@ -1,5 +1,5 @@
 // Calculators (unit economics + max DRR)
-// v20260210-v12: clear explanation when max ads = 0 (no room for ads under target profit)
+// v20260211: align IDs with calculators.html (u_ads)
 
 (function () {
   const moneyFmt = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 });
@@ -32,9 +32,9 @@
       ship: $('u_log'),
       cogs: $('u_cogs'),
       pack: $('u_pack'),
-      adsPct: $('u_drr'),
+      adsPct: $('u_ads'),
       returnsPct: $('u_ret'),
-      other: $('u_other'),
+      other: $('u_other'), // optional field (may be absent)
     };
 
     const uOut = {
