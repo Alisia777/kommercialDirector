@@ -7,5 +7,5 @@
 - `calculators.html` — калькуляторы
 
 Контакты/CTA:
-- Telegram (написать): https://t.me/kommdir_systems
+- Telegram (написать): https://t.me/Hardlivers
 - Группа: https://t.me/kommdirector

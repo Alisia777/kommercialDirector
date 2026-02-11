@@ -17,7 +17,11 @@
 }
 
 *{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+html{
+  scroll-behavior:smooth;
+  /* anchors (#how, #faq, etc.) should not hide behind the sticky header */
+  scroll-padding-top: 92px;
+}
 body{
   margin:0;
   font-family:var(--font);
@@ -346,8 +350,9 @@ img{ max-width:100%; display:block; }
   width: 72px;
   height: 72px;
   padding: 10px;
-  top: -14px;
-  right: -14px;
+  /* keep the sticker fully visible inside the card */
+  top: 12px;
+  right: 12px;
   border-radius: 999px;
   display: flex;
   align-items: center;
@@ -365,7 +370,7 @@ img{ max-width:100%; display:block; }
   box-shadow: 0 18px 46px rgba(255, 122, 26, .20);
 }
 @media (max-width: 640px){
-  .badge--rec{ width: 64px; height: 64px; top:-12px; right:-12px; font-size: 10px; }
+  .badge--rec{ width: 64px; height: 64px; top:10px; right:10px; font-size: 10px; }
 }
 
 .priceCard__top{ padding-bottom: 8px; }
@@ -387,6 +392,30 @@ img{ max-width:100%; display:block; }
   gap: 8px;
 }
 
+/* list in the “Старт” card uses <span class="okIcon"> — keep it consistent */
+.priceCard__list li{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+.priceCard__list .okIcon{
+  flex: 0 0 16px;
+  width:16px;
+  height:16px;
+  margin-top: 2px;
+  border-radius: 999px;
+  background: rgba(255,141,46,.12);
+  border: 1px solid rgba(255,141,46,.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent2);
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1;
+}
+.priceCard__list .okIcon::before{ content: "✓"; }
+
 /* аккуратные маркеры (как “опции” в комплектациях) */
 .bullets li{
   position: relative;
@@ -405,7 +434,11 @@ img{ max-width:100%; display:block; }
   top: -1px;
   color: rgba(255,255,255,.70);
 }
-.priceCard__cta{ margin-top: 14px; }
+.priceCard .bullets{ margin-bottom: 14px; }
+.priceCard__cta{
+  /* keep all CTA buttons aligned across cards */
+  margin-top: auto;
+}
 
 .trustStrip{
   margin-top: 16px;
