@@ -1,0 +1,72 @@
+{
+  "brand": {
+    "name": "BLACK TIGER AUDIO",
+    "tagline": "Техника, что рвёт тишину.",
+    "colors": {
+      "orange": "#FF6600",
+      "black": "#0B0B0B",
+      "steel": "#333333"
+    }
+  },
+  "contacts": {
+    "email_url": "mailto:s@artyuhin.ru",
+    "email": "s@artyuhin.ru",
+    "telegram_handle": "@Hardlivers",
+    "telegram_url": "https://t.me/Hardlivers"
+  },
+  "links": {
+    "deck_pdf": "deck.pdf"
+  },
+  "updated_at": "2026-01-29",
+  "metrics": {
+    "orders_total": 46,
+    "orders_delivered": 29,
+    "gmv_rub": 153969,
+    "payout_rub": 85428,
+    "rating": 4.9,
+    "reviews_total": 18,
+    "logistics_usd_per_kg_old": 8.9,
+    "logistics_usd_per_kg_new": 3.3
+  },
+  "wb_metrics": {
+    "orders_total": 66,
+    "orders_delivered": 49,
+    "gmv_rub": 297286,
+    "payout_rub": 212922,
+    "rating": 4.8,
+    "reviews_total": 15,
+    "sku_ratings": {
+      "GALE_3800W": {
+        "rating": 5.0,
+        "reviews": 7
+      },
+      "STORM_5800W": {
+        "rating": 4.6,
+        "reviews": 8
+      }
+    },
+    "note": "WB: выручка/к перечислению — по отчёту goods (минус комиссия WB)."
+  },
+  "unit_economics": {
+    "STORM_5800W": {
+      "sku": 3139066863,
+      "avg_price_rub": 5844,
+      "avg_payout_rub": 3390,
+      "cogs_rub": 1586,
+      "gross_profit_rub": 1804
+    },
+    "GALE_3800W": {
+      "sku": 3210383821,
+      "avg_price_rub": 4652,
+      "avg_payout_rub": 2400,
+      "cogs_rub": 1320,
+      "gross_profit_rub": 1080
+    }
+  },
+  "hero_lead": "BLACK TIGER AUDIO — бренд честного автозвука. Мы сами разработали первые два усилителя, выстроили продажи и поддержку на маркетплейсах. На тестовой партии получили живые отзывы, активный диалог с покупателями и первую прибыль. Учёт и аналитика полностью автоматизированы нами — это снижает операционные риски.",
+  "batch2_units": 80,
+  "period_short": "01.12–29.01",
+  "ozon_period_short": "01.12.2025–29.01.2026",
+  "storm_delivered": 16,
+  "gale_delivered": 13
+}
